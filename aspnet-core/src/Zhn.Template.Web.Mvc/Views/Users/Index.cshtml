@@ -3,12 +3,12 @@
 @model Zhn.Template.Web.Models.Users.UserListViewModel
 @{
     ViewData["Title"] = PageNames.Users;
-    Layout = "~/Views/Shared/_LayoutPageTable.cshtml";
+    Layout = "_LayoutPage";
     ViewBag.AbsoluteUrl = "/Users";
     ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
 }
 @section scripts
-    {
+{
     <environment names="Development">
         <script src="~/view-resources/Views/Users/Index.js" asp-append-version="true"></script>
     </environment>
@@ -29,3 +29,4 @@
         </form>
     </div>
 </div>
+<table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>

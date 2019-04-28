@@ -63,7 +63,6 @@
         var abp = abp || {};
         abp.appPath = '@ApplicationPath';
     </script>
-
 </head>
 <body class="@("theme-" + uiTheme)">
 
@@ -139,7 +138,6 @@
         </aside>
 
         @await Component.InvokeAsync(typeof(RightSideBarViewComponent))
-
     </section>
 
     <section class="content">
@@ -220,5 +218,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
-

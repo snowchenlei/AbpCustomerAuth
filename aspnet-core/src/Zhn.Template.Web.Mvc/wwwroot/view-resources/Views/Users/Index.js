@@ -1,5 +1,22 @@
-﻿(function() {
-    $(function() {
+﻿var absoluteUrl;
+//搜索
+function queryParams(params) {
+    return {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+        MaxResultCount: params.limit,   //页面大小
+        SkipCount: params.offset / params.limit,  //页码
+    };
+}
+(function () {
+    var columns = [
+        { checkbox: true },
+        { field: 'id', title: 'Id', visible: false },
+        { field: 'userName', title: '用户名' },
+        { field: 'name', title: '名称' },
+        { field: 'emailAddress', title: '邮箱' }
+    ];
+    $(function () {
+        //1、初始化表格
+        table.init(columns);
 
         var _userService = abp.services.app.user;
         var _$modal = $('#UserCreateModal');
@@ -65,7 +82,7 @@
                 abp.ui.clearBusy(_$modal);
             });
         });
-        
+
         _$modal.on('shown.bs.modal', function () {
             _$modal.find('input:not([type=hidden]):first').focus();
         });
@@ -90,4 +107,3 @@
         }
     });
 })();
-

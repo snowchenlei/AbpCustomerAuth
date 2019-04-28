@@ -11,6 +11,31 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="wwwroot\lib\bootstrap-table\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\config" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\description" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\HEAD" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\applypatch-msg.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\commit-msg.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\post-update.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\pre-applypatch.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\pre-commit.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\pre-push.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\pre-rebase.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\pre-receive.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\hooks\update.sample" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\index" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\info\exclude" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\logs\HEAD" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\logs\refs\heads\develop" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\objects\pack\pack-da52e0a890734c5c34b9b59d4c0e3a61a21efab2.idx" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\objects\pack\pack-da52e0a890734c5c34b9b59d4c0e3a61a21efab2.pack" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\packed-refs" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\refs\heads\develop" />
+    <None Include="wwwroot\lib\bootstrap-table\.git\refs\remotes\origin\HEAD" />
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -53,6 +78,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="wwwroot\lib\bootstrap-table\.git\objects\info\" />
+    <Folder Include="wwwroot\lib\bootstrap-table\.git\refs\tags\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
 </Project>

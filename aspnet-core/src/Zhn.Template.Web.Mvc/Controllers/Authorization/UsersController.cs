@@ -22,7 +22,7 @@ namespace Zhn.Template.Web.Controllers.Authorization
 
         public async Task<ActionResult> Index()
         {
-            var users = (await _userAppService.GetAll(new PagedUserResultRequestDto {MaxResultCount = int.MaxValue})).Items; // Paging not implemented yet
+            var users = (await _userAppService.GetAll(new PagedUserResultRequestDto { MaxResultCount = int.MaxValue })).Items; // Paging not implemented yet
             var roles = (await _userAppService.GetRoles()).Items;
             var model = new UserListViewModel
             {
@@ -30,6 +30,12 @@ namespace Zhn.Template.Web.Controllers.Authorization
                 Roles = roles
             };
             return View(model);
+        }
+
+        public async Task<JsonResult> Load(PagedUserResultRequestDto input)
+        {
+            var users = await _userAppService.GetAll(input);
+            return Json(users);
         }
 
         public async Task<ActionResult> EditUserModal(long userId)
@@ -45,5 +51,3 @@ namespace Zhn.Template.Web.Controllers.Authorization
         }
     }
 }
-
-

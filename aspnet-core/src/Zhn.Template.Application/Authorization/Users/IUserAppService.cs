@@ -10,8 +10,8 @@ namespace Zhn.Template.Authorization.Users
     {
         Task<ListResultDto<RoleDto>> GetRoles();
 
+        Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input);
+
         Task ChangeLanguage(ChangeUserLanguageDto input);
     }
 }
-
-

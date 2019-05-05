@@ -15,10 +15,10 @@
     <text name="UserNameOrEmail" value="用户名或邮箱地址" />
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
-    <text name="ForgetPassword" value="忘记密码"/>
-    <text name="NotSelected" value="未选"/>
-    <text name="ChangeTenant" value="更改租户"/>
-    <text name="LeaveEmptyToSwitchToHost" value="留空以切换到Host"/>
+    <text name="ForgetPassword" value="忘记密码" />
+    <text name="NotSelected" value="未选" />
+    <text name="ChangeTenant" value="更改租户" />
+    <text name="LeaveEmptyToSwitchToHost" value="留空以切换到Host" />
     <text name="LogIn" value="登录" />
     <text name="LoginFailed" value="登录失败!" />
     <text name="AppName" >Template</text>
@@ -27,9 +27,6 @@
     <text name="CopyRight" >© 2018 Template</text>
     <text name="LoginPrompt" >正在登陆，请稍候！</text>
     <text name="UserProfile" >用户资料</text>
-    <text name="Users" >用户</text>
-    <text name="Roles" >角色</text>
-    <text name="Tenants" >租户</text>
     <text name="Logout" >注销</text>
     <text name="ManageMenu" >菜单</text>
     <text name="LabelOptions" >页签操作</text>
@@ -57,7 +54,6 @@
     <text name="PasswordRequireNonAlphanumeric">密码至少需要包含一个特殊字符（非字母或数字的字符）.</text>
     <text name="PasswordRequireUppercase">密码至少需要一位是A到Z的大写字母.</text>
     <text name="PasswordTooShort">密码长度太短</text>
-    <text name="UserName">用户名</text>
     <text name="Name">名称</text>
     <text name="IsActive">是否启用</text>
     <text name="LastLoginTime">最近登陆时间</text>
@@ -69,10 +65,10 @@
     <text name="All">全部</text>
     <text name="Actived">启用</text>
     <text name="NoActive">未启用</text>
-    
+
     <text name="Yes">是</text>
     <text name="No">否</text>
-    
+
     <text name="Cancel">取消</text>
     <text name="OK">确定</text>
     <text name="CreateNewRole">创建新角色</text>
@@ -85,7 +81,6 @@
     <text name="UserDetails">用户详情</text>
     <text name="UserRoles">用户角色</text>
     <text name="ConfirmPassword">确认密码</text>
-    <text name="EmailAddress">邮箱地址</text>
     <text name="Surname">姓</text>
     <text name="DeleteUserConfirm">确认删除该用户？</text>
     <text name="EditUser">编辑用户</text>
@@ -96,11 +91,21 @@
     <text name="DefaultPasswordIs">默认密码为：{0}</text>
     <text name="DeleteTenantConfirm">确认删除该租户？</text>
     <text name="EditTenant">编辑租户</text>
-    
-    
+
+    <!--菜单-->
+    <text name="SystemMenu">系统管理</text>
+    <text name="Tenants">租户</text>
+    <text name="MenuItems">菜单</text>
+    <text name="Users">用户</text>
+    <text name="Roles">角色</text>
+    <!--用户添加/修改-->
+    <text name="UserInformations">用户信息</text>
+    <text name="EmailAddress">邮箱地址</text>
+    <text name="PhoneNumber">手机号</text>
+    <text name="UserName">用户名</text>
+    <text name="CanNotChangeAdminUserName">不能改变管理员用户名</text>
+    <text name="SetRandomPassword">设置随机密码</text>
+    <text name="ShouldChangePasswordOnNextLogin">下次登录设置密码</text>
+    <text name="SendActivationEmail">发送邮箱验证</text>
   </texts>
 </localizationDictionary>
-
-
-
-

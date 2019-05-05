@@ -13,6 +13,7 @@ using Abp.Linq.Extensions;
 using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.UI;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Zhn.Template.Authorization.Accounts;
@@ -25,9 +26,11 @@ namespace Zhn.Template.Authorization.Users
     [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
+        private readonly IMapper _mapper;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<User, long> _userRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
@@ -39,7 +42,7 @@ namespace Zhn.Template.Authorization.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager)
+            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper)
             : base(repository)
         {
             _userManager = userManager;
@@ -48,6 +51,41 @@ namespace Zhn.Template.Authorization.Users
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
+            _userRepository = userRepository;
+            _mapper = mapper;
+        }
+
+        /// <summary>
+        /// 获取用户修改信息
+        /// </summary>
+        /// <param name="input">id</param>
+        /// <returns></returns>
+        public async Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input)
+        {
+            var userRoleDtos = await _roleManager.Roles
+                .OrderBy(r => r.DisplayName)
+                .Select(r => new UserRoleDto
+                {
+                    RoleId = r.Id,
+                    RoleName = r.Name,
+                    RoleDisplayName = r.DisplayName
+                })
+                .ToArrayAsync();
+            var output = new GetUserForEditOutput()
+            {
+                Roles = userRoleDtos
+            };
+            if (input.Id.HasValue)
+            {
+                User user = await _userRepository.FirstOrDefaultAsync(input.Id.Value);
+                output.User = _mapper.Map<UserEditDto>(user);
+            }
+            else
+            {
+                output.User = new UserEditDto();
+            }
+
+            return output;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)

@@ -12,7 +12,16 @@
     <RootNamespace>Zhn.Template</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\SourceFiles\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-es.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-fr.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-it.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-ja.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-lt.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-nl.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-pt-BR.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-tr.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template-zh-Hans.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\Template.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp.AutoMapper" Version="4.3.0" />

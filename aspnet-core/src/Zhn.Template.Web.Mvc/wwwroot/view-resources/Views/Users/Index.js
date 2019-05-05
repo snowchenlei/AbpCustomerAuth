@@ -18,6 +18,7 @@ function createOrEdit(title, id) {
     var dialog = bootbox.dialog({
         title: title,
         message: '<p><i class="fa fa-spin fa-spinner"></i> 加载中...</p>',
+        size: 'large',
         buttons: {
             cancel: {
                 label: "取消",
@@ -36,7 +37,7 @@ function createOrEdit(title, id) {
                         return false;
                     }
                     var s = $e.serializeArray();
-                    $.post(absoluteUrl + '/CreateOrEdit',
+                    $.post(abp.appPath + 'Users/CreateOrEditModal',
                         s,
                         function (result) {
                             l.stop();
@@ -52,8 +53,8 @@ function createOrEdit(title, id) {
         }
     });
     dialog.init(function () {
-        $('.ladda-button').attr('data-style', 'zoom-in');
-        $.get(abp.appPath + 'Users/EditUserModal', { userId: id }, function (data) {
+        //$('.ladda-button').attr('data-style', 'zoom-in');
+        $.get(abp.appPath + 'Users/CreateOrEditModal', { userId: id }, function (data) {
             dialog.find('.bootbox-body').html(data);
         });
     });

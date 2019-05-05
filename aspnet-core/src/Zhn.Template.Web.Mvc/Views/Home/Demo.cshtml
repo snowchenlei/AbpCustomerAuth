@@ -22,7 +22,7 @@
     var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme);
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
@@ -70,7 +70,7 @@
                     <a href="javascript:void(0);" class="nav-link">Contact</a>
                 </li>
             </ul>
-
+            @await Component.InvokeAsync(typeof(TopBarLanguageSwitchViewComponent))
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">

@@ -49,5 +49,16 @@ namespace Zhn.Template.Web.Controllers.Authorization
             };
             return View("_EditUserModal", model);
         }
+
+        public async Task<ActionResult> CreateOrEditModal(long? id)
+        {
+            var output = await _userAppService.GetUserForEdit(new NullableIdDto<long> { Id = id });
+            var viewModel = new CreateOrEditUserModalViewModel(output)
+            {
+                //PasswordComplexitySetting = await _passwordComplexitySettingStore.GetSettingsAsync()
+            };
+
+            return PartialView("_CreateOrEditModal", viewModel);
+        }
     }
 }

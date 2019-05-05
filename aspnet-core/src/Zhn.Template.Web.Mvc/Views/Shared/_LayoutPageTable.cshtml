@@ -21,36 +21,30 @@
     AbpAntiForgeryManager.SetCookie(Context);
     var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme);
 }
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    @section styles
-        {
-        <environment names="Development">
-            <link href="~/lib/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" asp-append-version="true" />
-            <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
-        </environment>
-    }
+@section styles
+    {
+    <environment names="Development">
+        <link href="~/lib/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
     @RenderSection("styles", required: false)
-    <!-- View specific styles -->
-</head>
-<body>
-    @RenderBody()
-    <table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>
-    @section scripts
-        {
-        <environment names="Development">
-            <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js" asp-append-version="true"></script>
-            <script src="~/lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-            <script src="~/lib/bootbox/bootbox.js"></script>
-        </environment>
+}
 
-        <environment names="Staging,Production">
-            <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
-        </environment>
-        @RenderSection("scripts", required: false)
-    }
-    <!-- View specific scripts -->
-</body>
-</html>
+@RenderBody()
+<table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js" asp-append-version="true"></script>
+        <script src="~/lib/bootbox/bootbox.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        @*<script src="~/lib/jquery-ajax-unobtrusive/src/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>*@
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("scripts", required: false)
+}

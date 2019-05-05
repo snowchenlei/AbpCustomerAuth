@@ -28,26 +28,29 @@ function createOrEdit(title, id) {
                 label: "提交",
                 className: 'btn-success ladda-button',
                 callback: function (result) {
-                    //var l = Ladda.create(result.target);
-                    //l.start();
+                    abp.ui.setBusy(dialog);
                     //手动验证
                     var $e = $("#modelForm");
                     if (!$e.valid()) {
-                        //l.stop();
+                        abp.ui.clearBusy(dialog);
                         return false;
                     }
-                    var s = $e.serializeArray();
-                    $.post(abp.appPath + 'Users/CreateOrEditModal',
-                        s,
-                        function (result) {
-                            //l.stop();
-                            requestCallBack(result,
-                                function () {
-                                    refreshTable();
-                                });
-                            dialog.modal('hide');
-                        });
-                    return false;
+                    var _userService = abp.services.app.user;
+                    var user = $e.serializeFormToObject();
+                    user.roleNames = [];
+                    var _$roleCheckboxes = $("input[name='role']:checked");
+                    if (_$roleCheckboxes) {
+                        for (var roleIndex = 0; roleIndex < _$roleCheckboxes.length; roleIndex++) {
+                            var _$roleCheckbox = $(_$roleCheckboxes[roleIndex]);
+                            user.roleNames.push(_$roleCheckbox.val());
+                        }
+                    }
+                    _userService.create(user).done(function () {
+                        dialog.modal('hide');
+                        refreshTable();
+                    }).always(function () {
+                        abp.ui.clearBusy(dialog);
+                    });
                 }
             }
         }
@@ -56,6 +59,7 @@ function createOrEdit(title, id) {
         //$('.ladda-button').attr('data-style', 'zoom-in');
         $.get(abp.appPath + 'Users/CreateOrEditModal', { userId: id }, function (data) {
             dialog.find('.bootbox-body').html(data);
+            dialog.find('input:not([type=hidden]):first').focus();
         });
     });
 }

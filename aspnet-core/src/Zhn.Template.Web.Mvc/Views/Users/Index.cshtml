@@ -3,12 +3,12 @@
 @model Zhn.Template.Web.Models.Users.UserListViewModel
 @{
     ViewData["Title"] = PageNames.Users;
-    Layout = "_LayoutPage";
+    Layout = "_LayoutPageTable";
     ViewBag.AbsoluteUrl = "/Users";
     ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
 }
 @section scripts
-{
+    {
     <environment names="Development">
         <script src="~/view-resources/Views/Users/Index.js" asp-append-version="true"></script>
     </environment>
@@ -17,6 +17,12 @@
         <script src="~/view-resources/Views/Users/Index.min.js" asp-append-version="true"></script>
     </environment>
 }
+<div id="toolbar">
+    <div class="btn-group" role="group" aria-label="Operate Group">
+        <button id="create" type="button" class="btn btn-primary"><i class="fas fa-plus"></i>添加</button>
+        <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>批量删除</button>
+    </div>
+</div>
 <!--搜索-->
 <div class="card">
     <div class="card-header">
@@ -29,4 +35,5 @@
         </form>
     </div>
 </div>
-<table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>
+
+@*<table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>*@

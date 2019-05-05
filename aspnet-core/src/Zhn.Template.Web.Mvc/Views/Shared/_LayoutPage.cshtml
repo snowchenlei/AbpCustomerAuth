@@ -39,15 +39,10 @@
         <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
         <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
-        @*<link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />*@
-        @*<link href="~/css/style.css" rel="stylesheet" asp-append-version="true">*@
-        @*<link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true" />*@
         <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 
@@ -66,13 +61,11 @@
 </head>
 <body>
     @RenderBody()
-    <table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>
 
     <environment names="Development">
         <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js" asp-append-version="true"></script>
         <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
@@ -80,7 +73,6 @@
         <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-slimscroll/jquery.slimscroll.js" asp-append-version="true"></script>
         <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
         <script src="~/lib/push.js/push.js" asp-append-version="true"></script>
@@ -94,6 +86,7 @@
         <script src="~/js/main.js" asp-append-version="true"></script>
         <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
         <script src="~/js/dataInit.js" asp-append-version="true"></script>
+        <script src="~/js/operate.js" asp-append-version="true"></script>
         @if (CultureInfo.CurrentUICulture.Name != "en")
         {
             <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>

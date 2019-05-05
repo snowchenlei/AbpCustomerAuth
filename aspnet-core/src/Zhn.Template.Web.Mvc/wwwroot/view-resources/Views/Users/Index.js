@@ -28,19 +28,19 @@ function createOrEdit(title, id) {
                 label: "提交",
                 className: 'btn-success ladda-button',
                 callback: function (result) {
-                    var l = Ladda.create(result.target);
-                    l.start();
+                    //var l = Ladda.create(result.target);
+                    //l.start();
                     //手动验证
                     var $e = $("#modelForm");
                     if (!$e.valid()) {
-                        l.stop();
+                        //l.stop();
                         return false;
                     }
                     var s = $e.serializeArray();
                     $.post(abp.appPath + 'Users/CreateOrEditModal',
                         s,
                         function (result) {
-                            l.stop();
+                            //l.stop();
                             requestCallBack(result,
                                 function () {
                                     refreshTable();

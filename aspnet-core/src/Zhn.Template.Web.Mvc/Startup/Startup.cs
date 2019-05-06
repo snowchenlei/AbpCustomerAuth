@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,10 @@ using Zhn.Template.Configuration;
 using Zhn.Template.Identity;
 using Zhn.Template.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
-
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Localization;
+using Zhn.Template.Web.Validation;
 
 namespace Zhn.Template.Web.Startup
 {
@@ -30,8 +34,10 @@ namespace Zhn.Template.Web.Startup
         {
             // MVC
             services.AddMvc(
-                options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
-            );
+                options =>
+                {
+                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                });
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
@@ -52,7 +58,6 @@ namespace Zhn.Template.Web.Startup
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseAbp(); // Initializes ABP framework.
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -86,5 +91,3 @@ namespace Zhn.Template.Web.Startup
         }
     }
 }
-
-

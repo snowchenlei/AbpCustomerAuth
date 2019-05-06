@@ -6,6 +6,7 @@ using Abp.Zero.Configuration;
 using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Configuration;
+using Zhn.Template.Interceptor;
 using Zhn.Template.Localization;
 using Zhn.Template.MultiTenancy;
 using Zhn.Template.Timing;
@@ -17,6 +18,9 @@ namespace Zhn.Template
     {
         public override void PreInitialize()
         {
+            //DataAnnotations本地化
+            ValidationInterceptorRegister.Initialize(IocManager);
+
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
 
             // Declare entity types
@@ -46,5 +50,3 @@ namespace Zhn.Template
         }
     }
 }
-
-

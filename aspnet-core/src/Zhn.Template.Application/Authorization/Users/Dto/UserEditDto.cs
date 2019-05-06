@@ -10,13 +10,14 @@ using Abp.Localization.Sources;
 
 namespace Zhn.Template.Authorization.Users.Dto
 {
-    public class UserEditDto
+    public partial class UserEditDto
     {
         /// <summary>
         /// Set null to create a new user. Set user's Id to update a user
         /// </summary>
         public long? Id { get; set; }
 
+        [Display]
         [Required]
         [StringLength(AbpUserBase.MaxNameLength)]
         public string Name { get; set; }
@@ -39,7 +40,7 @@ namespace Zhn.Template.Authorization.Users.Dto
 
         // Not used "Required" attribute since empty value is used to 'not change password'
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]
-        [DisableAuditing]
+        //[DisableAuditing]
         public string Password { get; set; }
 
         public bool IsActive { get; set; }

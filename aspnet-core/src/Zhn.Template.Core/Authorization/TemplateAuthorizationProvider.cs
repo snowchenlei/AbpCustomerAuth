@@ -16,11 +16,13 @@ namespace Zhn.Template.Authorization
             roles.CreateChildPermission(PermissionNames.Pages_Administration_Roles_Create, L("CreatingNewRole"));
             roles.CreateChildPermission(PermissionNames.Pages_Administration_Roles_Edit, L("EditingRole"));
             roles.CreateChildPermission(PermissionNames.Pages_Administration_Roles_Delete, L("DeletingRole"));
+            roles.CreateChildPermission(PermissionNames.Pages_Administration_Roles_BatchDelete, L("BatchDeletingRole"));
 
             var users = administration.CreateChildPermission(PermissionNames.Pages_Administration_Users, L("Users"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Create, L("CreatingNewUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Edit, L("EditingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Delete, L("DeletingUser"));
+            users.CreateChildPermission(PermissionNames.Pages_Administration_Users_BatchDelete, L("BatchDeletingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_ChangePermissions,
                 L("ChangingPermissions"));
 
@@ -29,10 +31,10 @@ namespace Zhn.Template.Authorization
 
             var mentItems =
                 administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"));
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create,
-                L("CreatingNewMenuItem"));
+            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"));
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"));
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"));
+            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"));
         }
 
         private static ILocalizableString L(string name)
@@ -41,5 +43,3 @@ namespace Zhn.Template.Authorization
         }
     }
 }
-
-

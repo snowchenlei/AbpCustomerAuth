@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -60,7 +61,8 @@ namespace Zhn.Template.Authorization.Users
         /// </summary>
         /// <param name="input">id</param>
         /// <returns></returns>
-        public async Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input)
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
+        public async Task<GetUserForEditOutput> GetForEdit(NullableIdDto<long> input)
         {
             var userRoleDtos = await _roleManager.Roles
                 .OrderBy(r => r.DisplayName)
@@ -88,6 +90,60 @@ namespace Zhn.Template.Authorization.Users
             return output;
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
+        public async Task CreateOrEdit(CreateOrUpdateInput input)
+        {
+            if (input.User.Id.HasValue)
+            {
+                await UpdateUserAsync(input);
+            }
+            else
+            {
+                await CreateUserAsync(input);
+            }
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create)]
+        protected virtual async Task CreateUserAsync(CreateOrUpdateInput input)
+        {
+            CheckCreatePermission();
+            var user = ObjectMapper.Map<User>(input.User);
+
+            user.TenantId = AbpSession.TenantId;
+            user.IsEmailConfirmed = true;
+
+            await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
+
+            CheckErrors(await _userManager.CreateAsync(user, input.User.Password));
+
+            if (input.AssignedRoleNames != null)
+            {
+                CheckErrors(await _userManager.SetRoles(user, input.AssignedRoleNames));
+            }
+
+            CurrentUnitOfWork.SaveChanges();
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Edit)]
+        protected virtual async Task UpdateUserAsync(CreateOrUpdateInput input)
+        {
+            CheckUpdatePermission();
+
+            Debug.Assert(input.User.Id != null, "input.User.Id != null");
+            var user = await _userManager.GetUserByIdAsync(input.User.Id.Value);
+
+            user = _mapper.Map(input.User, user);
+            user.SetNormalizedNames();
+
+            CheckErrors(await _userManager.UpdateAsync(user));
+
+            if (input.AssignedRoleNames != null)
+            {
+                CheckErrors(await _userManager.SetRoles(user, input.AssignedRoleNames));
+            }
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create)]
         public override async Task<UserDto> Create(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -110,6 +166,7 @@ namespace Zhn.Template.Authorization.Users
             return MapToEntityDto(user);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Edit)]
         public override async Task<UserDto> Update(UserDto input)
         {
             CheckUpdatePermission();
@@ -128,10 +185,17 @@ namespace Zhn.Template.Authorization.Users
             return await Get(input);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Delete)]
         public override async Task Delete(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
             await _userManager.DeleteAsync(user);
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_BatchDelete)]
+        public async Task BatchDelete(List<long> input)
+        {
+            await _userRepository.DeleteAsync(a => input.Contains(a.Id));
         }
 
         public async Task<ListResultDto<RoleDto>> GetRoles()

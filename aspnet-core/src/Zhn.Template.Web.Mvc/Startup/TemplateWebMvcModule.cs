@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Zhn.Template.Configuration;
+using Zhn.Template.Interceptor;
 
 namespace Zhn.Template.Web.Startup
 {
@@ -29,5 +30,3 @@ namespace Zhn.Template.Web.Startup
         }
     }
 }
-
-

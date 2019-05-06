@@ -16,6 +16,7 @@ namespace Zhn.Template
                 .ForMember(dto => dto.Password, options => options.Ignore())
                 .ReverseMap()
                 .ForMember(user => user.Password, options => options.Ignore());
+            configuration.CreateMap<UserEditDto, User>();
         }
     }
 }

@@ -32,10 +32,12 @@
     <text name="LabelOptions" >页签操作</text>
     <text name="ClearAll" >关闭所有</text>
     <text name="ClearOthers" >关闭其他</text>
+    <text name="QueryCondition">查询条件</text>
     <text name="Create" >创建</text>
     <text name="Add" >添加</text>
     <text name="Edit" >编辑</text>
     <text name="Delete">删除</text>
+    <text name="BatchDelete">批量删除</text>
     <text name="Find" >查找</text>
     <text name="CreationTime">创建时间</text>
     <text name="Actions">操作</text>
@@ -45,6 +47,8 @@
     <text name="SelectDate">请选择</text>
     <text name="Tips">提示</text>
     <text name="DeleteConfirm">确定删除？</text>
+    <text name="AreYouSureWantToDelete">您确定要删除{0}吗？</text>
+    <text name="PleaseSelectAtLeastOneItem">请至少选择一条数据！</text>
     <text name="Title" >标题</text>
     <text name="Content" >内容</text>
     <text name="ChangePassword" >修改密码</text>
@@ -78,12 +82,12 @@
     <text name="DeleteRolesConfirm">确认删除该角色？</text>
 
     <text name="CreateNewUser">创建新用户</text>
+    <text name="EditUser">编辑用户：{0}</text>
     <text name="UserDetails">用户详情</text>
     <text name="UserRoles">用户角色</text>
     <text name="ConfirmPassword">确认密码</text>
     <text name="Surname">姓</text>
     <text name="DeleteUserConfirm">确认删除该用户？</text>
-    <text name="EditUser">编辑用户</text>
 
     <text name="CreateNewTenant">创建新租户</text>
     <text name="DatabaseConnectionString">数据库连接</text>
@@ -99,8 +103,10 @@
     <text name="Users">用户</text>
     <text name="Roles">角色</text>
     <!--用户添加/修改-->
+    <text name="NameNotNull">姓名不能为空</text>
     <text name="UserInformations">用户信息</text>
     <text name="EmailAddress">邮箱地址</text>
+    <text name="EmailAddressNotNull">不能为空</text>
     <text name="PhoneNumber">手机号</text>
     <text name="UserName">用户名</text>
     <text name="CanNotChangeAdminUserName">不能改变管理员用户名</text>

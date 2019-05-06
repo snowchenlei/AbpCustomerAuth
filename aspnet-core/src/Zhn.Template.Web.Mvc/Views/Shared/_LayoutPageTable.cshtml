@@ -20,6 +20,8 @@
     Layout = "_LayoutPage";
     AbpAntiForgeryManager.SetCookie(Context);
     var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme);
+    //禁用客户端验证
+    //ViewContext.ClientValidationEnabled = true;
 }
 @section styles
     {
@@ -34,14 +36,13 @@
 <table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>
 @section scripts
     {
-<environment names="Development">
-    <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js" asp-append-version="true"></script>
-    <script src="~/lib/bootbox.js/dist/bootbox.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-    @*<script src="~/lib/jquery-ajax-unobtrusive/src/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>*@
-</environment>
+    <environment names="Development">
+        <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        @*<script src="~/lib/jquery-ajax-unobtrusive/src/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>*@
+    </environment>
 
     <environment names="Staging,Production">
         <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>

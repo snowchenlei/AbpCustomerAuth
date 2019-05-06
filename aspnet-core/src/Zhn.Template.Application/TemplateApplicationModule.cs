@@ -12,7 +12,11 @@ namespace Zhn.Template
     {
         public override void PreInitialize()
         {
+            //Adding authorization providers
             Configuration.Authorization.Providers.Add<TemplateAuthorizationProvider>();
+
+            //Adding custom AutoMapper configuration
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(CustomDtoMapper.CreateMappings);
         }
 
         public override void Initialize()

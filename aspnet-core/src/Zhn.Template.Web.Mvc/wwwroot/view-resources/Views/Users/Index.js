@@ -1,7 +1,7 @@
 ﻿function queryParams(params) {
     return {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-        MaxResultCount: params.limit,   //页面大小
-        SkipCount: params.offset / params.limit,  //页码
+        maxResultCount: params.limit,   //页面大小
+        skipCount: params.offset / params.limit  //页码
     };
 }
 (function () {
@@ -40,21 +40,31 @@
     function operateFormater(value, row, index) {
         var htmlArr = [];
         htmlArr.push('<div class="btn-group" role="group" aria-label="Row Operation">');
-        htmlArr.push('<button type="button" class="btn btn-sm btn-warning edit" title="edit"><i class="fas fa-edit"></i>' + app.localize('Edit') + '</button>');
-        htmlArr.push('<button type="button" class="btn btn-sm btn-danger remove" title="remove"><i class="fas fa-trash"></i>' + app.localize('Delete') + '</button>');
+        if (abp.auth.isGranted('Pages.Administration.Users.Edit')) {
+            htmlArr.push(
+                '<button type="button" class="btn btn-sm btn-warning edit" title="edit"><i class="fas fa-edit"></i>' +
+                app.localize('Edit') +
+                '</button>');
+        }
+        if (abp.auth.isGranted('Pages.Administration.Users.Delete')) {
+            htmlArr.push(
+                '<button type="button" class="btn btn-sm btn-danger remove" title="remove"><i class="fas fa-trash"></i>' +
+                app.localize('Delete') +
+                '</button>');
+        }
         htmlArr.push('</div>');
         return htmlArr.join('');
     }
     var columns = [
         { checkbox: true },
         { field: 'id', title: 'Id', visible: false },
-        { field: 'userName', title: '用户名' },
-        { field: 'name', title: '名称' },
-        { field: 'emailAddress', title: '邮箱' },
-        { title: '操作', formatter: operateFormater, events: operateEvents }
+        { field: 'userName', title: app.localize('UserName') },
+        { field: 'name', title: app.localize('Name') },
+        { field: 'emailAddress', title: app.localize('EmailAddress') },
+        { title: app.localize('Operation'), formatter: operateFormater, events: operateEvents }
     ];
 
-    function save(result) {
+    function save() {
         abp.ui.setBusy(dialog);
         //手动验证
         var $e = $("#modelForm");
@@ -102,19 +112,19 @@
     function createOrEdit(title, id) {
         dialog = bootbox.dialog({
             title: title,
-            message: '<p><i class="fa fa-spin fa-spinner"></i> 加载中...</p>',
+            message: '<p><i class="fa fa-spin fa-spinner"></i> ' + app.localize('Loading')+'</p>',
             size: 'large',
             buttons: {
                 cancel: {
-                    label: "取消",
-                    className: 'btn-danger ladda-button'
+                    label: app.localize('Cancel'),
+                    className: 'btn-danger'
                 },
-                ok: {
-                    label: "提交",
-                    className: 'btn-success ladda-button',
-                    callback: function (result) {
+                confirm: {//ok、confirm会在加载完成后获取焦点
+                    label: app.localize('OK'),
+                    className: 'btn-success',
+                    callback: function(result) {
                         if (result) {
-                            save(result);
+                            save();
                             return false;
                         }
                     }

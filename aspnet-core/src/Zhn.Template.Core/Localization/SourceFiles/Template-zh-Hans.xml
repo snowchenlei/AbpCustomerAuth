@@ -32,12 +32,7 @@
     <text name="LabelOptions" >页签操作</text>
     <text name="ClearAll" >关闭所有</text>
     <text name="ClearOthers" >关闭其他</text>
-    <text name="QueryCondition">查询条件</text>
-    <text name="Create" >创建</text>
-    <text name="Add" >添加</text>
-    <text name="Edit" >编辑</text>
-    <text name="Delete">删除</text>
-    <text name="BatchDelete">批量删除</text>
+    
     <text name="Find" >查找</text>
     <text name="CreationTime">创建时间</text>
     <text name="Actions">操作</text>
@@ -70,17 +65,27 @@
     <text name="Actived">启用</text>
     <text name="NoActive">未启用</text>
 
+    <!--Util-->
+    <text name="Operation">操作</text>
+    <text name="QueryCondition">查询条件</text>
+    <text name="Create" >创建</text>
+    <text name="Add" >添加</text>
+    <text name="Edit">编辑</text>
+    <text name="Delete">删除</text>
+    <text name="BatchDelete">批量删除</text>
     <text name="Yes">是</text>
     <text name="No">否</text>
-
     <text name="Cancel">取消</text>
     <text name="OK">确定</text>
+    <text name="Loading">加载中...</text>
+
     <text name="CreateNewRole">创建新角色</text>
     <text name="RoleDetails">角色详情</text>
     <text name="RolePermission">角色权限</text>
     <text name="EditRole">编辑角色</text>
     <text name="DeleteRolesConfirm">确认删除该角色？</text>
-
+    
+    <!--User-->
     <text name="CreateNewUser">创建新用户</text>
     <text name="EditUser">编辑用户：{0}</text>
     <text name="UserDetails">用户详情</text>
@@ -102,6 +107,7 @@
     <text name="MenuItems">菜单</text>
     <text name="Users">用户</text>
     <text name="Roles">角色</text>
+    
     <!--用户添加/修改-->
     <text name="NameNotNull">姓名不能为空</text>
     <text name="UserInformations">用户信息</text>

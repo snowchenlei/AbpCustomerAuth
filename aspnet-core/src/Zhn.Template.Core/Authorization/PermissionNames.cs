@@ -11,7 +11,7 @@
         public const string Pages_Administration_Roles_Create = "Pages.Administration.Roles.Create";
         public const string Pages_Administration_Roles_Edit = "Pages.Administration.Roles.Edit";
         public const string Pages_Administration_Roles_Delete = "Pages.Administration.Roles.Delete";
-        public const string Pages_Administration_Roles_BatchDelete = "Pages.Administration.Users.BatchDelete";
+        public const string Pages_Administration_Roles_BatchDelete = "Pages.Administration.Roles.BatchDelete";
 
         public const string Pages_Administration_Users = "Pages.Administration.Users";
         public const string Pages_Administration_Users_Create = "Pages.Administration.Users.Create";

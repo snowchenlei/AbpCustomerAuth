@@ -5,7 +5,7 @@ using Zhn.Template.Authorization.Roles;
 
 namespace Zhn.Template.Authorization.Roles.Dto
 {
-    public class RoleEditDto: EntityDto<int>
+    public class RoleEditDto: NullableIdDto<int>
     {
         [Required]
         [StringLength(AbpRoleBase.MaxNameLength)]

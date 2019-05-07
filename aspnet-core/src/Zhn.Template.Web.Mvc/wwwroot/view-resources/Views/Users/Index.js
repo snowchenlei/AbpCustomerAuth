@@ -1,13 +1,12 @@
 ﻿function queryParams(params) {
     return {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
         maxResultCount: params.limit,   //页面大小
-        skipCount: params.offset / params.limit  //页码
+        skipCount: params.offset //跳过条数 //params.offset / params.limit  //页码
     };
 }
 (function () {
     var _userService = abp.services.app.user;
     var dialog;
-    var model;
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             e.preventDefault();
@@ -132,8 +131,7 @@
             }
         });
         dialog.init(function () {
-            //$('.ladda-button').attr('data-style', 'zoom-in');
-            $.get(abp.appPath + 'Users/CreateOrEditModal', { userId: id }, function (data) {
+            $.get(abp.appPath + 'Users/CreateOrEditModal', { id: id }, function (data) {
                 dialog.find('.bootbox-body').html(data);
                 dialog.find('input:not([type=hidden]):first').focus();
             });

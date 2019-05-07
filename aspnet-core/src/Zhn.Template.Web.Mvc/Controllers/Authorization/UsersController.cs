@@ -20,16 +20,9 @@ namespace Zhn.Template.Web.Controllers.Authorization
             _userAppService = userAppService;
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var users = (await _userAppService.GetAll(new PagedUserResultRequestDto { MaxResultCount = int.MaxValue })).Items; // Paging not implemented yet
-            var roles = (await _userAppService.GetRoles()).Items;
-            var model = new UserListViewModel
-            {
-                Users = users,
-                Roles = roles
-            };
-            return View(model);
+            return View();
         }
 
         public async Task<JsonResult> Load(PagedUserResultRequestDto input)
@@ -38,21 +31,9 @@ namespace Zhn.Template.Web.Controllers.Authorization
             return Json(users);
         }
 
-        public async Task<ActionResult> EditUserModal(long userId)
+        public async Task<ActionResult> CreateOrEditModal(long? id)
         {
-            var user = await _userAppService.Get(new EntityDto<long>(userId));
-            var roles = (await _userAppService.GetRoles()).Items;
-            var model = new EditUserModalViewModel
-            {
-                User = user,
-                Roles = roles
-            };
-            return View("_EditUserModal", model);
-        }
-
-        public async Task<ActionResult> CreateOrEditModal(long? userId)
-        {
-            var output = await _userAppService.GetForEdit(new NullableIdDto<long> { Id = userId });
+            var output = await _userAppService.GetUserForEdit(new NullableIdDto<long> { Id = id });
             var viewModel = new CreateOrEditUserModalViewModel(output)
             {
                 //PasswordComplexitySetting = await _passwordComplexitySettingStore.GetSettingsAsync()

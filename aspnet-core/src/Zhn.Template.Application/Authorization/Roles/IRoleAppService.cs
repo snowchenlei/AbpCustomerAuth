@@ -7,9 +7,9 @@ namespace Zhn.Template.Authorization.Roles
 {
     public interface IRoleAppService : IAsyncCrudAppService<RoleDto, int, PagedRoleResultRequestDto, CreateRoleDto, RoleDto>
     {
-        Task<ListResultDto<PermissionDto>> GetAllPermissions();
+        Task<GetRoleForEditOutput> GetRoleForEdit(NullableIdDto input);
 
-        Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input);
+        Task<ListResultDto<PermissionDto>> GetAllPermissions();
 
         Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input);
     }

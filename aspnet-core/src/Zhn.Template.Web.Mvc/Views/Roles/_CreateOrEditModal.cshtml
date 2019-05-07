@@ -1,0 +1,46 @@
+﻿@using Abp.Authorization.Users
+@using Zhn.Template.Authorization.Users
+@model Zhn.Template.Web.Models.Roles.CreateOrEditRoleModalViewModel
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a href="#UserInformationsTab" class="nav-link active" data-toggle="tab" role="tab">
+            @L("RoleInformations")
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="#RolesTab" data-toggle="tab" role="tab" class="nav-link">
+            @L("Permissions")
+        </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="RoleInformationsTab" role="tabpanel">
+        <form id="modelForm" name="RoleInformationsForm" role="form" novalidate>
+            @if (Model.IsEditMode)
+            {
+                <input type="hidden" name="Id" value="@Model.Role.Id" />
+            }
+            <div class="form-group">
+                <label asp-for="Role.Name"></label>
+                <input asp-for="Role.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.Name)">
+                <span asp-validation-for="Role.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role.DisplayName"></label>
+                <input asp-for="Role.DisplayName" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.DisplayName)">
+                <span asp-validation-for="Role.DisplayName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role.Description"></label>
+                <input asp-for="Role.Description" type="email" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.Description)">
+                <span asp-validation-for="Role.Description" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+    <div class="tab-pane" id="PermissionsTab" role="tabpanel">
+        @*@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/_PermissionTree.cshtml", Model)*@
+    </div>
+</div>
+<script type="text/javascript">
+    $.validator.unobtrusive.parse('form');
+</script>

@@ -29,6 +29,46 @@ namespace Zhn.Template.Authorization.Roles
             _userManager = userManager;
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create,
+            PermissionNames.Pages_Administration_Roles_Edit)]
+        public async Task<GetRoleForEditOutput> GetRoleForEdit(NullableIdDto input)
+        {
+            var permissions = PermissionManager.GetAllPermissions();
+            var grantedPermissions = new Permission[0];
+            RoleEditDto roleEditDto;
+
+            if (input.Id.HasValue) //Editing existing role?
+            {
+                var role = await _roleManager.GetRoleByIdAsync(input.Id.Value);
+                grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
+                roleEditDto = ObjectMapper.Map<RoleEditDto>(role);
+            }
+            else
+            {
+                roleEditDto = new RoleEditDto();
+            }
+
+            return new GetRoleForEditOutput
+            {
+                Role = roleEditDto,
+                Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
+                GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
+            };
+        }
+        public async Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input)
+        {
+            var roles = await _roleManager
+                .Roles
+                .WhereIf(
+                    !input.Permission.IsNullOrWhiteSpace(),
+                    r => r.Permissions.Any(rp => rp.Name == input.Permission && rp.IsGranted)
+                )
+                .ToListAsync();
+
+            return new ListResultDto<RoleListDto>(ObjectMapper.Map<List<RoleListDto>>(roles));
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create)]
         public override async Task<RoleDto> Create(CreateRoleDto input)
         {
             CheckCreatePermission();
@@ -48,18 +88,6 @@ namespace Zhn.Template.Authorization.Roles
             return MapToEntityDto(role);
         }
 
-        public async Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input)
-        {
-            var roles = await _roleManager
-                .Roles
-                .WhereIf(
-                    !input.Permission.IsNullOrWhiteSpace(),
-                    r => r.Permissions.Any(rp => rp.Name == input.Permission && rp.IsGranted)
-                )
-                .ToListAsync();
-
-            return new ListResultDto<RoleListDto>(ObjectMapper.Map<List<RoleListDto>>(roles));
-        }
 
         public override async Task<RoleDto> Update(RoleDto input)
         {
@@ -126,21 +154,6 @@ namespace Zhn.Template.Authorization.Roles
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
-        }
-
-        public async Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input)
-        {
-            var permissions = PermissionManager.GetAllPermissions();
-            var role = await _roleManager.GetRoleByIdAsync(input.Id);
-            var grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
-            var roleEditDto = ObjectMapper.Map<RoleEditDto>(role);
-
-            return new GetRoleForEditOutput
-            {
-                Role = roleEditDto,
-                Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
-                GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
-            };
         }
     }
 }

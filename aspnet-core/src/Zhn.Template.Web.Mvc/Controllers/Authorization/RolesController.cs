@@ -19,26 +19,24 @@ namespace Zhn.Template.Web.Controllers.Authorization
         {
             _roleAppService = roleAppService;
         }
-
-        public async Task<IActionResult> Index()
+        public ActionResult Index()
         {
-            var roles = (await _roleAppService.GetRolesAsync(new GetRolesInput())).Items;
-            var permissions = (await _roleAppService.GetAllPermissions()).Items;
-            var model = new RoleListViewModel
-            {
-                Roles = roles,
-                Permissions = permissions
-            };
-
-            return View(model);
+            return View();
         }
 
-        public async Task<ActionResult> EditRoleModal(int roleId)
+        public async Task<JsonResult> Load(PagedRoleResultRequestDto input)
         {
-            var output = await _roleAppService.GetRoleForEdit(new EntityDto(roleId));
-            var model = new EditRoleModalViewModel(output);
+            var roles = await _roleAppService.GetAll(input);
+            return Json(roles);
+        }
+        [AbpMvcAuthorize(PermissionNames.Pages_Administration_Roles_Create, PermissionNames.Pages_Administration_Roles_Edit)]
 
-            return View("_EditRoleModal", model);
+        public async Task<ActionResult> CreateOrEditModal(int? id)
+        {
+            var output = await _roleAppService.GetRoleForEdit(new NullableIdDto { Id = id });
+            var viewModel = new CreateOrEditRoleModalViewModel(output);
+
+            return PartialView("_CreateOrEditModal", viewModel);
         }
     }
 }

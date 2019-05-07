@@ -62,7 +62,7 @@ namespace Zhn.Template.Authorization.Users
         /// <param name="input">id</param>
         /// <returns></returns>
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
-        public async Task<GetUserForEditOutput> GetForEdit(NullableIdDto<long> input)
+        public async Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input)
         {
             var userRoleDtos = await _roleManager.Roles
                 .OrderBy(r => r.DisplayName)

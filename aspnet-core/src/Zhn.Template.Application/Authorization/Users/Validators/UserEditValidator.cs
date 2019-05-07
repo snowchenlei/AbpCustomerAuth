@@ -9,7 +9,7 @@ using Zhn.Template.Authorization.Users.Dto;
 
 namespace Zhn.Template.Authorization.Users.Validators
 {
-    public class UserEditValidator : AbstractValidator<UserEditDto>
+    public class UserEditValidator : TemplateValidator<UserEditDto>
     {
         public UserEditValidator()
         {
@@ -51,11 +51,6 @@ namespace Zhn.Template.Authorization.Users.Validators
                 .WithMessage(L("UnderMaxLength", "{PropertyName}", "{MaxLength}"))
                 .Matches("^(((\\+\\d{2}-)?0\\d{2,3}-\\d{7,8})|((\\+\\d{2}-)?(\\d{2,3}-)?([1][3,4,5,7,8][0-9]\\d{8})))$")
                 .WithMessage(L("EnterAProper", "{PropertyName}"));
-        }
-
-        private static string L(string name, params object[] args)
-        {
-            return LocalizationHelper.GetSource(TemplateConsts.LocalizationSourceName).GetString(name, args);
         }
     }
 }

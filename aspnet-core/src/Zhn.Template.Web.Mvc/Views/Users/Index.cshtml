@@ -1,6 +1,5 @@
 ﻿@using Abp.Authorization.Users
 @using Zhn.Template.Web.Startup
-@model Zhn.Template.Web.Models.Users.UserListViewModel
 @{
     ViewData["Title"] = PageNames.Users;
     Layout = "_LayoutPageTable";
@@ -19,8 +18,14 @@
 }
 <div id="toolbar">
     <div class="btn-group" role="group" aria-label="Operate Group">
+    @if (IsGranted("Pages.Administration.Users.Create"))
+    {
         <button id="create" type="button" class="btn btn-primary"><i class="fas fa-plus"></i>@L("Add")</button>
+    }
+    @if (IsGranted("Pages.Administration.Users.BatchDelete"))
+    {
         <button id="batch-delete" type="button" class="btn btn-danger"><i class="fas fa-trash"></i>@L("BatchDelete")</button>
+    }
     </div>
 </div>
 <!--搜索-->

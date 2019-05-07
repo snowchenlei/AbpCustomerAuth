@@ -15,7 +15,7 @@
 </ul>
 <div class="tab-content">
     <div class="tab-pane active" id="UserInformationsTab" role="tabpanel">
-        <form id="modelForm" name="UserInformationsForm" role="form" novalidate class="form-validation">
+        <form id="modelForm" name="UserInformationsForm" role="form" novalidate>
             @if (Model.IsEditMode)
             {
                 <input type="hidden" name="Id" value="@Model.User.Id" />
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="User.PhoneNumber"></label>
-                <input asp-for="User.PhoneNumber" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.PhoneNumber)">
+                <input asp-for="User.PhoneNumber" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.PhoneNumber)">
                 <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -63,29 +63,29 @@
             </div>
             <!--增强功能,暂不实现-->
             @*<div class="m-checkbox-list">
-            <label for="EditUser_SetRandomPassword" class="m-checkbox">
-                <input id="EditUser_SetRandomPassword" type="checkbox" name="SetRandomPassword" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"") />
-                @L("SetRandomPassword")
-                <span></span>
-            </label>
-        </div>
-        <div class="m-checkbox-list">
-            <label for="EditUser_ShouldChangePasswordOnNextLogin" class="m-checkbox">
-                <input id="EditUser_ShouldChangePasswordOnNextLogin" type="checkbox" name="ShouldChangePasswordOnNextLogin" value="true" @Html.Raw(Model.User.ShouldChangePasswordOnNextLogin ? "checked=\"checked\"" : "")>
-                @L("ShouldChangePasswordOnNextLogin")
-                <span></span>
-            </label>
-            <label for="EditUser_SendActivationEmail" class="m-checkbox">
-                <input id="EditUser_SendActivationEmail" type="checkbox" name="SendActivationEmail" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"")>
-                @L("SendActivationEmail")
-                <span></span>
-            </label>
-            <label for="EditUser_IsActive" class="m-checkbox">
-                <input id="EditUser_IsActive" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
-                @L("Active")
-                <span></span>
-            </label>
-        </div>*@
+                    <label for="EditUser_SetRandomPassword" class="m-checkbox">
+                        <input id="EditUser_SetRandomPassword" type="checkbox" name="SetRandomPassword" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"") />
+                        @L("SetRandomPassword")
+                        <span></span>
+                    </label>
+                </div>
+                <div class="m-checkbox-list">
+                    <label for="EditUser_ShouldChangePasswordOnNextLogin" class="m-checkbox">
+                        <input id="EditUser_ShouldChangePasswordOnNextLogin" type="checkbox" name="ShouldChangePasswordOnNextLogin" value="true" @Html.Raw(Model.User.ShouldChangePasswordOnNextLogin ? "checked=\"checked\"" : "")>
+                        @L("ShouldChangePasswordOnNextLogin")
+                        <span></span>
+                    </label>
+                    <label for="EditUser_SendActivationEmail" class="m-checkbox">
+                        <input id="EditUser_SendActivationEmail" type="checkbox" name="SendActivationEmail" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"")>
+                        @L("SendActivationEmail")
+                        <span></span>
+                    </label>
+                    <label for="EditUser_IsActive" class="m-checkbox">
+                        <input id="EditUser_IsActive" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
+                        @L("Active")
+                        <span></span>
+                    </label>
+                </div>*@
         </form>
     </div>
     <div class="tab-pane" id="RolesTab" role="tabpanel">

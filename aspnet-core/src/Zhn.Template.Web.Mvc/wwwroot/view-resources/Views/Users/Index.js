@@ -112,7 +112,7 @@
     function createOrEdit(title, id) {
         dialog = bootbox.dialog({
             title: title,
-            message: '<p><i class="fa fa-spin fa-spinner"></i> ' + app.localize('Loading')+'</p>',
+            message: '<p><i class="fa fa-spin fa-spinner"></i> ' + app.localize('Loading') + '</p>',
             size: 'large',
             buttons: {
                 cancel: {
@@ -122,7 +122,7 @@
                 confirm: {//ok、confirm会在加载完成后获取焦点
                     label: app.localize('OK'),
                     className: 'btn-success',
-                    callback: function(result) {
+                    callback: function (result) {
                         if (result) {
                             save();
                             return false;

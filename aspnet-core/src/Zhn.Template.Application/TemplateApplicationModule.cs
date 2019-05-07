@@ -1,4 +1,5 @@
 ﻿using Abp.AutoMapper;
+using Abp.FluentValidation;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Zhn.Template.Authorization;
@@ -6,8 +7,9 @@ using Zhn.Template.Authorization;
 namespace Zhn.Template
 {
     [DependsOn(
-        typeof(TemplateCoreModule), 
-        typeof(AbpAutoMapperModule))]
+        typeof(TemplateCoreModule),
+        typeof(AbpAutoMapperModule),
+        typeof(AbpFluentValidationModule))]
     public class TemplateApplicationModule : AbpModule
     {
         public override void PreInitialize()
@@ -32,5 +34,3 @@ namespace Zhn.Template
         }
     }
 }
-
-

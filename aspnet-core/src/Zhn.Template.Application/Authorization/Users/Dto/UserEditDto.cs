@@ -6,7 +6,7 @@ using System.Text;
 using Abp.Auditing;
 using Abp.Authorization.Users;
 using Abp.Localization;
-using Abp.Localization.Sources;
+using Zhn.Template.Localization;
 
 namespace Zhn.Template.Authorization.Users.Dto
 {
@@ -17,38 +17,37 @@ namespace Zhn.Template.Authorization.Users.Dto
         /// </summary>
         public long? Id { get; set; }
 
-        [Display]
-        [Required]
-        [StringLength(AbpUserBase.MaxNameLength)]
+        [CustomerDisplayName("Name")]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(AbpUserBase.MaxSurnameLength)]
+        [CustomerDisplayName("Surname")]
         public string Surname { get; set; }
 
-        [Required]
-        [StringLength(AbpUserBase.MaxUserNameLength)]
+        [CustomerDisplayName("UserName")]
         public string UserName { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [StringLength(AbpUserBase.MaxEmailAddressLength)]
+        [CustomerDisplayName("EmailAddress")]
         public string EmailAddress { get; set; }
 
-        [StringLength(UserConsts.MaxPhoneNumberLength)]
+        [CustomerDisplayName("PhoneNumber")]
         public string PhoneNumber { get; set; }
 
+        [CustomerDisplayName("Password")]
+
         // Not used "Required" attribute since empty value is used to 'not change password'
-        [StringLength(AbpUserBase.MaxPlainPasswordLength)]
         //[DisableAuditing]
         public string Password { get; set; }
 
+        [CustomerDisplayName("IsActive")]
         public bool IsActive { get; set; }
 
+        [CustomerDisplayName("ShouldChangePasswordOnNextLogin")]
         public bool ShouldChangePasswordOnNextLogin { get; set; }
 
+        [CustomerDisplayName("IsTwoFactorEnabled")]
         public virtual bool IsTwoFactorEnabled { get; set; }
 
+        [CustomerDisplayName("IsLockoutEnabled")]
         public virtual bool IsLockoutEnabled { get; set; }
     }
 }

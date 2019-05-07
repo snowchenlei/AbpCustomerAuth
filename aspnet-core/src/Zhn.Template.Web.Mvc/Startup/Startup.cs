@@ -14,6 +14,7 @@ using Zhn.Template.Configuration;
 using Zhn.Template.Identity;
 using Zhn.Template.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Localization;
@@ -37,6 +38,10 @@ namespace Zhn.Template.Web.Startup
                 options =>
                 {
                     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                }).AddFluentValidation(fv =>
+                {
+                    //禁用其它的认证
+                    fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 });
 
             IdentityRegistrar.Register(services);

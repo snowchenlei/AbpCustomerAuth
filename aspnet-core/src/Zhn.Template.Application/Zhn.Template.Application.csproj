@@ -11,6 +11,9 @@
     <RootNamespace>Zhn.Template</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Abp.FluentValidation" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Zhn.Template.Core\Zhn.Template.Core.csproj" />
   </ItemGroup>
 </Project>

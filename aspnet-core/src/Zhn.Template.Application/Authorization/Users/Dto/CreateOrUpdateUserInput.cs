@@ -12,5 +12,15 @@ namespace Zhn.Template.Authorization.Users.Dto
 
         [Required]
         public string[] AssignedRoleNames { get; set; }
+
+        public bool SendActivationEmail { get; set; }
+
+        public bool SetRandomPassword { get; set; }
+
+        public List<long> OrganizationUnits { get; set; }
+        public CreateOrUpdateUserInput()
+        {
+            OrganizationUnits = new List<long>();
+        }
     }
 }

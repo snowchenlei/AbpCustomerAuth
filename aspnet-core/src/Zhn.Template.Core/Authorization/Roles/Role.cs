@@ -6,8 +6,7 @@ namespace Zhn.Template.Authorization.Roles
 {
     public class Role : AbpRole<User>
     {
-        public const int MaxDescriptionLength = 5000;
-
+        public const int MaxDescriptionLength = 500;
         public Role()
         {
         }
@@ -22,8 +21,7 @@ namespace Zhn.Template.Authorization.Roles
         {
         }
 
-        [StringLength(MaxDescriptionLength)]
-        public string Description {get; set;}
+        public string Description { get; set; }
     }
 }
 

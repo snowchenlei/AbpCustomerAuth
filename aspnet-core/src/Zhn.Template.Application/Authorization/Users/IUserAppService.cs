@@ -7,8 +7,9 @@ using Zhn.Template.Authorization.Roles.Dto;
 
 namespace Zhn.Template.Authorization.Users
 {
-    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>
+    public interface IUserAppService : IApplicationService
     {
+        Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input);
         Task<ListResultDto<RoleDto>> GetRoles();
 
         Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input);

@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
@@ -25,13 +28,14 @@ using Zhn.Template.Authorization.Users.Dto;
 namespace Zhn.Template.Authorization.Users
 {
     [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
-    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
+    public class UserAppService : TemplateAppServiceBase, IUserAppService
     {
         private readonly IMapper _mapper;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IRepository<User, long> _userRepository;
+        private readonly IRepository<UserRole, long> _userRoleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
@@ -43,8 +47,7 @@ namespace Zhn.Template.Authorization.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper)
-            : base(repository)
+            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper, IRepository<UserRole, long> userRoleRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -54,8 +57,30 @@ namespace Zhn.Template.Authorization.Users
             _logInManager = logInManager;
             _userRepository = userRepository;
             _mapper = mapper;
+            _userRoleRepository = userRoleRepository;
         }
 
+        public async Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input)
+        {
+            var query = GetUsersFilteredQuery(input);
+
+            var userCount = await query.CountAsync();
+
+            var users = await query
+                .OrderBy(input.Sorting)
+                .PageBy(input)
+                .ToListAsync();
+
+            var userListDtos = ObjectMapper.Map<List<UserListDto>>(users);
+            await FillRoleNames(userListDtos);
+
+            return new PagedResultDto<UserListDto>(
+                userCount,
+                userListDtos
+            );
+        }
+
+       
         /// <summary>
         /// 获取用户修改信息
         /// </summary>
@@ -90,6 +115,11 @@ namespace Zhn.Template.Authorization.Users
             return output;
         }
 
+        /// <summary>
+        /// 添加或修改
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
         public async Task CreateOrEdit(CreateOrUpdateUserInput input)
         {
@@ -106,7 +136,6 @@ namespace Zhn.Template.Authorization.Users
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create)]
         protected virtual async Task CreateUserAsync(CreateOrUpdateUserInput input)
         {
-            CheckCreatePermission();
             var user = ObjectMapper.Map<User>(input.User);
 
             user.TenantId = AbpSession.TenantId;
@@ -127,8 +156,6 @@ namespace Zhn.Template.Authorization.Users
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Edit)]
         protected virtual async Task UpdateUserAsync(CreateOrUpdateUserInput input)
         {
-            CheckUpdatePermission();
-
             Debug.Assert(input.User.Id != null, "input.User.Id != null");
             var user = await _userManager.GetUserByIdAsync(input.User.Id.Value);
 
@@ -141,55 +168,6 @@ namespace Zhn.Template.Authorization.Users
             {
                 CheckErrors(await _userManager.SetRoles(user, input.AssignedRoleNames));
             }
-        }
-
-        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create)]
-        public override async Task<UserDto> Create(CreateUserDto input)
-        {
-            CheckCreatePermission();
-            var user = ObjectMapper.Map<User>(input);
-
-            user.TenantId = AbpSession.TenantId;
-            user.IsEmailConfirmed = true;
-
-            await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
-
-            CheckErrors(await _userManager.CreateAsync(user, input.Password));
-
-            if (input.RoleNames != null)
-            {
-                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
-            }
-
-            CurrentUnitOfWork.SaveChanges();
-
-            return MapToEntityDto(user);
-        }
-
-        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Edit)]
-        public override async Task<UserDto> Update(UserDto input)
-        {
-            CheckUpdatePermission();
-
-            var user = await _userManager.GetUserByIdAsync(input.Id);
-
-            MapToEntity(input, user);
-
-            CheckErrors(await _userManager.UpdateAsync(user));
-
-            if (input.RoleNames != null)
-            {
-                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
-            }
-
-            return await Get(input);
-        }
-
-        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Delete)]
-        public override async Task Delete(EntityDto<long> input)
-        {
-            var user = await _userManager.GetUserByIdAsync(input.Id);
-            await _userManager.DeleteAsync(user);
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_BatchDelete)]
@@ -211,56 +189,6 @@ namespace Zhn.Template.Authorization.Users
                 LocalizationSettingNames.DefaultLanguage,
                 input.LanguageName
             );
-        }
-
-        protected override User MapToEntity(CreateUserDto createInput)
-        {
-            var user = ObjectMapper.Map<User>(createInput);
-            user.SetNormalizedNames();
-            return user;
-        }
-
-        protected override void MapToEntity(UserDto input, User user)
-        {
-            ObjectMapper.Map(input, user);
-            user.SetNormalizedNames();
-        }
-
-        protected override UserDto MapToEntityDto(User user)
-        {
-            var roles = _roleManager.Roles.Where(r => user.Roles.Any(ur => ur.RoleId == r.Id)).Select(r => r.NormalizedName);
-            var userDto = base.MapToEntityDto(user);
-            userDto.RoleNames = roles.ToArray();
-            return userDto;
-        }
-
-        protected override IQueryable<User> CreateFilteredQuery(PagedUserResultRequestDto input)
-        {
-            return Repository.GetAllIncluding(x => x.Roles)
-                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.UserName.Contains(input.Keyword) || x.Name.Contains(input.Keyword) || x.EmailAddress.Contains(input.Keyword))
-                .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
-        }
-
-        protected override async Task<User> GetEntityByIdAsync(long id)
-        {
-            var user = await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
-
-            if (user == null)
-            {
-                throw new EntityNotFoundException(typeof(User), id);
-            }
-
-            return user;
-        }
-
-        protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
-        {
-            return query.OrderBy(r => r.UserName);
-        }
-
-        protected virtual void CheckErrors(IdentityResult identityResult)
-        {
-            identityResult.CheckErrors(LocalizationManager);
         }
 
         public async Task<bool> ChangePassword(ChangePasswordDto input)
@@ -316,6 +244,60 @@ namespace Zhn.Template.Authorization.Users
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// 获取用户过滤查询
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private IQueryable<User> GetUsersFilteredQuery(IGetUsersInput input)
+        {
+            return _userRepository.GetAll();
+        }
+        /// <summary>
+        /// 添加角色信息
+        /// </summary>
+        /// <param name="userListDtos"></param>
+        /// <returns></returns>
+        private async Task FillRoleNames(IReadOnlyCollection<UserListDto> userListDtos)
+        {
+            /* This method is optimized to fill role names to given list. */
+
+            var userRoles = await _userRoleRepository.GetAll()
+                .Where(userRole => userListDtos.Any(user => user.Id == userRole.UserId))
+                .Select(userRole => userRole).ToListAsync();
+
+            var distinctRoleIds = userRoles.Select(userRole => userRole.RoleId).Distinct();
+
+            foreach (var user in userListDtos)
+            {
+                var rolesOfUser = userRoles.Where(userRole => userRole.UserId == user.Id).ToList();
+                user.Roles = ObjectMapper.Map<List<UserListRoleDto>>(rolesOfUser);
+            }
+
+            var roleNames = new Dictionary<int, string>();
+            foreach (var roleId in distinctRoleIds)
+            {
+                var role = await _roleManager.FindByIdAsync(roleId.ToString());
+                if (role != null)
+                {
+                    roleNames[roleId] = role.DisplayName;
+                }
+            }
+
+            foreach (var userListDto in userListDtos)
+            {
+                foreach (var userListRoleDto in userListDto.Roles)
+                {
+                    if (roleNames.ContainsKey(userListRoleDto.RoleId))
+                    {
+                        userListRoleDto.RoleName = roleNames[userListRoleDto.RoleId];
+                    }
+                }
+
+                userListDto.Roles = userListDto.Roles.Where(r => r.RoleName != null).OrderBy(r => r.RoleName).ToList();
+            }
         }
     }
 }

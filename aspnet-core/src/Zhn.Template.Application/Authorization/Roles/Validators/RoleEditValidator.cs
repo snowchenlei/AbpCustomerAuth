@@ -11,13 +11,6 @@ namespace Zhn.Template.Authorization.Roles.Validators
     {
         public RoleEditValidator()
         {
-            RuleFor(u => u.Name)
-                .NotNull()
-                .WithMessage(L("IsRequired", "{PropertyName}"))
-                .NotEmpty()
-                .WithMessage(L("IsRequired", "{PropertyName}"))
-                .MaximumLength(AbpRoleBase.MaxNameLength)
-                .WithMessage(L("UnderMaxLength", "{PropertyName}", "{MaxLength}"));
             RuleFor(u => u.DisplayName)
                 .NotNull()
                 .WithMessage(L("IsRequired", "{PropertyName}"))

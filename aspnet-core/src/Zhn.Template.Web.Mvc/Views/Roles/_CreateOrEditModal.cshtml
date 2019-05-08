@@ -21,19 +21,14 @@
                 <input type="hidden" name="Id" value="@Model.Role.Id" />
             }
             <div class="form-group">
-                <label asp-for="Role.Name"></label>
-                <input asp-for="Role.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.Name)">
-                <span asp-validation-for="Role.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Role.DisplayName"></label>
                 <input asp-for="Role.DisplayName" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.DisplayName)">
                 <span asp-validation-for="Role.DisplayName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Role.Description"></label>
-                <textarea asp-for="Role.Description" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.Description)"></textarea>
-                <span asp-validation-for="Role.Description" class="text-danger"></span>
+                <label asp-for="Role.IsDefault"></label>
+                <input asp-for="Role.IsDefault" type="checkbox" value="true" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.IsDefault)">
+                <span class="help-block">@L("DefaultRole_Description")</span>
             </div>
         </form>
     </div>

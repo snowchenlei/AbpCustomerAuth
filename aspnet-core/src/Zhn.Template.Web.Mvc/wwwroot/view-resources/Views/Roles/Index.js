@@ -6,11 +6,12 @@
 }
 (function () {
     var _roleService = abp.services.app.role;
+    var _permissionsTree;
     var dialog;
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             e.preventDefault();
-            createOrEdit(app.localize('EditRole', row.name), row.id);
+            createOrEdit(app.localize('Edit', row.name), row.id);
         },
         'click .remove': function (e, value, row, index) {
             bootbox.confirm({
@@ -57,10 +58,7 @@
     var columns = [
         { checkbox: true },
         { field: 'id', title: 'Id', visible: false },
-        { field: 'name', title: app.localize('Name') },
         { field: 'displayName', title: app.localize('DisplayName') },
-        { field: 'isStatic', title: app.localize('IsStatic') },
-        { field: 'isDefault', title: app.localize('IsDefault') },
         { field: 'creationTime', title: app.localize('CreationTime') },
         { title: app.localize('Operation'), formatter: operateFormater, events: operateEvents }
     ];
@@ -76,6 +74,7 @@
         var role = $e.serializeFormToObject();
         _roleService.createOrEdit({
             role
+            //, grantedPermissionNames: _permissionsTree.getSelectedPermissionNames()
         }).done(function (result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
             dialog.modal('hide');

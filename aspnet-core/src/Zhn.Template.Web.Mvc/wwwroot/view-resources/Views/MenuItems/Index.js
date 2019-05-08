@@ -5,12 +5,12 @@
     };
 }
 (function () {
-    var _roleService = abp.services.app.role;
+    var _menuItemService = abp.services.app.menuItem;
     var dialog;
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             e.preventDefault();
-            createOrEdit(app.localize('EditRole', row.name), row.id);
+            createOrEdit(app.localize('EditMenuItem', row.name), row.id);
         },
         'click .remove': function (e, value, row, index) {
             bootbox.confirm({
@@ -19,7 +19,7 @@
                 message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.name),
                 callback: function (result) {
                     if (result) {
-                        _roleService.delete({
+                        _menuItemService.delete({
                             id: row.id
                         }).done(function () {
                             var $table = $('#tb-body');
@@ -28,7 +28,6 @@
                                     field: 'id',
                                     values: [row.id]
                                 });
-                            //refreshUserList();
                         });
                     }
                 }
@@ -39,13 +38,13 @@
     function operateFormater(value, row, index) {
         var htmlArr = [];
         htmlArr.push('<div class="btn-group" role="group" aria-label="Row Operation">');
-        if (abp.auth.isGranted('Pages.Administration.Roles.Edit')) {
+        if (abp.auth.isGranted('Pages.Administration.MenuItems.Edit')) {
             htmlArr.push(
                 '<button type="button" class="btn btn-sm btn-warning edit" title="edit"><i class="fas fa-edit"></i>' +
                 app.localize('Edit') +
                 '</button>');
         }
-        if (abp.auth.isGranted('Pages.Administration.Roles.Delete')) {
+        if (abp.auth.isGranted('Pages.Administration.MenuItems.Delete')) {
             htmlArr.push(
                 '<button type="button" class="btn btn-sm btn-danger remove" title="remove"><i class="fas fa-trash"></i>' +
                 app.localize('Delete') +
@@ -58,10 +57,10 @@
         { checkbox: true },
         { field: 'id', title: 'Id', visible: false },
         { field: 'name', title: app.localize('Name') },
-        { field: 'displayName', title: app.localize('DisplayName') },
-        { field: 'isStatic', title: app.localize('IsStatic') },
-        { field: 'isDefault', title: app.localize('IsDefault') },
-        { field: 'creationTime', title: app.localize('CreationTime') },
+        { field: 'permissionName', title: app.localize('permissionName') },
+        { field: 'icon', title: app.localize('Icon') },
+        { field: 'route', title: app.localize('Route') },
+        { field: 'parentName', title: app.localize('ParentName') },
         { title: app.localize('Operation'), formatter: operateFormater, events: operateEvents }
     ];
 
@@ -74,7 +73,7 @@
             return false;
         }
         var role = $e.serializeFormToObject();
-        _roleService.createOrEdit({
+        _menuItemService.createOrEdit({
             role
         }).done(function (result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
@@ -109,7 +108,7 @@
             }
         });
         dialog.init(function () {
-            $.get(abp.appPath + 'Roles/CreateOrEditModal', { userId: id }, function (data) {
+            $.get(abp.appPath + 'MenuItems/CreateOrEditModal', { userId: id }, function (data) {
                 dialog.find('.bootbox-body').html(data);
                 dialog.find('input:not([type=hidden]):first').focus();
             });
@@ -120,7 +119,7 @@
         table.init(columns);
 
         $('#create').click(function () {
-            createOrEdit(app.localize('CreateNewRole'));
+            createOrEdit(app.localize('CreateNewMenuItem'));
         });
         $('#batch-delete').click(function () {
             var arr = $('#tb-body').bootstrapTable('getSelections');
@@ -136,7 +135,7 @@
                 callback: function (result) {
                     if (result) {
                         var ids = arr.map(a => a.id);
-                        _roleService.batchDelete(ids).done(function () {
+                        _menuItemService.batchDelete(ids).done(function () {
                             var $table = $('#tb-body');
                             $table.bootstrapTable('remove',
                                 {

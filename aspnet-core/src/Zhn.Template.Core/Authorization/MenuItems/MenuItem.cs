@@ -27,6 +27,11 @@ namespace Zhn.Template.Authorization.MenuItems
         public string Route { get; set; }
 
         /// <summary>
+        /// 排序
+        /// </summary>
+        public int Sort { get; set; }
+
+        /// <summary>
         /// 父菜单
         /// </summary>
         [CanBeNull]

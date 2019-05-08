@@ -17,37 +17,37 @@ namespace Zhn.Template.Authorization.Users.Dto
         /// </summary>
         public long? Id { get; set; }
 
-        [CustomerDisplayName("Name")]
+        [TemplateDisplayName("Name")]
         public string Name { get; set; }
 
-        [CustomerDisplayName("Surname")]
+        [TemplateDisplayName("Surname")]
         public string Surname { get; set; }
 
-        [CustomerDisplayName("UserName")]
+        [TemplateDisplayName("UserName")]
         public string UserName { get; set; }
 
-        [CustomerDisplayName("EmailAddress")]
+        [TemplateDisplayName("EmailAddress")]
         public string EmailAddress { get; set; }
 
-        [CustomerDisplayName("PhoneNumber")]
+        [TemplateDisplayName("PhoneNumber")]
         public string PhoneNumber { get; set; }
 
-        [CustomerDisplayName("Password")]
+        [TemplateDisplayName("Password")]
 
         // Not used "Required" attribute since empty value is used to 'not change password'
         //[DisableAuditing]
         public string Password { get; set; }
 
-        [CustomerDisplayName("IsActive")]
+        [TemplateDisplayName("IsActive")]
         public bool IsActive { get; set; }
 
-        [CustomerDisplayName("ShouldChangePasswordOnNextLogin")]
+        [TemplateDisplayName("ShouldChangePasswordOnNextLogin")]
         public bool ShouldChangePasswordOnNextLogin { get; set; }
 
-        [CustomerDisplayName("IsTwoFactorEnabled")]
+        [TemplateDisplayName("IsTwoFactorEnabled")]
         public virtual bool IsTwoFactorEnabled { get; set; }
 
-        [CustomerDisplayName("IsLockoutEnabled")]
+        [TemplateDisplayName("IsLockoutEnabled")]
         public virtual bool IsLockoutEnabled { get; set; }
     }
 }

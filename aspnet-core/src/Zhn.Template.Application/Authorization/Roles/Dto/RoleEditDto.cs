@@ -2,23 +2,22 @@
 using Abp.Application.Services.Dto;
 using Abp.Authorization.Roles;
 using Zhn.Template.Authorization.Roles;
+using Zhn.Template.Localization;
 
 namespace Zhn.Template.Authorization.Roles.Dto
 {
-    public class RoleEditDto: NullableIdDto<int>
+    public class RoleEditDto : NullableIdDto<int>
     {
-        [Required]
-        [StringLength(AbpRoleBase.MaxNameLength)]
+        [TemplateDisplayName("Name")]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(AbpRoleBase.MaxDisplayNameLength)]
+        [TemplateDisplayName("DisplayName")]
         public string DisplayName { get; set; }
 
-        [StringLength(Role.MaxDescriptionLength)]
+        [TemplateDisplayName("Description")]
         public string Description { get; set; }
 
+        [TemplateDisplayName("IsStatic")]
         public bool IsStatic { get; set; }
     }
 }
-

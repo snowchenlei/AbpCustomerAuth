@@ -91,7 +91,7 @@ namespace Zhn.Template.Authorization.Users
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
-        public async Task CreateOrEdit(CreateOrUpdateInput input)
+        public async Task CreateOrEdit(CreateOrUpdateUserInput input)
         {
             if (input.User.Id.HasValue)
             {
@@ -104,7 +104,7 @@ namespace Zhn.Template.Authorization.Users
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create)]
-        protected virtual async Task CreateUserAsync(CreateOrUpdateInput input)
+        protected virtual async Task CreateUserAsync(CreateOrUpdateUserInput input)
         {
             CheckCreatePermission();
             var user = ObjectMapper.Map<User>(input.User);
@@ -125,7 +125,7 @@ namespace Zhn.Template.Authorization.Users
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Edit)]
-        protected virtual async Task UpdateUserAsync(CreateOrUpdateInput input)
+        protected virtual async Task UpdateUserAsync(CreateOrUpdateUserInput input)
         {
             CheckUpdatePermission();
 

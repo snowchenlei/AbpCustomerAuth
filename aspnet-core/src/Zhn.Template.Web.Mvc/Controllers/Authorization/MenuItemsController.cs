@@ -15,19 +15,14 @@ namespace Zhn.Template.Web.Controllers.Authorization
     {
         private readonly IMenuItemAppService _menuItemAppService;
 
-        public MenuItemsController( IMenuItemAppService menuItemAppService)
+        public MenuItemsController(IMenuItemAppService menuItemAppService)
         {
             _menuItemAppService = menuItemAppService;
         }
 
         public async Task<ActionResult> Index()
         {
-            var menuItems = (await _menuItemAppService.GetAll(new GetMenuItemsInput(){ MaxResultCount = int.MaxValue })).Items; // Paging not implemented yet
-            var model = new MenuItemListViewModel
-            {
-                MenuItems = menuItems
-            };
-            return View(model);
+            return View();
         }
 
         public async Task<ActionResult> EditUserModal(int? menuItemId)

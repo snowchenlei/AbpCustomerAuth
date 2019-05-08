@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Zhn.Template.Authorization.Users.Dto
 {
-    public class CreateOrUpdateInput
+    public class CreateOrUpdateUserInput
     {
         [Required]
         public UserEditDto User { get; set; }

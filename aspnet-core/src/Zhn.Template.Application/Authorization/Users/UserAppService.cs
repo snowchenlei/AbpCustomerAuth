@@ -41,7 +41,6 @@ namespace Zhn.Template.Authorization.Users
         private readonly LogInManager _logInManager;
 
         public UserAppService(
-            IRepository<User, long> repository,
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
@@ -71,7 +70,7 @@ namespace Zhn.Template.Authorization.Users
                 .PageBy(input)
                 .ToListAsync();
 
-            var userListDtos = ObjectMapper.Map<List<UserListDto>>(users);
+            var userListDtos = _mapper.Map<List<UserListDto>>(users);
             await FillRoleNames(userListDtos);
 
             return new PagedResultDto<UserListDto>(
@@ -80,7 +79,6 @@ namespace Zhn.Template.Authorization.Users
             );
         }
 
-       
         /// <summary>
         /// 获取用户修改信息
         /// </summary>
@@ -255,6 +253,7 @@ namespace Zhn.Template.Authorization.Users
         {
             return _userRepository.GetAll();
         }
+
         /// <summary>
         /// 添加角色信息
         /// </summary>
@@ -273,7 +272,7 @@ namespace Zhn.Template.Authorization.Users
             foreach (var user in userListDtos)
             {
                 var rolesOfUser = userRoles.Where(userRole => userRole.UserId == user.Id).ToList();
-                user.Roles = ObjectMapper.Map<List<UserListRoleDto>>(rolesOfUser);
+                user.Roles = _mapper.Map<List<UserListRoleDto>>(rolesOfUser);
             }
 
             var roleNames = new Dictionary<int, string>();

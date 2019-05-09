@@ -5,8 +5,10 @@ using Zhn.Template.Authorization.Roles.Dto;
 
 namespace Zhn.Template.Authorization.Roles
 {
-    public interface IRoleAppService : IAsyncCrudAppService<RoleDto, int, PagedRoleResultRequestDto, CreateRoleDto, RoleDto>
+    public interface IRoleAppService : IApplicationService
     {
+        Task<PagedResultDto<RoleListDto>> GetRoles(GetRolesInput input);
+
         Task<GetRoleForEditOutput> GetRoleForEdit(NullableIdDto input);
 
         Task<ListResultDto<PermissionDto>> GetAllPermissions();
@@ -14,5 +16,3 @@ namespace Zhn.Template.Authorization.Roles
         Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input);
     }
 }
-
-

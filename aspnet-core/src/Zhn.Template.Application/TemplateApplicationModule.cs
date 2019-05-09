@@ -18,7 +18,7 @@ namespace Zhn.Template
             Configuration.Authorization.Providers.Add<TemplateAuthorizationProvider>();
 
             //Adding custom AutoMapper configuration
-            Configuration.Modules.AbpAutoMapper().Configurators.Add(CustomDtoMapper.CreateMappings);
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(TemplateDtoMapper.CreateMappings);
         }
 
         public override void Initialize()

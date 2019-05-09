@@ -15,7 +15,5 @@ namespace Zhn.Template.Authorization.Users
         Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input);
 
         Task ChangeLanguage(ChangeUserLanguageDto input);
-
-        Task BatchDelete(List<long> input);
     }
 }

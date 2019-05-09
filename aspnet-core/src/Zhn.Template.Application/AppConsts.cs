@@ -22,7 +22,7 @@ namespace Zhn.Template
         public static TimeSpan AccessTokenExpiration = TimeSpan.FromDays(1);
         public static TimeSpan RefreshTokenExpiration = TimeSpan.FromDays(365);
 
-        public const string DateTimeOffsetFormat = "yyyy-MM-ddTHH:mm:sszzz";
+        public const string DateTimeOffsetFormat = "yyyy-MM-dd HH:mm:ss";
     }
 }
 

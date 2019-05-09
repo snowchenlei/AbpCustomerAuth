@@ -94,7 +94,7 @@ namespace Zhn.Template.Authorization.Roles
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create, PermissionNames.Pages_Administration_Roles_Edit)]
-        public async Task CreateOrEdit(CreateOrUpdateRoleInput input)
+        public async Task CreateOrUpdateRole(CreateOrUpdateRoleInput input)
         {
             if (input.Role.Id.HasValue)
             {
@@ -109,7 +109,7 @@ namespace Zhn.Template.Authorization.Roles
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create)]
         protected virtual async Task CreateRoleAsync(CreateOrUpdateRoleInput input)
         {
-            var role = ObjectMapper.Map<Role>(input);
+            var role = _mapper.Map<Role>(input.Role);
             role.SetNormalizedName();
 
             CheckErrors(await _roleManager.CreateAsync(role));
@@ -128,7 +128,7 @@ namespace Zhn.Template.Authorization.Roles
             Debug.Assert(input.Role.Id != null, "input.Role.Id != null");
             var role = await _roleManager.GetRoleByIdAsync(input.Role.Id.Value);
 
-            ObjectMapper.Map(input, role);
+            _mapper.Map(input.Role, role);
 
             CheckErrors(await _roleManager.UpdateAsync(role));
 
@@ -141,7 +141,7 @@ namespace Zhn.Template.Authorization.Roles
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Delete)]
-        public async Task Delete(EntityDto<int> input)
+        public async Task DeleteRole(EntityDto<int> input)
         {
             var role = await _roleManager.FindByIdAsync(input.Id.ToString());
             var users = await _userManager.GetUsersInRoleAsync(role.NormalizedName);
@@ -154,12 +154,6 @@ namespace Zhn.Template.Authorization.Roles
             CheckErrors(await _roleManager.DeleteAsync(role));
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Administration_Roles_BatchDelete)]
-        public async Task BatchDelete(List<long> input)
-        {
-            await _roleRepository.DeleteAsync(a => input.Contains(a.Id));
-        }
-
         public Task<ListResultDto<PermissionDto>> GetAllPermissions()
         {
             var permissions = PermissionManager.GetAllPermissions();
@@ -167,11 +161,6 @@ namespace Zhn.Template.Authorization.Roles
             return Task.FromResult(new ListResultDto<PermissionDto>(
                 ObjectMapper.Map<List<PermissionDto>>(permissions)
             ));
-        }
-
-        protected virtual void CheckErrors(IdentityResult identityResult)
-        {
-            identityResult.CheckErrors(LocalizationManager);
         }
 
         /// <summary>

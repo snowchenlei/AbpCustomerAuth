@@ -119,7 +119,7 @@ namespace Zhn.Template.Authorization.Users
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
-        public async Task CreateOrEdit(CreateOrUpdateUserInput input)
+        public async Task CreateOrUpdateUser(CreateOrUpdateUserInput input)
         {
             if (input.User.Id.HasValue)
             {
@@ -168,10 +168,16 @@ namespace Zhn.Template.Authorization.Users
             }
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Administration_Users_BatchDelete)]
-        public async Task BatchDelete(List<long> input)
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users_Delete)]
+        public async Task DeleteUser(EntityDto<long> input)
         {
-            await _userRepository.DeleteAsync(a => input.Contains(a.Id));
+            if (input.Id == AbpSession.GetUserId())
+            {
+                throw new UserFriendlyException(L("YouCanNotDeleteOwnAccount"));
+            }
+
+            var user = await UserManager.GetUserByIdAsync(input.Id);
+            CheckErrors(await UserManager.DeleteAsync(user));
         }
 
         public async Task<ListResultDto<RoleDto>> GetRoles()

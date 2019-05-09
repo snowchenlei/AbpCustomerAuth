@@ -35,7 +35,7 @@ namespace Zhn.Template.Authorization.Users.Dto
         [TemplateDisplayName("Password")]
 
         // Not used "Required" attribute since empty value is used to 'not change password'
-        //[DisableAuditing]
+        [DisableAuditing]
         public string Password { get; set; }
 
         [TemplateDisplayName("IsActive")]

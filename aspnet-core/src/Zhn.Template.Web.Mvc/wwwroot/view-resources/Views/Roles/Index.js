@@ -72,7 +72,7 @@
             return false;
         }
         var role = $e.serializeFormToObject();
-        _roleService.createOrEdit({
+        _roleService.createOrUpdateRole({
             role
             //, grantedPermissionNames: _permissionsTree.getSelectedPermissionNames()
         }).done(function (result) {
@@ -120,33 +120,6 @@
 
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewRole'));
-        });
-        $('#batch-delete').click(function () {
-            var arr = $('#tb-body').bootstrapTable('getSelections');
-            if (arr.length <= 0) {
-                app.localize('PleaseSelectAtLeastOneItem');
-                return false;
-            }
-            var names = arr.map(a => a.name).join(',');
-            bootbox.confirm({
-                size: 'small',
-                title: app.localize('Delete', names),
-                message: abp.utils.formatString(app.localize('AreYouSureWantToDelete'), names),
-                callback: function (result) {
-                    if (result) {
-                        var ids = arr.map(a => a.id);
-                        _roleService.batchDelete(ids).done(function () {
-                            var $table = $('#tb-body');
-                            $table.bootstrapTable('remove',
-                                {
-                                    field: 'id',
-                                    values: ids
-                                });
-                        });
-                    }
-                }
-            });
-            return true;
         });
     });
 })();

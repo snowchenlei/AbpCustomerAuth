@@ -22,7 +22,7 @@ namespace Zhn.Template
                 .ReverseMap()
                 .ForMember(user => user.Password, options => options.Ignore());
             //Role
-            configuration.CreateMap<RoleEditDto, Role>();
+            configuration.CreateMap<RoleEditDto, Role>().ReverseMap();
             configuration.CreateMap<Role, RoleListDto>();
             //UserRole
             configuration.CreateMap<UserRole, UserListRoleDto>();

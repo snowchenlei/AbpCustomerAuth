@@ -83,7 +83,7 @@
                 user.roleNames.push(_$roleCheckbox.val());
             }
         }
-        _userService.createOrEdit({
+        _userService.createOrUpdateUser({
             user,
             assignedRoleNames
         }).done(function (result) {
@@ -143,33 +143,6 @@
 
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewUser'));
-        });
-        $('#batch-delete').click(function () {
-            var arr = $('#tb-body').bootstrapTable('getSelections');
-            if (arr.length <= 0) {
-                app.localize('PleaseSelectAtLeastOneItem');
-                return false;
-            }
-            var names = arr.map(a => a.name).join(',');
-            bootbox.confirm({
-                size: 'small',
-                title: app.localize('Delete', names),
-                message: abp.utils.formatString(app.localize('AreYouSureWantToDelete'), names),
-                callback: function (result) {
-                    if (result) {
-                        var ids = arr.map(a => a.id);
-                        _userService.batchDelete(ids).done(function () {
-                            var $table = $('#tb-body');
-                            $table.bootstrapTable('remove',
-                                {
-                                    field: 'id',
-                                    values: ids
-                                });
-                        });
-                    }
-                }
-            });
-            return true;
         });
     });
 })();

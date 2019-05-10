@@ -100,6 +100,7 @@
 
         dialog.find('.user-role-checkbox-list input[type=checkbox]')
             .each(function () {
+                debugger
                 if ($(this).is(':checked')) {
                     assignedRoleNames.push($(this).attr('name'));
                 }

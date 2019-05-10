@@ -101,13 +101,25 @@ namespace Zhn.Template.Authorization.Users
                 Roles = userRoleDtos
             };
             if (input.Id.HasValue)
-            {
+            {   //修改
                 User user = await _userRepository.FirstOrDefaultAsync(input.Id.Value);
                 output.User = _mapper.Map<UserEditDto>(user);
+                foreach (var userRoleDto in userRoleDtos)
+                {
+                    userRoleDto.IsAssigned = await UserManager.IsInRoleAsync(user, userRoleDto.RoleName);
+                }
             }
             else
             {
                 output.User = new UserEditDto();
+                foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
+                {
+                    var defaultUserRole = userRoleDtos.FirstOrDefault(ur => ur.RoleName == defaultRole.Name);
+                    if (defaultUserRole != null)
+                    {
+                        defaultUserRole.IsAssigned = true;
+                    }
+                }
             }
 
             return output;

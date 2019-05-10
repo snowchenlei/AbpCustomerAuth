@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Abp.Authorization;
 using Abp.Authorization.Users;
 using AutoMapper;
 using Zhn.Template.Authorization.Roles;
@@ -26,6 +27,8 @@ namespace Zhn.Template
             configuration.CreateMap<Role, RoleListDto>();
             //UserRole
             configuration.CreateMap<UserRole, UserListRoleDto>();
+            //Permission
+            configuration.CreateMap<Permission, FlatPermissionDto>();
         }
     }
 }

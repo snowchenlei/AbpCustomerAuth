@@ -65,7 +65,7 @@ namespace Zhn.Template.Authorization.Roles
             {
                 var role = await _roleManager.GetRoleByIdAsync(input.Id.Value);
                 grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
-                roleEditDto = ObjectMapper.Map<RoleEditDto>(role);
+                roleEditDto = _mapper.Map<RoleEditDto>(role);
             }
             else
             {
@@ -75,7 +75,7 @@ namespace Zhn.Template.Authorization.Roles
             return new GetRoleForEditOutput
             {
                 Role = roleEditDto,
-                Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
+                Permissions = _mapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
                 GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
             };
         }
@@ -90,7 +90,7 @@ namespace Zhn.Template.Authorization.Roles
                 )
                 .ToListAsync();
 
-            return new ListResultDto<RoleListDto>(ObjectMapper.Map<List<RoleListDto>>(roles));
+            return new ListResultDto<RoleListDto>(_mapper.Map<List<RoleListDto>>(roles));
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create, PermissionNames.Pages_Administration_Roles_Edit)]

@@ -20,6 +20,10 @@
     <None Remove="wwwroot\lib\bootstrap-table\.git\**" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="Views\Common\_PermissionTree.cshtml" />
+    <Content Remove="Views\Common\_PermissionTreeItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="app.config" />
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -64,6 +68,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Common\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

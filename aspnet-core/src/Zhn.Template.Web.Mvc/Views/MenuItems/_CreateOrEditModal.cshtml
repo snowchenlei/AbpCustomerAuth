@@ -1,0 +1,41 @@
+﻿@model Zhn.Template.Web.Models.MenuItems.CreateOrEditMenuItemModalViewModel
+
+<form id="modelForm" name="MenuItemInformationsForm" role="form" novalidate>
+    @if (Model.IsEditMode)
+    {
+        <input type="hidden" name="Id" value="@Model.MenuItem.Id" />
+    }
+    <div class="form-group">
+        <label asp-for="MenuItem.Name"></label>
+        <input asp-for="MenuItem.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.Name)">
+        <span asp-validation-for="MenuItem.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MenuItem.Icon"></label>
+        <input asp-for="MenuItem.Icon" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.Icon)">
+        <span asp-validation-for="MenuItem.Icon" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MenuItem.PermissionName"></label>
+        <input asp-for="MenuItem.PermissionName" type="email" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.PermissionName)">
+        <span asp-validation-for="MenuItem.PermissionName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MenuItem.ParentId"></label>
+        <input asp-for="MenuItem.ParentId" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.ParentId)">
+        <span asp-validation-for="MenuItem.ParentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MenuItem.Route"></label>
+        <input asp-for="MenuItem.Route" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.Route)">
+        <span asp-validation-for="MenuItem.Route" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MenuItem.Sort"></label>
+        <input asp-for="MenuItem.Sort" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.Sort)">
+        <span asp-validation-for="MenuItem.Sort" class="text-danger"></span>
+    </div>
+</form>
+<script type="text/javascript">
+    $.validator.unobtrusive.parse('form');
+</script>

@@ -28,5 +28,7 @@ namespace Zhn.Template.Authorization.MenuItems.Dto
         /// 路由
         /// </summary>
         public string Route { get; set; }
+
+        public int Sort { get; set; }
     }
 }

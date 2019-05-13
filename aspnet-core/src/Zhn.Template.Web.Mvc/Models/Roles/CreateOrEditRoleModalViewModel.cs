@@ -9,7 +9,7 @@ using Zhn.Template.Web.Models.Common;
 namespace Zhn.Template.Web.Models.Roles
 {
     [AutoMapFrom(typeof(GetRoleForEditOutput))]
-    public class CreateOrEditRoleModalViewModel: GetRoleForEditOutput, IPermissionsEditViewModel
+    public class CreateOrEditRoleModalViewModel: GetRoleForEditOutput
     {
         public bool IsEditMode
         {

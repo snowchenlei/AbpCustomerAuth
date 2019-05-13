@@ -11,9 +11,9 @@ namespace Zhn.Template.Authorization.MenuItems
     {
         Task<List<MenuItemListDto>> GetList();
 
-        Task<PagedResultDto<MenuItemListDto>> GetAll(GetMenuItemsInput input);
+        Task<PagedResultDto<MenuItemListDto>> GetMenuItems(GetMenuItemsInput input);
 
-        Task<GetMenuItemForEditOutput> GetForEdit(NullableIdDto<int> input);
+        Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input);
 
         Task CreateOrUpdate(CreateOrUpdateMenuItemInput input);
 

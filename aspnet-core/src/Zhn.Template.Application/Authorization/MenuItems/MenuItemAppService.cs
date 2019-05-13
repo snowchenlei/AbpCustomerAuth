@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -41,17 +42,17 @@ namespace Zhn.Template.Authorization.MenuItems
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
-        public async Task<PagedResultDto<MenuItemListDto>> GetAll(GetMenuItemsInput input)
+        public async Task<PagedResultDto<MenuItemListDto>> GetMenuItems(GetMenuItemsInput input)
         {
             var query = _menuItemRepository.GetAll();
             int menuItemCount = await query.CountAsync();
-            var menuItems = await query
+            List<MenuItem> menuItems = await query
                 .AsNoTracking()
                 .OrderBy(input.Sorting)
                 .PageBy(input)
                 .ToListAsync();
 
-            var menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
+            List<MenuItemListDto> menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
 
             return new PagedResultDto<MenuItemListDto>(
                 menuItemCount,
@@ -61,7 +62,7 @@ namespace Zhn.Template.Authorization.MenuItems
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
             PermissionNames.Pages_Administration_MenuItems_Edit)]
-        public async Task<GetMenuItemForEditOutput> GetForEdit(NullableIdDto<int> input)
+        public async Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input)
         {
             GetMenuItemForEditOutput output = new GetMenuItemForEditOutput();
             if (input.Id.HasValue)

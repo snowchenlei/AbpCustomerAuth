@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Abp.Authorization;
 
 namespace Zhn.Template.Authorization.Roles.Dto
 {

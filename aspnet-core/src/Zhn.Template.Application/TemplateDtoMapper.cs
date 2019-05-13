@@ -4,6 +4,8 @@ using System.Text;
 using Abp.Authorization;
 using Abp.Authorization.Users;
 using AutoMapper;
+using Zhn.Template.Authorization.MenuItems;
+using Zhn.Template.Authorization.MenuItems.Dto;
 using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Roles.Dto;
 using Zhn.Template.Authorization.Users;
@@ -28,7 +30,11 @@ namespace Zhn.Template
             //UserRole
             configuration.CreateMap<UserRole, UserListRoleDto>();
             //Permission
-            configuration.CreateMap<Permission, FlatPermissionDto>();
+            configuration.CreateMap<Permission, FlatPermissionDto>()
+                .ForMember(entity => entity.ParentName,
+                    opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Name : null)));
+            //Permission
+            configuration.CreateMap<MenuItem, MenuItemListDto>();
         }
     }
 }

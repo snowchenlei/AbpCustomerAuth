@@ -65,6 +65,33 @@
     <text name="Actived">启用</text>
     <text name="NoActive">未启用</text>
 
+    <!--权限-->
+    <text name="Pages">页面</text>
+    <text name="Administration">管理员</text>
+    <text name="Roles">角色</text>
+    <text name="CreatingNewRole">创建角色</text>
+    <text name="EditingRole">修改角色</text>
+    <text name="DeletingRole">删除角色</text>
+    <text name="BatchDeletingRole">批量删除角色</text>
+    <text name="Users">用户</text>
+    <text name="CreatingNewUser">创建用户</text>
+    <text name="EditingUser">修改用户</text>
+    <text name="DeletingUser">删除用户</text>
+    <text name="BatchDeletingUser">批量删除用户</text>
+    <text name="Tenants">租户</text>
+    <text name="MenuItems">菜单</text>
+    <text name="CreatingNewMenuItem">创建菜单</text>
+    <text name="EditingMenuItem">修改菜单</text>
+    <text name="DeletingMenuItem">删除菜单</text>
+    <text name="BatchDeletingMenuItem">批量删除菜单</text>
+    <!--菜单-->
+    <text name="SystemMenu">系统管理</text>
+    <!--<text name="Tenants">租户</text>
+    <text name="MenuItems">菜单</text>
+    <text name="Users">用户</text>
+    <text name="Roles">角色</text>-->
+
+
     <!--Util-->
     <text name="Operation">操作</text>
     <text name="QueryCondition">查询条件</text>
@@ -90,7 +117,11 @@
     <text name="RolePermission">角色权限</text>
     <text name="EditRole">编辑角色</text>
     <text name="DeleteRolesConfirm">确认删除该角色？</text>
+    <!--角色添加/修改-->
+    <text name="RoleInformations">角色信息</text>
+    <text name="Permissions">权限</text>
 
+    
     <!--User-->
     <text name="CreateNewUser">创建新用户</text>
     <text name="EditUser">编辑用户：{0}</text>
@@ -107,13 +138,7 @@
     <text name="DeleteTenantConfirm">确认删除该租户？</text>
     <text name="EditTenant">编辑租户</text>
 
-    <!--菜单-->
-    <text name="SystemMenu">系统管理</text>
-    <text name="Tenants">租户</text>
-    <text name="MenuItems">菜单</text>
-    <text name="Users">用户</text>
-    <text name="Roles">角色</text>
-
+   
     <!--用户添加/修改-->
     <text name="NameNotNull">姓名不能为空</text>
     <text name="UserInformations">用户信息</text>

@@ -13,6 +13,7 @@ using Abp.Linq.Extensions;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Authorization.Roles.Dto;
 
@@ -58,13 +59,21 @@ namespace Zhn.Template.Authorization.Roles
         public async Task<GetRoleForEditOutput> GetRoleForEdit(NullableIdDto input)
         {
             var permissions = PermissionManager.GetAllPermissions();
-            var grantedPermissions = new Permission[0];
+            
             RoleEditDto roleEditDto;
 
+            List<FlatPermissionDto> flatPermissions = _mapper.Map<List<FlatPermissionDto>>(permissions);
             if (input.Id.HasValue) //Editing existing role?
             {
                 var role = await _roleManager.GetRoleByIdAsync(input.Id.Value);
-                grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
+                string[] grantedPermissionNames = (await _roleManager.GetGrantedPermissionsAsync(role)).Select(p => p.Name).ToArray();
+                foreach (FlatPermissionDto flatPermission in flatPermissions)
+                {
+                    if (grantedPermissionNames.Contains(flatPermission.Name))
+                    {
+                        flatPermission.IsSelected = true;
+                    }
+                }
                 roleEditDto = _mapper.Map<RoleEditDto>(role);
             }
             else
@@ -75,8 +84,7 @@ namespace Zhn.Template.Authorization.Roles
             return new GetRoleForEditOutput
             {
                 Role = roleEditDto,
-                Permissions = _mapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
-                GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
+                Permissions = flatPermissions.OrderBy(p => p.Name).ToList(),
             };
         }
 

@@ -1,14 +1,15 @@
-﻿namespace Zhn.Template.Authorization.Roles.Dto
+﻿using Zhn.Template.Dto;
+
+namespace Zhn.Template.Authorization.Roles.Dto
 {
-    public class FlatPermissionDto
+    public class FlatPermissionDto:ZtreeDto
     {
         public string ParentName { get; set; }
         public string Name { get; set; }
-
+        /// <summary>
+        /// 显示名称
+        /// </summary>
         public string DisplayName { get; set; }
-
-        public string Description { get; set; }
-
-        public bool IsGrantedByDefault { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

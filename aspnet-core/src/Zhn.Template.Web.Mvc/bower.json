@@ -30,7 +30,8 @@
     "Flot": "jquery-flot#^0.8.3",
     "abp-web-resources": "^3.5.0",
     "Font-Awesome": "5.8.1",
-    "ztree_v3": "v3.5.40"
+    "ztree_v3": "v3.5.40",
+    "select2": "4.0.3"
   },
   "resolutions": {
     "jquery": ">=1.6.3",

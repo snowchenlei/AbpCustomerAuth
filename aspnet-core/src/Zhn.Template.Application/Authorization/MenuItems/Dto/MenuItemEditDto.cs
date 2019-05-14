@@ -7,7 +7,7 @@ namespace Zhn.Template.Authorization.MenuItems.Dto
         /// <summary>
         /// 父菜单
         /// </summary>
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
 
         /// <summary>
         /// 名称

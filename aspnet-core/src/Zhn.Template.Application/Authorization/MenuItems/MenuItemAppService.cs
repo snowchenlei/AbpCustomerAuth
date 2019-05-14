@@ -22,6 +22,12 @@ namespace Zhn.Template.Authorization.MenuItems
         private readonly IMapper _mapper;
         private readonly IRepository<MenuItem> _menuItemRepository;
 
+        public MenuItemAppService(IRepository<MenuItem> menuItemRepository, IMapper mapper)
+        {
+            _menuItemRepository = menuItemRepository;
+            _mapper = mapper;
+        }
+
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
         public async Task<List<MenuItemListDto>> GetList()
         {
@@ -33,12 +39,6 @@ namespace Zhn.Template.Authorization.MenuItems
             var menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
 
             return new List<MenuItemListDto>(menuItemListDtos);
-        }
-
-        public MenuItemAppService(IRepository<MenuItem> menuItemRepository, IMapper mapper)
-        {
-            _menuItemRepository = menuItemRepository;
-            _mapper = mapper;
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
@@ -60,6 +60,7 @@ namespace Zhn.Template.Authorization.MenuItems
             );
         }
 
+
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
             PermissionNames.Pages_Administration_MenuItems_Edit)]
         public async Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input)
@@ -78,8 +79,9 @@ namespace Zhn.Template.Authorization.MenuItems
             return output;
         }
 
-        public async Task CreateOrUpdate(CreateOrUpdateMenuItemInput input)
+        public async Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input)
         {
+            
             if (input.MenuItem.Id.HasValue)
             {
                 await UpdateAsync(input);
@@ -94,6 +96,10 @@ namespace Zhn.Template.Authorization.MenuItems
         protected virtual async Task CreateAsync(CreateOrUpdateMenuItemInput input)
         {
             MenuItem menuItem = _mapper.Map<MenuItem>(input.MenuItem);
+            if (input.MenuItem.ParentId.HasValue)
+            {
+                menuItem.Parent = _menuItemRepository.FirstOrDefault(m => m.Id == input.MenuItem.ParentId);
+            }
             await _menuItemRepository.InsertAsync(menuItem);
         }
 
@@ -102,12 +108,17 @@ namespace Zhn.Template.Authorization.MenuItems
         {
             Debug.Assert(input.MenuItem.Id != null, "input.MenuItem.Id != null");
             MenuItem menuItem = await GetAsync(input.MenuItem.Id.Value);
-            _mapper.Map(input.MenuItem, menuItem);
+            menuItem = _mapper.Map(input.MenuItem, menuItem);
+            if (input.MenuItem.ParentId.HasValue && menuItem.Parent?.Id != input.MenuItem.ParentId)
+            {
+                menuItem.Parent = _menuItemRepository.FirstOrDefault(m => m.Id == input.MenuItem.ParentId.Value);
+            }
+
             await _menuItemRepository.UpdateAsync(menuItem);
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Delete)]
-        public async Task Delete(EntityDto input)
+        public async Task DeleteMenuItem(EntityDto input)
         {
             MenuItem menuItem = await GetAsync(input.Id);
             await _menuItemRepository.DeleteAsync(menuItem);

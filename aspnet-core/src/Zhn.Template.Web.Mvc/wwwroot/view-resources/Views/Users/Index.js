@@ -19,7 +19,7 @@
                 message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.name),
                 callback: function (result) {
                     if (result) {
-                        _userService.delete({
+                        _userService.deleteUser({
                             id: row.id
                         }).done(function () {
                             var $table = $('#tb-body');

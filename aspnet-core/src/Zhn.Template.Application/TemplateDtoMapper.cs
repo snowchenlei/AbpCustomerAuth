@@ -35,6 +35,10 @@ namespace Zhn.Template
                     opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Name : null)));
             //Permission
             configuration.CreateMap<MenuItem, MenuItemListDto>();
+            configuration.CreateMap<MenuItemEditDto, MenuItem>();
+            configuration.CreateMap<MenuItem, MenuItemEditDto>()
+                .ForMember(entity => entity.ParentId,
+                    opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Id : 0)));
         }
     }
 }

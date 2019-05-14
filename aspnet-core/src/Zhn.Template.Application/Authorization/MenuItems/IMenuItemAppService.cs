@@ -15,8 +15,8 @@ namespace Zhn.Template.Authorization.MenuItems
 
         Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input);
 
-        Task CreateOrUpdate(CreateOrUpdateMenuItemInput input);
+        Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input);
 
-        Task Delete(EntityDto input);
+        Task DeleteMenuItem(EntityDto input);
     }
 }

@@ -58,6 +58,7 @@ namespace Zhn.Template.Authorization.Users
             _mapper = mapper;
             _userRoleRepository = userRoleRepository;
         }
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
 
         public async Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input)
         {

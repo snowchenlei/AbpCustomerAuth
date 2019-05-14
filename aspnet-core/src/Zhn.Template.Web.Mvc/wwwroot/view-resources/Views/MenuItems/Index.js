@@ -19,7 +19,7 @@
                 message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.name),
                 callback: function (result) {
                     if (result) {
-                        _menuItemService.delete({
+                        _menuItemService.deleteMenuItem({
                             id: row.id
                         }).done(function () {
                             var $table = $('#tb-body');
@@ -72,9 +72,9 @@
             abp.ui.clearBusy(dialog);
             return false;
         }
-        var role = $e.serializeFormToObject();
-        _menuItemService.createOrEdit({
-            role
+        var menuItem = $e.serializeFormToObject();
+        _menuItemService.createOrEditMenuItem({
+            menuItem
         }).done(function (result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
             dialog.modal('hide');
@@ -108,7 +108,7 @@
             }
         });
         dialog.init(function () {
-            $.get(abp.appPath + 'MenuItems/CreateOrEditModal', { userId: id }, function (data) {
+            $.get(abp.appPath + 'MenuItems/CreateOrEditModal', { menuItemId: id }, function (data) {
                 dialog.find('.bootbox-body').html(data);
                 dialog.find('input:not([type=hidden]):first').focus();
             });

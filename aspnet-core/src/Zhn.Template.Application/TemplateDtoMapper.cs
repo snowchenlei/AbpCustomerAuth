@@ -33,8 +33,9 @@ namespace Zhn.Template
             configuration.CreateMap<Permission, FlatPermissionDto>()
                 .ForMember(entity => entity.ParentName,
                     opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Name : null)));
-            //Permission
+            //MenuItem
             configuration.CreateMap<MenuItem, MenuItemListDto>();
+            configuration.CreateMap<MenuItem, MenuItemSelectListDto>();
             configuration.CreateMap<MenuItemEditDto, MenuItem>();
             configuration.CreateMap<MenuItem, MenuItemEditDto>()
                 .ForMember(entity => entity.ParentId,

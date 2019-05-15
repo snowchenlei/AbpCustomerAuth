@@ -1,5 +1,6 @@
-﻿@model Zhn.Template.Web.Models.MenuItems.CreateOrEditMenuItemModalViewModel
-
+﻿@using Zhn.Template.Authorization.MenuItems.Dto
+@model Zhn.Template.Web.Models.MenuItems.CreateOrEditMenuItemModalViewModel
+<link href="~/lib/select2/dist/css/select2.css" rel="stylesheet" asp-append-version="true" />
 <form id="modelForm" name="MenuItemInformationsForm" role="form" novalidate>
     @if (Model.IsEditMode)
     {
@@ -22,7 +23,14 @@
     </div>
     <div class="form-group">
         <label asp-for="MenuItem.ParentId"></label>
-        <input asp-for="MenuItem.ParentId" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.ParentId)">
+        @*<input asp-for="MenuItem.ParentId" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.ParentId)">*@
+        <select id="parentMenu" name="MenuItem.ParentId" class="form-control">
+            <option></option>
+            @foreach (MenuItemSelectListDto menu in Model.MenuItems)
+            {
+                <option value="@menu.Id">@menu.Name</option>
+            }
+        </select>
         <span asp-validation-for="MenuItem.ParentId" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -36,6 +44,8 @@
         <span asp-validation-for="MenuItem.Sort" class="text-danger"></span>
     </div>
 </form>
+<script src="~/lib/select2/dist/js/select2.js" asp-append-version="true"></script>
+<script src="~/view-resources/Views/MenuItems/_CreateOrEditModal.js" asp-append-version="true"></script>
 <script type="text/javascript">
     $.validator.unobtrusive.parse('form');
 </script>

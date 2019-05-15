@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
@@ -66,9 +67,24 @@ namespace Zhn.Template.Authorization.MenuItems
         public async Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input)
         {
             GetMenuItemForEditOutput output = new GetMenuItemForEditOutput();
+            List<MenuItem> menuItems = await _menuItemRepository.GetAllListAsync();
+            output.MenuItems = _mapper.Map<List<MenuItemSelectListDto>>(menuItems);
             if (input.Id.HasValue)
             {
+
                 MenuItem menuItem = await _menuItemRepository.FirstOrDefaultAsync(m => m.Id == input.Id.Value);
+                if (menuItem == null)
+                {
+                    throw new UserFriendlyException("菜单不存在");
+                }
+                foreach (MenuItemSelectListDto item in output.MenuItems)
+                {
+                    if (item.Id == menuItem.Parent?.Id)
+                    {
+                        item.IsSelected = true;
+                        break;
+                    }
+                }
                 output.MenuItem = _mapper.Map<MenuItemEditDto>(menuItem);
             }
             else
@@ -78,7 +94,8 @@ namespace Zhn.Template.Authorization.MenuItems
 
             return output;
         }
-
+        [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
+            PermissionNames.Pages_Administration_MenuItems_Edit)]
         public async Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input)
         {
             

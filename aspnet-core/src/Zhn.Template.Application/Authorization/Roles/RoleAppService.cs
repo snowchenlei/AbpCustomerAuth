@@ -10,6 +10,7 @@ using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
+using Abp.Runtime.Caching;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace Zhn.Template.Authorization.Roles
         private readonly UserManager _userManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IMapper _mapper;
+        private readonly ICacheManager _cache;
 
         public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager, IMapper mapper)
         {
@@ -59,7 +61,7 @@ namespace Zhn.Template.Authorization.Roles
         public async Task<GetRoleForEditOutput> GetRoleForEdit(NullableIdDto input)
         {
             var permissions = PermissionManager.GetAllPermissions();
-            
+
             RoleEditDto roleEditDto;
 
             List<FlatPermissionDto> flatPermissions = _mapper.Map<List<FlatPermissionDto>>(permissions);

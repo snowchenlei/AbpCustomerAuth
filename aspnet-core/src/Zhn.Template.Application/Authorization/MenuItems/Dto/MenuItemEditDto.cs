@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
+using Zhn.Template.Localization;
 
 namespace Zhn.Template.Authorization.MenuItems.Dto
 {
@@ -12,23 +13,28 @@ namespace Zhn.Template.Authorization.MenuItems.Dto
         /// <summary>
         /// 名称
         /// </summary>
+        [TemplateDisplayName("Name")]
         public string Name { get; set; }
 
         /// <summary>
         /// 权限名称
         /// </summary>
+        [TemplateDisplayName("PermissionName")]
         public string PermissionName { get; set; }
 
         /// <summary>
         /// 图标
         /// </summary>
+        [TemplateDisplayName("Icon")]
         public string Icon { get; set; }
 
         /// <summary>
         /// 路由
         /// </summary>
+        [TemplateDisplayName("Route")]
         public string Route { get; set; }
 
+        [TemplateDisplayName("Sort")]
         public int Sort { get; set; }
     }
 }

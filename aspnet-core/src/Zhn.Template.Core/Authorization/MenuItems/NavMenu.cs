@@ -1,10 +1,8 @@
-﻿using System;
-using Abp.Application.Services.Dto;
-using Abp.Domain.Entities.Auditing;
+﻿using System.Collections.Generic;
 
-namespace Zhn.Template.Authorization.MenuItems.Dto
+namespace Zhn.Template.Authorization.MenuItems
 {
-    public class MenuItemListDto : EntityDto
+    public class NavMenu
     {
         /// <summary>
         /// 名称
@@ -16,8 +14,6 @@ namespace Zhn.Template.Authorization.MenuItems.Dto
         /// </summary>
         public string PermissionName { get; set; }
 
-        public string ParentName { get; set; }
-
         /// <summary>
         /// 图标
         /// </summary>
@@ -28,9 +24,6 @@ namespace Zhn.Template.Authorization.MenuItems.Dto
         /// </summary>
         public string Route { get; set; }
 
-        /// <summary>
-        /// 排序
-        /// </summary>
-        public int Sort { get; set; }
+        public List<NavMenu> Items { get; set; }
     }
 }

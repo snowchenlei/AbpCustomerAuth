@@ -48,6 +48,7 @@ namespace Zhn.Template.Authorization.MenuItems
             var query = _menuItemRepository.GetAll();
             int menuItemCount = await query.CountAsync();
             List<MenuItem> menuItems = await query
+                .Include(m=>m.Parent)
                 .AsNoTracking()
                 .OrderBy(input.Sorting)
                 .PageBy(input)

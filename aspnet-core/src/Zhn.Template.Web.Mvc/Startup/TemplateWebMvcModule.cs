@@ -21,7 +21,7 @@ namespace Zhn.Template.Web.Startup
 
         public override void PreInitialize()
         {
-            Configuration.Navigation.Providers.Add<TemplateNavigationProvider>();
+            //Configuration.Navigation.Providers.Add<TemplateNavigationProvider>();
         }
 
         public override void Initialize()

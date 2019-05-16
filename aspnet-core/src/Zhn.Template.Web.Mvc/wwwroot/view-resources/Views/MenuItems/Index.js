@@ -53,12 +53,16 @@
         htmlArr.push('</div>');
         return htmlArr.join('');
     }
+
+    function iconFormater(value, row, index) {
+        return '<i class="' + row.icon + '"></i>';
+    }
     var columns = [
         { checkbox: true },
         { field: 'id', title: 'Id', visible: false },
         { field: 'name', title: app.localize('Name') },
         { field: 'permissionName', title: app.localize('permissionName') },
-        { field: 'icon', title: app.localize('Icon') },
+        { field: 'icon', title: app.localize('Icon'), formatter: iconFormater },
         { field: 'route', title: app.localize('Route') },
         { field: 'parentName', title: app.localize('ParentName') },
         { title: app.localize('Operation'), formatter: operateFormater, events: operateEvents }

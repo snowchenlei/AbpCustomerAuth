@@ -34,7 +34,9 @@ namespace Zhn.Template
                 .ForMember(entity => entity.ParentName,
                     opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Name : null)));
             //MenuItem
-            configuration.CreateMap<MenuItem, MenuItemListDto>();
+            configuration.CreateMap<MenuItem, MenuItemListDto>()
+                .ForMember(entity => entity.ParentName,
+                    opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Name : String.Empty)));
             configuration.CreateMap<MenuItem, MenuItemSelectListDto>();
             configuration.CreateMap<MenuItemEditDto, MenuItem>();
             configuration.CreateMap<MenuItem, MenuItemEditDto>()

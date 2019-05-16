@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         <label asp-for="MenuItem.PermissionName"></label>
-        <input asp-for="MenuItem.PermissionName" type="email" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.PermissionName)">
+        <input asp-for="MenuItem.PermissionName" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.PermissionName)">
         <span asp-validation-for="MenuItem.PermissionName" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -28,14 +28,22 @@
             <option></option>
             @foreach (MenuItemSelectListDto menu in Model.MenuItems)
             {
-                <option value="@menu.Id">@menu.Name</option>
+                if (Model.MenuItem.ParentId == menu.Id)
+                {
+                    <option value="@menu.Id" selected="selected">@menu.Name</option>
+
+                }
+                else
+                {
+                    <option value="@menu.Id">@menu.Name</option>
+                }
             }
         </select>
         <span asp-validation-for="MenuItem.ParentId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="MenuItem.Route"></label>
-        <input asp-for="MenuItem.Route" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.Route)">
+        <input asp-for="MenuItem.Route" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.Route)">
         <span asp-validation-for="MenuItem.Route" class="text-danger"></span>
     </div>
     <div class="form-group">

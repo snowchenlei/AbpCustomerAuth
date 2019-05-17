@@ -25,7 +25,7 @@ namespace Zhn.Template.Web.Views.Shared.Components.SideBarNav
         {
             var model = new SideBarNavViewModel
             {
-                MainMenu = await _menuItemManager.GetMenuItems(),//await _userNavigationManager.GetMenuAsync("MainMenu", _abpSession.ToUserIdentifier()),
+                MainMenu = await _menuItemManager.GetMenuItems(_abpSession.ToUserIdentifier()),//await _userNavigationManager.GetMenuAsync("MainMenu", _abpSession.ToUserIdentifier()),
                 ActiveMenuItemName = activeMenu
             };
 
@@ -33,5 +33,3 @@ namespace Zhn.Template.Web.Views.Shared.Components.SideBarNav
         }
     }
 }
-
-

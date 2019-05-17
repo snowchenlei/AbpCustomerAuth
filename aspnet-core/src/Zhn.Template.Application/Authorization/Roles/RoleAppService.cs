@@ -123,13 +123,15 @@ namespace Zhn.Template.Authorization.Roles
             role.SetNormalizedName();
 
             CheckErrors(await _roleManager.CreateAsync(role));
+            if (input.Permissions.Any())
+            {
+                var grantedPermissions = PermissionManager
+                    .GetAllPermissions()
+                    .Where(p => input.Permissions.Contains(p.Name))
+                    .ToList();
 
-            var grantedPermissions = PermissionManager
-                .GetAllPermissions()
-                .Where(p => input.Permissions.Contains(p.Name))
-                .ToList();
-
-            await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
+                await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
+            }
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Edit)]

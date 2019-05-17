@@ -22,7 +22,7 @@ namespace Zhn.Template.Web.Startup
 
         private void SetNavigation(MenuItemDefinition menuItemDefinition, List<MenuItem> menuItems, int parentId)
         {
-            foreach (MenuItem menuItem in menuItems.Where(m=>m.Parent?.Id == parentId))
+            foreach (MenuItem menuItem in menuItems.Where(m => m.Parent?.Id == parentId))
             {
                 menuItemDefinition.AddItem(new MenuItemDefinition(
                     menuItem.Name,
@@ -35,9 +35,10 @@ namespace Zhn.Template.Web.Startup
                 ));
             }
         }
+
         public override void SetNavigation(INavigationProviderContext context)
         {
-            //TODO:仅在项目启动时创建
+            //TODO:仅在项目启动时创建，未提供方法动态更新。
             //List<MenuItem> menuItems = _menuItemRepository.GetAllList();
             //foreach (MenuItem menuItem in menuItems.Where(m=>m.Parent == null))
             //{

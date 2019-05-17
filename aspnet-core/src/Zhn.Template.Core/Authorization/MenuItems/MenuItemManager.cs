@@ -1,36 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
+using Abp;
+using Abp.Application.Features;
 using Abp.Application.Navigation;
+using Abp.Authorization;
+using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Localization;
+using Abp.MultiTenancy;
+using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
 
 namespace Zhn.Template.Authorization.MenuItems
 {
-    public class MenuItemManager: IDomainService
+    public class MenuItemManager : TemplateDomainServiceBase, IDomainService
     {
+        public IAbpSession AbpSession { get; set; }
+        private readonly IIocResolver _iocResolver;
         private readonly IRepository<MenuItem> _menuItemRepository;
         private readonly ILocalizationContext _localizationContext;
-        public MenuItemManager(IRepository<MenuItem> menuItemRepository, ILocalizationContext localizationContext)
+
+        public MenuItemManager(IRepository<MenuItem> menuItemRepository, ILocalizationContext localizationContext, IIocResolver iocResolver)
         {
             _menuItemRepository = menuItemRepository;
             _localizationContext = localizationContext;
+            _iocResolver = iocResolver;
         }
 
-        public async Task<UserMenu> GetMenuItems()
+        public async Task<UserMenu> GetMenuItems(UserIdentifier user)
         {
             //TODO:权限过滤
             UserMenu root = new UserMenu()
             {
                 Items = new List<UserMenuItem>()
             };
-            List<MenuItem> menus = await _menuItemRepository.GetAllListAsync();//GetAll().OrderBy(a=>a.Sort).ToListAsync();
-            //CreateChild(root, menus, menus.Where(m => m.Parent == null));
-            foreach (MenuItem menuItem in menus.Where(m => m.Parent == null))
+            List<MenuItem> menus = await _menuItemRepository.GetAllListAsync();
+            foreach (MenuItem menuItem in menus.Where(m => m.Parent == null).OrderBy(m => m.Sort))
             {
                 UserMenuItem currentUserMenuIte = new UserMenuItem(new MenuItemDefinition(
                     menuItem.Name,
@@ -41,26 +51,89 @@ namespace Zhn.Template.Authorization.MenuItems
                     requiredPermissionName: menuItem.PermissionName,
                     order: menuItem.Sort
                 ), _localizationContext);
-                CreateChild(currentUserMenuIte, menus.Where(m => m.Parent?.Id == menuItem.Id));
+                await CreateChild(user, currentUserMenuIte, menus.Where(m => m.Parent?.Id == menuItem.Id).OrderBy(m => m.Sort));
                 root.Items.Add(currentUserMenuIte);
             }
             return root;
         }
 
-        private void CreateChild(UserMenuItem currentUserMenuIte, IEnumerable<MenuItem> childs)
+        private async Task CreateChild(UserIdentifier user, UserMenuItem currentUserMenuIte, IEnumerable<MenuItem> childs)
         {
-            foreach (MenuItem menuItem in childs)
+            using (var scope = _iocResolver.CreateScope())
             {
-                currentUserMenuIte.Items.Add(new UserMenuItem(new MenuItemDefinition(
-                    menuItem.Name,
-                    L(menuItem.Name),
-                    url: menuItem.Route,
-                    icon: menuItem.Icon,
-                    target: "tab_" + menuItem.Id,
-                    requiredPermissionName: menuItem.PermissionName,
-                    order: menuItem.Sort
-                ), _localizationContext));
+                var permissionDependencyContext = scope.Resolve<PermissionDependencyContext>();
+                permissionDependencyContext.User = user;
+
+                var featureDependencyContext = scope.Resolve<FeatureDependencyContext>();
+                featureDependencyContext.TenantId = user == null ? null : user.TenantId;
+
+                foreach (MenuItem menuItem in childs)
+                {
+                    MenuItemDefinition menuItemDefinition = new MenuItemDefinition(
+                        menuItem.Name,
+                        L(menuItem.Name),
+                        url: menuItem.Route,
+                        icon: menuItem.Icon,
+                        target: "tab_" + menuItem.Id,
+                        requiredPermissionName: menuItem.PermissionName,
+                        order: menuItem.Sort
+                    );
+                    if (menuItemDefinition.RequiresAuthentication && user == null)
+                    {
+                        continue;
+                    }
+
+                    if (!string.IsNullOrEmpty(menuItemDefinition.RequiredPermissionName))
+                    {
+                        var permissionDependency = new SimplePermissionDependency(menuItemDefinition.RequiredPermissionName);
+                        try
+                        {
+                            if (user == null ||
+                                !(await permissionDependency.IsSatisfiedAsync(permissionDependencyContext)))
+                            {
+                                continue;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (menuItemDefinition.PermissionDependency != null &&
+                        (user == null || !(await menuItemDefinition.PermissionDependency.IsSatisfiedAsync(permissionDependencyContext))))
+                    {
+                        continue;
+                    }
+
+                    if (menuItemDefinition.FeatureDependency != null &&
+                        (AbpSession.MultiTenancySide == MultiTenancySides.Tenant || (user != null && user.TenantId != null)) &&
+                        !(await menuItemDefinition.FeatureDependency.IsSatisfiedAsync(featureDependencyContext)))
+                    {
+                        continue;
+                    }
+                    currentUserMenuIte.Items.Add(new UserMenuItem(menuItemDefinition, _localizationContext));
+                }
             }
+
+            //foreach (MenuItem menuItem in childs)
+            //{
+            //    MenuItemDefinition menuItemDefinition = new MenuItemDefinition(
+            //        menuItem.Name,
+            //        L(menuItem.Name),
+            //        url: menuItem.Route,
+            //        icon: menuItem.Icon,
+            //        target: "tab_" + menuItem.Id,
+            //        requiredPermissionName: menuItem.PermissionName,
+            //        order: menuItem.Sort
+            //    );
+            //    var permissionDependency = new SimplePermissionDependency(menuItemDefinition.RequiredPermissionName);
+            //    if (user == null || !(await permissionDependency.IsSatisfiedAsync(permissionDependencyContext)))
+            //    {
+            //        continue;
+            //    }
+            //    currentUserMenuIte.Items.Add(new UserMenuItem(menuItemDefinition, _localizationContext));
+            //}
         }
 
         private static ILocalizableString L(string name)

@@ -4,12 +4,12 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zhn.Template.Authorization;
 using Zhn.Template.Controllers;
-using Zhn.Template.MultiTenancy;
-using Zhn.Template.MultiTenancy.Dto;
+using Zhn.Template.Authorization.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy.Dto;
 
-namespace Zhn.Template.Web.Controllers
+namespace Zhn.Template.Web.Controllers.Authorization
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Tenants)]
+    [AbpMvcAuthorize(PermissionNames.Pages_Administration_Tenants)]
     public class TenantsController : TemplateControllerBase
     {
         private readonly ITenantAppService _tenantAppService;

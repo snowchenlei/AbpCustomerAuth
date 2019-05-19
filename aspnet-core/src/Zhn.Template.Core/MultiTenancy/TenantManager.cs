@@ -4,7 +4,7 @@ using Abp.MultiTenancy;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Editions;
 
-namespace Zhn.Template.MultiTenancy
+namespace Zhn.Template.Authorization.MultiTenancy
 {
     public class TenantManager : AbpTenantManager<Tenant, User>
     {

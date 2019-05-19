@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Abp.MultiTenancy;
 using Zhn.Template.Editions;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.EntityFrameworkCore.Seed.Tenants
 {

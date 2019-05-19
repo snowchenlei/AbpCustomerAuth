@@ -10,7 +10,7 @@ using Abp.IdentityFramework;
 using Abp.Runtime.Session;
 using Abp.UI;
 using Zhn.Template.Authorization.Roles;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Authorization.Users
 {

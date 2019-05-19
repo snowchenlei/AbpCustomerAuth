@@ -3,7 +3,7 @@ using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.MultiTenancy;
 
-namespace Zhn.Template.MultiTenancy.Dto
+namespace Zhn.Template.Authorization.MultiTenancy.Dto
 {
     [AutoMapTo(typeof(Tenant))]
     public class CreateTenantDto

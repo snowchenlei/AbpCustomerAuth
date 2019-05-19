@@ -9,7 +9,7 @@ using Abp.Domain.Uow;
 using Abp.Zero.Configuration;
 using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Users;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Authorization
 {

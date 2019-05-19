@@ -73,15 +73,25 @@
         }
         var role = $e.serializeFormToObject();
         _roleService.createOrUpdateRole({
-            role
-            //, grantedPermissionNames: _permissionsTree.getSelectedPermissionNames()
-        }).done(function (result) {
+            role,
+            Permissions: getSelectedPermissionNames()
+        }).done(function(result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
             dialog.modal('hide');
             refreshTable();
-        }).always(function () {
+        }).always(function() {
             abp.ui.clearBusy(dialog);
         });
+    }
+
+    function getSelectedPermissionNames() {
+        _permissionsTree = $.fn.zTree.getZTreeObj("permissionTree");
+        var checkedNodes = _permissionsTree.getCheckedNodes(true);
+        var selectedPermissionNames = [];
+        for (var i = 0; i < checkedNodes.length; i++) {
+            selectedPermissionNames.push(checkedNodes[i].name);
+        }
+        return selectedPermissionNames;
     }
 
     //搜索

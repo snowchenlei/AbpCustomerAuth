@@ -13,12 +13,12 @@ using Zhn.Template.Authorization;
 using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Editions;
-using Zhn.Template.MultiTenancy.Dto;
 using Microsoft.AspNetCore.Identity;
+using Zhn.Template.Authorization.MultiTenancy.Dto;
 
-namespace Zhn.Template.MultiTenancy
+namespace Zhn.Template.Authorization.MultiTenancy
 {
-    [AbpAuthorize(PermissionNames.Pages_Tenants)]
+    [AbpAuthorize(PermissionNames.Pages_Administration_Tenants)]
     public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
     {
         private readonly TenantManager _tenantManager;

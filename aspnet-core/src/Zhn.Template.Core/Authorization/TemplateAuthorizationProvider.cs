@@ -24,7 +24,7 @@ namespace Zhn.Template.Authorization
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Delete, L("DeletingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_BatchDelete, L("BatchDeletingUser"));
 
-            administration.CreateChildPermission(PermissionNames.Pages_Tenants, L("Tenants"),
+            administration.CreateChildPermission(PermissionNames.Pages_Administration_Tenants, L("Tenants"),
                 multiTenancySides: MultiTenancySides.Host);
 
             var mentItems =

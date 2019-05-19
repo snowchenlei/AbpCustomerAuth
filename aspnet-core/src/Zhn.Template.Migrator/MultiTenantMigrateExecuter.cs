@@ -10,7 +10,7 @@ using Abp.MultiTenancy;
 using Abp.Runtime.Security;
 using Zhn.Template.EntityFrameworkCore;
 using Zhn.Template.EntityFrameworkCore.Seed;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Migrator
 {

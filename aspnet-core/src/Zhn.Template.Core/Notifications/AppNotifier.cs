@@ -6,7 +6,7 @@ using Abp;
 using Abp.Localization;
 using Abp.Notifications;
 using Zhn.Template.Authorization.Users;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Notifications
 {

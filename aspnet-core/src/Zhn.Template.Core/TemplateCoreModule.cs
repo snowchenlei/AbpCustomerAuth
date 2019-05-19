@@ -8,7 +8,7 @@ using Zhn.Template.Authorization.Users;
 using Zhn.Template.Configuration;
 using Zhn.Template.Interceptor;
 using Zhn.Template.Localization;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 using Zhn.Template.Timing;
 
 namespace Zhn.Template

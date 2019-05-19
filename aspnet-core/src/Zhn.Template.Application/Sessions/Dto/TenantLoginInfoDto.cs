@@ -1,6 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Sessions.Dto
 {

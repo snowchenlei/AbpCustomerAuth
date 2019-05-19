@@ -25,7 +25,7 @@ using Zhn.Template.Authorization;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Controllers;
 using Zhn.Template.Identity;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 using Zhn.Template.Sessions;
 using Zhn.Template.Web.Models.Account;
 using Zhn.Template.Web.Views.Shared.Components.TenantChange;

@@ -35,10 +35,9 @@
                 <input asp-for="Role.DisplayName" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.DisplayName)">
                 <span asp-validation-for="Role.DisplayName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Role.IsDefault"></label>
-                <input asp-for="Role.IsDefault" type="checkbox" value="true" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.IsDefault)">
-                <span class="help-block">@L("DefaultRole_Description")</span>
+            <div class="form-check">
+                <input asp-for="Role.IsDefault" type="checkbox" value="true" class="form-check-input" placeholder="@Html.DisplayNameFor(model => model.Role.IsDefault)">
+                <label asp-for="Role.IsDefault" class="form-check-label">@L("DefaultRole_Description")</label>
             </div>
         </form>
     </div>

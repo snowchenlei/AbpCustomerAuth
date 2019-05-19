@@ -16,7 +16,7 @@ using Zhn.Template.Authentication.JwtBearer;
 using Zhn.Template.Authorization;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Models.TokenAuth;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Controllers
 {

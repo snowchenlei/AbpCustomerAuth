@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using Abp.Authorization;
 using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Users;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Identity
 {

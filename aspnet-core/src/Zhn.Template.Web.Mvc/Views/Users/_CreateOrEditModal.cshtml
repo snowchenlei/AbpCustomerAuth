@@ -1,4 +1,6 @@
 ﻿@using Abp.Authorization.Users
+@using Abp.Configuration
+@using Abp.Zero.Configuration
 @using Zhn.Template.Authorization.Users
 @model Zhn.Template.Web.Models.Users.CreateOrEditUserModalViewModel
 <ul class="nav nav-tabs" role="tablist">
@@ -52,7 +54,6 @@
                     {
                         <input asp-for="User.UserName" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.UserName)">
                         <span asp-validation-for="User.UserName" class="text-danger"></span>
-
                     }
                 }
             </div>
@@ -62,14 +63,35 @@
                 <span asp-validation-for="User.Password" class="text-danger"></span>
             </div>
             <div class="form-check">
-                <input asp-for="User.IsActive" type="checkbox" class="form-check-input" placeholder="@Html.DisplayNameFor(model => model.User.IsActive)">
+                @if (Model.User.IsActive)
+                {
+                    <input asp-for="User.IsActive" type="checkbox" class="form-check-input" value="true" checked="checked" placeholder="@Html.DisplayNameFor(model => model.User.IsActive)">
+                }
+                else
+                {
+                    <input asp-for="User.IsActive" type="checkbox" class="form-check-input" value="true" placeholder="@Html.DisplayNameFor(model => model.User.IsActive)">
+                }
                 <label asp-for="User.IsActive" class="form-check-label"></label>
             </div>
+            @if (SettingManager.GetSettingValue<bool>(AbpZeroSettingNames.UserManagement.UserLockOut.IsEnabled))
+            {
+                <div class="form-check">
+                    @if (Model.User.IsLockoutEnabled)
+                    {
+                        <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" checked="checked" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
+                    }
+                    else
+                    {
+                        <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
+                    }
+                    <label asp-for="User.IsLockoutEnabled" title="@L("IsLockoutEnabled_Hint")" class="form-check-label"></label>
+                </div>
+            }
             @*<label for="EditUser_IsActive" class="m-checkbox">
-                <input id="EditUser_IsActive" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
-                @L("Active")
-                <span></span>
-            </label>*@
+            <input id="EditUser_IsActive" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
+            @L("Active")
+            <span></span>
+        </label>*@
             @*<div class="form-group" style="@(Model.IsEditMode ? "display:block":"display:none")">
             <label asp-for="User.Password"></label>
             <input asp-for="User.Password" type="password" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Password)">

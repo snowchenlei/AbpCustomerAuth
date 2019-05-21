@@ -72,6 +72,7 @@
             return false;
         }
         var assignedRoleNames = _findAssignedRoleNames();
+        debugger
         var user = $e.serializeFormToObject();
         if (user.SetRandomPassword) {
             user.Password = null;

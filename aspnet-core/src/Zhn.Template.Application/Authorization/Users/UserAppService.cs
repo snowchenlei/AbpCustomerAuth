@@ -17,6 +17,8 @@ using Abp.Linq.Extensions;
 using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.UI;
+using Abp.Configuration;
+using Abp.Zero.Configuration;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -112,7 +114,13 @@ namespace Zhn.Template.Authorization.Users
             }
             else
             {
-                output.User = new UserEditDto();
+                output.User = new UserEditDto()
+                {
+                    IsActive = true,
+                    //ShouldChangePasswordOnNextLogin = true,
+                    //IsTwoFactorEnabled = await SettingManager.GetSettingValueAsync<bool>(AbpZeroSettingNames.UserManagement.TwoFactorLogin.IsEnabled),
+                    //IsLockoutEnabled = await SettingManager.GetSettingValueAsync<bool>(AbpZeroSettingNames.UserManagement.UserLockOut.IsEnabled)
+                };
                 foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
                 {
                     var defaultUserRole = userRoleDtos.FirstOrDefault(ur => ur.RoleName == defaultRole.Name);

@@ -36,7 +36,7 @@
                 <span asp-validation-for="Role.DisplayName" class="text-danger"></span>
             </div>
             <div class="form-check">
-                <input asp-for="Role.IsDefault" type="checkbox" value="true" class="form-check-input" placeholder="@Html.DisplayNameFor(model => model.Role.IsDefault)">
+                <input asp-for="Role.IsDefault" type="checkbox" value="true" class="form-check-input">
                 <label asp-for="Role.IsDefault" class="form-check-label">@L("DefaultRole_Description")</label>
             </div>
         </form>
@@ -48,5 +48,6 @@
 <script src="~/view-resources/Views/Roles/_CreateOrEditModal.js" asp-append-version="true"></script>
 <script type="text/javascript">
     $.validator.unobtrusive.parse('form');
+    $('input[name="Role.IsDefault"]').attr('value', true);
     var permissionNodes = @Html.Raw(permissionTree);
 </script>

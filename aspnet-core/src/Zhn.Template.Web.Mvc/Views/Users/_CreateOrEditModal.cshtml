@@ -23,26 +23,6 @@
                 <input type="hidden" name="Id" value="@Model.User.Id" />
             }
             <div class="form-group">
-                <label asp-for="User.Name"></label>
-                <input asp-for="User.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Name)">
-                <span asp-validation-for="User.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.Surname"></label>
-                <input asp-for="User.Surname" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Surname)">
-                <span asp-validation-for="User.Surname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.EmailAddress"></label>
-                <input asp-for="User.EmailAddress" type="email" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.EmailAddress)">
-                <span asp-validation-for="User.EmailAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.PhoneNumber"></label>
-                <input asp-for="User.PhoneNumber" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.PhoneNumber)">
-                <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="User.UserName"></label>
                 @{
                     if (!Model.CanChangeUserName)
@@ -57,36 +37,54 @@
                     }
                 }
             </div>
-            <div class="form-group">
-                <label asp-for="User.Password"></label>
-                <input asp-for="User.Password" type="password" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Password)">
-                <span asp-validation-for="User.Password" class="text-danger"></span>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="User.Surname"></label>
+                    <input asp-for="User.Surname" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Surname)">
+                    <span asp-validation-for="User.Surname" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="User.Name"></label>
+                    <input asp-for="User.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Name)">
+                    <span asp-validation-for="User.Name" class="text-danger"></span>
+                </div>
             </div>
+            <div class="form-group">
+                <label asp-for="User.EmailAddress"></label>
+                <input asp-for="User.EmailAddress" type="email" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.EmailAddress)">
+                <span asp-validation-for="User.EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.PhoneNumber"></label>
+                <input asp-for="User.PhoneNumber" type="number" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.PhoneNumber)">
+                <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
+            </div>
+            @if (!Model.IsEditMode)
+            {
+                <div class="form-group">
+                    <label asp-for="User.Password"></label>
+                    <input asp-for="User.Password" type="password" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Password)">
+                    <span asp-validation-for="User.Password" class="text-danger"></span>
+                </div>
+            }
             <div class="form-check">
-                @if (Model.User.IsActive)
+                <input asp-for="User.IsActive" type="checkbox" class="form-check-input">
+                <label asp-for="User.IsActive" class="form-check-label"></label>
+            </div>
+            @*@if (SettingManager.GetSettingValue<bool>(AbpZeroSettingNames.UserManagement.UserLockOut.IsEnabled))
+        {
+            <div class="form-check">
+                @if (Model.User.IsLockoutEnabled)
                 {
-                    <input asp-for="User.IsActive" type="checkbox" class="form-check-input" value="true" checked="checked" placeholder="@Html.DisplayNameFor(model => model.User.IsActive)">
+                    <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" checked="checked" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
                 }
                 else
                 {
-                    <input asp-for="User.IsActive" type="checkbox" class="form-check-input" value="true" placeholder="@Html.DisplayNameFor(model => model.User.IsActive)">
+                    <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
                 }
-                <label asp-for="User.IsActive" class="form-check-label"></label>
+                <label asp-for="User.IsLockoutEnabled" title="@L("IsLockoutEnabled_Hint")" class="form-check-label"></label>
             </div>
-            @if (SettingManager.GetSettingValue<bool>(AbpZeroSettingNames.UserManagement.UserLockOut.IsEnabled))
-            {
-                <div class="form-check">
-                    @if (Model.User.IsLockoutEnabled)
-                    {
-                        <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" checked="checked" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
-                    }
-                    else
-                    {
-                        <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
-                    }
-                    <label asp-for="User.IsLockoutEnabled" title="@L("IsLockoutEnabled_Hint")" class="form-check-label"></label>
-                </div>
-            }
+        }*@
             @*<label for="EditUser_IsActive" class="m-checkbox">
             <input id="EditUser_IsActive" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
             @L("Active")
@@ -136,4 +134,5 @@
 </div>
 <script type="text/javascript">
     $.validator.unobtrusive.parse('form');
+    $('input[name="User.IsActive"]').attr('value', true);
 </script>

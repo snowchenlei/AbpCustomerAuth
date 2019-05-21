@@ -32,9 +32,8 @@ namespace Zhn.Template.Authorization.Users.Dto
         [TemplateDisplayName("PhoneNumber")]
         public string PhoneNumber { get; set; }
 
+        
         [TemplateDisplayName("Password")]
-
-        // Not used "Required" attribute since empty value is used to 'not change password'
         [DisableAuditing]
         public string Password { get; set; }
 

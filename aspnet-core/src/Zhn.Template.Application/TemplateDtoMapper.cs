@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Abp.Auditing;
 using Abp.Authorization;
 using Abp.Authorization.Users;
+using Abp.EntityHistory;
 using AutoMapper;
+using Zhn.Template.Auditing.Dto;
 using Zhn.Template.Authorization.MenuItems;
 using Zhn.Template.Authorization.MenuItems.Dto;
 using Zhn.Template.Authorization.Roles;
@@ -42,6 +45,9 @@ namespace Zhn.Template
             configuration.CreateMap<MenuItem, MenuItemEditDto>()
                 .ForMember(entity => entity.ParentId,
                     opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Id : 0)));
+            //AuditLog
+            configuration.CreateMap<AuditLog, AuditLogListDto>();
+            //configuration.CreateMap<EntityChange, EntityChangeListDto>();
         }
     }
 }

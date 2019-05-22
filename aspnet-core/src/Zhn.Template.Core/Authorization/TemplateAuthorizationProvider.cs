@@ -33,6 +33,8 @@ namespace Zhn.Template.Authorization
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"));
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"));
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"));
+            
+                administration.CreateChildPermission(PermissionNames.Pages_Administration_AuditLogs, L("AuditLogs"));
         }
 
         private static ILocalizableString L(string name)

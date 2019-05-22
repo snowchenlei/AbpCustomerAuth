@@ -1,0 +1,16 @@
+﻿@using Abp.Authorization.Users
+@using Zhn.Template.Web.Startup
+@{
+    ViewData["Title"] = PageNames.Users;
+    Layout = "_LayoutPageTable";
+    ViewBag.AbsoluteUrl = "/Users";
+    ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
+}
+<!--搜索-->
+<div class="card">
+    <div class="card-header">
+        @L("QueryCondition")
+    </div>
+    <div class="card-body">
+    </div>
+</div>

@@ -48,6 +48,5 @@
 <script src="~/view-resources/Views/Roles/_CreateOrEditModal.js" asp-append-version="true"></script>
 <script type="text/javascript">
     $.validator.unobtrusive.parse('form');
-    $('input[name="Role.IsDefault"]').attr('value', true);
     var permissionNodes = @Html.Raw(permissionTree);
 </script>

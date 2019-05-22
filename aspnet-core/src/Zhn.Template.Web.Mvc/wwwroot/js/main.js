@@ -27,7 +27,16 @@
         //map to object
         var obj = {};
         //data.map(function (x) { obj[x.name] = x.value; });
-        data.map(function (x) { obj[x.name.split('.').pop()] = x.value; });
+        data.map(function (x) {
+            let key = x.name.split('.').pop();
+            if (obj[key] !== undefined) {
+                //避免微软mvc生成checkbox多了个hidden
+                return;
+                //obj[key] = obj[key] + ',' + x.value;
+            } else {
+                obj[key] = x.value;
+            }
+        });
 
         return obj;
     };

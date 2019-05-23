@@ -34,7 +34,7 @@ namespace Zhn.Template.Auditing
         }
         [AbpAuthorize(PermissionNames.Pages_Administration_AuditLogs)]
 
-        public async Task<PagedResultDto<AuditLogListDto>> GetAuditLogsAsync(GetAuditLogsInput input)
+        public async Task<PagedResultDto<AuditLogListDto>> GetAuditLogs(GetAuditLogsInput input)
         {
             var query = CreateAuditLogAndUsersQuery(input);
 

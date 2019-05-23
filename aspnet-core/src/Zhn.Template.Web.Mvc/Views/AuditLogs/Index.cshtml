@@ -21,5 +21,45 @@
         @L("QueryCondition")
     </div>
     <div class="card-body">
+        <form id="formSearch" class="form-inline">
+            <div class="form-group">
+                <label for="txt_search_range_time">@L("DateRange")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_range_time" placeholder=@L("DateRange")>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_user_name">@L("UserName")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_user_name" placeholder=@L("UserName")>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_service_name">@L("Service")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_service_name" placeholder=@L("Service")>
+            </div>
+            <div class="form-group">
+                <label>@L("Duration")</label>
+                <div class="input-group mx-sm-3">
+                    <input type="number" class="form-control" id="txt_search_min_execution_duration" min="0" max="86400000" ng-minlength="0" ng-maxlength="8" aria-describedby="basic-addon1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">-</span>
+                    </div>
+                    <input type="number" class="form-control" id="txt_search_max_execution_duration" min="0" max="86400000" ng-minlength="0" ng-maxlength="8" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_method_name">@L("Action")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_method_name" placeholder=@L("Action")>
+            </div>
+            <div class="form-group">
+                <label for="sel_search_state">@L("ErrorState")</label>
+                <select id="sel_search_state" class="form-control mx-sm-3">
+                    <option value="">@L("All")</option>
+                    <option value="false">@L("Success")</option>
+                    <option value="true">@L("HasError")</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_browser">@L("Browser")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_browser" placeholder=@L("Browser")>
+            </div>
+        </form>
     </div>
 </div>

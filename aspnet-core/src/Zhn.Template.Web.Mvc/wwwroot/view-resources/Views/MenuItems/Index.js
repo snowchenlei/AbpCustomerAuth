@@ -120,7 +120,7 @@
     }
     $(function () {
         //1、初始化表格
-        table.init(columns);
+        table.init('api/services/app/MenuItem/GetMenuItems', columns);
 
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewMenuItem'));

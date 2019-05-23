@@ -11,7 +11,7 @@ namespace Zhn.Template.Auditing
 {
   public   interface IAuditLogAppService: IApplicationService
     {
-        Task<PagedResultDto<AuditLogListDto>> GetAuditLogsAsync(GetAuditLogsInput input);
+        Task<PagedResultDto<AuditLogListDto>> GetAuditLogs(GetAuditLogsInput input);
 
         //Task<FileDto> GetAuditLogsToExcel(GetAuditLogsInput input);
 

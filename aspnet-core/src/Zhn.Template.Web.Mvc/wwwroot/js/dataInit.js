@@ -1,9 +1,9 @@
 ﻿var table = {
-    init: function (columns, detailView, height) {
+    init: function (url, columns, detailView, height) {
         var existsChildTable = detailView ? true : false;
         //绑定table的viewmodel
         $('#tb-body').bootstrapTable({
-            url: absoluteUrl + '/Load',         //请求后台的URL（*）
+            url: url,         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色

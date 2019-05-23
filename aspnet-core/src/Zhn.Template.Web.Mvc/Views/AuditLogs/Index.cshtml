@@ -1,10 +1,19 @@
-﻿@using Abp.Authorization.Users
-@using Zhn.Template.Web.Startup
+﻿@using Zhn.Template.Web.Startup
 @{
-    ViewData["Title"] = PageNames.Users;
+    ViewData["Title"] = PageNames.AuditLogs;
     Layout = "_LayoutPageTable";
-    ViewBag.AbsoluteUrl = "/Users";
-    ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
+    ViewBag.AbsoluteUrl = "/AuditLogs";
+    ViewBag.CurrentPageName = PageNames.AuditLogs; // The menu item will be active for this page.
+}
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Views/AuditLogs/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/AuditLogs/Index.min.js" asp-append-version="true"></script>
+    </environment>
 }
 <!--搜索-->
 <div class="card">

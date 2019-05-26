@@ -9,6 +9,12 @@ namespace Zhn.Template.Auditing.Dto
 {
     public class GetAuditLogsInput : PagedAndSortedInputDto, IShouldNormalize
     {
+        public GetAuditLogsInput()
+        {
+            StartDate = DateTime.Now.AddDays(-10);
+            EndDate = DateTime.Now;
+        }
+
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }

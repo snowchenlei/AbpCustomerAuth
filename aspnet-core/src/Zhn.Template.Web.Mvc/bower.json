@@ -31,7 +31,8 @@
     "abp-web-resources": "^3.5.0",
     "Font-Awesome": "5.8.1",
     "ztree_v3": "v3.5.40",
-    "select2": "4.0.3"
+    "select2": "4.0.3",
+    "daterangepicker": "bootstrap-daterangepicker#v3.0.5"
   },
   "resolutions": {
     "jquery": ">=1.6.3",

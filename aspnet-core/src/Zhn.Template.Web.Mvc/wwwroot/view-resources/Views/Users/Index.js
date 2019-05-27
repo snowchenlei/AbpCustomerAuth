@@ -41,19 +41,24 @@
         htmlArr.push('<div class="btn-group" role="group" aria-label="Row Operation">');
         if (abp.auth.isGranted('Pages.Administration.Users.Edit')) {
             htmlArr.push(
-                '<button type="button" class="btn btn-sm btn-warning edit" title="edit"><i class="fas fa-edit"></i>' +
+                '<button type="button" class="btn btn-sm btn-warning edit" title="' +
+                app.localize('Edit') +
+                '"><i class="fas fa-edit"></i>' +
                 app.localize('Edit') +
                 '</button>');
         }
         if (abp.auth.isGranted('Pages.Administration.Users.Delete')) {
             htmlArr.push(
-                '<button type="button" class="btn btn-sm btn-danger remove" title="remove"><i class="fas fa-trash"></i>' +
+                '<button type="button" class="btn btn-sm btn-danger remove" title="' +
+                app.localize('Delete') +
+                '"><i class="fas fa-trash"></i>' +
                 app.localize('Delete') +
                 '</button>');
         }
         htmlArr.push('</div>');
         return htmlArr.join('');
     }
+
     var columns = [
         { checkbox: true },
         { field: 'id', title: 'Id', visible: false },

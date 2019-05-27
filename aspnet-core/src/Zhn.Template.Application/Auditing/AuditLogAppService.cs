@@ -8,6 +8,7 @@ using Abp.Application.Services.Dto;
 using Abp.Auditing;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
+using Abp.EntityHistory;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -23,12 +24,14 @@ namespace Zhn.Template.Auditing
         private readonly INamespaceStripper _namespaceStripper;
         private readonly IRepository<User, long> _userRepository;
         private readonly IRepository<AuditLog, long> _auditLogRepository;
+        private readonly IRepository<EntityPropertyChange, long> _entityPropertyChangeRepository;
 
-        public AuditLogAppService(IRepository<AuditLog, long> auditLogRepository, IRepository<User, long> userRepository, INamespaceStripper namespaceStripper)
+        public AuditLogAppService(IRepository<AuditLog, long> auditLogRepository, IRepository<User, long> userRepository, INamespaceStripper namespaceStripper, IRepository<EntityPropertyChange, long> entityPropertyChangeRepository)
         {
             _auditLogRepository = auditLogRepository;
             _userRepository = userRepository;
             _namespaceStripper = namespaceStripper;
+            _entityPropertyChangeRepository = entityPropertyChangeRepository;
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_AuditLogs)]
@@ -84,6 +87,14 @@ namespace Zhn.Template.Auditing
                 .WhereIf(input.HasException == true, item => item.AuditLog.Exception != null && item.AuditLog.Exception != "")
                 .WhereIf(input.HasException == false, item => item.AuditLog.Exception == null || item.AuditLog.Exception == "");
             return query;
+        }
+
+        public async Task<List<EntityPropertyChangeDto>> GetEntityPropertyChanges(long entityChangeId)
+        {
+            var entityPropertyChanges = (await _entityPropertyChangeRepository.GetAllListAsync())
+                .Where(epc => epc.EntityChangeId == entityChangeId);
+
+            return ObjectMapper.Map<List<EntityPropertyChangeDto>>(entityPropertyChanges);
         }
     }
 }

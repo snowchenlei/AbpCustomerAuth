@@ -8,6 +8,7 @@ using Zhn.Template.Auditing;
 using Zhn.Template.Auditing.Dto;
 using Zhn.Template.Authorization;
 using Zhn.Template.Controllers;
+using Zhn.Template.Web.Models.AuditLogs;
 
 namespace Zhn.Template.Web.Mvc.Controllers
 {
@@ -26,6 +27,15 @@ namespace Zhn.Template.Web.Mvc.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<PartialViewResult> EntityChangeDetailModal(EntityChangeListDto entityChangeListDto)
+        {
+            var output = await _auditLogAppService.GetEntityPropertyChanges(entityChangeListDto.Id);
+
+            var viewModel = new EntityChangeDetailModalViewModel(output, entityChangeListDto);
+
+            return PartialView("_EntityChangeDetailModal", viewModel);
         }
     }
 }

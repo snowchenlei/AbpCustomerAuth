@@ -14,9 +14,68 @@
 }
 
 (function () {
+    window.operateEvents = {
+        'click .detail': function (e, value, auditLog, index) {
+            $('#AuditLogDetailModal_UserName').html(auditLog.userName);
+            $('#AuditLogDetailModal_ClientIpAddress').html(auditLog.clientIpAddress);
+            $('#AuditLogDetailModal_ClientName').html(auditLog.clientName);
+            $('#AuditLogDetailModal_BrowserInfo').html(auditLog.browserInfo);
+            $('#AuditLogDetailModal_ServiceName').html(auditLog.serviceName);
+            $('#AuditLogDetailModal_MethodName').html(auditLog.methodName);
+            $('#AuditLogDetailModal_ExecutionTime').html(moment(auditLog.executionTime).fromNow() + ' (' + moment(auditLog.executionTime).format('YYYY-MM-DD hh:mm:ss') + ')');
+            $('#AuditLogDetailModal_Duration').html(app.localize('Xms', auditLog.executionDuration));
+            $('#AuditLogDetailModal_Parameters').html(getFormattedParameters(auditLog.parameters));
+
+            if (auditLog.impersonatorUserId) {
+                $('#AuditLogDetailModal_ImpersonatorInfo').show();
+            } else {
+                $('#AuditLogDetailModal_ImpersonatorInfo').hide();
+            }
+
+            if (auditLog.exception) {
+                $('#AuditLogDetailModal_Success').hide();
+                $('#AuditLogDetailModal_Exception').show();
+                $('#AuditLogDetailModal_Exception').html(auditLog.exception);
+            } else {
+                $('#AuditLogDetailModal_Exception').hide();
+                $('#AuditLogDetailModal_Success').show();
+            }
+
+            if (auditLog.customData) {
+                $('#AuditLogDetailModal_CustomData_None').hide();
+                $('#AuditLogDetailModal_CustomData').show();
+                $('#AuditLogDetailModal_CustomData').html(auditLog.customData);
+            } else {
+                $('#AuditLogDetailModal_CustomData').hide();
+                $('#AuditLogDetailModal_CustomData_None').show();
+            }
+            bootbox.dialog({
+                title: app.localize("AuditLogDetail"),
+                message: $('#AuditLogDetailBody > #AuditLogDetailForm')[0],
+                size: 'large',
+                buttons: {
+                    cancel: {
+                        label: app.localize('Cancel'),
+                        className: 'btn-danger'
+                    }
+                }
+            });
+        }
+    };
+    function operateFormater(value, row, index) {
+        var htmlArr = [];
+        htmlArr.push('<div class="btn-group" role="group" aria-label="Row Operation">');
+        htmlArr.push(
+            '<button type="button" class="btn btn-sm btn-warning detail" title="' + app.localize("AuditLogDetail") +'"><i class="fas fa-detail"></i>' +
+            app.localize("AuditLogDetail") +
+            '</button>');
+        htmlArr.push('</div>');
+        return htmlArr.join('');
+    }
     var columns = [
         { checkbox: true },
         { field: 'userId', title: 'userId', visible: false },
+        { title: app.localize('Operation'), formatter: operateFormater, events: operateEvents },
         {
             field: 'exception',
             //title: app.localize('exception'),
@@ -60,6 +119,14 @@
             }
         },
     ];
+    function getFormattedParameters(parameters) {
+        try {
+            var json = JSON.parse(parameters);
+            return JSON.stringify(json, null, 4);
+        } catch (e) {
+            return parameters;
+        }
+    }
     $(function () {
         //1、初始化表格
         table.init('api/services/app/AuditLog/GetAuditLogs', columns);

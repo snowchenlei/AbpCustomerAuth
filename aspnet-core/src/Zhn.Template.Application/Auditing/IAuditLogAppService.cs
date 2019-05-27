@@ -12,6 +12,7 @@ namespace Zhn.Template.Auditing
   public   interface IAuditLogAppService: IApplicationService
     {
         Task<PagedResultDto<AuditLogListDto>> GetAuditLogs(GetAuditLogsInput input);
+        
 
         //Task<FileDto> GetAuditLogsToExcel(GetAuditLogsInput input);
 
@@ -21,8 +22,7 @@ namespace Zhn.Template.Auditing
 
         //Task<FileDto> GetEntityChangesToExcel(GetEntityChangeInput input);
 
-        //Task<List<EntityPropertyChangeDto>> GetEntityPropertyChanges(long entityChangeId);
-
+        Task<List<EntityPropertyChangeDto>> GetEntityPropertyChanges(long entityChangeId);
         //List<NameValueDto> GetEntityHistoryObjectTypes();
     }
 }

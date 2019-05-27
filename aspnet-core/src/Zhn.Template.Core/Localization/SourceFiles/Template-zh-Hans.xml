@@ -94,7 +94,6 @@
     <text name="Users">用户</text>
     <text name="Roles">角色</text>-->
 
-
     <!--Util-->
     <text name="Operation">操作</text>
     <text name="QueryCondition">查询条件</text>
@@ -124,7 +123,6 @@
     <text name="RoleInformations">角色信息</text>
     <text name="Permissions">权限</text>
 
-    
     <!--User-->
     <text name="CreateNewUser">创建新用户</text>
     <text name="EditUser">编辑用户：{0}</text>
@@ -141,7 +139,6 @@
     <text name="DeleteTenantConfirm">确认删除该租户？</text>
     <text name="EditTenant">编辑租户</text>
 
-   
     <!--用户添加/修改-->
     <text name="NameNotNull">姓名不能为空</text>
     <text name="UserInformations">用户信息</text>
@@ -153,5 +150,18 @@
     <text name="SetRandomPassword">设置随机密码</text>
     <text name="ShouldChangePasswordOnNextLogin">下次登录设置密码</text>
     <text name="SendActivationEmail">发送邮箱验证</text>
+    <!--审计日志-->
+    <text name="DateRange">日期范围</text>
+    <text name="Service">服务</text>
+    <text name="Action">操作</text>
+    <text name="Duration">持续时间</text>
+    <text name="IpAddress">IP地址</text>
+    <text name="Client">客户端</text>
+    <text name="Browser">浏览器</text>
+    <text name="Xms">{0} ms</text>
+    <text name="HasError">出现错误</text>
+    <text name="Time">时间</text>
+    <text name="Success">成功</text>
+    <text name="ErrorState">错误状态</text>
   </texts>
 </localizationDictionary>

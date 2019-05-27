@@ -18,13 +18,11 @@ using Zhn.Template.Authorization.Users;
 namespace Zhn.Template.Auditing
 {
     [AbpAuthorize(PermissionNames.Pages_Administration_AuditLogs)]
-
-    public class AuditLogAppService:TemplateAppServiceBase, IAuditLogAppService
+    public class AuditLogAppService : TemplateAppServiceBase, IAuditLogAppService
     {
         private readonly INamespaceStripper _namespaceStripper;
         private readonly IRepository<User, long> _userRepository;
         private readonly IRepository<AuditLog, long> _auditLogRepository;
-
 
         public AuditLogAppService(IRepository<AuditLog, long> auditLogRepository, IRepository<User, long> userRepository, INamespaceStripper namespaceStripper)
         {
@@ -32,8 +30,8 @@ namespace Zhn.Template.Auditing
             _userRepository = userRepository;
             _namespaceStripper = namespaceStripper;
         }
-        [AbpAuthorize(PermissionNames.Pages_Administration_AuditLogs)]
 
+        [AbpAuthorize(PermissionNames.Pages_Administration_AuditLogs)]
         public async Task<PagedResultDto<AuditLogListDto>> GetAuditLogs(GetAuditLogsInput input)
         {
             var query = CreateAuditLogAndUsersQuery(input);
@@ -49,7 +47,6 @@ namespace Zhn.Template.Auditing
             return new PagedResultDto<AuditLogListDto>(resultCount, auditLogListDtos);
         }
 
-
         private List<AuditLogListDto> ConvertToAuditLogListDtos(List<AuditLogAndUser> results)
         {
             return results.Select(
@@ -64,11 +61,18 @@ namespace Zhn.Template.Auditing
 
         private IQueryable<AuditLogAndUser> CreateAuditLogAndUsersQuery(GetAuditLogsInput input)
         {
+            DateTime[] times = new DateTime[] { DateTime.Now.AddDays(-1), DateTime.Now, };
+            if (!String.IsNullOrEmpty(input.DateRange) && input.DateRange.IndexOf("~", StringComparison.Ordinal) > 0)
+            {
+                string[] dates = input.DateRange.Split(new[] { '~' }, StringSplitOptions.RemoveEmptyEntries);
+                times = Array.ConvertAll(dates, Convert.ToDateTime);
+            }
+
             var query = from auditLog in _auditLogRepository.GetAll()
-                join user in _userRepository.GetAll() on auditLog.UserId equals user.Id into userJoin
-                from joinedUser in userJoin.DefaultIfEmpty()
-                where auditLog.ExecutionTime >= input.StartDate && auditLog.ExecutionTime <= input.EndDate
-                select new AuditLogAndUser { AuditLog = auditLog, User = joinedUser };
+                        join user in _userRepository.GetAll() on auditLog.UserId equals user.Id into userJoin
+                        from joinedUser in userJoin.DefaultIfEmpty()
+                        where auditLog.ExecutionTime >= times[0] && auditLog.ExecutionTime <= times[1]
+                        select new AuditLogAndUser { AuditLog = auditLog, User = joinedUser };
 
             query = query
                 .WhereIf(!input.UserName.IsNullOrWhiteSpace(), item => item.User.UserName.Contains(input.UserName))

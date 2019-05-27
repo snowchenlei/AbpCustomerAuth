@@ -9,8 +9,7 @@
         minExecutionDuration: $('#txt_search_min_execution_duration').val(),
         maxExecutionDuration: $('#txt_search_max_execution_duration').val(),
         hasException: $('#sel_search_state').val(),
-        //startDate:
-        //endDate:
+        dateRange: $('#txt_search_range_time').val()
     };
 }
 
@@ -20,8 +19,8 @@
         { field: 'userId', title: 'userId', visible: false },
         {
             field: 'exception',
-            title: app.localize('exception'),
-            formatter: function(value, row, index) {
+            //title: app.localize('exception'),
+            formatter: function (value, row, index) {
                 var $div = $("<div/>").addClass("text-center");
                 if (value) {
                     $div.append($("<i/>").addClass("fa fa-exclamation-triangle m--font-warning")
@@ -35,27 +34,27 @@
         },
         {
             field: 'executionTime',
-            title: app.localize('executionTime'),
-            formatter: function(value, row, index) {
+            title: app.localize('Time'),
+            formatter: function (value, row, index) {
                 return moment(value).format('YYYY-MM-DD HH:mm:ss');
             }
         },
         { field: 'userName', title: app.localize('UserName') },
-        { field: 'serviceName', title: app.localize('ServiceName') },
-        { field: 'methodName', title: app.localize('MethodName') },
+        { field: 'serviceName', title: app.localize('Service') },
+        { field: 'methodName', title: app.localize('Action') },
         {
             field: 'executionDuration',
-            title: app.localize('executionDuration'),
+            title: app.localize('Duration'),
             formatter: function (value, row, index) {
                 return app.localize('Xms', value);
             }
         },
-        { field: 'clientIpAddress', title: app.localize('clientIpAddress') },
-        { field: 'clientName', title: app.localize('clientName') },
+        { field: 'clientIpAddress', title: app.localize('IpAddress') },
+        { field: 'clientName', title: app.localize('Client') },
         {
             field: 'browserInfo',
-            title: app.localize('browserInfo'),
-            formatter: function(value, row, index) {
+            title: app.localize('Browser'),
+            formatter: function (value, row, index) {
                 return $("<span/>").text(abp.utils.truncateStringWithPostfix(value, 32))
                     .attr("title", value)[0].outerHTML;
             }
@@ -63,10 +62,7 @@
     ];
     $(function () {
         //1、初始化表格
-        table.init('api/services/app/AuditLog/GetAuditLogs',columns);
-
-        $('#create').click(function () {
-            createOrEdit(app.localize('CreateNewUser'));
-        });
+        table.init('api/services/app/AuditLog/GetAuditLogs', columns);
+        setDate($('#txt_search_range_time'), true, true);
     });
 })();

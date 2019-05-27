@@ -5,14 +5,20 @@
     ViewBag.AbsoluteUrl = "/AuditLogs";
     ViewBag.CurrentPageName = PageNames.AuditLogs; // The menu item will be active for this page.
 }
+<link href="~/lib/daterangepicker/daterangepicker.css" rel="stylesheet" />
 @section scripts
     {
     <environment names="Development">
         <script src="~/view-resources/Views/AuditLogs/Index.js" asp-append-version="true"></script>
+        <script src="~/lib/daterangepicker/daterangepicker.js" asp-append-version="true"></script>
+        <script src="~/js/date.js" asp-append-version="true"></script>
+        <script src="~/js/timeBucket.js" asp-append-version="true"></script>
     </environment>
 
     <environment names="Staging,Production">
         <script src="~/view-resources/Views/AuditLogs/Index.min.js" asp-append-version="true"></script>
+        <script src="~/lib/daterangepicker/daterangepicker.js" asp-append-version="true"></script>
+        <script src="~/js/timeBucket.js" asp-append-version="true"></script>
     </environment>
 }
 <!--搜索-->

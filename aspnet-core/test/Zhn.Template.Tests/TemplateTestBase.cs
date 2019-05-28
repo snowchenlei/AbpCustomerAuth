@@ -13,7 +13,7 @@ using Zhn.Template.Authorization.Users;
 using Zhn.Template.EntityFrameworkCore;
 using Zhn.Template.EntityFrameworkCore.Seed.Host;
 using Zhn.Template.EntityFrameworkCore.Seed.Tenants;
-using Zhn.Template.MultiTenancy;
+using Zhn.Template.Authorization.MultiTenancy;
 
 namespace Zhn.Template.Tests
 {

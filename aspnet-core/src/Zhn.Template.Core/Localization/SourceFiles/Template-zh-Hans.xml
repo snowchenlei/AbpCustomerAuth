@@ -152,6 +152,10 @@
     <text name="SendActivationEmail">发送邮箱验证</text>
     <!--审计日志-->
     <text name="DateRange">日期范围</text>
+    <text name="Parameters">参数</text>
+    <text name="ActionInformations">操作信息</text>
+    <text name="CustomData">自定义数据</text>
+    <text name="None">没有</text>
     <text name="Service">服务</text>
     <text name="Action">操作</text>
     <text name="Duration">持续时间</text>

@@ -14,6 +14,7 @@
 }
 
 (function () {
+    let detailHtml;
     window.operateEvents = {
         'click .detail': function (e, value, auditLog, index) {
             $('#AuditLogDetailModal_UserName').html(auditLog.userName);
@@ -51,22 +52,32 @@
             }
             bootbox.dialog({
                 title: app.localize("AuditLogDetail"),
-                message: $('#AuditLogDetailBody > #AuditLogDetailForm')[0],
+                message: $('#AuditLogDetailBody > #AuditLogDetailContent')[0],
                 size: 'large',
                 buttons: {
                     cancel: {
                         label: app.localize('Cancel'),
-                        className: 'btn-danger'
+                        className: 'btn-danger',
+                        callback: function () {
+                            initModalDetail();
+                        }
                     }
+                },
+                onEscape: function () {
+                    initModalDetail();
                 }
             });
         }
     };
+    function initModalDetail() {
+        $('#AuditLogDetailBody').append(detailHtml);
+        $('#AuditLogDetailContent li:first-child a').tab('show');
+    }
     function operateFormater(value, row, index) {
         var htmlArr = [];
         htmlArr.push('<div class="btn-group" role="group" aria-label="Row Operation">');
         htmlArr.push(
-            '<button type="button" class="btn btn-sm btn-warning detail" title="' + app.localize("AuditLogDetail") +'"><i class="fas fa-detail"></i>' +
+            '<button type="button" class="btn btn-sm btn-warning detail" title="' + app.localize("AuditLogDetail") + '"><i class="fas fa-detail"></i>' +
             app.localize("AuditLogDetail") +
             '</button>');
         htmlArr.push('</div>');
@@ -131,5 +142,6 @@
         //1、初始化表格
         table.init('api/services/app/AuditLog/GetAuditLogs', columns);
         setDate($('#txt_search_range_time'), true, true);
+        detailHtml = $('#AuditLogDetailBody > #AuditLogDetailContent')[0];
     });
 })();

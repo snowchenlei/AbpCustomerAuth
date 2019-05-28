@@ -26,5 +26,11 @@
         public const string Pages_Administration_MenuItems_Edit = "Pages.Administration.MenuItems.Edit";
         public const string Pages_Administration_MenuItems_Delete = "Pages.Administration.MenuItems.Delete";
         public const string Pages_Administration_MenuItems_BatchDelete = "Pages.Administration.MenuItems.BatchDelete";
+
+        public const string Pages_Administration_Languages = "Pages.Administration.Languages";
+        public const string Pages_Administration_Languages_Create = "Pages.Administration.Languages.Create";
+        public const string Pages_Administration_Languages_Edit = "Pages.Administration.Languages.Edit";
+        public const string Pages_Administration_Languages_Delete = "Pages.Administration.Languages.Delete";
+        public const string Pages_Administration_Languages_ChangeTexts = "Pages.Administration.Languages.ChangeTexts";
     }
 }

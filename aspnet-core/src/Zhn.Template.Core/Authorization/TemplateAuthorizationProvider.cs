@@ -23,7 +23,7 @@ namespace Zhn.Template.Authorization
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Edit, L("EditingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Delete, L("DeletingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_BatchDelete, L("BatchDeletingUser"));
-            
+
             //administration.CreateChildPermission(PermissionNames.Pages_Administration_Tenants, L("Tenants"),
             //    multiTenancySides: MultiTenancySides.Host);
 
@@ -33,8 +33,14 @@ namespace Zhn.Template.Authorization
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"));
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"));
             mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"));
-            
-                administration.CreateChildPermission(PermissionNames.Pages_Administration_AuditLogs, L("AuditLogs"));
+
+            var languages = administration.CreateChildPermission(PermissionNames.Pages_Administration_Languages, L("Languages"));
+            languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_Create, L("CreatingNewLanguage"));
+            languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_Edit, L("EditingLanguage"));
+            languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_Delete, L("DeletingLanguages"));
+            languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_ChangeTexts, L("ChangingTexts"));
+
+            administration.CreateChildPermission(PermissionNames.Pages_Administration_AuditLogs, L("AuditLogs"));
         }
 
         private static ILocalizableString L(string name)

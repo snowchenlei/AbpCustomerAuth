@@ -1,21 +1,23 @@
 ﻿@using Zhn.Template.Web.Models.AuditLogs
 @model EntityChangeDetailModalViewModel
 
-    <table id="EntityPropertyChangesTable" class="display table table-striped table-bordered table-hover dt-responsive">
-        <thead>
-            <tr>
-                <th>@L("Property")</th>
-                <th>@L("OriginalValue")</th>
-                <th>@L("NewValue")</th>
-            </tr>
-            @foreach (var propertyChange in Model.EntityPropertyChanges)
+<table id="EntityPropertyChangesTable" class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">@L("Property")</th>
+            <th scope="col">@L("OriginalValue")</th>
+            <th scope="col">@L("NewValue")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var propertyChange in Model.EntityPropertyChanges)
         {
-            <tr>
+            <tr scope="row">
                 <td><strong>@propertyChange.PropertyName</strong></td>
                 @if (Type.GetType(propertyChange.PropertyTypeFullName) == typeof(DateTime))
                 {
-                <td>@(string.IsNullOrEmpty(propertyChange.OriginalValue) ? "" : DateTimeOffset.Parse(propertyChange.OriginalValue.Replace("\"","")).ToString("g"))</td>
-                <td>@(string.IsNullOrEmpty(propertyChange.NewValue) ? "" : DateTimeOffset.Parse(propertyChange.NewValue.Replace("\"", "")).ToString("g"))</td>
+                    <td>@(string.IsNullOrEmpty(propertyChange.OriginalValue) ? "" : DateTimeOffset.Parse(propertyChange.OriginalValue.Replace("\"", "")).ToString("g"))</td>
+                    <td>@(string.IsNullOrEmpty(propertyChange.NewValue) ? "" : DateTimeOffset.Parse(propertyChange.NewValue.Replace("\"", "")).ToString("g"))</td>
                     continue;
                 }
 
@@ -23,5 +25,5 @@
                 <td>@(propertyChange.NewValue == "null" ? "" : propertyChange.NewValue)</td>
             </tr>
         }
-        </thead>
-    </table>
+    </tbody>
+</table>

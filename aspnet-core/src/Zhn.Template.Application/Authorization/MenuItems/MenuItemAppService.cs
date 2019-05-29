@@ -8,6 +8,7 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Abp.Runtime.Caching;
 using Abp.UI;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -21,25 +22,39 @@ namespace Zhn.Template.Authorization.MenuItems
     public class MenuItemAppService : TemplateAppServiceBase, IMenuItemAppService
     {
         private readonly IMapper _mapper;
+        private readonly ICacheManager _cacheManager;
         private readonly IRepository<MenuItem> _menuItemRepository;
 
-        public MenuItemAppService(IRepository<MenuItem> menuItemRepository, IMapper mapper)
+        public MenuItemAppService(IRepository<MenuItem> menuItemRepository, IMapper mapper, ICacheManager cacheManager)
         {
             _menuItemRepository = menuItemRepository;
             _mapper = mapper;
+            _cacheManager = cacheManager;
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
         public async Task<List<MenuItemListDto>> GetList()
         {
-            var query = _menuItemRepository.GetAll();
-            var menuItems = await query
-                .AsNoTracking()
-                .ToListAsync();
+            return await _cacheManager.GetCache("ApplicationCache").Get("MenuItemList", async () =>
+            {
+                var query = _menuItemRepository.GetAll();
+                var menuItems = await query
+                    .AsNoTracking()
+                    .ToListAsync();
 
-            var menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
+                var menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
 
-            return new List<MenuItemListDto>(menuItemListDtos);
+                return new List<MenuItemListDto>(menuItemListDtos);
+            });
+
+            //var query = _menuItemRepository.GetAll();
+            //var menuItems = await query
+            //    .AsNoTracking()
+            //    .ToListAsync();
+
+            //var menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
+
+            //return new List<MenuItemListDto>(menuItemListDtos);
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
@@ -48,7 +63,7 @@ namespace Zhn.Template.Authorization.MenuItems
             var query = _menuItemRepository.GetAll();
             int menuItemCount = await query.CountAsync();
             List<MenuItem> menuItems = await query
-                .Include(m=>m.Parent)
+                .Include(m => m.Parent)
                 .AsNoTracking()
                 .OrderBy(input.Sorting)
                 .PageBy(input)
@@ -62,7 +77,6 @@ namespace Zhn.Template.Authorization.MenuItems
             );
         }
 
-
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
             PermissionNames.Pages_Administration_MenuItems_Edit)]
         public async Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input)
@@ -72,7 +86,6 @@ namespace Zhn.Template.Authorization.MenuItems
             output.MenuItems = _mapper.Map<List<MenuItemSelectListDto>>(menuItems);
             if (input.Id.HasValue)
             {
-
                 MenuItem menuItem = await _menuItemRepository.FirstOrDefaultAsync(m => m.Id == input.Id.Value);
                 if (menuItem == null)
                 {
@@ -95,11 +108,11 @@ namespace Zhn.Template.Authorization.MenuItems
 
             return output;
         }
+
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
             PermissionNames.Pages_Administration_MenuItems_Edit)]
         public async Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input)
         {
-            
             if (input.MenuItem.Id.HasValue)
             {
                 await UpdateAsync(input);

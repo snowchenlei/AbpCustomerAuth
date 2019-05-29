@@ -14,6 +14,7 @@ using Zhn.Template.Configuration;
 using Zhn.Template.Identity;
 using Zhn.Template.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
+using Abp.Json;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -38,7 +39,9 @@ namespace Zhn.Template.Web.Startup
                 options =>
                 {
                     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                }).AddFluentValidation(fv =>
+                })
+                .AddJsonOptions(options => options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss")
+                .AddFluentValidation(fv =>
                 {
                     //禁用其它的认证
                     fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;

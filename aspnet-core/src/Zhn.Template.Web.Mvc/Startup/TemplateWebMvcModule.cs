@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Abp.AspNetCore.Configuration;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
@@ -22,6 +23,7 @@ namespace Zhn.Template.Web.Startup
         public override void PreInitialize()
         {
             //Configuration.Navigation.Providers.Add<TemplateNavigationProvider>();
+            Configuration.Modules.AbpAspNetCore().UseMvcDateTimeFormatForAppServices = true;
         }
 
         public override void Initialize()

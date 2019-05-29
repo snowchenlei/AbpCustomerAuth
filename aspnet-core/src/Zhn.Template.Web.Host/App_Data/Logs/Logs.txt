@@ -1,0 +1,219 @@
+DEBUG 2019-05-29 17:30:03,452 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-29 17:30:04,400 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-29 17:30:04,430 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,432 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,433 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,435 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,435 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,435 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,436 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,436 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,436 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,491 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:04,493 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-29 17:30:06,071 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:30:06,071 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:30:06,071 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:30:06,071 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:30:06,611 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:30:08,210 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-29 17:30:08,348 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-29 17:30:08,400 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-29 17:30:08,449 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
+DEBUG 2019-05-29 17:30:08,479 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-29 17:30:08,851 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-29 17:30:08,929 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2019-05-29 17:30:08,929 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-29 17:30:08,935 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-29 17:30:08,936 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-29 17:30:08,936 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-29 17:30:08,937 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
+DEBUG 2019-05-29 17:30:08,937 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
+DEBUG 2019-05-29 17:30:08,939 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-29 17:30:08,939 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
+INFO  2019-05-29 17:30:13,843 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-29 17:30:13,843 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-29 17:30:13,928 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 90.6755ms 200 
+INFO  2019-05-29 17:30:17,866 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
+INFO  2019-05-29 17:30:18,852 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
+INFO  2019-05-29 17:30:18,858 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 1.9564ms.
+INFO  2019-05-29 17:30:19,565 [14   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-29 17:30:19,577 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1706.58ms
+INFO  2019-05-29 17:30:19,595 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5758.2279ms 302 
+INFO  2019-05-29 17:30:19,611 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger  
+INFO  2019-05-29 17:30:19,639 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 25.9774ms 301 
+INFO  2019-05-29 17:30:19,647 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-29 17:30:19,863 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 216.7643ms 200 text/html
+INFO  2019-05-29 17:30:20,096 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2019-05-29 17:30:20,099 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2019-05-29 17:30:20,101 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-05-29 17:30:20,104 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.js  
+INFO  2019-05-29 17:30:20,111 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.swagger.js  
+INFO  2019-05-29 17:30:20,291 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\swagger\ui\abp.js'
+INFO  2019-05-29 17:30:20,292 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\swagger\ui\abp.swagger.js'
+INFO  2019-05-29 17:30:20,294 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 191.5208ms 200 application/javascript
+INFO  2019-05-29 17:30:20,295 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 188.0905ms 200 application/javascript
+INFO  2019-05-29 17:30:20,726 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+INFO  2019-05-29 17:30:20,730 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 636.0229ms 200 text/css
+INFO  2019-05-29 17:30:21,047 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+INFO  2019-05-29 17:30:21,049 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 948.1237ms 200 application/javascript
+INFO  2019-05-29 17:30:21,859 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+INFO  2019-05-29 17:30:21,874 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1762.7426ms 200 application/javascript
+INFO  2019-05-29 17:30:26,840 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-05-29 17:30:27,754 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 924.2544ms 200 application/json;charset=utf-8
+INFO  2019-05-29 17:30:29,028 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/favicon-32x32.png  
+INFO  2019-05-29 17:30:29,043 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+INFO  2019-05-29 17:30:29,046 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.8173ms 200 image/png
+DEBUG 2019-05-29 17:31:54,239 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-29 17:31:54,359 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-29 17:31:54,378 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,381 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,381 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,381 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,381 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,381 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,382 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,382 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,382 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,382 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,382 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,383 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,383 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,383 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,383 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,383 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:54,386 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-29 17:31:54,602 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:31:54,602 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:31:54,602 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:31:54,602 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:31:54,964 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:31:55,880 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-29 17:31:55,997 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-29 17:31:56,039 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-29 17:31:56,060 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
+DEBUG 2019-05-29 17:31:56,087 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-29 17:31:56,325 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-29 17:31:56,381 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2019-05-29 17:31:56,381 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-29 17:31:56,388 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-29 17:31:56,388 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-29 17:31:56,388 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-29 17:31:56,388 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
+DEBUG 2019-05-29 17:31:56,388 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
+DEBUG 2019-05-29 17:31:56,389 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-29 17:31:56,389 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
+INFO  2019-05-29 17:32:00,608 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-29 17:32:00,608 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-29 17:32:00,687 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 85.1046ms 200 
+INFO  2019-05-29 17:32:04,239 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
+INFO  2019-05-29 17:32:05,232 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
+INFO  2019-05-29 17:32:05,240 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 1.9742ms.
+INFO  2019-05-29 17:32:05,458 [9    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-29 17:32:05,470 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1226.0471ms
+INFO  2019-05-29 17:32:05,491 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-29 17:32:05,494 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4894.155ms 302 
+INFO  2019-05-29 17:32:05,701 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 208.166ms 200 text/html
+INFO  2019-05-29 17:32:06,012 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-05-29 17:32:06,461 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 448.1895ms 200 application/json;charset=utf-8
+DEBUG 2019-05-29 17:45:11,774 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-29 17:45:11,864 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-29 17:45:11,886 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,888 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,890 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,890 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,890 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,890 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,890 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,890 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,891 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,891 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,891 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:11,899 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-29 17:45:12,175 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:45:12,176 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:45:12,176 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:45:12,176 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-29 17:45:12,522 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-29 17:45:13,353 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-29 17:45:13,460 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-29 17:45:13,501 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-29 17:45:13,521 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
+DEBUG 2019-05-29 17:45:13,549 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-29 17:45:13,754 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-29 17:45:13,796 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2019-05-29 17:45:13,796 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-29 17:45:13,809 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-29 17:45:13,809 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-29 17:45:13,809 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-29 17:45:13,810 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
+DEBUG 2019-05-29 17:45:13,810 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
+DEBUG 2019-05-29 17:45:13,810 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-29 17:45:13,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
+INFO  2019-05-29 17:45:17,947 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-29 17:45:17,947 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-29 17:45:18,030 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 88.5066ms 200 
+INFO  2019-05-29 17:45:21,439 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
+INFO  2019-05-29 17:45:22,295 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
+INFO  2019-05-29 17:45:22,301 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 3.0996ms.
+INFO  2019-05-29 17:45:22,504 [9    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-29 17:45:22,516 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1070.6552ms
+INFO  2019-05-29 17:45:22,533 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-29 17:45:22,536 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4597.7519ms 302 
+INFO  2019-05-29 17:45:22,732 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 199.0362ms 200 text/html
+INFO  2019-05-29 17:45:22,858 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-05-29 17:45:23,128 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 266.4274ms 200 application/json;charset=utf-8
+INFO  2019-05-29 17:46:27,443 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/MenuItem/GetList  
+INFO  2019-05-29 17:46:27,478 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetList", controller = "MenuItem"}. Executing action Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application)
+WARN  2019-05-29 17:46:27,998 [6    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-05-29 17:46:28,023 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-05-29 17:46:28,062 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-29 17:46:28,085 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application) in 605.0501ms
+INFO  2019-05-29 17:46:28,088 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 655.3058ms 401 application/json; charset=utf-8
+INFO  2019-05-29 17:46:41,779 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 50
+INFO  2019-05-29 17:46:41,787 [10   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-29 17:46:41,789 [10   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-29 17:46:41,814 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core)
+INFO  2019-05-29 17:46:41,815 [10   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-29 17:46:41,816 [10   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-29 17:46:42,560 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) with arguments (Zhn.Template.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2019-05-29 17:46:43,419 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 854.7115ms.
+INFO  2019-05-29 17:46:43,444 [10   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-29 17:46:43,470 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) in 1651.1616ms
+INFO  2019-05-29 17:46:43,477 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1694.5948ms 200 application/json; charset=utf-8
+INFO  2019-05-29 17:47:28,999 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/MenuItem/GetList  
+INFO  2019-05-29 17:47:29,042 [17   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-29 17:47:29,136 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetList", controller = "MenuItem"}. Executing action Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application)
+INFO  2019-05-29 17:47:29,618 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application) - Validation state: Valid
+INFO  2019-05-29 17:47:33,546 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3926.8033ms.
+INFO  2019-05-29 17:47:33,574 [12   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-29 17:47:33,578 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application) in 4440.4773ms
+INFO  2019-05-29 17:47:33,582 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4580.8287ms 200 application/json; charset=utf-8
+INFO  2019-05-29 17:47:43,854 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/MenuItem/GetList  
+INFO  2019-05-29 17:47:43,856 [16   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-29 17:47:43,861 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetList", controller = "MenuItem"}. Executing action Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application)
+INFO  2019-05-29 17:47:43,865 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application) - Validation state: Valid
+INFO  2019-05-29 17:47:46,643 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2775.1244ms.
+INFO  2019-05-29 17:47:46,650 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-29 17:47:46,653 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetList (Zhn.Template.Application) in 2789.0373ms
+INFO  2019-05-29 17:47:46,659 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2802.7812ms 200 application/json; charset=utf-8

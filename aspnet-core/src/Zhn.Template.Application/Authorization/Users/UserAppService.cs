@@ -60,8 +60,8 @@ namespace Zhn.Template.Authorization.Users
             _mapper = mapper;
             _userRoleRepository = userRoleRepository;
         }
-        [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
 
+        [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
         public async Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input)
         {
             var query = GetUsersFilteredQuery(input);
@@ -106,6 +106,10 @@ namespace Zhn.Template.Authorization.Users
             if (input.Id.HasValue)
             {   //修改
                 User user = await _userRepository.FirstOrDefaultAsync(input.Id.Value);
+                if (user == null)
+                {
+                    throw new UserFriendlyException("用户不存在");
+                }
                 output.User = _mapper.Map<UserEditDto>(user);
                 foreach (var userRoleDto in userRoleDtos)
                 {

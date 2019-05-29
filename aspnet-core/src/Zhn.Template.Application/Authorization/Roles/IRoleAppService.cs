@@ -14,5 +14,9 @@ namespace Zhn.Template.Authorization.Roles
         Task<ListResultDto<PermissionDto>> GetAllPermissions();
 
         Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input);
+
+        Task CreateOrUpdateRole(CreateOrUpdateRoleInput input);
+
+        Task DeleteRole(EntityDto<int> input);
     }
 }

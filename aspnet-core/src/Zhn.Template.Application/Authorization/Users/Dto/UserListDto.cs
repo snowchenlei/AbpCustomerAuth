@@ -17,10 +17,13 @@ namespace Zhn.Template.Authorization.Users.Dto
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
 
+
+
         /// <summary>
         /// 头像
         /// </summary>
         public Guid? ProfilePictureId { get; set; }
+        public bool IsEmailConfirmed { get; set; }
 
         public bool IsActive { get; set; }
 

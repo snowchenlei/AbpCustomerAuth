@@ -16,5 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Zhn.Template.Core\Zhn.Template.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authorization\Users\Caches\" />
+  </ItemGroup>
 </Project>
 

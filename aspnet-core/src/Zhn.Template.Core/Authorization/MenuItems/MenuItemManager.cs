@@ -13,32 +13,58 @@ using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Localization;
 using Abp.MultiTenancy;
+using Abp.Runtime.Caching;
 using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
 
 namespace Zhn.Template.Authorization.MenuItems
 {
-    public class MenuItemManager : TemplateDomainServiceBase, IDomainService
+    public class MenuItemManager : TemplateDomainServiceBase, IMenuItemManager
     {
         public IAbpSession AbpSession { get; set; }
         private readonly IIocResolver _iocResolver;
+        private readonly ICacheManager _cacheManager;
         private readonly IRepository<MenuItem> _menuItemRepository;
         private readonly ILocalizationContext _localizationContext;
 
-        public MenuItemManager(IRepository<MenuItem> menuItemRepository, ILocalizationContext localizationContext, IIocResolver iocResolver)
+        public MenuItemManager(IRepository<MenuItem> menuItemRepository, ILocalizationContext localizationContext, IIocResolver iocResolver, ICacheManager cacheManager)
         {
             _menuItemRepository = menuItemRepository;
             _localizationContext = localizationContext;
             _iocResolver = iocResolver;
+            _cacheManager = cacheManager;
         }
 
-        public async Task<UserMenu> GetMenuItems(UserIdentifier user)
+        public async Task<List<MenuItem>> GetMenuItemsAsync()
+        {
+            return await _cacheManager.GetCache("CoreCache")
+                 .GetAsync("MenuItemAllList", async () =>
+                 {
+                     return await _menuItemRepository.GetAll()
+                         .AsNoTracking()
+                         .ToListAsync();
+                 });
+        }
+
+        public async Task<MenuItem> GetMenuItemAsync(int id)
+        {
+            return await _cacheManager.GetCache("CoreCache")
+                .GetAsync("MenuItem", async () =>
+                {
+                    return await _menuItemRepository.GetAll()
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(a => a.Id == id);
+                });
+        }
+
+        public async Task<UserMenu> GetMenuItemTree(UserIdentifier user)
         {
             //TODO:权限过滤
             UserMenu root = new UserMenu()
             {
                 Items = new List<UserMenuItem>()
             };
+            //List<MenuItem> menus = await GetMenuItemsAsync();
             List<MenuItem> menus = await _menuItemRepository.GetAllListAsync();
             foreach (MenuItem menuItem in menus.Where(m => m.Parent == null).OrderBy(m => m.Sort))
             {

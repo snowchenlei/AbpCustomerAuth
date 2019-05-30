@@ -9,7 +9,7 @@ namespace Zhn.Template.Authorization.MenuItems
 {
     public interface IMenuItemAppService
     {
-        Task<List<MenuItemListDto>> GetList();
+        //Task<List<MenuItemListDto>> GetList();
 
         Task<PagedResultDto<MenuItemListDto>> GetMenuItems(GetMenuItemsInput input);
 

@@ -42,9 +42,13 @@ namespace Zhn.Template
                     opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Name : String.Empty)));
             configuration.CreateMap<MenuItem, MenuItemSelectListDto>();
             configuration.CreateMap<MenuItemEditDto, MenuItem>();
-            configuration.CreateMap<MenuItem, MenuItemEditDto>()
+            configuration.CreateMap<MenuItem, MenuItemCacheItem>()
                 .ForMember(entity => entity.ParentId,
                     opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Id : 0)));
+            configuration.CreateMap<MenuItemCacheItem, MenuItemEditDto>();
+            //configuration.CreateMap<MenuItem, MenuItemEditDto>()
+            //    .ForMember(entity => entity.ParentId,
+            //        opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Id : 0)));
             //AuditLog
             configuration.CreateMap<AuditLog, AuditLogListDto>();
             //configuration.CreateMap<EntityChange, EntityChangeListDto>();

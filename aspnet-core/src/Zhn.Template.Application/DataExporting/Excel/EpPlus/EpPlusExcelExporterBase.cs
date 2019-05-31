@@ -10,7 +10,7 @@ using Zhn.Template.Storage;
 
 namespace Zhn.Template.DataExporting.Excel.EpPlus
 {
-    public class EpPlusExcelExporterBase:TemplateAppServiceBase, ITransientDependency
+    public class EpPlusExcelExporterBase : TemplateAppServiceBase, ITransientDependency
     {
         private readonly ITempFileCacheManager _tempFileCacheManager;
 

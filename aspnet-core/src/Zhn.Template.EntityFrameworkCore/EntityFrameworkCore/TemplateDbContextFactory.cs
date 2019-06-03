@@ -7,17 +7,24 @@ using Zhn.Template.Web;
 namespace Zhn.Template.EntityFrameworkCore
 {
     /* This class is needed to run "dotnet ef ..." commands from command line on development. Not used anywhere else */
-    public class TemplateDbContextFactory : IDesignTimeDbContextFactory<TemplateDbContext>
+    public class TemplateDbContextFactory : DbContextFactory<TemplateDbContext>//IDesignTimeDbContextFactory<TemplateDbContext>
     {
-        public TemplateDbContext CreateDbContext(string[] args)
+        public override string ConnectionStringName => TemplateConsts.ConnectionStringName;
+
+        public override TemplateDbContext CreateDbContext(DbContextOptions<TemplateDbContext> options)
         {
-            var builder = new DbContextOptionsBuilder<TemplateDbContext>();
-            var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
-
-            TemplateDbContextConfigurer.Configure(builder, configuration.GetConnectionString(TemplateConsts.ConnectionStringName));
-
-            return new TemplateDbContext(builder.Options);
+            return new TemplateDbContext(options);
         }
+
+        //public TemplateDbContext CreateDbContext(string[] args)
+        //{
+        //    var builder = new DbContextOptionsBuilder<TemplateDbContext>();
+        //    var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
+
+        //    TemplateDbContextConfigurer.Configure(builder, configuration.GetConnectionString(TemplateConsts.ConnectionStringName));
+
+        //    return new TemplateDbContext(builder.Options);
+        //}
     }
 }
 

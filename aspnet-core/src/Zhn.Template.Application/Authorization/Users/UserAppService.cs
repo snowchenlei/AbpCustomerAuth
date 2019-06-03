@@ -41,14 +41,14 @@ namespace Zhn.Template.Authorization.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
-
+        private readonly IRepository<Person> _personRepository;
         public UserAppService(
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper, IRepository<UserRole, long> userRoleRepository)
+            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper, IRepository<UserRole, long> userRoleRepository, IRepository<Person> personRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -59,6 +59,7 @@ namespace Zhn.Template.Authorization.Users
             _userRepository = userRepository;
             _mapper = mapper;
             _userRoleRepository = userRoleRepository;
+            _personRepository = personRepository;
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users)]

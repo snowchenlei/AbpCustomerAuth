@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using Abp.Authorization.Users;
+using Abp.Domain.Entities;
 using Abp.Extensions;
 
 namespace Zhn.Template.Authorization.Users
 {
+    public class Person : Entity<int>
+    {
+        public string Name { get; set; }
+    }
     public class User : AbpUser<User>
     {
+
+
         public const string DefaultPassword = "123qwe";
 
         //public virtual bool ShouldChangePasswordOnNextLogin { get; set; }

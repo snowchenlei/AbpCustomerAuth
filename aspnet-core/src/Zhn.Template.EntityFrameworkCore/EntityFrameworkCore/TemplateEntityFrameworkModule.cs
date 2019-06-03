@@ -1,4 +1,6 @@
-﻿using Abp.EntityFrameworkCore.Configuration;
+﻿using Abp.Domain.Uow;
+using Abp.Configuration.Startup;
+using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.EntityFrameworkCore;
@@ -20,7 +22,22 @@ namespace Zhn.Template.EntityFrameworkCore
         {
             if (!SkipDbContextRegistration)
             {
+                Configuration.ReplaceService<IConnectionStringResolver, MyConnectionStringResolver>();
+
+                // Configure first DbContext
                 Configuration.Modules.AbpEfCore().AddDbContext<TemplateDbContext>(options =>
+                {
+                    if (options.ExistingConnection != null)
+                    {
+                        TemplateDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection);
+                    }
+                    else
+                    {
+                        TemplateDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                    }
+                });
+                // Configure second DbContext
+                Configuration.Modules.AbpEfCore().AddDbContext<TemplateSecondDbContext>(options =>
                 {
                     if (options.ExistingConnection != null)
                     {

@@ -4,13 +4,18 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Zhn.Template.Authorization.Users.Dto;
 using Zhn.Template.Authorization.Roles.Dto;
+using Zhn.Template.Dto;
 
 namespace Zhn.Template.Authorization.Users
 {
     public interface IUserAppService : IApplicationService
     {
         Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input);
+
+        Task<FileDto> GetUsersToExcel(GetUsersToExcelInput input);
+
         Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input);
+
         /// <summary>
         /// 添加或修改
         /// </summary>
@@ -19,8 +24,8 @@ namespace Zhn.Template.Authorization.Users
         Task CreateOrUpdateUser(CreateOrUpdateUserInput input);
 
         Task DeleteUser(EntityDto<long> input);
+
         Task<ListResultDto<RoleDto>> GetRoles();
-        
 
         Task ChangeLanguage(ChangeUserLanguageDto input);
 

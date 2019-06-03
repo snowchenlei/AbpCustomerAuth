@@ -936,399 +936,554 @@ INFO  2019-05-30 16:26:05,818 [7    ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-05-30 16:26:05,883 [9    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-05-30 16:26:05,887 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.MenuItems.MenuItemAppService.GetMenuItemForEdit (Zhn.Template.Application) in 16098.1025ms
 INFO  2019-05-30 16:26:05,892 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16112.1646ms 200 application/json; charset=utf-8
-DEBUG 2019-06-03 22:13:41,935 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
-DEBUG 2019-06-03 22:13:42,152 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
-DEBUG 2019-06-03 22:13:42,179 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,182 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,183 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,183 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,183 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,184 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,185 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,186 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,187 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,189 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,189 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,189 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,189 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,190 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,194 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
-DEBUG 2019-06-03 22:13:42,480 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:13:42,480 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:13:42,480 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:13:42,480 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:13:42,855 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:42,946 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateSecondDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:13:43,665 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
-DEBUG 2019-06-03 22:13:43,765 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
-DEBUG 2019-06-03 22:13:43,803 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
-DEBUG 2019-06-03 22:13:43,822 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
-DEBUG 2019-06-03 22:13:43,848 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
-DEBUG 2019-06-03 22:13:44,032 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
-DEBUG 2019-06-03 22:13:44,074 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
-DEBUG 2019-06-03 22:13:44,074 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
-DEBUG 2019-06-03 22:13:44,081 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
-DEBUG 2019-06-03 22:13:44,081 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
-DEBUG 2019-06-03 22:13:44,081 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
-DEBUG 2019-06-03 22:13:44,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
-DEBUG 2019-06-03 22:13:44,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
-DEBUG 2019-06-03 22:13:44,083 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
-DEBUG 2019-06-03 22:13:44,083 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
-INFO  2019-06-03 22:13:49,452 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
-INFO  2019-06-03 22:13:49,452 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
-INFO  2019-06-03 22:13:49,534 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 88.8656ms 200 
-INFO  2019-06-03 22:13:52,645 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
-INFO  2019-06-03 22:13:53,466 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
-INFO  2019-06-03 22:13:53,470 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 1.814ms.
-INFO  2019-06-03 22:13:53,638 [8    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
-INFO  2019-06-03 22:13:53,651 [8    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 999.7974ms
-INFO  2019-06-03 22:13:53,669 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4226.0802ms 302 
-INFO  2019-06-03 22:13:53,673 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger  
-INFO  2019-06-03 22:13:53,699 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 24.4328ms 301 
-INFO  2019-06-03 22:13:53,705 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
-INFO  2019-06-03 22:13:53,875 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 169.5914ms 200 text/html
-INFO  2019-06-03 22:13:53,927 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
-INFO  2019-06-03 22:13:53,928 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
-INFO  2019-06-03 22:13:53,931 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
-INFO  2019-06-03 22:13:53,938 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.swagger.js  
-INFO  2019-06-03 22:13:53,941 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.js  
-INFO  2019-06-03 22:13:53,991 [8    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'D:\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\swagger\ui\abp.js'
-INFO  2019-06-03 22:13:53,993 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'D:\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\swagger\ui\abp.swagger.js'
-INFO  2019-06-03 22:13:53,994 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 52.0545ms 200 application/javascript
-INFO  2019-06-03 22:13:53,997 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 59.118ms 200 application/javascript
-INFO  2019-06-03 22:13:54,007 [5    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
-INFO  2019-06-03 22:13:54,032 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
-INFO  2019-06-03 22:13:54,035 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 93.3539ms 200 text/css
-INFO  2019-06-03 22:13:54,038 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 109.4102ms 200 application/javascript
-INFO  2019-06-03 22:13:54,048 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
-INFO  2019-06-03 22:13:54,053 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 121.3449ms 200 application/javascript
-INFO  2019-06-03 22:13:54,362 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
-INFO  2019-06-03 22:13:54,474 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/favicon-32x32.png  
-INFO  2019-06-03 22:13:54,488 [5    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
-INFO  2019-06-03 22:13:54,532 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 26.0452ms 200 image/png
-INFO  2019-06-03 22:13:54,721 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 357.393ms 200 application/json;charset=utf-8
-INFO  2019-06-03 22:14:02,618 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 50
-INFO  2019-06-03 22:14:02,625 [7    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
-INFO  2019-06-03 22:14:02,627 [7    ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
-INFO  2019-06-03 22:14:02,666 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core)
-INFO  2019-06-03 22:14:02,668 [7    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
-INFO  2019-06-03 22:14:02,669 [7    ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
-INFO  2019-06-03 22:14:03,374 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) with arguments (Zhn.Template.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
-INFO  2019-06-03 22:14:04,096 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 719.9483ms.
-INFO  2019-06-03 22:14:04,179 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2019-06-03 22:14:04,197 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) in 1529.1029ms
-INFO  2019-06-03 22:14:04,201 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1581.8019ms 200 application/json; charset=utf-8
-INFO  2019-06-03 22:14:12,612 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsers  
-INFO  2019-06-03 22:14:12,670 [5    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:14:12,785 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsers", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application)
-INFO  2019-06-03 22:14:13,483 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) with arguments (Zhn.Template.Authorization.Users.Dto.GetUsersInput) - Validation state: Valid
-ERROR 2019-06-03 22:14:35,824 [5    ] Mvc.ExceptionHandling.AbpExceptionFilter - Invalid object name 'Person'.
-System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Person'.
-   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__122_0(Task`1 result)
+DEBUG 2019-05-31 09:33:07,129 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-31 09:33:07,680 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-31 09:33:07,701 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,707 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,707 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,707 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,708 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,708 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:07,712 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-31 09:33:09,885 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:09,885 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:09,885 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:09,885 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:10,670 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:11,961 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-31 09:33:12,126 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-31 09:33:12,173 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-31 09:33:12,298 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
+DEBUG 2019-05-31 09:33:12,326 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-31 09:33:12,510 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-31 09:33:12,563 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2019-05-31 09:33:12,563 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-31 09:33:12,569 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-31 09:33:12,569 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-31 09:33:12,570 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-31 09:33:12,589 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
+DEBUG 2019-05-31 09:33:12,589 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
+DEBUG 2019-05-31 09:33:12,591 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-31 09:33:12,592 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
+WARN  2019-05-31 09:33:36,725 [7    ] Abp.BackgroundJobs.BackgroundJobManager  - System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide, String name) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 120
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Castle.Proxies.Invocations.IRepository`2_GetAll_3.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`2Proxy_1.GetAll()
+   at Abp.BackgroundJobs.BackgroundJobStore.GetWaitingJobsAsync(Int32 maxResultCount) in D:\Github\aspnetboilerplate\src\Abp.Zero.Common\BackgroundJobs\BackgroundJobStore.cs:line 36
+   at Castle.Proxies.Invocations.BackgroundJobStore_GetWaitingJobsAsync.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformAsyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 78
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.BackgroundJobStoreProxy.GetWaitingJobsAsync(Int32 maxResultCount)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
    at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
    at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
 --- End of stack trace from previous location where exception was thrown ---
    at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
 --- End of stack trace from previous location where exception was thrown ---
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteAsync(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues, CancellationToken cancellationToken)
-   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.BufferlessMoveNext(DbContext _, Boolean buffer, CancellationToken cancellationToken)
-   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
-   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNext(CancellationToken cancellationToken)
-   at System.Linq.AsyncEnumerable.SelectEnumerableAsyncIterator`2.MoveNextCore(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\Select.cs:line 106
-   at System.Linq.AsyncEnumerable.AsyncIterator`1.MoveNext(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\AsyncIterator.cs:line 98
-   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext(CancellationToken cancellationToken)
-   at System.Linq.AsyncEnumerable.Aggregate_[TSource,TAccumulate,TResult](IAsyncEnumerable`1 source, TAccumulate seed, Func`3 accumulator, Func`2 resultSelector, CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\Aggregate.cs:line 120
-   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllListAsync()
-   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
-   at Zhn.Template.Authorization.Users.UserAppService.GetUsers(GetUsersInput input)
-   at lambda_method(Closure , Object )
-   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
-ClientConnectionId:ab78b553-ca44-4667-9980-a9a0806bae58
-Error Number:208,State:1,Class:16
-INFO  2019-06-03 22:14:36,167 [5    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2019-06-03 22:14:36,170 [5    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) in 23383.3226ms
-INFO  2019-06-03 22:14:36,173 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 23560.6459ms 500 application/json; charset=utf-8
-INFO  2019-06-03 22:14:39,814 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsers  
-INFO  2019-06-03 22:14:43,035 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:14:43,054 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsers", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application)
-INFO  2019-06-03 22:14:43,085 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) with arguments (Zhn.Template.Authorization.Users.Dto.GetUsersInput) - Validation state: Valid
-ERROR 2019-06-03 22:14:56,710 [6    ] Mvc.ExceptionHandling.AbpExceptionFilter - An error occurred while updating the entries. See the inner exception for details.
-Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'Person'.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
-   at System.Data.SqlClient.SqlDataReader.get_MetaData()
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
-   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   --- End of inner exception stack trace ---
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.BackgroundJobs.BackgroundJobManager.DoWork() in D:\Github\aspnetboilerplate\src\Abp\BackgroundJobs\BackgroundJobManager.cs:line 92
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Threading.BackgroundWorkers.PeriodicBackgroundWorkerBase.Timer_Elapsed(Object sender, EventArgs e) in D:\Github\aspnetboilerplate\src\Abp\Threading\BackgroundWorkers\PeriodicBackgroundWorkerBase.cs:line 48
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Abp.EntityFrameworkCore.AbpDbContext.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\AbpDbContext.cs:line 208
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChangesInDbContext(DbContext dbContext) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 163
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 60
-   at Zhn.Template.Authorization.Users.UserAppService.GetUsers(GetUsersInput input)
-   at lambda_method(Closure , Object )
-   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
-INFO  2019-06-03 22:14:56,713 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2019-06-03 22:14:56,715 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) in 13658.4844ms
-INFO  2019-06-03 22:14:56,718 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16903.6418ms 500 application/json; charset=utf-8
-INFO  2019-06-03 22:15:58,478 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsers  
-INFO  2019-06-03 22:15:58,485 [19   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:15:58,496 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsers", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application)
-INFO  2019-06-03 22:15:58,501 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) with arguments (Zhn.Template.Authorization.Users.Dto.GetUsersInput) - Validation state: Valid
-ERROR 2019-06-03 22:16:25,888 [19   ] Mvc.ExceptionHandling.AbpExceptionFilter - An error occurred while updating the entries. See the inner exception for details.
-Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'Person'.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
-   at System.Data.SqlClient.SqlDataReader.get_MetaData()
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
-   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   --- End of inner exception stack trace ---
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
-   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Abp.EntityFrameworkCore.AbpDbContext.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\AbpDbContext.cs:line 208
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChangesInDbContext(DbContext dbContext) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 163
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 60
-   at Zhn.Template.Authorization.Users.UserAppService.GetUsers(GetUsersInput input)
-   at lambda_method(Closure , Object )
-   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
-INFO  2019-06-03 22:16:25,890 [19   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2019-06-03 22:16:25,892 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) in 27394.5558ms
-INFO  2019-06-03 22:16:25,897 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 27423.2139ms 500 application/json; charset=utf-8
-INFO  2019-06-03 22:16:46,546 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsers  
-INFO  2019-06-03 22:16:46,548 [14   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:16:46,560 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsers", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application)
-INFO  2019-06-03 22:16:46,566 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) with arguments (Zhn.Template.Authorization.Users.Dto.GetUsersInput) - Validation state: Valid
-ERROR 2019-06-03 22:16:49,498 [14   ] Mvc.ExceptionHandling.AbpExceptionFilter - An error occurred while updating the entries. See the inner exception for details.
-Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'Person'.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
-   at System.Data.SqlClient.SqlDataReader.get_MetaData()
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
-   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   --- End of inner exception stack trace ---
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
-   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Abp.EntityFrameworkCore.AbpDbContext.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\AbpDbContext.cs:line 208
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChangesInDbContext(DbContext dbContext) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 163
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 60
-   at Zhn.Template.Authorization.Users.UserAppService.GetUsers(GetUsersInput input)
-   at lambda_method(Closure , Object )
-   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
-INFO  2019-06-03 22:16:49,500 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2019-06-03 22:16:49,502 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) in 2940.7624ms
-INFO  2019-06-03 22:16:49,506 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2957.4023ms 500 application/json; charset=utf-8
-INFO  2019-06-03 22:16:51,587 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsers  
-INFO  2019-06-03 22:16:51,589 [14   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:16:51,593 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsers", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application)
-INFO  2019-06-03 22:16:51,598 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) with arguments (Zhn.Template.Authorization.Users.Dto.GetUsersInput) - Validation state: Valid
-ERROR 2019-06-03 22:17:02,792 [15   ] Mvc.ExceptionHandling.AbpExceptionFilter - An error occurred while updating the entries. See the inner exception for details.
-Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'Person'.
-   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
-   at System.Data.SqlClient.SqlDataReader.get_MetaData()
-   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
-   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   --- End of inner exception stack trace ---
-   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
-   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
-   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
-   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
-   at Abp.EntityFrameworkCore.AbpDbContext.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\AbpDbContext.cs:line 208
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChangesInDbContext(DbContext dbContext) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 163
-   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChanges() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 60
-   at Zhn.Template.Authorization.Users.UserAppService.GetUsers(GetUsersInput input)
-   at lambda_method(Closure , Object )
-   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
-   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
-INFO  2019-06-03 22:17:02,795 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2019-06-03 22:17:02,796 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) in 11201.3299ms
-INFO  2019-06-03 22:17:02,799 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 11211.4959ms 500 application/json; charset=utf-8
-DEBUG 2019-06-03 22:17:28,139 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
-DEBUG 2019-06-03 22:17:28,256 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
-DEBUG 2019-06-03 22:17:28,274 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,277 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,277 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,277 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,278 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,278 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,278 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,279 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,279 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,280 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,280 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,280 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,281 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,281 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,281 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,281 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,284 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
-DEBUG 2019-06-03 22:17:28,387 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:17:28,387 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:17:28,387 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:17:28,387 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:17:28,726 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:28,820 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateSecondDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:17:29,571 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
-DEBUG 2019-06-03 22:17:29,673 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
-DEBUG 2019-06-03 22:17:29,711 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
-DEBUG 2019-06-03 22:17:29,732 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
-DEBUG 2019-06-03 22:17:29,757 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
-DEBUG 2019-06-03 22:17:29,946 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
-DEBUG 2019-06-03 22:17:29,989 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
-DEBUG 2019-06-03 22:17:29,989 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
-DEBUG 2019-06-03 22:17:29,995 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
-DEBUG 2019-06-03 22:17:29,996 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
-DEBUG 2019-06-03 22:17:29,996 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
-DEBUG 2019-06-03 22:17:29,996 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
-DEBUG 2019-06-03 22:17:29,996 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
-DEBUG 2019-06-03 22:17:29,997 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
-DEBUG 2019-06-03 22:17:29,997 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
-INFO  2019-06-03 22:17:35,114 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
-INFO  2019-06-03 22:17:35,114 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
-INFO  2019-06-03 22:17:35,206 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 95.1452ms 200 
-INFO  2019-06-03 22:17:38,358 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
-INFO  2019-06-03 22:17:39,222 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
-INFO  2019-06-03 22:17:39,228 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 2.5595ms.
-INFO  2019-06-03 22:17:39,569 [6    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
-INFO  2019-06-03 22:17:39,581 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1218.2566ms
-INFO  2019-06-03 22:17:39,597 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
-INFO  2019-06-03 22:17:39,600 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4494.8325ms 302 
-INFO  2019-06-03 22:17:39,794 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 195.3186ms 200 text/html
-INFO  2019-06-03 22:17:40,051 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
-INFO  2019-06-03 22:17:40,156 [7    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:17:40,456 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 405.5102ms 200 application/json;charset=utf-8
-DEBUG 2019-06-03 22:20:50,983 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
-DEBUG 2019-06-03 22:20:51,097 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
-DEBUG 2019-06-03 22:20:51,116 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,118 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,119 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,119 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,119 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,119 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,120 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,120 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,120 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,122 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,124 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
-DEBUG 2019-06-03 22:20:51,338 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:20:51,338 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:20:51,338 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:20:51,338 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2019-06-03 22:20:51,652 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:51,744 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateSecondDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2019-06-03 22:20:52,457 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
-DEBUG 2019-06-03 22:20:52,557 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
-DEBUG 2019-06-03 22:20:52,595 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
-DEBUG 2019-06-03 22:20:52,616 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
-DEBUG 2019-06-03 22:20:52,641 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
-DEBUG 2019-06-03 22:20:52,822 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
-DEBUG 2019-06-03 22:20:52,863 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
-DEBUG 2019-06-03 22:20:52,863 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
-DEBUG 2019-06-03 22:20:52,870 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
-DEBUG 2019-06-03 22:20:52,870 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
-DEBUG 2019-06-03 22:20:52,870 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
-DEBUG 2019-06-03 22:20:52,871 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
-DEBUG 2019-06-03 22:20:52,871 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
-DEBUG 2019-06-03 22:20:52,871 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
-DEBUG 2019-06-03 22:20:52,871 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
-INFO  2019-06-03 22:21:05,357 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
-INFO  2019-06-03 22:21:05,357 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
-INFO  2019-06-03 22:21:05,437 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 80.9444ms 200 
-INFO  2019-06-03 22:21:08,649 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
-INFO  2019-06-03 22:21:09,557 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
-INFO  2019-06-03 22:21:09,562 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 2.0603ms.
-INFO  2019-06-03 22:21:09,833 [6    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
-INFO  2019-06-03 22:21:09,845 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1191.547ms
-INFO  2019-06-03 22:21:09,861 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
-INFO  2019-06-03 22:21:09,863 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4514.308ms 302 
-INFO  2019-06-03 22:21:10,055 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 193.3845ms 200 text/html
-INFO  2019-06-03 22:21:10,185 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
-INFO  2019-06-03 22:21:10,289 [10   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:21:10,623 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 434.7354ms 200 application/json;charset=utf-8
-INFO  2019-06-03 22:21:17,368 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsers  
-INFO  2019-06-03 22:21:17,371 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
-INFO  2019-06-03 22:21:17,423 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsers", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application)
-INFO  2019-06-03 22:21:19,111 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) with arguments (Zhn.Template.Authorization.Users.Dto.GetUsersInput) - Validation state: Valid
-INFO  2019-06-03 22:21:49,237 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 30124.0271ms.
-INFO  2019-06-03 22:21:49,343 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2019-06-03 22:21:49,377 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsers (Zhn.Template.Application) in 31948.2009ms
-INFO  2019-06-03 22:21:49,381 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32010.6592ms 200 application/json; charset=utf-8
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide, String name) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 120
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Castle.Proxies.Invocations.IRepository`2_GetAll_3.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`2Proxy_1.GetAll()
+   at Abp.BackgroundJobs.BackgroundJobStore.GetWaitingJobsAsync(Int32 maxResultCount) in D:\Github\aspnetboilerplate\src\Abp.Zero.Common\BackgroundJobs\BackgroundJobStore.cs:line 36
+   at Castle.Proxies.Invocations.BackgroundJobStore_GetWaitingJobsAsync.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformAsyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 78
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.BackgroundJobStoreProxy.GetWaitingJobsAsync(Int32 maxResultCount)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.BackgroundJobs.BackgroundJobManager.DoWork() in D:\Github\aspnetboilerplate\src\Abp\BackgroundJobs\BackgroundJobManager.cs:line 92
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Threading.BackgroundWorkers.PeriodicBackgroundWorkerBase.Timer_Elapsed(Object sender, EventArgs e) in D:\Github\aspnetboilerplate\src\Abp\Threading\BackgroundWorkers\PeriodicBackgroundWorkerBase.cs:line 48
+INFO  2019-05-31 09:33:43,292 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-31 09:33:43,292 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-31 09:33:43,300 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-31 09:33:43,408 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 138.3718ms 200 
+INFO  2019-05-31 09:33:48,220 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
+INFO  2019-05-31 09:33:48,222 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
+INFO  2019-05-31 09:33:49,398 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
+INFO  2019-05-31 09:33:49,398 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
+INFO  2019-05-31 09:33:49,405 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 3.4949ms.
+INFO  2019-05-31 09:33:49,406 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 2.8635ms.
+INFO  2019-05-31 09:33:49,864 [12   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-31 09:33:49,865 [5    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-31 09:33:49,881 [5    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1651.7602ms
+INFO  2019-05-31 09:33:49,886 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1651.7609ms
+INFO  2019-05-31 09:33:49,919 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6649.9148ms 302 
+INFO  2019-05-31 09:33:49,920 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6636.1939ms 302 
+INFO  2019-05-31 09:33:49,985 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-31 09:33:50,290 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 309.7407ms 200 text/html
+INFO  2019-05-31 09:33:50,409 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-31 09:33:50,414 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 87.8544ms 200 text/html
+DEBUG 2019-05-31 09:33:57,971 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-31 09:33:58,008 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-31 09:33:58,035 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,039 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,039 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,039 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,040 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,040 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,040 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,041 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,041 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,041 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,041 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,044 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-31 09:33:58,105 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:58,105 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:58,105 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:58,105 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:33:58,375 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:33:58,721 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-31 09:33:58,817 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-31 09:33:58,856 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-31 09:33:58,878 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
+DEBUG 2019-05-31 09:33:58,904 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-31 09:33:58,952 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-31 09:33:58,994 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2019-05-31 09:33:58,994 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-31 09:33:59,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-31 09:33:59,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-31 09:33:59,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-31 09:33:59,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
+DEBUG 2019-05-31 09:33:59,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
+DEBUG 2019-05-31 09:33:59,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-31 09:33:59,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
+INFO  2019-05-31 09:34:10,720 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-05-31 09:34:11,685 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 966.6425ms 200 application/json;charset=utf-8
+DEBUG 2019-05-31 09:34:22,797 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-31 09:34:22,933 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-31 09:34:22,953 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,956 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,956 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,956 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,957 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,957 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,957 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,957 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,959 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,959 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,959 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,959 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:22,962 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-31 09:34:23,227 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:34:23,227 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:34:23,227 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:34:23,227 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 09:34:23,631 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 09:34:24,416 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-31 09:34:24,513 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-31 09:34:24,553 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-31 09:34:24,573 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
+DEBUG 2019-05-31 09:34:24,600 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-31 09:34:24,807 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-31 09:34:24,848 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2019-05-31 09:34:24,848 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-31 09:34:24,855 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-31 09:34:24,855 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-31 09:34:24,855 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-31 09:34:24,856 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
+DEBUG 2019-05-31 09:34:24,856 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
+DEBUG 2019-05-31 09:34:24,857 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-31 09:34:24,857 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
+INFO  2019-05-31 09:34:38,791 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-31 09:34:38,791 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-31 09:34:38,874 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 86.6744ms 200 
+INFO  2019-05-31 09:34:42,447 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
+INFO  2019-05-31 09:34:43,412 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
+INFO  2019-05-31 09:34:43,420 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 3.8125ms.
+INFO  2019-05-31 09:34:43,930 [7    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-31 09:34:43,943 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1491.062ms
+INFO  2019-05-31 09:34:43,959 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-31 09:34:43,978 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5194.5752ms 302 
+INFO  2019-05-31 09:34:44,160 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 200.3845ms 200 text/html
+INFO  2019-05-31 09:34:44,420 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-05-31 09:34:44,679 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 260.0424ms 200 application/json;charset=utf-8
+INFO  2019-05-31 09:35:33,553 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsersToExcel  
+INFO  2019-05-31 09:35:33,604 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsersToExcel", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsersToExcel (Zhn.Template.Application)
+WARN  2019-05-31 09:35:34,302 [13   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-05-31 09:35:34,308 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-05-31 09:35:34,331 [13   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-31 09:35:34,383 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsersToExcel (Zhn.Template.Application) in 757.8898ms
+INFO  2019-05-31 09:35:34,385 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 831.6713ms 401 application/json; charset=utf-8
+INFO  2019-05-31 09:35:44,587 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 50
+INFO  2019-05-31 09:35:44,594 [13   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-31 09:35:44,596 [13   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-31 09:35:44,621 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core)
+INFO  2019-05-31 09:35:44,623 [13   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-31 09:35:44,624 [13   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-31 09:35:45,486 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) with arguments (Zhn.Template.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2019-05-31 09:35:46,475 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 987.2955ms.
+INFO  2019-05-31 09:35:46,565 [10   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-31 09:35:46,595 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) in 1968.1437ms
+INFO  2019-05-31 09:35:46,606 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2015.112ms 200 application/json; charset=utf-8
+INFO  2019-05-31 09:35:50,023 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetUsersToExcel  
+INFO  2019-05-31 09:35:50,081 [17   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-31 09:35:50,200 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUsersToExcel", controller = "User"}. Executing action Zhn.Template.Authorization.Users.UserAppService.GetUsersToExcel (Zhn.Template.Application)
+INFO  2019-05-31 09:35:50,797 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Authorization.Users.UserAppService.GetUsersToExcel (Zhn.Template.Application) with arguments (Zhn.Template.Authorization.Users.Dto.GetUsersToExcelInput) - Validation state: Valid
+WARN  2019-05-31 09:35:51,450 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'EmailConfirm' in localization source 'Template'!
+WARN  2019-05-31 09:35:51,451 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Active' in localization source 'Template'!
+INFO  2019-05-31 09:35:53,740 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Authorization.Users.UserAppService.GetUsersToExcel (Zhn.Template.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2942.0696ms.
+INFO  2019-05-31 09:35:53,821 [9    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-31 09:35:53,825 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Authorization.Users.UserAppService.GetUsersToExcel (Zhn.Template.Application) in 3621.7157ms
+INFO  2019-05-31 09:35:53,829 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3804.4542ms 200 application/json; charset=utf-8
+DEBUG 2019-05-31 10:23:12,758 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+FATAL 2019-05-31 10:23:16,412 [1    ] Abp.AbpBootstrapper                      - System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\Plugins'.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1..ctor(String directory, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at Abp.Reflection.AssemblyHelper.GetAllAssembliesInFolder(String folderPath, SearchOption searchOption) in D:\Github\aspnetboilerplate\src\Abp\Reflection\AssemblyHelper.cs:line 13
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Abp.PlugIns.FolderPlugInSource.GetModules() in D:\Github\aspnetboilerplate\src\Abp\PlugIns\FolderPlugInSource.cs:line 36
+   at Abp.PlugIns.PlugInSourceExtensions.GetModulesWithAllDependencies(IPlugInSource plugInSource) in D:\Github\aspnetboilerplate\src\Abp\PlugIns\PlugInSourceExtensions.cs:line 12
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.Modules.AbpModuleManager.FindAllModuleTypes(List`1& plugInModuleTypes) in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 86
+   at Abp.Modules.AbpModuleManager.LoadAllModules() in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 67
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\Plugins'.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1..ctor(String directory, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at Abp.Reflection.AssemblyHelper.GetAllAssembliesInFolder(String folderPath, SearchOption searchOption) in D:\Github\aspnetboilerplate\src\Abp\Reflection\AssemblyHelper.cs:line 13
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Abp.PlugIns.FolderPlugInSource.GetModules() in D:\Github\aspnetboilerplate\src\Abp\PlugIns\FolderPlugInSource.cs:line 36
+   at Abp.PlugIns.PlugInSourceExtensions.GetModulesWithAllDependencies(IPlugInSource plugInSource) in D:\Github\aspnetboilerplate\src\Abp\PlugIns\PlugInSourceExtensions.cs:line 12
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.Modules.AbpModuleManager.FindAllModuleTypes(List`1& plugInModuleTypes) in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 86
+   at Abp.Modules.AbpModuleManager.LoadAllModules() in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 67
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+DEBUG 2019-05-31 10:24:16,064 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+FATAL 2019-05-31 10:24:16,130 [1    ] Abp.AbpBootstrapper                      - System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\Plugins'.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1..ctor(String directory, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at Abp.Reflection.AssemblyHelper.GetAllAssembliesInFolder(String folderPath, SearchOption searchOption) in D:\Github\aspnetboilerplate\src\Abp\Reflection\AssemblyHelper.cs:line 13
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Abp.PlugIns.FolderPlugInSource.GetModules() in D:\Github\aspnetboilerplate\src\Abp\PlugIns\FolderPlugInSource.cs:line 36
+   at Abp.PlugIns.PlugInSourceExtensions.GetModulesWithAllDependencies(IPlugInSource plugInSource) in D:\Github\aspnetboilerplate\src\Abp\PlugIns\PlugInSourceExtensions.cs:line 12
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.Modules.AbpModuleManager.FindAllModuleTypes(List`1& plugInModuleTypes) in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 86
+   at Abp.Modules.AbpModuleManager.LoadAllModules() in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 67
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\Plugins'.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1..ctor(String directory, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at Abp.Reflection.AssemblyHelper.GetAllAssembliesInFolder(String folderPath, SearchOption searchOption) in D:\Github\aspnetboilerplate\src\Abp\Reflection\AssemblyHelper.cs:line 13
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Abp.PlugIns.FolderPlugInSource.GetModules() in D:\Github\aspnetboilerplate\src\Abp\PlugIns\FolderPlugInSource.cs:line 36
+   at Abp.PlugIns.PlugInSourceExtensions.GetModulesWithAllDependencies(IPlugInSource plugInSource) in D:\Github\aspnetboilerplate\src\Abp\PlugIns\PlugInSourceExtensions.cs:line 12
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.Modules.AbpModuleManager.FindAllModuleTypes(List`1& plugInModuleTypes) in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 86
+   at Abp.Modules.AbpModuleManager.LoadAllModules() in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 67
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+FATAL 2019-05-31 10:24:16,449 [1    ] soft.AspNetCore.Hosting.Internal.WebHost - Application startup exception
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\Plugins'.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1..ctor(String directory, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at Abp.Reflection.AssemblyHelper.GetAllAssembliesInFolder(String folderPath, SearchOption searchOption) in D:\Github\aspnetboilerplate\src\Abp\Reflection\AssemblyHelper.cs:line 13
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Abp.PlugIns.FolderPlugInSource.GetModules() in D:\Github\aspnetboilerplate\src\Abp\PlugIns\FolderPlugInSource.cs:line 36
+   at Abp.PlugIns.PlugInSourceExtensions.GetModulesWithAllDependencies(IPlugInSource plugInSource) in D:\Github\aspnetboilerplate\src\Abp\PlugIns\PlugInSourceExtensions.cs:line 12
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.Modules.AbpModuleManager.FindAllModuleTypes(List`1& plugInModuleTypes) in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 86
+   at Abp.Modules.AbpModuleManager.LoadAllModules() in D:\Github\aspnetboilerplate\src\Abp\Modules\AbpModuleManager.cs:line 67
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+   at Abp.AspNetCore.AbpApplicationBuilderExtensions.InitializeAbp(IApplicationBuilder app) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\AbpApplicationBuilderExtensions.cs:line 67
+   at Abp.AspNetCore.AbpApplicationBuilderExtensions.UseAbp(IApplicationBuilder app, Action`1 optionsAction) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\AbpApplicationBuilderExtensions.cs:line 38
+   at Zhn.Template.Web.Host.Startup.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\Startup\Startup.cs:line 109
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+INFO  2019-05-31 10:24:18,667 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-31 10:24:18,667 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+ERROR 2019-05-31 10:24:18,871 [9    ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLN5DSAJMOBG", Request id "0HLN5DSAJMOBG:00000001": An unhandled exception was thrown by the application.
+System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.AspNetCore.Hosting.resources, Version=2.2.0.0, Culture=zh-CN, PublicKeyToken=adb9793829ddae60'. 系统找不到指定的路径。
+File name: 'Microsoft.AspNetCore.Hosting.resources, Version=2.2.0.0, Culture=zh-CN, PublicKeyToken=adb9793829ddae60' ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\Plugins'.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1..ctor(String directory, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at Abp.Reflection.AssemblyHelper.GetAllAssembliesInFolder(String folderPath, SearchOption searchOption) in D:\Github\aspnetboilerplate\src\Abp\Reflection\AssemblyHelper.cs:line 13
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Lazy`1.CreateValue()
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.PlugIns.AbpPlugInManager.<>c__DisplayClass6_0.<RegisterToAssemblyResolve>b__0(Object sender, ResolveEventArgs args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.AppDomain.InvokeResolveEvent(ResolveEventHandler eventHandler, RuntimeAssembly assembly, String name)
+   at System.Lazy`1.CreateValue()
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.PlugIns.AbpPlugInManager.<>c__DisplayClass6_0.<RegisterToAssemblyResolve>b__0(Object sender, ResolveEventArgs args)
+   at System.AppDomain.InvokeResolveEvent(ResolveEventHandler eventHandler, RuntimeAssembly assembly, String name)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalGetSatelliteAssembly(String name, CultureInfo culture, Version version, Boolean throwOnFileNotFound, StackCrawlMark& stackMark)
+   at System.Resources.ManifestBasedResourceGroveler.GetSatelliteAssembly(CultureInfo lookForCulture, StackCrawlMark& stackMark)
+   at System.Resources.ManifestBasedResourceGroveler.GrovelForResourceSet(CultureInfo culture, Dictionary`2 localResourceSets, Boolean tryParents, Boolean createIfNotExists, StackCrawlMark& stackMark)
+   at System.Resources.ResourceManager.InternalGetResourceSet(CultureInfo requestedCulture, Boolean createIfNotExists, Boolean tryParents, StackCrawlMark& stackMark)
+   at System.Resources.ResourceManager.InternalGetResourceSet(CultureInfo culture, Boolean createIfNotExists, Boolean tryParents)
+   at System.Resources.ResourceManager.GetString(String name, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.Resources.GetString(String name, String[] formatterNames)
+   at Microsoft.AspNetCore.Hosting.Views.ErrorPage.ExecuteAsync()
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+
+
+ERROR 2019-05-31 10:24:18,871 [6    ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLN5DSAJMOBH", Request id "0HLN5DSAJMOBH:00000001": An unhandled exception was thrown by the application.
+System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.AspNetCore.Hosting.resources, Version=2.2.0.0, Culture=zh-CN, PublicKeyToken=adb9793829ddae60'. 系统找不到指定的路径。
+File name: 'Microsoft.AspNetCore.Hosting.resources, Version=2.2.0.0, Culture=zh-CN, PublicKeyToken=adb9793829ddae60' ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\per\git\AbpCustomerAuth\aspnet-core\src\Zhn.Template.Web.Host\wwwroot\Plugins'.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1..ctor(String directory, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at Abp.Reflection.AssemblyHelper.GetAllAssembliesInFolder(String folderPath, SearchOption searchOption) in D:\Github\aspnetboilerplate\src\Abp\Reflection\AssemblyHelper.cs:line 13
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Lazy`1.CreateValue()
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.PlugIns.AbpPlugInManager.<>c__DisplayClass6_0.<RegisterToAssemblyResolve>b__0(Object sender, ResolveEventArgs args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.AppDomain.InvokeResolveEvent(ResolveEventHandler eventHandler, RuntimeAssembly assembly, String name)
+   at System.Lazy`1.CreateValue()
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.MoveNext()
+   at System.Linq.Set`1.UnionWith(IEnumerable`1 other)
+   at System.Linq.Enumerable.DistinctIterator`1.FillSet()
+   at System.Linq.Enumerable.DistinctIterator`1.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Abp.PlugIns.AbpPlugInManager.<>c__DisplayClass6_0.<RegisterToAssemblyResolve>b__0(Object sender, ResolveEventArgs args)
+   at System.AppDomain.InvokeResolveEvent(ResolveEventHandler eventHandler, RuntimeAssembly assembly, String name)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalGetSatelliteAssembly(String name, CultureInfo culture, Version version, Boolean throwOnFileNotFound, StackCrawlMark& stackMark)
+   at System.Resources.ManifestBasedResourceGroveler.GetSatelliteAssembly(CultureInfo lookForCulture, StackCrawlMark& stackMark)
+   at System.Resources.ManifestBasedResourceGroveler.GrovelForResourceSet(CultureInfo culture, Dictionary`2 localResourceSets, Boolean tryParents, Boolean createIfNotExists, StackCrawlMark& stackMark)
+   at System.Resources.ResourceManager.InternalGetResourceSet(CultureInfo requestedCulture, Boolean createIfNotExists, Boolean tryParents, StackCrawlMark& stackMark)
+   at System.Resources.ResourceManager.InternalGetResourceSet(CultureInfo culture, Boolean createIfNotExists, Boolean tryParents)
+   at System.Resources.ResourceManager.GetString(String name, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.Resources.GetString(String name, String[] formatterNames)
+   at Microsoft.AspNetCore.Hosting.Views.ErrorPage.ExecuteAsync()
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+
+
+INFO  2019-05-31 10:24:19,028 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 350.3725ms 500 
+INFO  2019-05-31 10:24:19,028 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 350.3694ms 500 
+DEBUG 2019-05-31 10:25:01,964 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-31 10:25:02,127 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-31 10:25:02,147 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.Web.Host.Startup.TemplateWebHostModule, Zhn.Template.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,150 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateWebCoreModule, Zhn.Template.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,151 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateApplicationModule, Zhn.Template.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,151 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.TemplateCoreModule, Zhn.Template.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,151 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,151 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,152 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,152 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,152 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.FluentValidation.AbpFluentValidationModule, Abp.FluentValidation, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,172 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Zhn.Template.EntityFrameworkCore.TemplateEntityFrameworkModule, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,173 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,173 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,174 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,175 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,175 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,176 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:02,188 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-31 10:25:02,599 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 10:25:02,599 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 10:25:02,599 [1    ] o.Configuration.LanguageManagementConfig - Converted Template (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 10:25:02,599 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-31 10:25:03,085 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Zhn.Template.EntityFrameworkCore.TemplateDbContext, Zhn.Template.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-31 10:25:03,977 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-31 10:25:04,079 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-31 10:25:04,121 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-31 10:25:04,176 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Template
+DEBUG 2019-05-31 10:25:04,216 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-31 10:25:04,443 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-31 10:25:04,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2019-05-31 10:25:04,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-31 10:25:04,492 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-31 10:25:04,493 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-31 10:25:04,493 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-31 10:25:04,493 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.PermissionDto
+DEBUG 2019-05-31 10:25:04,493 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.Roles.Dto.RoleDto
+DEBUG 2019-05-31 10:25:04,494 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-31 10:25:04,494 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Zhn.Template.Authorization.MultiTenancy.Dto.TenantDto
+INFO  2019-05-31 10:25:26,779 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-31 10:25:26,779 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-31 10:25:26,906 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 133.2739ms 200 
+INFO  2019-05-31 10:25:30,713 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host)
+INFO  2019-05-31 10:25:31,666 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) - Validation state: Valid
+INFO  2019-05-31 10:25:31,672 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 2.8823ms.
+INFO  2019-05-31 10:25:32,067 [6    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-31 10:25:32,081 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Web.Host.Controllers.HomeController.Index (Zhn.Template.Web.Host) in 1362.6363ms
+INFO  2019-05-31 10:25:32,123 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-31 10:25:32,131 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5360.9733ms 302 
+INFO  2019-05-31 10:25:32,428 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 304.4471ms 200 text/html
+INFO  2019-05-31 10:25:34,524 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-05-31 10:25:34,726 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-31 10:25:35,494 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 967.5479ms 200 application/json;charset=utf-8
+INFO  2019-05-31 10:26:20,062 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 50
+INFO  2019-05-31 10:26:20,079 [13   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-31 10:26:20,081 [13   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-31 10:26:20,122 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core)
+INFO  2019-05-31 10:26:20,124 [13   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-31 10:26:20,126 [13   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-31 10:26:20,973 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) with arguments (Zhn.Template.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2019-05-31 10:26:21,722 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 50
+INFO  2019-05-31 10:26:21,723 [7    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-31 10:26:21,727 [7    ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-31 10:26:21,735 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core)
+INFO  2019-05-31 10:26:21,737 [7    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2019-05-31 10:26:21,740 [7    ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2019-05-31 10:26:21,753 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) with arguments (Zhn.Template.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2019-05-31 10:26:22,284 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 526.7652ms.
+INFO  2019-05-31 10:26:22,286 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1306.7029ms.
+INFO  2019-05-31 10:26:22,624 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-31 10:26:22,625 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-31 10:26:22,664 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) in 2539.0395ms
+INFO  2019-05-31 10:26:22,667 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Controllers.TokenAuthController.Authenticate (Zhn.Template.Web.Core) in 925.8788ms
+INFO  2019-05-31 10:26:22,675 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2629.8844ms 200 application/json; charset=utf-8
+INFO  2019-05-31 10:26:22,676 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 948.3521ms 200 application/json; charset=utf-8
+INFO  2019-05-31 10:26:40,312 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Language/GetLanguages  
+INFO  2019-05-31 10:26:40,315 [17   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-31 10:26:40,331 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetLanguages", controller = "Language"}. Executing action Zhn.Template.Localization.LanguageAppService.GetLanguages (Zhn.Template.Application)
+INFO  2019-05-31 10:26:41,118 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Zhn.Template.Localization.LanguageAppService.GetLanguages (Zhn.Template.Application) - Validation state: Valid
+INFO  2019-05-31 10:26:41,179 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Zhn.Template.Localization.LanguageAppService.GetLanguages (Zhn.Template.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 59.5815ms.
+INFO  2019-05-31 10:26:41,458 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-31 10:26:41,487 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Zhn.Template.Localization.LanguageAppService.GetLanguages (Zhn.Template.Application) in 1153.5563ms
+INFO  2019-05-31 10:26:41,492 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1178.3683ms 200 application/json; charset=utf-8

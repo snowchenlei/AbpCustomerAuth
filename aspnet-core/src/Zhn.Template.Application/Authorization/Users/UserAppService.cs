@@ -26,6 +26,8 @@ using Zhn.Template.Authorization.Accounts;
 using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Roles.Dto;
 using Zhn.Template.Authorization.Users.Dto;
+using Zhn.Template.Authorization.Users.Exporting;
+using Zhn.Template.Dto;
 
 namespace Zhn.Template.Authorization.Users
 {
@@ -37,18 +39,19 @@ namespace Zhn.Template.Authorization.Users
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IRepository<User, long> _userRepository;
+        private readonly IUserListExcelExporter _userListExcelExporter;
         private readonly IRepository<UserRole, long> _userRoleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
-        private readonly IRepository<Person> _personRepository;
+
         public UserAppService(
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper, IRepository<UserRole, long> userRoleRepository, IRepository<Person> personRepository)
+            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper, IRepository<UserRole, long> userRoleRepository, IUserListExcelExporter userListExcelExporter)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -59,7 +62,7 @@ namespace Zhn.Template.Authorization.Users
             _userRepository = userRepository;
             _mapper = mapper;
             _userRoleRepository = userRoleRepository;
-            _personRepository = personRepository;
+            _userListExcelExporter = userListExcelExporter;
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
@@ -81,6 +84,20 @@ namespace Zhn.Template.Authorization.Users
                 userCount,
                 userListDtos
             );
+        }
+
+        public async Task<FileDto> GetUsersToExcel(GetUsersToExcelInput input)
+        {
+            var query = GetUsersFilteredQuery(input);
+
+            var users = await query
+                .OrderBy(input.Sorting)
+                .ToListAsync();
+
+            var userListDtos = ObjectMapper.Map<List<UserListDto>>(users);
+            await FillRoleNames(userListDtos);
+
+            return _userListExcelExporter.ExportToFile(userListDtos);
         }
 
         /// <summary>

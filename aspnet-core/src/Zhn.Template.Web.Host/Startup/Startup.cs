@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +17,9 @@ using Zhn.Template.Configuration;
 using Zhn.Template.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using Abp.PlugIns;
+using Zhn.Template.Common;
+using Zhn.Template.Swagger;
 
 namespace Zhn.Template.Web.Host.Startup
 {
@@ -24,9 +28,11 @@ namespace Zhn.Template.Web.Host.Startup
         private const string _defaultCorsPolicyName = "localhost";
 
         private readonly IConfigurationRoot _appConfiguration;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
         public Startup(IHostingEnvironment env)
         {
+            _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
@@ -54,35 +60,48 @@ namespace Zhn.Template.Web.Host.Startup
                                 .Select(o => o.RemovePostFix("/"))
                                 .ToArray()
                         )
+                        .SetIsOriginAllowedToAllowWildcardSubdomains()//设置策略的 IsOriginAllowed 属性，使可以匹配一个配置的带通配符的域名
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials()
                 )
             );
 
-            // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
-            services.AddSwaggerGen(options =>
+            if (WebConsts.SwaggerUiEnabled)
             {
-                options.SwaggerDoc("v1", new Info { Title = "Template API", Version = "v1" });
-                options.DocInclusionPredicate((docName, description) => true);
-
-                // Define the BearerAuth scheme that's in use
-                options.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
+                // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
+                services.AddSwaggerGen(options =>
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
+                    options.SwaggerDoc("v1", new Info { Title = "Template API", Version = "v1" });
+                    options.DocInclusionPredicate((docName, description) => true);
+                    options.UseReferencedDefinitionsForEnums();
+                    options.ParameterFilter<SwaggerEnumParameterFilter>();
+                    options.SchemaFilter<SwaggerEnumSchemaFilter>();
+                    options.OperationFilter<SwaggerOperationIdFilter>();
+
+                    // Define the BearerAuth scheme that's in use
+                    options.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
+                    {
+                        Description =
+                            "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                        Name = "Authorization",
+                        In = "header",
+                        Type = "apiKey"
+                    });
                 });
-            });
+            }
 
             // Configure Abp and Dependency Injection
             return services.AddAbp<TemplateWebHostModule>(
                 // Configure Log4Net logging
-                options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
-                )
-            );
+                options =>
+                {
+                    options.IocManager.IocContainer.AddFacility<LoggingFacility>(
+                        f => f.UseAbpLog4Net().WithConfig("log4net.config")
+                    );
+
+                    options.PlugInSources.AddFolder(Path.Combine(_hostingEnvironment.WebRootPath, "Plugins"), SearchOption.AllDirectories);
+                });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -96,7 +115,6 @@ namespace Zhn.Template.Web.Host.Startup
             app.UseAuthentication();
 
             app.UseAbpRequestLocalization();
-
 
             app.UseSignalR(routes =>
             {
@@ -113,18 +131,20 @@ namespace Zhn.Template.Web.Host.Startup
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            // Enable middleware to serve generated Swagger as a JSON endpoint
-            app.UseSwagger();
-            // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
-            app.UseSwaggerUI(options =>
+            if (WebConsts.SwaggerUiEnabled)
             {
-                options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "Template API V1");
-                options.IndexStream = () => Assembly.GetExecutingAssembly()
-                    .GetManifestResourceStream("Zhn.Template.Web.Host.wwwroot.swagger.ui.index.html");
-            }); // URL: /swagger
+                // Enable middleware to serve generated Swagger as a JSON endpoint
+                app.UseSwagger();
+                // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint(
+                        _appConfiguration["App:SwaggerEndPoint"], "Template API V1");
+                    options.IndexStream = () => Assembly.GetExecutingAssembly()
+                        .GetManifestResourceStream("Zhn.Template.Web.Host.wwwroot.swagger.ui.index.html");
+                    options.InjectBaseUrl(_appConfiguration["App:ServerRootAddress"]);
+                }); // URL: /swagger
+            }
         }
     }
 }
-
-

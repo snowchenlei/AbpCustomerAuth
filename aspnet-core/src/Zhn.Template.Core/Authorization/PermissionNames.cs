@@ -5,6 +5,12 @@
         public const string Pages = "Pages";
         public const string Pages_Administration = "Pages.Administration";
 
+        public const string Pages_Administration_Parameters = "Pages.Administration.Parameters";
+        public const string Pages_Administration_Parameters_Create = "Pages.Administration.Parameters.Create";
+        public const string Pages_Administration_Parameters_Edit = "Pages.Administration.Parameters.Edit";
+        public const string Pages_Administration_Parameters_Delete = "Pages.Administration.Parameters.Delete";
+        public const string Pages_Administration_Parameters_BatchDelete = "Pages.Administration.Parameters.BatchDelete";
+
         public const string Pages_Administration_Tenants = "Pages.Administration.Tenants";
         public const string Pages_Administration_AuditLogs = "Pages.Administration.AuditLogs";
 

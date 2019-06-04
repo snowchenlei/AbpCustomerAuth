@@ -7,6 +7,7 @@ using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Authorization.MultiTenancy;
 using Microsoft.Extensions.Logging.Debug;
+using Zhn.Template.Parameters;
 
 namespace Zhn.Template.EntityFrameworkCore
 {
@@ -14,6 +15,9 @@ namespace Zhn.Template.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<MenuItem> MenuItem { get; set; }
+
+        public DbSet<ParameterType> ParameterType { get; set; }
+        public DbSet<Parameter> Parameter { get; set; }
 
         //输出到debug输出
         public static readonly LoggerFactory MyLoggerFactory

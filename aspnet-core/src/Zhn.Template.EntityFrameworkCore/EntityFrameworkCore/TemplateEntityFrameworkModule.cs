@@ -9,7 +9,7 @@ using Zhn.Template.EntityFrameworkCore.Seed;
 namespace Zhn.Template.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(TemplateCoreModule), 
+        typeof(TemplateCoreModule),
         typeof(AbpZeroCoreEntityFrameworkCoreModule))]
     public class TemplateEntityFrameworkModule : AbpModule
     {
@@ -22,7 +22,7 @@ namespace Zhn.Template.EntityFrameworkCore
         {
             if (!SkipDbContextRegistration)
             {
-                Configuration.ReplaceService<IConnectionStringResolver, MyConnectionStringResolver>();
+                //Configuration.ReplaceService<IConnectionStringResolver, MyConnectionStringResolver>();
 
                 // Configure first DbContext
                 Configuration.Modules.AbpEfCore().AddDbContext<TemplateDbContext>(options =>
@@ -65,5 +65,3 @@ namespace Zhn.Template.EntityFrameworkCore
         }
     }
 }
-
-

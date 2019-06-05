@@ -12,7 +12,7 @@ namespace Zhn.Template.Parameters.Dto
         {
             if (string.IsNullOrEmpty(Sorting))
             {
-                Sorting = "Id";
+                Sorting = "Sort,Id";
             }
         }
     }

@@ -40,6 +40,12 @@ namespace Zhn.Template.Authorization
             languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_Delete, L("DeletingLanguages"));
             languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_ChangeTexts, L("ChangingTexts"));
 
+            var parameters = administration.CreateChildPermission(PermissionNames.Pages_Administration_Parameters, L("Parameters"));
+            users.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_Create, L("CreatingNewParameter"));
+            users.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_Edit, L("EditingParameter"));
+            users.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_Delete, L("DeletingParameter"));
+            users.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_BatchDelete, L("BatchDeletingParameter"));
+
             administration.CreateChildPermission(PermissionNames.Pages_Administration_AuditLogs, L("AuditLogs"));
         }
 

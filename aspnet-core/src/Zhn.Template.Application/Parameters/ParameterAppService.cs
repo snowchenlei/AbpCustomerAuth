@@ -28,7 +28,7 @@ namespace Zhn.Template.Parameters
             _mapper = mapper;
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Administration_Parameters, PermissionNames.Pages_Administration_Parameters)]
+        [AbpAuthorize(PermissionNames.Pages_Administration_Parameters)]
         public async Task<PagedResultDto<ParameterListDto>> GetParameters(GetParametersInput input)
         {
             var query = _parameteRepository.GetAll();
@@ -54,9 +54,15 @@ namespace Zhn.Template.Parameters
         /// <param name="input">id</param>
         /// <returns></returns>
         [AbpAuthorize(PermissionNames.Pages_Administration_Parameters_Create, PermissionNames.Pages_Administration_Parameters_Edit)]
-        public async Task<GetParameterForEditOutput> GetUserForEdit(NullableIdDto<long> input)
+        public async Task<GetParameterForEditOutput> GetParameterForEdit(NullableIdDto<Guid> input)
         {
-            return null;
+            GetParameterForEditOutput parameterOutput = new GetParameterForEditOutput();
+            if (input.Id.HasValue)
+            {
+                Parameter parameter = _parameteRepository.FirstOrDefault(input.Id.Value);
+                parameterOutput = _mapper.Map<GetParameterForEditOutput>(parameter);
+            }
+            return parameterOutput;
         }
     }
 }

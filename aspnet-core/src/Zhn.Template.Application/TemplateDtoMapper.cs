@@ -13,6 +13,8 @@ using Zhn.Template.Authorization.Roles;
 using Zhn.Template.Authorization.Roles.Dto;
 using Zhn.Template.Authorization.Users;
 using Zhn.Template.Authorization.Users.Dto;
+using Zhn.Template.Parameters;
+using Zhn.Template.Parameters.Dto;
 
 namespace Zhn.Template
 {
@@ -52,6 +54,10 @@ namespace Zhn.Template
             //AuditLog
             configuration.CreateMap<AuditLog, AuditLogListDto>();
             //configuration.CreateMap<EntityChange, EntityChangeListDto>();
+            //Parameter
+            configuration.CreateMap<Parameter, ParameterListDto>()
+                .ForMember(entity => entity.TypeName,
+                    opt => opt.MapFrom(src => (src.ParameterType != null ? src.ParameterType.Name : String.Empty)));
         }
     }
 }

@@ -1,0 +1,25 @@
+﻿@using Zhn.Template.Web.Startup
+@{
+    ViewData["Title"] = PageNames.Parameters;
+    Layout = "_LayoutPageTreeTable";
+    ViewBag.AbsoluteUrl = "/Parameters";
+    ViewBag.CurrentPageName = PageNames.Parameters; // The menu item will be active for this page.
+}
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Views/Parameters/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Parameters/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+<div id="toolbar">
+    <div class="btn-group" role="group" aria-label="Operate Group">
+        @if (IsGranted("Pages.Administration.Parameters.Create"))
+        {
+            <button id="create" type="button" class="btn btn-primary"><i class="fas fa-plus"></i>@L("Add")</button>
+        }
+    </div>
+</div>

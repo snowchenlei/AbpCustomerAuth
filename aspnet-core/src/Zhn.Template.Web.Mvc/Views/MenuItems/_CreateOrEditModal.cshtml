@@ -28,7 +28,7 @@
             <option></option>
             @foreach (MenuItemSelectListDto menu in Model.MenuItems)
             {
-                if (Model.MenuItem.ParentId == menu.Id)
+                if (menu.IsSelected)
                 {
                     <option value="@menu.Id" selected="selected">@menu.Name</option>
 

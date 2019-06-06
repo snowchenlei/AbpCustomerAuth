@@ -123,7 +123,7 @@ namespace Zhn.Template.Authorization.Users
             };
             if (input.Id.HasValue)
             {   //修改
-                User user = await _userRepository.FirstOrDefaultAsync(input.Id.Value);
+                User user = await _userRepository.GetAsync(input.Id.Value);
                 if (user == null)
                 {
                     throw new UserFriendlyException("用户不存在");

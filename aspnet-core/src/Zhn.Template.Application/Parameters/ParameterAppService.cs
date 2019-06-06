@@ -21,11 +21,13 @@ namespace Zhn.Template.Parameters
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Parameter, Guid> _parameteRepository;
+        private readonly IRepository<ParameterType, Guid> _parameterTypeRepository;
 
-        public ParameterAppService(IRepository<Parameter, Guid> parameteRepository, IMapper mapper)
+        public ParameterAppService(IRepository<Parameter, Guid> parameteRepository, IMapper mapper, IRepository<ParameterType, Guid> parameterTypeRepository)
         {
             _parameteRepository = parameteRepository;
             _mapper = mapper;
+            _parameterTypeRepository = parameterTypeRepository;
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Parameters)]
@@ -59,10 +61,22 @@ namespace Zhn.Template.Parameters
             GetParameterForEditOutput parameterOutput = new GetParameterForEditOutput();
             if (input.Id.HasValue)
             {
-                Parameter parameter = _parameteRepository.FirstOrDefault(input.Id.Value);
-                parameterOutput = _mapper.Map<GetParameterForEditOutput>(parameter);
+                Parameter parameter = await _parameteRepository.GetAsync(input.Id.Value);
+                parameterOutput.Parameter = _mapper.Map<ParameterEditDto>(parameter);
+            }
+            else
+            {
+                parameterOutput.Parameter = new ParameterEditDto();
             }
             return parameterOutput;
+        }
+
+        public async Task<ListResultDto<ParameterTypeDto>> GetAllParameterTypes()
+        {
+            List<ParameterType> types = await _parameterTypeRepository.GetAllListAsync();
+            return new ListResultDto<ParameterTypeDto>(
+                ObjectMapper.Map<List<ParameterTypeDto>>(types)
+            );
         }
     }
 }

@@ -11,5 +11,9 @@ namespace Zhn.Template.Parameters
     public interface IParameterAppService : IApplicationService
     {
         Task<PagedResultDto<ParameterListDto>> GetParameters(GetParametersInput input);
+
+        Task<GetParameterForEditOutput> GetParameterForEdit(NullableIdDto<Guid> input);
+
+        Task<ListResultDto<ParameterTypeDto>> GetAllParameterTypes();
     }
 }

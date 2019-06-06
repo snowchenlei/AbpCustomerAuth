@@ -6,5 +6,6 @@ namespace Zhn.Template.Parameters.Dto
 {
     public class GetParameterForEditOutput
     {
+        public ParameterEditDto Parameter { get; set; }
     }
 }

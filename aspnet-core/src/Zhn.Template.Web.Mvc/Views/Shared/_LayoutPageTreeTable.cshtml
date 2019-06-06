@@ -28,12 +28,22 @@
     <environment names="Development">
         <link href="~/lib/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/ztree_v3/css/metroStyle/metroStyle.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     @RenderSection("styles", required: false)
 }
 
 @RenderBody()
-<table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>
+<div class="row">
+    <div class="col-2">
+        <ul id="navTree" class="ztree"></ul>
+    </div>
+    <div class="col-10">
+        <table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>
+    </div>
+</div>
+@*<ul id="navTree" class="ztree"></ul>
+    <table id="tb-body" data-bind="bootstrapTable :$root" data-filter-control="true"></table>*@
 @section scripts
     {
     <environment names="Development">
@@ -42,6 +52,7 @@
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         @*<script src="~/lib/jquery-ajax-unobtrusive/src/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>*@
+        <script src="~/lib/ztree_v3/js/jquery.ztree.all.js" asp-append-version="true"></script>
     </environment>
 
     <environment names="Staging,Production">

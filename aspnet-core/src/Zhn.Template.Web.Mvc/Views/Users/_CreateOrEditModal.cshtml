@@ -72,49 +72,49 @@
                 <label asp-for="User.IsActive" class="form-check-label"></label>
             </div>
             @*@if (SettingManager.GetSettingValue<bool>(AbpZeroSettingNames.UserManagement.UserLockOut.IsEnabled))
-        {
-            <div class="form-check">
-                @if (Model.User.IsLockoutEnabled)
                 {
-                    <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" checked="checked" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
-                }
-                else
-                {
-                    <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
-                }
-                <label asp-for="User.IsLockoutEnabled" title="@L("IsLockoutEnabled_Hint")" class="form-check-label"></label>
-            </div>
-        }*@
+                    <div class="form-check">
+                        @if (Model.User.IsLockoutEnabled)
+                        {
+                            <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" checked="checked" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
+                        }
+                        else
+                        {
+                            <input asp-for="User.IsLockoutEnabled" type="checkbox" class="form-check-input" value="true" placeholder="@Html.DisplayNameFor(model => model.User.IsLockoutEnabled)">
+                        }
+                        <label asp-for="User.IsLockoutEnabled" title="@L("IsLockoutEnabled_Hint")" class="form-check-label"></label>
+                    </div>
+                }*@
             @*<label for="EditUser_IsActive" class="m-checkbox">
-            <input id="EditUser_IsActive" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
-            @L("Active")
-            <span></span>
-        </label>*@
+                    <input id="EditUser_IsActive" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
+                    @L("Active")
+                    <span></span>
+                </label>*@
             @*<div class="form-group" style="@(Model.IsEditMode ? "display:block":"display:none")">
-            <label asp-for="User.Password"></label>
-            <input asp-for="User.Password" type="password" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Password)">
-            <span asp-validation-for="User.Password" class="text-danger"></span>
-        </div>
-        <!--增强功能,暂不实现-->
-        <div class="m-checkbox-list">
-                <label for="EditUser_SetRandomPassword" class="m-checkbox">
-                    <input id="EditUser_SetRandomPassword" type="checkbox" name="SetRandomPassword" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"") />
-                    @L("SetRandomPassword")
-                    <span></span>
-                </label>
-            </div>
-            <div class="m-checkbox-list">
-                <label for="EditUser_ShouldChangePasswordOnNextLogin" class="m-checkbox">
-                    <input id="EditUser_ShouldChangePasswordOnNextLogin" type="checkbox" name="ShouldChangePasswordOnNextLogin" value="true" @Html.Raw(Model.User.ShouldChangePasswordOnNextLogin ? "checked=\"checked\"" : "")>
-                    @L("ShouldChangePasswordOnNextLogin")
-                    <span></span>
-                </label>
-                <label for="EditUser_SendActivationEmail" class="m-checkbox">
-                    <input id="EditUser_SendActivationEmail" type="checkbox" name="SendActivationEmail" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"")>
-                    @L("SendActivationEmail")
-                    <span></span>
-                </label>
-            </div>*@
+                    <label asp-for="User.Password"></label>
+                    <input asp-for="User.Password" type="password" class="form-control" placeholder="@Html.DisplayNameFor(model => model.User.Password)">
+                    <span asp-validation-for="User.Password" class="text-danger"></span>
+                </div>
+                <!--增强功能,暂不实现-->
+                <div class="m-checkbox-list">
+                        <label for="EditUser_SetRandomPassword" class="m-checkbox">
+                            <input id="EditUser_SetRandomPassword" type="checkbox" name="SetRandomPassword" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"") />
+                            @L("SetRandomPassword")
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="m-checkbox-list">
+                        <label for="EditUser_ShouldChangePasswordOnNextLogin" class="m-checkbox">
+                            <input id="EditUser_ShouldChangePasswordOnNextLogin" type="checkbox" name="ShouldChangePasswordOnNextLogin" value="true" @Html.Raw(Model.User.ShouldChangePasswordOnNextLogin ? "checked=\"checked\"" : "")>
+                            @L("ShouldChangePasswordOnNextLogin")
+                            <span></span>
+                        </label>
+                        <label for="EditUser_SendActivationEmail" class="m-checkbox">
+                            <input id="EditUser_SendActivationEmail" type="checkbox" name="SendActivationEmail" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"")>
+                            @L("SendActivationEmail")
+                            <span></span>
+                        </label>
+                    </div>*@
         </form>
     </div>
     <div class="tab-pane" id="RolesTab" role="tabpanel">

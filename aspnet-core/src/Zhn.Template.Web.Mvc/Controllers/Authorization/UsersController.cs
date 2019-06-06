@@ -25,11 +25,11 @@ namespace Zhn.Template.Web.Controllers.Authorization
             return View();
         }
 
-        public async Task<JsonResult> Load(GetUsersInput input)
-        {
-            var users = await _userAppService.GetUsers(input);
-            return Json(users);
-        }
+        //public async Task<JsonResult> Load(GetUsersInput input)
+        //{
+        //    var users = await _userAppService.GetUsers(input);
+        //    return Json(users);
+        //}
 
         public async Task<ActionResult> CreateOrEditModal(long? id)
         {

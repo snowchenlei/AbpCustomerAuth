@@ -11,6 +11,11 @@
     <RootNamespace>Zhn.Template</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Authorization\Users\Caches\**" />
+    <EmbeddedResource Remove="Authorization\Users\Caches\**" />
+    <None Remove="Authorization\Users\Caches\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Abp.FluentValidation" Version="4.5.0" />
     <PackageReference Include="Abp.Web.Common" Version="4.5.0" />
     <PackageReference Include="EPPlus" Version="4.5.3.1" />
@@ -19,7 +24,7 @@
     <ProjectReference Include="..\Zhn.Template.Core\Zhn.Template.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Authorization\Users\Caches\" />
+    <Folder Include="Authorization\Users\Importing\" />
   </ItemGroup>
 </Project>
 

@@ -15,5 +15,7 @@ namespace Zhn.Template.Parameters.Dto
                 Sorting = "Sort,Id";
             }
         }
+
+        public Guid? ParameterTypeId { get; set; }
     }
 }

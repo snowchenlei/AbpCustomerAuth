@@ -15,5 +15,9 @@ namespace Zhn.Template.Parameters
         Task<GetParameterForEditOutput> GetParameterForEdit(NullableIdDto<Guid> input);
 
         Task<ListResultDto<ParameterTypeDto>> GetAllParameterTypes();
+
+        Task CreateOrEditParameter(CreateOrUpdateParameterInput input);
+
+        Task DeleteMenuItem(EntityDto<Guid> input);
     }
 }

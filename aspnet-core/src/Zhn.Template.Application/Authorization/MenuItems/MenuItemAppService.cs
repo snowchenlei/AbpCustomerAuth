@@ -80,11 +80,8 @@ namespace Zhn.Template.Authorization.MenuItems
             output.MenuItems = _mapper.Map<List<MenuItemSelectListDto>>(menuItems);
             if (input.Id.HasValue)
             {
-                MenuItemCacheItem menuItem = await _menuItemCache.GetAsync(input.Id.Value);
-                if (menuItem == null)
-                {
-                    throw new UserFriendlyException("菜单不存在");
-                }
+                MenuItemCacheItem menuItem = await _menuItemCache.GetAsync(input.Id.Value) ??
+                                             throw new UserFriendlyException("菜单不存在");
                 foreach (MenuItemSelectListDto item in output.MenuItems)
                 {
                     if (item.Id == menuItem.ParentId)

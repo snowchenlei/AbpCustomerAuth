@@ -4,11 +4,8 @@ using System.Text;
 
 namespace Zhn.Template.Parameters.Dto
 {
-    public class GetParameterForEditOutput
+    public class CreateOrUpdateParameterInput
     {
         public ParameterEditDto Parameter { get; set; }
-
-        public List<ParameterTypeSelectListDto> ParameterTypes { get; set; }
-
     }
 }

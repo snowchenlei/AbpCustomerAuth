@@ -16,6 +16,6 @@ namespace Zhn.Template.Parameters.Dto
 
         public int Sort { get; set; }
 
-        public int ParameterTypeId { get; set; }
+        public Guid ParameterTypeId { get; set; }
     }
 }

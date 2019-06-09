@@ -58,6 +58,9 @@ namespace Zhn.Template
             configuration.CreateMap<Parameter, ParameterListDto>()
                 .ForMember(entity => entity.TypeName,
                     opt => opt.MapFrom(src => (src.ParameterType != null ? src.ParameterType.Name : String.Empty)));
+            configuration.CreateMap<ParameterType, ParameterTypeSelectListDto>();
+            configuration.CreateMap<ParameterEditDto, Parameter>();
+            configuration.CreateMap<Parameter, ParameterEditDto>();
         }
     }
 }

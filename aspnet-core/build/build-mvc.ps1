@@ -3,7 +3,7 @@
 $buildFolder = (Get-Item -Path "./" -Verbose).FullName
 $slnFolder = Join-Path $buildFolder "../"
 $outputFolder = Join-Path $buildFolder "outputs"
-$webMvcFolder = Join-Path $slnFolder "src/Zhn.Template.Web.Mvc"
+$webMvcFolder = Join-Path $slnFolder "src/Snow.Template.Web.Mvc"
 
 ## CLEAR ######################################################################
 
@@ -35,4 +35,5 @@ Copy-Item (Join-Path $slnFolder "docker/mvc/*.*") $outputFolder
 ## FINALIZE ###################################################################
 
 Set-Location $outputFolder
+
 

@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>Snow.Template.Web.Mvc</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>Snow.Template.Web.Mvc</PackageId>
+    <UserSecretsId>Snow-Template-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
+    <RootNamespace>Snow.Template.Web</RootNamespace>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\lib\bootstrap-table\.github\**" />
+    <Compile Remove="wwwroot\lib\bootstrap-table\.git\**" />
+    <Content Remove="wwwroot\lib\bootstrap-table\.github\**" />
+    <Content Remove="wwwroot\lib\bootstrap-table\.git\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bootstrap-table\.github\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bootstrap-table\.git\**" />
+    <None Remove="wwwroot\lib\bootstrap-table\.github\**" />
+    <None Remove="wwwroot\lib\bootstrap-table\.git\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Common\_PermissionTree.cshtml" />
+    <Content Remove="Views\Common\_PermissionTreeItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Update="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+    <None Update="wwwroot\**\*;Views\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Snow.Template.Web.Core\Snow.Template.Web.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="AspNet.Security.OpenIdConnect.Server" Version="2.0.0" />
+    <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.1" />
+    <PackageReference Include="Castle.LoggingFacility.MsLogging" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Abp.HangFire" Version="4.5.0" />
+    <PackageReference Include="Abp.RedisCache" Version="4.5.0" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Common\" />
+    <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
+  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2015</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+</Project>
+
+

@@ -1,4 +1,4 @@
-import { Component, Injector, ViewEncapsulation } from '@angular/core';
+﻿import { Component, Injector, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { MenuItem } from '@shared/layout/menu-item';
 
@@ -50,3 +50,4 @@ export class SideBarNavComponent extends AppComponentBase {
         return true;
     }
 }
+

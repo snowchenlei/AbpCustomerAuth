@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <VersionPrefix>1.0.0.0</VersionPrefix>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>Snow.Template.Application</AssemblyName>
+    <PackageId>Snow.Template.Application</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>Snow.Template</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Authorization\Users\Caches\**" />
+    <EmbeddedResource Remove="Authorization\Users\Caches\**" />
+    <None Remove="Authorization\Users\Caches\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.FluentValidation" Version="4.5.0" />
+    <PackageReference Include="Abp.Web.Common" Version="4.5.0" />
+    <PackageReference Include="EPPlus" Version="4.5.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Snow.Template.Core\Snow.Template.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authorization\Users\Importing\" />
+  </ItemGroup>
+</Project>
+
+

@@ -1,0 +1,30 @@
+﻿@using Abp.Authorization.Users
+@using Snow.Template.Web.Startup
+@{
+    ViewData["Title"] = PageNames.MenuItems;
+    Layout = "_LayoutPageTable";
+    ViewBag.AbsoluteUrl = "/MenuItems";
+    ViewBag.CurrentPageName = PageNames.MenuItems; // The menu item will be active for this page.
+}
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Views/MenuItems/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/MenuItems/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+<div id="toolbar">
+    <div class="btn-group" role="group" aria-label="Operate Group">
+        @if (IsGranted("Pages.Administration.MenuItems.Create"))
+        {
+            <button id="create" type="button" class="btn btn-primary"><i class="fas fa-plus"></i>@L("Add")</button>
+        }
+        @if (IsGranted("Pages.Administration.MenuItems.BatchDelete"))
+        {
+            <button id="batch-delete" type="button" class="btn btn-danger"><i class="fas fa-trash"></i>@L("BatchDelete")</button>
+        }
+    </div>
+</div>

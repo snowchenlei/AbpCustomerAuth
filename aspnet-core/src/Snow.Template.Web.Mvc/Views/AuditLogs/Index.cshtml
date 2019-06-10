@@ -1,0 +1,274 @@
+﻿@using Snow.Template.Web.Startup
+@{
+    ViewData["Title"] = PageNames.AuditLogs;
+    Layout = "_LayoutPageTable";
+    ViewBag.AbsoluteUrl = "/AuditLogs";
+    ViewBag.CurrentPageName = PageNames.AuditLogs; // The menu item will be active for this page.
+}
+<link href="~/lib/daterangepicker/daterangepicker.css" rel="stylesheet" />
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Views/AuditLogs/Index.js" asp-append-version="true"></script>
+        <script src="~/lib/daterangepicker/daterangepicker.js" asp-append-version="true"></script>
+        <script src="~/js/date.js" asp-append-version="true"></script>
+        <script src="~/js/timeBucket.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/AuditLogs/Index.min.js" asp-append-version="true"></script>
+        <script src="~/lib/daterangepicker/daterangepicker.js" asp-append-version="true"></script>
+        <script src="~/js/timeBucket.js" asp-append-version="true"></script>
+    </environment>
+}
+<!--搜索-->
+<div class="card">
+    <div class="card-header">
+        @L("QueryCondition")
+    </div>
+    <div class="card-body">
+        <form id="formSearch" class="form-inline">
+            <div class="form-group">
+                <label for="txt_search_range_time">@L("DateRange")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_range_time" placeholder=@L("DateRange")>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_user_name">@L("UserName")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_user_name" placeholder=@L("UserName")>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_service_name">@L("Service")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_service_name" placeholder=@L("Service")>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_method_name">@L("Action")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_method_name" placeholder=@L("Action")>
+            </div>
+            <div class="form-group">
+                <label>@L("Duration")</label>
+                <div class="input-group mx-sm-3">
+                    <input type="number" class="form-control" id="txt_search_min_execution_duration" min="0" max="86400000" ng-minlength="0" ng-maxlength="8" aria-describedby="basic-addon1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">-</span>
+                    </div>
+                    <input type="number" class="form-control" id="txt_search_max_execution_duration" min="0" max="86400000" ng-minlength="0" ng-maxlength="8" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sel_search_state">@L("ErrorState")</label>
+                <select id="sel_search_state" class="form-control mx-sm-3">
+                    <option value="">@L("All")</option>
+                    <option value="false">@L("Success")</option>
+                    <option value="true">@L("HasError")</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txt_search_browser">@L("Browser")</label>
+                <input type="text" class="form-control mx-sm-3" id="txt_search_browser" placeholder=@L("Browser")>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="AuditLogDetailBody" style="display: none;">
+    <div id="AuditLogDetailContent">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="userInformations-tab" data-toggle="tab" href="#userInformations" role="tab" aria-controls="userInformations" aria-selected="true">@L("UserInformations")</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="actionInformations-tab" data-toggle="tab" href="#actionInformations" role="tab" aria-controls="actionInformations" aria-selected="false">@L("ActionInformations")</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="customData-tab" data-toggle="tab" href="#customData" role="tab" aria-controls="customData" aria-selected="false">@L("CustomData")</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="errorState-tab" data-toggle="tab" href="#errorState" role="tab" aria-controls="errorState" aria-selected="false">@L("ErrorState")</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="userInformations" role="tabpanel" aria-labelledby="userInformations-tab">
+                <form>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_UserName" class="col-sm-2 col-form-label">@L("UserName"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_UserName" class="form-control-plaintext"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_ClientIpAddress" class="col-sm-2 col-form-label">@L("IpAddress"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_ClientIpAddress" class="form-control-plaintext"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_ClientName" class="col-sm-2 col-form-label">@L("Client"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_ClientName" class="col-form-label"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_BrowserInfo" class="col-sm-2 col-form-label">@L("Browser"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_BrowserInfo" class="col-form-label"></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="actionInformations" role="tabpanel" aria-labelledby="actionInformations-tab">
+                <form>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_ServiceName" class="col-sm-2 col-form-label">@L("Service"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_ServiceName" class="form-control-plaintext"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_MethodName" class="col-sm-2 col-form-label">@L("Action"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_MethodName" class="form-control-plaintext"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_ExecutionTime" class="col-sm-2 col-form-label">@L("Time"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_ExecutionTime" class="col-form-label"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_Duration" class="col-sm-2 col-form-label">@L("Duration"):</label>
+                        <div class="col-sm-10">
+                            <label id="AuditLogDetailModal_Duration" class="col-form-label"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="AuditLogDetailModal_Parameters" class="col-sm-2 col-form-label">@L("Parameters"):</label>
+                        <div class="col-sm-10">
+                            <pre id="" class="col-form-label"><code id="AuditLogDetailModal_Parameters"></code></pre>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="customData" role="tabpanel" aria-labelledby="customData-tab">@L("None")</div>
+            <div class="tab-pane fade" id="errorState" role="tabpanel" aria-labelledby="errorState-tab">
+                <form>
+                    <div class="form-group row">
+                        <p id="AuditLogDetailModal_Success" class="form-control-static col-lg-12">
+                            <i class="fa fa-check-circle m--font-success"></i>@L("Success")
+                        </p>
+                    </div>
+                    <div class="form-group row">
+                        <pre id="" class="form-control-static"><code id="AuditLogDetailModal_Exception"></code></pre>
+                        @*<p id="AuditLogDetailModal_Exception" class="form-control-static col-lg-12" style="word-wrap: break-word; overflow: hidden;"></p>*@
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @*<form class="form-horizontal audit-log-detail-view" id="AuditLogDetailContent" role="form">
+            <div class="form-body">
+                <h5 class="form-section">@L("UserInformations")</h5>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("UserName"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_UserName" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("IpAddress"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_ClientIpAddress" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("Client"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_ClientName" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("Browser"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_BrowserInfo" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row" id="AuditLogDetailModal_ImpersonatorInfo">
+                    <label class="col-lg-3 col-form-label">
+                    </label>
+                    <div class="col-lg-9 text-warning">
+                        @L("AuditLogImpersonatedOperationInfo")
+                    </div>
+                </div>
+                <h5 class="form-section margin-top-20">@L("ActionInformations")</h5>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("Service"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_ServiceName" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("Action"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_MethodName" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("Time"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_ExecutionTime" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("Duration"):
+                    </label>
+                    <div class="col-lg-9">
+                        <label id="AuditLogDetailModal_Duration" class="col-form-label"></label>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-3 col-form-label">
+                        @L("Parameters"):
+                    </label>
+                    <div class="col-lg-9 alert m-alert m-alert--default">
+                        <pre lang="js" id="AuditLogDetailModal_Parameters"></pre>
+                    </div>
+                </div>
+                <h5 class="form-section margin-top-20">@L("CustomData")</h5>
+                <div class="form-group m-form__group row">
+                    <p class="form-control-static col-lg-12" id="AuditLogDetailModal_CustomData_None">
+                        @L("None")
+                    </p>
+                </div>
+                <div class="form-group m-form__group row">
+                    <div class="col-lg-12">
+                        <pre id="AuditLogDetailModal_CustomData" class="alert m-alert m-alert--default"></pre>
+                    </div>
+                </div>
+                <h5 class="form-section margin-top-20">@L("ErrorState")</h5>
+                <div class="form-group m-form__group row">
+                    <p id="AuditLogDetailModal_Success" class="form-control-static col-lg-12">
+                        <i class="fa fa-check-circle m--font-success"></i> @L("Success")
+                    </p>
+                </div>
+                <div class="form-group m-form__group row">
+                    <div class="col-lg-12">
+                        <pre id="AuditLogDetailModal_Exception" class="alert m-alert m-alert--default"></pre>
+                    </div>
+                </div>
+            </div>
+        </form>*@
+</div>

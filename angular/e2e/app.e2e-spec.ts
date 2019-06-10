@@ -1,4 +1,4 @@
-import { ApiTestTemplatePage } from './app.po';
+﻿import { ApiTestTemplatePage } from './app.po';
 
 describe('ApiTest App', function() {
   let page: ApiTestTemplatePage;
@@ -12,3 +12,4 @@ describe('ApiTest App', function() {
     expect(page.getParagraphText()).toEqual('app works!');
   });
 });
+

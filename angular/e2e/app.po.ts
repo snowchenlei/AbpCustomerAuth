@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+﻿import { browser, element, by } from 'protractor';
 
 export class ApiTestTemplatePage {
   navigateTo() {
@@ -9,3 +9,4 @@ export class ApiTestTemplatePage {
     return element(by.css('app-root h1')).getText();
   }
 }
+

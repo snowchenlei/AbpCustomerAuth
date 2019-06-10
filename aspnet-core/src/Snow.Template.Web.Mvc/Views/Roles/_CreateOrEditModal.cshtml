@@ -1,0 +1,52 @@
+﻿@using Abp.Authorization.Users
+@using Newtonsoft.Json
+@using Snow.Template.Authorization.Users
+@model Snow.Template.Web.Models.Roles.CreateOrEditRoleModalViewModel
+@{
+    string permissionTree = JsonConvert.SerializeObject(Model.Permissions, Formatting.None, new JsonSerializerSettings
+    {
+        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
+    });
+}
+<script src="~/lib/ztree_v3/js/jquery.ztree.all.js"></script>
+@*<link href="~/lib/ztree_v3/css/demo.css" rel="stylesheet" />*@
+<link href="~/lib/ztree_v3/css/metroStyle/metroStyle.css" rel="stylesheet" />
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a href="#RoleInformationsTab" class="nav-link active" data-toggle="tab" role="tab">
+            @L("RoleInformations")
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="#PermissionsTab" data-toggle="tab" role="tab" class="nav-link">
+            @L("Permissions")
+        </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="RoleInformationsTab" role="tabpanel">
+        <form id="modelForm" name="RoleInformationsForm" role="form" novalidate>
+            @if (Model.IsEditMode)
+            {
+                <input type="hidden" name="Id" value="@Model.Role.Id" />
+            }
+            <div class="form-group">
+                <label asp-for="Role.DisplayName"></label>
+                <input asp-for="Role.DisplayName" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Role.DisplayName)">
+                <span asp-validation-for="Role.DisplayName" class="text-danger"></span>
+            </div>
+            <div class="form-check">
+                <input asp-for="Role.IsDefault" type="checkbox" value="true" class="form-check-input">
+                <label asp-for="Role.IsDefault" class="form-check-label">@L("DefaultRole_Description")</label>
+            </div>
+        </form>
+    </div>
+    <div class="tab-pane" id="PermissionsTab" role="tabpanel">
+        <ul id="permissionTree" class="ztree"></ul>
+    </div>
+</div>
+<script src="~/view-resources/Views/Roles/_CreateOrEditModal.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    $.validator.unobtrusive.parse('form');
+    var permissionNodes = @Html.Raw(permissionTree);
+</script>

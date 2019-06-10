@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, Injector, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, ViewContainerRef, Injector, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 
 import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper';
@@ -51,3 +51,4 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
         $.AdminBSB.demo.setSettingListHeightAndScroll();
     }
 }
+

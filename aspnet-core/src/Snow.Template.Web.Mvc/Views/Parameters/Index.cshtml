@@ -1,0 +1,41 @@
+﻿@using Snow.Template.Web.Startup
+@{
+    ViewData["Title"] = PageNames.Parameters;
+    Layout = "_LayoutPageTable";
+    ViewBag.AbsoluteUrl = "/Parameters";
+    ViewBag.CurrentPageName = PageNames.Parameters; // The menu item will be active for this page.
+}
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/lib/select2/dist/js/select2.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Parameters/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/lib/select2/dist/js/select2.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Parameters/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+<link href="~/lib/select2/dist/css/select2.css" rel="stylesheet" asp-append-version="true" />
+
+<!--搜索-->
+<div class="card">
+    <div class="card-header">
+        @L("QueryCondition")
+    </div>
+    <div class="card-body">
+        <form id="formSearch" class="form-inline">
+            <label class="sr-only" for="sel_search_parameter_type_id">@L("ParameterTypeId")</label>
+            <select class="form-control" id="sel_search_parameter_type_id" placeholder=@L("ParameterTypeId")></select>
+        </form>
+    </div>
+</div>
+<div id="toolbar">
+    <div class="btn-group" role="group" aria-label="Operate Group">
+        @if (IsGranted("Pages.Administration.Parameters.Create"))
+        {
+            <button id="create" type="button" class="btn btn-primary"><i class="fas fa-plus"></i>@L("Add")</button>
+        }
+    </div>
+</div>

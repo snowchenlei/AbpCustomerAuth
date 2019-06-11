@@ -8,8 +8,10 @@
         public const string SecondDbConnectionStringName = "Second";
 
         public const bool MultiTenancyEnabled = false;
+
+        public const int MaxNameLength = 50;
+        public const int MaxValueLength = 50;
+        public const int MaxCodeLength = 50;
+        public const int MaxDescriptionLength = 500;
     }
 }
-
-
-

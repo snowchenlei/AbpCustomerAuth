@@ -1,0 +1,22 @@
+﻿@using Snow.Template.ParameterManager.ParameterTypes.Dto
+@model Snow.Template.Web.Models.ParameterTypes.CreateOrEditParameterTypeModalViewModel
+<form id="modelForm" name="ParameterTypeInformationsForm" role="form" novalidate>
+    @if (Model.IsEditMode)
+    {
+        <input type="hidden" name="Id" value="@Model.ParameterType.Id" />
+    }
+
+    <div class="form-group">
+        <label asp-for="ParameterType.Code"></label>
+        <input asp-for="ParameterType.Code" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.ParameterType.Code)">
+        <span asp-validation-for="ParameterType.Code" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ParameterType.Name"></label>
+        <input asp-for="ParameterType.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.ParameterType.Name)">
+        <span asp-validation-for="ParameterType.Name" class="text-danger"></span>
+    </div>
+</form>
+<script type="text/javascript">
+    $.validator.unobtrusive.parse('form');
+</script>

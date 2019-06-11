@@ -10,14 +10,14 @@ namespace Snow.Template.Parameters
 {
     public interface IParameterAppService : IApplicationService
     {
-        Task<PagedResultDto<ParameterListDto>> GetParameters(GetParametersInput input);
+        Task<PagedResultDto<ParameterListDto>> GetPaged(GetParametersInput input);
 
-        Task<GetParameterForEditOutput> GetParameterForEdit(NullableIdDto<Guid> input);
+        Task<GetParameterForEditOutput> GetForEdit(NullableIdDto<Guid> input);
 
         Task<ListResultDto<ParameterTypeDto>> GetAllParameterTypes();
 
-        Task CreateOrEditParameter(CreateOrUpdateParameterInput input);
+        Task CreateOrEdit(CreateOrUpdateParameterInput input);
 
-        Task DeleteMenuItem(EntityDto<Guid> input);
+        Task Delete(EntityDto<Guid> input);
     }
 }

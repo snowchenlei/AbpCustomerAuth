@@ -33,7 +33,7 @@ namespace Snow.Template.Parameters
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Parameters)]
-        public async Task<PagedResultDto<ParameterListDto>> GetParameters(GetParametersInput input)
+        public async Task<PagedResultDto<ParameterListDto>> GetPaged(GetParametersInput input)
         {
             var query = _parameterRepository.GetAll()
                 .WhereIf(input.ParameterTypeId.HasValue, p => p.ParameterType.Id == input.ParameterTypeId.Value);
@@ -61,7 +61,7 @@ namespace Snow.Template.Parameters
         /// <returns></returns>
         [AbpAuthorize(PermissionNames.Pages_Administration_Parameters_Create,
             PermissionNames.Pages_Administration_Parameters_Edit)]
-        public async Task<GetParameterForEditOutput> GetParameterForEdit(NullableIdDto<Guid> input)
+        public async Task<GetParameterForEditOutput> GetForEdit(NullableIdDto<Guid> input)
         {
             GetParameterForEditOutput parameterOutput = new GetParameterForEditOutput();
             List<ParameterType> types = await _parameterTypeRepository.GetAll().AsNoTracking().ToListAsync();
@@ -100,7 +100,7 @@ namespace Snow.Template.Parameters
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Parameters_Create,
             PermissionNames.Pages_Administration_Parameters_Edit)]
-        public async Task CreateOrEditParameter(CreateOrUpdateParameterInput input)
+        public async Task CreateOrEdit(CreateOrUpdateParameterInput input)
         {
             if (input.Parameter.Id.HasValue)
             {
@@ -137,7 +137,7 @@ namespace Snow.Template.Parameters
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Parameters_Delete)]
-        public async Task DeleteMenuItem(EntityDto<Guid> input)
+        public async Task Delete(EntityDto<Guid> input)
         {
             await _parameterRepository.DeleteAsync(input.Id);
         }

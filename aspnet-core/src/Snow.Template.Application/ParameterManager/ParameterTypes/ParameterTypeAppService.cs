@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
@@ -14,6 +15,7 @@ using Snow.Template.Parameters;
 
 namespace Snow.Template.ParameterManager.ParameterTypes
 {
+    [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes)]
     public class ParameterTypeAppService : TemplateAppServiceBase, IParameterTypeAppService
     {
         private readonly IMapper _mapper;
@@ -61,6 +63,42 @@ namespace Snow.Template.ParameterManager.ParameterTypes
             }
 
             return parameterOutput;
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes_Create,
+            PermissionNames.Pages_Administration_Parameters_Edit)]
+        public async Task CreateOrEdit(CreateOrUpdateParameterTypeInput input)
+        {
+            if (input.ParameterType.Id.HasValue)
+            {
+                await UpdateAsync(input);
+            }
+            else
+            {
+                await CreateAsync(input);
+            }
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes_Create)]
+        private async Task CreateAsync(CreateOrUpdateParameterTypeInput input)
+        {
+            ParameterType parameterType = _mapper.Map<ParameterType>(input.ParameterType);
+            await _parameterTypeRepository.InsertAsync(parameterType);
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes_Edit)]
+        private async Task UpdateAsync(CreateOrUpdateParameterTypeInput input)
+        {
+            Debug.Assert(input.ParameterType.Id != null, "input.ParameterType.Id != null");
+            ParameterType parameter = await _parameterTypeRepository.GetAsync(input.ParameterType.Id.Value);
+            parameter = _mapper.Map(input.ParameterType, parameter);
+            await _parameterTypeRepository.UpdateAsync(parameter);
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes_Delete)]
+        public async Task Delete(EntityDto<Guid> input)
+        {
+            await _parameterTypeRepository.DeleteAsync(input.Id);
         }
     }
 }

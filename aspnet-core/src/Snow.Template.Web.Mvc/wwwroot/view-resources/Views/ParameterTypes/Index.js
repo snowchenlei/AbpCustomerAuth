@@ -1,26 +1,25 @@
 ﻿function queryParams(params) {
-    return { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-        maxResultCount: params.limit //页面大小
-        , skipCount: params.offset //跳过条数 //params.offset / params.limit  //页码
-        , parameterTypeId: $('#sel_search_parameter_type_id option:selected').val()
+    return {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+        maxResultCount: params.limit,   //页面大小
+        skipCount: params.offset //跳过条数 //params.offset / params.limit  //页码
     };
 }
 (function () {
-    var _parameterService = abp.services.app.parameter;
+    var _parameterTypeService = abp.services.app.parameterType;
 
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             e.preventDefault();
-            createOrEdit(app.localize('EditParameter', row.value), row.id);
+            createOrEdit(app.localize('EditParameterType', row.name), row.id);
         },
         'click .remove': function (e, value, row, index) {
             bootbox.confirm({
                 size: 'small',
                 title: app.localize('Delete', row.value),
-                message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.value),
+                message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.name),
                 callback: function (result) {
                     if (result) {
-                        _parameterService.delete({
+                        _parameterTypeService.delete({
                             id: row.id
                         }).done(function () {
                             var $table = $('#tb-body');
@@ -38,13 +37,13 @@
     function operateFormater(value, row, index) {
         var htmlArr = [];
         htmlArr.push('<div class="btn-group" role="group" aria-label="Row Operation">');
-        if (abp.auth.isGranted('Pages.Administration.Parameters.Edit')) {
+        if (abp.auth.isGranted('Pages.Administration.ParameterTypes.Edit')) {
             htmlArr.push(
                 '<button type="button" class="btn btn-sm btn-warning edit" title="edit"><i class="fas fa-edit"></i>' +
                 app.localize('Edit') +
                 '</button>');
         }
-        if (abp.auth.isGranted('Pages.Administration.Parameters.Delete')) {
+        if (abp.auth.isGranted('Pages.Administration.ParameterTypes.Delete')) {
             htmlArr.push(
                 '<button type="button" class="btn btn-sm btn-danger remove" title="remove"><i class="fas fa-trash"></i>' +
                 app.localize('Delete') +
@@ -56,8 +55,8 @@
     var columns = [
         { checkbox: true },
         { field: 'id', title: 'Id', visible: false },
-        { field: 'value', title: app.localize('Value') },
-        { field: 'typeName', title: app.localize('TypeName') },
+        { field: 'code', title: app.localize('Code') },
+        { field: 'name', title: app.localize('Name') },
         { title: app.localize('Operation'), formatter: operateFormater, events: operateEvents }
     ];
 
@@ -84,7 +83,7 @@
             }
         });
         dialog.init(function () {
-            $.get(abp.appPath + 'Parameters/CreateOrEditModal', { id: id }, function (data) {
+            $.get(abp.appPath + 'ParameterTypes/CreateOrEditModal', { id: id }, function (data) {
                 dialog.removeAttr('tabindex');
                 dialog.find('.bootbox-body').html(data);
                 dialog.find('input:not([type=hidden]):first').focus();
@@ -100,9 +99,9 @@
             abp.ui.clearBusy(dialog);
             return false;
         }
-        var parameter = $e.serializeFormToObject();
-        _parameterService.createOrEdit({
-            parameter
+        var parameterType = $e.serializeFormToObject();
+        _parameterTypeService.createOrEdit({
+            parameterType
         }).done(function (result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
             dialog.modal('hide');
@@ -111,29 +110,11 @@
             abp.ui.clearBusy(dialog);
         });
     };
-
     $(function () {
         //1、初始化表格
-        table.init('api/services/app/Parameter/GetPaged', columns);
-        $('#sel_search_parameter_type_id').select2({
-            language: "zh-CN",// 指定语言为中文，国际化才起效
-            placeholder: app.localize('PleaseChoose', app.localize('ParameterType')),//'请选择参数类型',
-            allowClear: true,
-            width: '100%',
-            ajax: {
-                url: 'api/services/app/Parameter/GetAllParameterTypes',
-                dataType: 'json',
-                processResults: function (data) {
-                    // Tranforms the top-level key of the response object from 'items' to 'results'
-                    return {
-                        results: data.result.items
-                    };
-                }
-                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-            }
-        });
+        table.init('api/services/app/ParameterType/GetPaged', columns);
         $('#create').click(function () {
-            createOrEdit(app.localize('CreateNewParameter'));
+            createOrEdit(app.localize('CreateNewParameterType'));
         });
     });
 })();

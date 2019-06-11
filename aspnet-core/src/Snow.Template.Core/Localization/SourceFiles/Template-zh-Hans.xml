@@ -107,8 +107,10 @@
     <text name="Cancel">取消</text>
     <text name="OK">确定</text>
     <text name="Loading">加载中...</text>
+    <text name="Sort">排序</text>
 
     <!--Util Validation-->
+    <text name="PleaseChoose">请选择{0}.</text>
     <text name="IsRequired">{0}是必须的.</text>
     <text name="UnderMaxLength">{0}长度不能超过{1}.</text>
     <text name="EnterAProper">请输入正确的{0}.</text>
@@ -131,7 +133,6 @@
     <text name="ConfirmPassword">确认密码</text>
     <text name="Surname">姓</text>
     <text name="DeleteUserConfirm">确认删除该用户？</text>
-
     <text name="CreateNewTenant">创建新租户</text>
     <text name="DatabaseConnectionString">数据库连接</text>
     <text name="AdminEmailAddress">管理员邮箱地址</text>
@@ -150,6 +151,16 @@
     <text name="SetRandomPassword">设置随机密码</text>
     <text name="ShouldChangePasswordOnNextLogin">下次登录设置密码</text>
     <text name="SendActivationEmail">发送邮箱验证</text>
+    <!--参数管理-->
+    <text name="CreateNewParameterType">创建新参数类型</text>
+    <text name="EditParameterType">修改参数类型：{0}</text>
+    <text name="CreateNewParameter">创建新参数</text>
+    <text name="EditParameter">修改参数：{0}</text>
+    <text name="ParameterType">参数类型</text>
+    <text name="Value">值</text>
+    <text name="Code">代码</text>
+    <text name="TypeName">类型名称</text>
+
     <!--审计日志-->
     <text name="DateRange">日期范围</text>
     <text name="Parameters">参数</text>

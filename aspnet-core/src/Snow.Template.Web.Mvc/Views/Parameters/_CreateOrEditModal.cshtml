@@ -13,17 +13,17 @@
         <select id="parameterType" name="Parameter.ParameterTypeId" class="form-control">
             <option></option>
             @foreach (ParameterTypeSelectListDto type in Model.ParameterTypes)
+            {
+                if (type.IsSelected)
                 {
-                    if (type.IsSelected)
-                    {
-                        <option value="@type.Id" selected="selected">@type.Name</option>
+                    <option value="@type.Id" selected="selected">@type.Name</option>
 
-                    }
-                    else
-                    {
-                        <option value="@type.Id">@type.Name</option>
-                    }
                 }
+                else
+                {
+                    <option value="@type.Id">@type.Name</option>
+                }
+            }
         </select>
         <span asp-validation-for="Parameter.ParameterTypeId" class="text-danger"></span>
     </div>
@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
         <label asp-for="Parameter.Description"></label>
-        <input asp-for="Parameter.Description" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Parameter.Description)">
+        <textarea asp-for="Parameter.Description" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Parameter.Description)"></textarea>
         <span asp-validation-for="Parameter.Description" class="text-danger"></span>
     </div>
     <div class="form-group">

@@ -25,10 +25,15 @@
         @L("QueryCondition")
     </div>
     <div class="card-body">
-        <form id="formSearch" class="form-inline">
-            <label class="sr-only" for="sel_search_parameter_type_id">@L("ParameterTypeId")</label>
-            <select class="form-control" id="sel_search_parameter_type_id" placeholder=@L("ParameterTypeId")></select>
-        </form>
+        <div class="form-row align-items-center">
+            <div class="col-sm-2 my-1">
+                <label class="sr-only" for="sel_search_parameter_type_id">Name</label>
+                <select class="form-control mb-2 mr-sm-2" id="sel_search_parameter_type_id">
+                    <option></option>
+                </select>
+                @*<input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">*@
+            </div>
+        </div>
     </div>
 </div>
 <div id="toolbar">

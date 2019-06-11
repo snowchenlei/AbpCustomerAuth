@@ -7,6 +7,7 @@
         public const string Tenants = "Tenants";
         public const string Users = "Users";
         public const string Parameters = "Parameters";
+        public const string ParameterTypes = "ParameterTypes";
         public const string MenuItems = "MenuItems";
         public const string AuditLogs = "AuditLogs";
         public const string Roles = "Roles";

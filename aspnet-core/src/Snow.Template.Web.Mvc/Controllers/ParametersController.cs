@@ -31,7 +31,7 @@ namespace Snow.Template.Web.Mvc.Controllers
         [AbpMvcAuthorize(PermissionNames.Pages_Administration_Parameters_Create, PermissionNames.Pages_Administration_Parameters_Edit)]
         public async Task<ActionResult> CreateOrEditModal(Guid? id)
         {
-            var output = await _parameterAppService.GetParameterForEdit(new NullableIdDto<Guid> { Id = id });
+            var output = await _parameterAppService.GetForEdit(new NullableIdDto<Guid> { Id = id });
             var viewModel = new CreateOrEditParameterModalViewModel(output);
 
             return PartialView("_CreateOrEditModal", viewModel);

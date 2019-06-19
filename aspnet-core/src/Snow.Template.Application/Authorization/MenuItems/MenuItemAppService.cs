@@ -50,8 +50,7 @@ namespace Snow.Template.Authorization.MenuItems
 
         //    return new List<MenuItemListDto>(menuItemListDtos);
         //}
-
-        [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
+        
         public async Task<PagedResultDto<MenuItemListDto>> GetMenuItems(GetMenuItemsInput input)
         {
             var query = _menuItemRepository.GetAll();
@@ -69,6 +68,18 @@ namespace Snow.Template.Authorization.MenuItems
                 menuItemCount,
                 menuItemListDtos
             );
+        }
+
+        public async Task<List<MenuItemTreeListDto>> GetMenuItemTree()
+        {
+            List<MenuItem> menuItems =
+                await _menuItemRepository.GetAllIncluding(a => a.Parent).AsNoTracking().ToListAsync();
+            return menuItems.Select(m => new MenuItemTreeListDto
+            {
+                Id = m.Id,
+                ParentId = m.Parent == null ? 0 : m.Parent.Id,
+                Name = m.Name
+            }).ToList();
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,

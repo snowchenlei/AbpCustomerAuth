@@ -118,10 +118,33 @@
             });
         });
     }
+
+    var setting = {
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: 'id',
+                pIdKey: 'parentId',
+                rootPId: 0
+            }
+        },
+        async: {
+            enable: true,
+            type: 'get',
+            url: "api/services/app/MenuItem/GetMenuItemTree",
+            dataFilter: function ajaxDataFilter(treeId, parentNode, responseData) {
+                if (responseData) {
+                    return responseData.result;
+                }
+                return responseData;
+            }
+        }
+    };
     $(function () {
         //1、初始化表格
         table.init('api/services/app/MenuItem/GetMenuItems', columns);
-
+        //$('#navTree').
+        $.fn.zTree.init($("#navTree"), setting);
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewMenuItem'));
         });

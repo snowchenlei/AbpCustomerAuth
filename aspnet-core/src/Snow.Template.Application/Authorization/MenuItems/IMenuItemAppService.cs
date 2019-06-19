@@ -13,6 +13,8 @@ namespace Snow.Template.Authorization.MenuItems
 
         Task<PagedResultDto<MenuItemListDto>> GetMenuItems(GetMenuItemsInput input);
 
+        Task<List<MenuItemTreeListDto>> GetMenuItemTree();
+
         Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input);
 
         Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input);

@@ -40,9 +40,9 @@ namespace Snow.Template.Web.Controllers.Authorization
         }
 
         [AbpMvcAuthorize(PermissionNames.Pages_Administration_MenuItems_Create, PermissionNames.Pages_Administration_MenuItems_Edit)]
-        public async Task<ActionResult> CreateOrEditModal(int? menuItemId)
+        public async Task<ActionResult> CreateOrEditModal(int? menuItemId, int? parentId)
         {
-            var output = await _menuItemAppService.GetMenuItemForEdit(new NullableIdDto { Id = menuItemId });
+            var output = await _menuItemAppService.GetMenuItemForEdit(new NullableIdDto { Id = menuItemId }, parentId);
             var viewModel = new CreateOrEditMenuItemModalViewModel(output);
 
             return PartialView("_CreateOrEditModal", viewModel);

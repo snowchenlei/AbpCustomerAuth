@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Snow.Template.Authorization.MenuItems.Dto;
 
 namespace Snow.Template.Authorization.MenuItems
 {
-    public interface IMenuItemAppService
+    public interface IMenuItemAppService : IApplicationService
     {
         //Task<List<MenuItemListDto>> GetList();
 
@@ -15,7 +16,7 @@ namespace Snow.Template.Authorization.MenuItems
 
         Task<List<MenuItemTreeListDto>> GetMenuItemTree();
 
-        Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input);
+        Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input, int? parentId);
 
         Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input);
 

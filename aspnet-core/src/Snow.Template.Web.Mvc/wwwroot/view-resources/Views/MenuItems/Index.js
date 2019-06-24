@@ -1,12 +1,13 @@
 ﻿function queryParams(params) {
     return {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
         maxResultCount: params.limit,   //页面大小
-        skipCount: params.offset //跳过条数 //params.offset / params.limit  //页码
+        skipCount: params.offset, //跳过条数 //params.offset / params.limit  //页码
+        parentId: $('#parent_menu_id').val()
     };
 }
 (function () {
     var _menuItemService = abp.services.app.menuItem;
-    var dialog;
+    var dialog, treeId = 'navTree';
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             e.preventDefault();
@@ -82,13 +83,14 @@
         }).done(function (result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
             dialog.modal('hide');
+            ztreeInit();
             refreshTable();
         }).always(function () {
             abp.ui.clearBusy(dialog);
         });
     }
 
-    //搜索
+    //创建/添加
     function createOrEdit(title, id) {
         dialog = bootbox.dialog({
             title: title,
@@ -112,13 +114,14 @@
             }
         });
         dialog.init(function () {
-            $.get(abp.appPath + 'MenuItems/CreateOrEditModal', { menuItemId: id }, function (data) {
+            $.get(abp.appPath + 'MenuItems/CreateOrEditModal', { menuItemId: id, parentId: $('#parent_menu_id').val() }, function (data) {
                 dialog.find('.bootbox-body').html(data);
                 dialog.find('input:not([type=hidden]):first').focus();
             });
         });
     }
 
+    //TODO:树异步全部展开
     var setting = {
         data: {
             simpleData: {
@@ -138,13 +141,44 @@
                 }
                 return responseData;
             }
+        },
+        callback: {
+            onClick: onClick,
+            onAsyncSuccess: onAsyncSuccess,
         }
     };
+    function ztreeInit() {
+        $.fn.zTree.init($("#" + treeId), setting);
+    }
+    function onClick(event, treeId, treeNode, clickFlag) {
+        if (clickFlag === 0) {
+            $('#parent_menu_id').val('');
+
+        } else {
+            $('#parent_menu_id').val(treeNode.id);
+        }
+        refreshTable();
+    }	
+    function onAsyncSuccess() {
+        expandAll();
+    }
+    function expandAll() {
+        var zTree = $.fn.zTree.getZTreeObj(treeId);
+            zTree.expandAll(true);
+        //if (asyncForAll) {
+        //    $("#demoMsg").text(demoMsg.expandAll);
+        //} else {
+        //    expandNodes(zTree.getNodes());
+        //    if (!goAsync) {
+        //        $("#demoMsg").text(demoMsg.expandAll);
+        //        curStatus = "";
+        //    }
+        //}
+    }
     $(function () {
         //1、初始化表格
         table.init('api/services/app/MenuItem/GetMenuItems', columns);
-        //$('#navTree').
-        $.fn.zTree.init($("#navTree"), setting);
+        ztreeInit();
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewMenuItem'));
         });

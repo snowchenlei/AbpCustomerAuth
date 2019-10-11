@@ -55,7 +55,7 @@ namespace Snow.Template.Tests.Roles
                         DisplayName = "test",
                         IsDefault = false
                     },
-                    Permissions = new List<string>()
+                    GrantedPermissions = new List<string>()
                 });
             // Assert
             await UsingDbContextAsync(async context =>
@@ -81,7 +81,7 @@ namespace Snow.Template.Tests.Roles
                         Id = defaultRole.Id,
                         DisplayName = newDisplayName
                     },
-                    Permissions = new List<string>()
+                    GrantedPermissions = new List<string>()
                 });
             // Assert
             await UsingDbContextAsync(async context =>

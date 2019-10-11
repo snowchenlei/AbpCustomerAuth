@@ -108,7 +108,6 @@ namespace Snow.Template.Authorization.MenuItems
                     {
                         continue;
                     }
-
                     if (!string.IsNullOrEmpty(menuItemDefinition.RequiredPermissionName))
                     {
                         var permissionDependency = new SimplePermissionDependency(menuItemDefinition.RequiredPermissionName);

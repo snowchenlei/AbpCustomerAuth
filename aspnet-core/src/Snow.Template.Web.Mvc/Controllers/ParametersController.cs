@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Snow.Template.Authorization;
 using Snow.Template.Controllers;
@@ -15,10 +16,14 @@ namespace Snow.Template.Web.Mvc.Controllers
     [AbpMvcAuthorize(PermissionNames.Pages_Administration_Parameters)]
     public class ParametersController : TemplateControllerBase
     {
+        private readonly IMapper _mapper;
+
         private readonly IParameterAppService _parameterAppService;
 
-        public ParametersController(IParameterAppService parameterAppService)
+        public ParametersController(IParameterAppService parameterAppService
+            , IMapper mapper)
         {
+            _mapper = mapper;
             _parameterAppService = parameterAppService;
         }
 
@@ -32,7 +37,7 @@ namespace Snow.Template.Web.Mvc.Controllers
         public async Task<ActionResult> CreateOrEditModal(Guid? id)
         {
             var output = await _parameterAppService.GetForEdit(new NullableIdDto<Guid> { Id = id });
-            var viewModel = new CreateOrEditParameterModalViewModel(output);
+            var viewModel = _mapper.Map<CreateOrEditParameterModalViewModel>(output);
 
             return PartialView("_CreateOrEditModal", viewModel);
         }

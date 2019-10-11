@@ -41,7 +41,7 @@ namespace Snow.Template.Web.Host.Startup
             // MVC
             services.AddMvc(
                 options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
-            );
+            ).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
@@ -54,7 +54,8 @@ namespace Snow.Template.Web.Host.Startup
                     _defaultCorsPolicyName,
                     builder => builder
                         .WithOrigins(
-                            // App:CorsOrigins in appsettings.json can contain more than one address separated by comma.
+                            // App:CorsOrigins in appsettings.json can contain more than one address
+                            // separated by comma.
                             _appConfiguration["App:CorsOrigins"]
                                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                                 .Select(o => o.RemovePostFix("/"))
@@ -69,7 +70,8 @@ namespace Snow.Template.Web.Host.Startup
 
             if (WebConsts.SwaggerUiEnabled)
             {
-                // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
+                // Swagger - Enable this line and the related lines in Configure method to enable
+                // swagger UI
                 services.AddSwaggerGen(options =>
                 {
                     options.SwaggerDoc("v1", new Info { Title = "Template API", Version = "v1" });

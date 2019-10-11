@@ -1,6 +1,5 @@
 ﻿(function () {
     $(function () {
-
         var _tenantService = abp.services.app.tenant;
         var _$modal = $('#TenantCreateModal');
         var _$form = _$modal.find('form');
@@ -22,7 +21,7 @@
             var tenantId = $(this).attr("data-tenant-id");
 
             e.preventDefault();
-            $.ajax({
+            app.ajax({
                 url: abp.appPath + 'Tenants/EditTenantModal?tenantId=' + tenantId,
                 type: 'POST',
                 contentType: 'application/html',
@@ -75,5 +74,3 @@
         }
     });
 })();
-
-

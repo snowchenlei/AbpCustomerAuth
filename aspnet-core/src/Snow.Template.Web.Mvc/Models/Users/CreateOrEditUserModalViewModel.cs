@@ -10,11 +10,6 @@ namespace Snow.Template.Web.Models.Users
     [AutoMapFrom(typeof(GetUserForEditOutput))]
     public class CreateOrEditUserModalViewModel : GetUserForEditOutput
     {
-        public CreateOrEditUserModalViewModel(GetUserForEditOutput output)
-        {
-            output.MapTo(this);
-        }
-
         public bool CanChangeUserName
         {
             get { return User.UserName != Authorization.Users.User.AdminUserName; }

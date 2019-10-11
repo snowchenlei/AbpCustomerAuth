@@ -123,11 +123,11 @@ namespace Snow.Template.Authorization.Roles
             role.SetNormalizedName();
 
             CheckErrors(await _roleManager.CreateAsync(role));
-            if (input.Permissions.Any())
+            if (input.GrantedPermissions.Any())
             {
                 var grantedPermissions = PermissionManager
                     .GetAllPermissions()
-                    .Where(p => input.Permissions.Contains(p.Name))
+                    .Where(p => input.GrantedPermissions.Contains(p.Name))
                     .ToList();
 
                 await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
@@ -146,7 +146,7 @@ namespace Snow.Template.Authorization.Roles
 
             var grantedPermissions = PermissionManager
                 .GetAllPermissions()
-                .Where(p => input.Permissions.Contains(p.Name))
+                .Where(p => input.GrantedPermissions.Contains(p.Name))
                 .ToList();
 
             await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
@@ -171,7 +171,7 @@ namespace Snow.Template.Authorization.Roles
             var permissions = PermissionManager.GetAllPermissions();
 
             return Task.FromResult(new ListResultDto<PermissionDto>(
-                ObjectMapper.Map<List<PermissionDto>>(permissions)
+                ObjectMapper.Map<List<PermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList()
             ));
         }
 

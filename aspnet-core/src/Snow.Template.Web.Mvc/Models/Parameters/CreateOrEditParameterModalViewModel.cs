@@ -10,11 +10,6 @@ namespace Snow.Template.Web.Models.Parameters
     [AutoMapFrom(typeof(GetParameterForEditOutput))]
     public class CreateOrEditParameterModalViewModel : GetParameterForEditOutput
     {
-        public CreateOrEditParameterModalViewModel(GetParameterForEditOutput output)
-        {
-            output.MapTo(this);
-        }
-
         public bool IsEditMode
         {
             get { return Parameter.Id.HasValue; }

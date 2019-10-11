@@ -28,7 +28,7 @@
     <ProjectReference Include="..\Snow.Template.Web.Core\Snow.Template.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -44,7 +44,7 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Abp.Castle.Log4Net" Version="4.5.0" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="4.9.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\swagger\ui\index.html">

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Snow.Template.Authorization;
 using Snow.Template.Authorization.Users;
@@ -14,8 +15,10 @@ namespace Snow.Template.Web.Controllers.Authorization
     public class UsersController : TemplateControllerBase
     {
         private readonly IUserAppService _userAppService;
+        private readonly IMapper _mapper;
 
-        public UsersController(IUserAppService userAppService)
+        public UsersController(IUserAppService userAppService
+            , IMapper mapper)
         {
             _userAppService = userAppService;
         }
@@ -34,7 +37,7 @@ namespace Snow.Template.Web.Controllers.Authorization
         public async Task<ActionResult> CreateOrEditModal(long? id)
         {
             var output = await _userAppService.GetUserForEdit(new NullableIdDto<long> { Id = id });
-            var viewModel = new CreateOrEditUserModalViewModel(output)
+            var viewModel = _mapper.Map<CreateOrEditUserModalViewModel>(output);
             {
                 //PasswordComplexitySetting = await _passwordComplexitySettingStore.GetSettingsAsync()
             };

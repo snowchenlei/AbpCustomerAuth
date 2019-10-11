@@ -23,9 +23,9 @@ namespace Snow.Template
             LocalizationSourceName = TemplateConsts.LocalizationSourceName;
         }
 
-        protected virtual Task<User> GetCurrentUserAsync()
+        protected virtual async Task<User> GetCurrentUserAsync()
         {
-            var user = UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
+            var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
             if (user == null)
             {
                 throw new Exception("There is no current user!");
@@ -45,6 +45,3 @@ namespace Snow.Template
         }
     }
 }
-
-
-

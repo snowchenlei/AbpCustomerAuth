@@ -55,6 +55,3 @@ namespace Snow.Template.Authorization.Accounts
         }
     }
 }
-
-
-

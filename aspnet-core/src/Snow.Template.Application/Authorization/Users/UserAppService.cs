@@ -28,6 +28,7 @@ using Snow.Template.Authorization.Roles.Dto;
 using Snow.Template.Authorization.Users.Dto;
 using Snow.Template.Authorization.Users.Exporting;
 using Snow.Template.Dto;
+using Abp.Domain.Uow;
 
 namespace Snow.Template.Authorization.Users
 {
@@ -44,6 +45,7 @@ namespace Snow.Template.Authorization.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+        private readonly IUnitOfWorkManager unitOfWorkManager;
 
         public UserAppService(
             UserManager userManager,

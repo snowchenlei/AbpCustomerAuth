@@ -16,8 +16,8 @@
     <None Remove="Authorization\Users\Caches\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.FluentValidation" Version="4.5.0" />
-    <PackageReference Include="Abp.Web.Common" Version="4.5.0" />
+    <PackageReference Include="Abp.FluentValidation" Version="4.8.1" />
+    <PackageReference Include="Abp.Web.Common" Version="4.9.0" />
     <PackageReference Include="EPPlus" Version="4.5.3.1" />
   </ItemGroup>
   <ItemGroup>

@@ -41,7 +41,7 @@
     <ProjectReference Include="..\Snow.Template.Web.Core\Snow.Template.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.3.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
       <PrivateAssets>all</PrivateAssets>
@@ -63,9 +63,9 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Abp.HangFire" Version="4.5.0" />
-    <PackageReference Include="Abp.RedisCache" Version="4.5.0" />
-    <PackageReference Include="Abp.Castle.Log4Net" Version="4.5.0" />
+    <PackageReference Include="Abp.HangFire" Version="4.9.0" />
+    <PackageReference Include="Abp.RedisCache" Version="4.9.0" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="4.9.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>

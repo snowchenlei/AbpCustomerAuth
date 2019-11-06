@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Snow.Template.ParameterManager.ParameterTypes.Dto;
 using Snow.Template.Parameters.Dto;
 
 namespace Snow.Template.Parameters

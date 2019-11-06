@@ -26,7 +26,7 @@ namespace Snow.Template.Tests.Roles
         public async Task GetRoles_Test()
         {
             // Act
-            var output = await _roleAppService.GetRoles(new GetRolesInput() { MaxResultCount = 20, SkipCount = 0 });
+            var output = await _roleAppService.GetPagedAsync(new GetRolesInput() { MaxResultCount = 20, SkipCount = 0 });
 
             // Assert
             output.Items.Count.ShouldBeGreaterThan(0);
@@ -38,7 +38,7 @@ namespace Snow.Template.Tests.Roles
             // Arrange
             var defaultRole = await UsingDbContextAsync(async context => await context.Roles.FirstOrDefaultAsync(u => u.TenantId == AbpSession.TenantId));
             // Act
-            var output = await _roleAppService.GetRoleForEdit(new NullableIdDto(defaultRole.Id));
+            var output = await _roleAppService.GetForEditAsync(new NullableIdDto(defaultRole.Id));
             // Assert
             output.Role.DisplayName.ShouldBeSameAs(defaultRole.DisplayName);
         }
@@ -47,7 +47,7 @@ namespace Snow.Template.Tests.Roles
         public async Task CreateRole_Test()
         {
             // Act
-            await _roleAppService.CreateOrUpdateRole(
+            await _roleAppService.CreateOrUpdateAsync(
                 new CreateOrUpdateRoleInput()
                 {
                     Role = new RoleEditDto()
@@ -73,7 +73,7 @@ namespace Snow.Template.Tests.Roles
             string newDisplayName = defaultRole.DisplayName + "_new";
 
             // Act
-            await _roleAppService.CreateOrUpdateRole(
+            await _roleAppService.CreateOrUpdateAsync(
                 new CreateOrUpdateRoleInput()
                 {
                     Role = new RoleEditDto()
@@ -97,7 +97,7 @@ namespace Snow.Template.Tests.Roles
             // Arrange
             Role defaultRole = await InitDateAsync();
             // Act
-            await _roleAppService.DeleteRole(new EntityDto<int>(defaultRole.Id));
+            await _roleAppService.DeleteAsync(new EntityDto<int>(defaultRole.Id));
             // Assert
             await UsingDbContextAsync(async context =>
             {

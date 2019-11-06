@@ -23,7 +23,6 @@ namespace Snow.Template.Tests.DependencyInjection
 
             var builder = new DbContextOptionsBuilder<TemplateDbContext>();
             builder.UseInMemoryDatabase(Guid.NewGuid().ToString()).UseInternalServiceProvider(serviceProvider);
-
             iocManager.IocContainer.Register(
                 Component
                     .For<DbContextOptions<TemplateDbContext>>()

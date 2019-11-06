@@ -7,7 +7,8 @@
         },
         data: {
             key: {
-                name: 'displayName'
+                name: 'displayName',
+                checked: 'isSelected'
             },
             simpleData: {
                 enable: true,

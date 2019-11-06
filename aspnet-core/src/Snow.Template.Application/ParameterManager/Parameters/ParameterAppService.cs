@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Snow.Template.Authorization;
 using Snow.Template.Authorization.Users;
 using Snow.Template.Authorization.Users.Dto;
+using Snow.Template.ParameterManager.ParameterTypes.Dto;
 using Snow.Template.Parameters.Dto;
 
 namespace Snow.Template.Parameters

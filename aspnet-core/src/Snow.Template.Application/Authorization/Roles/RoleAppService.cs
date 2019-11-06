@@ -37,7 +37,7 @@ namespace Snow.Template.Authorization.Roles
             _roleRepository = repository;
         }
 
-        public async Task<PagedResultDto<RoleListDto>> GetRoles(GetRolesInput input)
+        public async Task<PagedResultDto<RoleListDto>> GetPagedAsync(GetRolesInput input)
         {
             var query = GetRolesFilteredQuery(input);
 
@@ -58,7 +58,7 @@ namespace Snow.Template.Authorization.Roles
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create,
             PermissionNames.Pages_Administration_Roles_Edit)]
-        public async Task<GetRoleForEditOutput> GetRoleForEdit(NullableIdDto input)
+        public async Task<GetRoleForEditOutput> GetForEditAsync(NullableIdDto input)
         {
             var permissions = PermissionManager.GetAllPermissions();
 
@@ -90,7 +90,7 @@ namespace Snow.Template.Authorization.Roles
             };
         }
 
-        public async Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input)
+        public async Task<ListResultDto<RoleListDto>> GetListAsync(GetRolesInput input)
         {
             var roles = await _roleManager
                 .Roles
@@ -104,20 +104,20 @@ namespace Snow.Template.Authorization.Roles
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create, PermissionNames.Pages_Administration_Roles_Edit)]
-        public async Task CreateOrUpdateRole(CreateOrUpdateRoleInput input)
+        public async Task CreateOrUpdateAsync(CreateOrUpdateRoleInput input)
         {
             if (input.Role.Id.HasValue)
             {
-                await UpdateRoleAsync(input);
+                await UpdateAsync(input);
             }
             else
             {
-                await CreateRoleAsync(input);
+                await CreateAsync(input);
             }
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Create)]
-        protected virtual async Task CreateRoleAsync(CreateOrUpdateRoleInput input)
+        protected virtual async Task CreateAsync(CreateOrUpdateRoleInput input)
         {
             var role = _mapper.Map<Role>(input.Role);
             role.SetNormalizedName();
@@ -135,7 +135,7 @@ namespace Snow.Template.Authorization.Roles
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Edit)]
-        protected virtual async Task UpdateRoleAsync(CreateOrUpdateRoleInput input)
+        protected virtual async Task UpdateAsync(CreateOrUpdateRoleInput input)
         {
             Debug.Assert(input.Role.Id != null, "input.Role.Id != null");
             var role = await _roleManager.GetRoleByIdAsync(input.Role.Id.Value);
@@ -153,7 +153,7 @@ namespace Snow.Template.Authorization.Roles
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Roles_Delete)]
-        public async Task DeleteRole(EntityDto<int> input)
+        public async Task DeleteAsync(EntityDto<int> input)
         {
             var role = await _roleManager.FindByIdAsync(input.Id.ToString());
             var users = await _userManager.GetUsersInRoleAsync(role.NormalizedName);
@@ -166,7 +166,7 @@ namespace Snow.Template.Authorization.Roles
             CheckErrors(await _roleManager.DeleteAsync(role));
         }
 
-        public Task<ListResultDto<PermissionDto>> GetAllPermissions()
+        public Task<ListResultDto<PermissionDto>> GetAllPermissionsAsync()
         {
             var permissions = PermissionManager.GetAllPermissions();
 

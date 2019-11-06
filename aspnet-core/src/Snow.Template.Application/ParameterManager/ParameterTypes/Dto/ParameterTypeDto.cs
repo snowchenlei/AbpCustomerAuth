@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Abp.Domain.Entities;
 
-namespace Snow.Template.Parameters.Dto
+namespace Snow.Template.ParameterManager.ParameterTypes.Dto
 {
     public class ParameterTypeDto : Entity<Guid>
     {

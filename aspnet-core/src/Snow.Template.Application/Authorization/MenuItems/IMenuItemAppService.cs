@@ -11,12 +11,12 @@ namespace Snow.Template.Authorization.MenuItems
     {
         //Task<List<MenuItemListDto>> GetList();
 
-        Task<PagedResultDto<MenuItemListDto>> GetMenuItems(GetMenuItemsInput input);
+        Task<PagedResultDto<MenuItemListDto>> GetPagedAsync(GetMenuItemsInput input);
 
-        Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input);
+        Task<GetMenuItemForEditOutput> GetForEditAsync(NullableIdDto<int> input);
 
-        Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input);
+        Task CreateOrEditAsync(CreateOrUpdateMenuItemInput input);
 
-        Task DeleteMenuItem(EntityDto input);
+        Task DeleteAsync(EntityDto input);
     }
 }

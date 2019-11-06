@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snow.Template.Parameters.Dto
+namespace Snow.Template.ParameterManager.ParameterTypes.Dto
 {
     public class ParameterTypeSelectListDto : ParameterTypeListDto
     {

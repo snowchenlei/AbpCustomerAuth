@@ -46,13 +46,13 @@ namespace Snow.Template.Authorization.MenuItems
         //    //    .ToListAsync();
         //    List<MenuItem> menuItems = await _menuItemManager.GetMenuItemsAsync();
 
-        //    var menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
+        // var menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
 
         //    return new List<MenuItemListDto>(menuItemListDtos);
         //}
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
-        public async Task<PagedResultDto<MenuItemListDto>> GetMenuItems(GetMenuItemsInput input)
+        public async Task<PagedResultDto<MenuItemListDto>> GetPagedAsync(GetMenuItemsInput input)
         {
             var query = _menuItemRepository.GetAll();
             int menuItemCount = await query.CountAsync();
@@ -73,7 +73,7 @@ namespace Snow.Template.Authorization.MenuItems
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
             PermissionNames.Pages_Administration_MenuItems_Edit)]
-        public async Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input)
+        public async Task<GetMenuItemForEditOutput> GetForEditAsync(NullableIdDto<int> input)
         {
             GetMenuItemForEditOutput output = new GetMenuItemForEditOutput();
             List<MenuItem> menuItems = await _menuItemManager.GetMenuItemsAsync();
@@ -102,7 +102,7 @@ namespace Snow.Template.Authorization.MenuItems
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
             PermissionNames.Pages_Administration_MenuItems_Edit)]
-        public async Task CreateOrEditMenuItem(CreateOrUpdateMenuItemInput input)
+        public async Task CreateOrEditAsync(CreateOrUpdateMenuItemInput input)
         {
             if (input.MenuItem.Id.HasValue)
             {
@@ -140,9 +140,15 @@ namespace Snow.Template.Authorization.MenuItems
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Delete)]
-        public async Task DeleteMenuItem(EntityDto input)
+        public async Task DeleteAsync(EntityDto input)
         {
             await _menuItemRepository.DeleteAsync(input.Id);
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_BatchDelete)]
+        public async Task BatchDeleteAsync(List<int> ids)
+        {
+            await _menuItemRepository.DeleteAsync(m => ids.Contains(m.Id));
         }
     }
 }

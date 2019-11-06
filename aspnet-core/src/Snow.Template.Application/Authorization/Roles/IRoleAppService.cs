@@ -7,16 +7,16 @@ namespace Snow.Template.Authorization.Roles
 {
     public interface IRoleAppService : IApplicationService
     {
-        Task<PagedResultDto<RoleListDto>> GetRoles(GetRolesInput input);
+        Task<PagedResultDto<RoleListDto>> GetPagedAsync(GetRolesInput input);
 
-        Task<GetRoleForEditOutput> GetRoleForEdit(NullableIdDto input);
+        Task<GetRoleForEditOutput> GetForEditAsync(NullableIdDto input);
 
-        Task<ListResultDto<PermissionDto>> GetAllPermissions();
+        Task<ListResultDto<PermissionDto>> GetAllPermissionsAsync();
 
-        Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input);
+        Task<ListResultDto<RoleListDto>> GetListAsync(GetRolesInput input);
 
-        Task CreateOrUpdateRole(CreateOrUpdateRoleInput input);
+        Task CreateOrUpdateAsync(CreateOrUpdateRoleInput input);
 
-        Task DeleteRole(EntityDto<int> input);
+        Task DeleteAsync(EntityDto<int> input);
     }
 }

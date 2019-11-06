@@ -15,11 +15,11 @@
         'click .remove': function (e, value, row, index) {
             bootbox.confirm({
                 size: 'small',
-                title: app.localize('Delete', row.name),
+                title: app.localize('Delete'),
                 message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.name),
                 callback: function (result) {
                     if (result) {
-                        _userService.deleteUser({
+                        _userService.delete({
                             id: row.id
                         }).done(function () {
                             var $table = $('#tb-body');
@@ -88,7 +88,7 @@
                 user.roleNames.push(_$roleCheckbox.val());
             }
         }
-        _userService.createOrUpdateUser({
+        _userService.createOrUpdate({
             user,
             assignedRoleNames
         }).done(function (result) {
@@ -136,7 +136,7 @@
             }
         });
         dialog.init(function () {
-            $.get(abp.appPath + 'Users/CreateOrEditModal', { id: id }, function (data) {
+            $.get(abp.appPath + 'users/createOrEditModal', { id: id }, function (data) {
                 dialog.find('.bootbox-body').html(data);
                 dialog.find('input:not([type=hidden]):first').focus();
             });
@@ -144,7 +144,7 @@
     }
     $(function () {
         //1、初始化表格
-        table.init('api/services/app/User/GetUsers',columns);
+        table.init('api/services/app/user/getPaged', columns);
 
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewUser'));

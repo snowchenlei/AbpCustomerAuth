@@ -38,14 +38,14 @@ namespace Snow.Template.Web.Controllers.Authorization
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
         public async Task<JsonResult> Load(GetMenuItemsInput input)
         {
-            var menuItems = await _menuItemAppService.GetMenuItems(input);
+            var menuItems = await _menuItemAppService.GetPagedAsync(input);
             return Json(menuItems);
         }
 
         [AbpMvcAuthorize(PermissionNames.Pages_Administration_MenuItems_Create, PermissionNames.Pages_Administration_MenuItems_Edit)]
         public async Task<ActionResult> CreateOrEditModal(int? menuItemId)
         {
-            var output = await _menuItemAppService.GetMenuItemForEdit(new NullableIdDto { Id = menuItemId });
+            var output = await _menuItemAppService.GetForEditAsync(new NullableIdDto { Id = menuItemId });
             var viewModel = _mapper.Map<CreateOrEditMenuItemModalViewModel>(output);
 
             return PartialView("_CreateOrEditModal", viewModel);

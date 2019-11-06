@@ -45,7 +45,6 @@ namespace Snow.Template.Authorization.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
-        private readonly IUnitOfWorkManager unitOfWorkManager;
 
         public UserAppService(
             UserManager userManager,
@@ -68,7 +67,7 @@ namespace Snow.Template.Authorization.Users
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
-        public async Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input)
+        public async Task<PagedResultDto<UserListDto>> GetPagedAsync(GetUsersInput input)
         {
             var query = GetUsersFilteredQuery(input);
 
@@ -80,7 +79,7 @@ namespace Snow.Template.Authorization.Users
                 .ToListAsync();
 
             var userListDtos = _mapper.Map<List<UserListDto>>(users);
-            await FillRoleNames(userListDtos);
+            await FillRoleNamesAsync(userListDtos);
 
             return new PagedResultDto<UserListDto>(
                 userCount,
@@ -88,7 +87,7 @@ namespace Snow.Template.Authorization.Users
             );
         }
 
-        public async Task<FileDto> GetUsersToExcel(GetUsersToExcelInput input)
+        public async Task<FileDto> GetToExcelAsync(GetUsersToExcelInput input)
         {
             var query = GetUsersFilteredQuery(input);
 
@@ -97,7 +96,7 @@ namespace Snow.Template.Authorization.Users
                 .ToListAsync();
 
             var userListDtos = ObjectMapper.Map<List<UserListDto>>(users);
-            await FillRoleNames(userListDtos);
+            await FillRoleNamesAsync(userListDtos);
 
             return _userListExcelExporter.ExportToFile(userListDtos);
         }
@@ -108,7 +107,7 @@ namespace Snow.Template.Authorization.Users
         /// <param name="input">id</param>
         /// <returns></returns>
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
-        public async Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input)
+        public async Task<GetUserForEditOutput> GetForEditAsync(NullableIdDto<long> input)
         {
             var userRoleDtos = await _roleManager.Roles
                 .OrderBy(r => r.DisplayName)
@@ -164,20 +163,20 @@ namespace Snow.Template.Authorization.Users
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create, PermissionNames.Pages_Administration_Users_Edit)]
-        public async Task CreateOrUpdateUser(CreateOrUpdateUserInput input)
+        public async Task CreateOrUpdateAsync(CreateOrUpdateUserInput input)
         {
             if (input.User.Id.HasValue)
             {
-                await UpdateUserAsync(input);
+                await UpdateAsync(input);
             }
             else
             {
-                await CreateUserAsync(input);
+                await CreateAsync(input);
             }
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Create)]
-        protected virtual async Task CreateUserAsync(CreateOrUpdateUserInput input)
+        protected virtual async Task CreateAsync(CreateOrUpdateUserInput input)
         {
             var user = ObjectMapper.Map<User>(input.User);
 
@@ -190,14 +189,14 @@ namespace Snow.Template.Authorization.Users
 
             if (input.AssignedRoleNames != null)
             {
-                CheckErrors(await _userManager.SetRoles(user, input.AssignedRoleNames));
+                CheckErrors(await _userManager.SetRolesAsync(user, input.AssignedRoleNames));
             }
 
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Edit)]
-        protected virtual async Task UpdateUserAsync(CreateOrUpdateUserInput input)
+        protected virtual async Task UpdateAsync(CreateOrUpdateUserInput input)
         {
             Debug.Assert(input.User.Id != null, "input.User.Id != null");
             var user = await _userManager.GetUserByIdAsync(input.User.Id.Value);
@@ -209,12 +208,12 @@ namespace Snow.Template.Authorization.Users
 
             if (input.AssignedRoleNames != null)
             {
-                CheckErrors(await _userManager.SetRoles(user, input.AssignedRoleNames));
+                CheckErrors(await _userManager.SetRolesAsync(user, input.AssignedRoleNames));
             }
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_Users_Delete)]
-        public async Task DeleteUser(EntityDto<long> input)
+        public async Task DeleteAsync(EntityDto<long> input)
         {
             if (input.Id == AbpSession.GetUserId())
             {
@@ -225,13 +224,13 @@ namespace Snow.Template.Authorization.Users
             CheckErrors(await UserManager.DeleteAsync(user));
         }
 
-        public async Task<ListResultDto<RoleDto>> GetRoles()
+        public async Task<ListResultDto<RoleDto>> GetRolesAsync()
         {
             var roles = await _roleRepository.GetAllListAsync();
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
 
-        public async Task ChangeLanguage(ChangeUserLanguageDto input)
+        public async Task ChangeLanguageAsync(ChangeUserLanguageDto input)
         {
             await SettingManager.ChangeSettingForUserAsync(
                 AbpSession.ToUserIdentifier(),
@@ -240,7 +239,7 @@ namespace Snow.Template.Authorization.Users
             );
         }
 
-        public async Task<bool> ChangePassword(ChangePasswordDto input)
+        public async Task<bool> ChangePasswordAsync(ChangePasswordDto input)
         {
             if (_abpSession.UserId == null)
             {
@@ -262,7 +261,7 @@ namespace Snow.Template.Authorization.Users
             return true;
         }
 
-        public async Task<bool> ResetPassword(ResetPasswordDto input)
+        public async Task<bool> ResetPasswordAsync(ResetPasswordDto input)
         {
             if (_abpSession.UserId == null)
             {
@@ -310,12 +309,12 @@ namespace Snow.Template.Authorization.Users
         /// </summary>
         /// <param name="userListDtos"></param>
         /// <returns></returns>
-        private async Task FillRoleNames(IReadOnlyCollection<UserListDto> userListDtos)
+        private async Task FillRoleNamesAsync(IReadOnlyCollection<UserListDto> userListDtos)
         {
             /* This method is optimized to fill role names to given list. */
-
+            var userIds = userListDtos.Select(u => u.Id);
             var userRoles = await _userRoleRepository.GetAll()
-                .Where(userRole => userListDtos.Any(user => user.Id == userRole.UserId))
+                .Where(userRole => userIds.Contains(userRole.UserId))
                 .Select(userRole => userRole).ToListAsync();
 
             var distinctRoleIds = userRoles.Select(userRole => userRole.RoleId).Distinct();

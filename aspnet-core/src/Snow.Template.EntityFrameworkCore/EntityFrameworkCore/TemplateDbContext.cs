@@ -20,8 +20,8 @@ namespace Snow.Template.EntityFrameworkCore
         public DbSet<Parameter> Parameter { get; set; }
 
         //输出到debug输出
-        public static readonly LoggerFactory MyLoggerFactory
-            = new LoggerFactory(new[] { new DebugLoggerProvider((_, __) => true) });
+        public static readonly ILoggerFactory MyLoggerFactory
+            = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
         public TemplateDbContext(DbContextOptions<TemplateDbContext> options)
             : base(options)
@@ -31,7 +31,7 @@ namespace Snow.Template.EntityFrameworkCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseLoggerFactory(MyLoggerFactory);
+            //optionsBuilder.UseLoggerFactory(MyLoggerFactory);
         }
     }
 }

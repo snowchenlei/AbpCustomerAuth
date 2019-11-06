@@ -13,6 +13,7 @@ using Snow.Template.Authorization.Roles;
 using Snow.Template.Authorization.Roles.Dto;
 using Snow.Template.Authorization.Users;
 using Snow.Template.Authorization.Users.Dto;
+using Snow.Template.ParameterManager.ParameterTypes.Dto;
 using Snow.Template.Parameters;
 using Snow.Template.Parameters.Dto;
 
@@ -55,15 +56,18 @@ namespace Snow.Template
             configuration.CreateMap<AuditLog, AuditLogListDto>();
             //configuration.CreateMap<EntityChange, EntityChangeListDto>();
             //Parameter
-            configuration.CreateMap<Parameter, ParameterListDto>()
-                .ForMember(entity => entity.TypeName,
-                    opt => opt.MapFrom(src => (src.ParameterType != null ? src.ParameterType.Name : String.Empty)));
+            configuration.CreateMap<ParameterType, ParameterTypeListDto>();
             configuration.CreateMap<ParameterType, ParameterTypeSelectListDto>();
-            configuration.CreateMap<ParameterEditDto, Parameter>();
-            configuration.CreateMap<Parameter, ParameterEditDto>();
+            configuration.CreateMap<ParameterTypeEditDto, ParameterType>();
+            configuration.CreateMap<ParameterType, ParameterTypeEditDto>();
             configuration.CreateMap<ParameterType, ParameterTypeDto>()
                 .ForMember(entity => entity.Text,
                     opt => opt.MapFrom(src => (src.Name)));
+            configuration.CreateMap<Parameter, ParameterListDto>()
+                .ForMember(entity => entity.TypeName,
+                    opt => opt.MapFrom(src => (src.ParameterType != null ? src.ParameterType.Name : String.Empty)));
+            configuration.CreateMap<ParameterEditDto, Parameter>();
+            configuration.CreateMap<Parameter, ParameterEditDto>();
         }
     }
 }

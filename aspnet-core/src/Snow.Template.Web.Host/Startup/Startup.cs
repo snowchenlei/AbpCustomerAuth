@@ -1,25 +1,24 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using Castle.Facilities.Logging;
-using Swashbuckle.AspNetCore.Swagger;
 using Abp.AspNetCore;
+using Abp.AspNetCore.Mvc.Antiforgery;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
+using Abp.AspNetCore.SignalR.Hubs;
+using Abp.Dependency;
+using Abp.Json;
 using Snow.Template.Configuration;
 using Snow.Template.Identity;
-
-using Abp.AspNetCore.SignalR.Hubs;
-using Abp.PlugIns;
 using Snow.Template.Common;
-using Snow.Template.Swagger;
 
 namespace Snow.Template.Web.Host.Startup
 {
@@ -28,9 +27,9 @@ namespace Snow.Template.Web.Host.Startup
         private const string _defaultCorsPolicyName = "localhost";
 
         private readonly IConfigurationRoot _appConfiguration;
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IWebHostEnvironment env)
         {
             _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
@@ -38,10 +37,19 @@ namespace Snow.Template.Web.Host.Startup
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // MVC
-            services.AddMvc(
-                options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
-            ).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
+            //MVC
+            services.AddControllersWithViews(
+                options =>
+                {
+                    options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
+                }
+            ).AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new AbpMvcContractResolver(IocManager.Instance)
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                };
+            });
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
@@ -68,45 +76,33 @@ namespace Snow.Template.Web.Host.Startup
                 )
             );
 
-            if (WebConsts.SwaggerUiEnabled)
+            // Swagger - Enable this line and the related lines in Configure method to enable
+            services.AddSwaggerGen(options =>
             {
-                // Swagger - Enable this line and the related lines in Configure method to enable
-                // swagger UI
-                services.AddSwaggerGen(options =>
-                {
-                    options.SwaggerDoc("v1", new Info { Title = "Template API", Version = "v1" });
-                    options.DocInclusionPredicate((docName, description) => true);
-                    options.UseReferencedDefinitionsForEnums();
-                    options.ParameterFilter<SwaggerEnumParameterFilter>();
-                    options.SchemaFilter<SwaggerEnumSchemaFilter>();
-                    options.OperationFilter<SwaggerOperationIdFilter>();
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Template API", Version = "v1" });
+                options.DocInclusionPredicate((docName, description) => true);
 
-                    // Define the BearerAuth scheme that's in use
-                    options.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
-                    {
-                        Description =
-                            "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                        Name = "Authorization",
-                        In = "header",
-                        Type = "apiKey"
-                    });
+                // Define the BearerAuth scheme that's in use
+                options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme()
+                {
+                    Description =
+                        "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
                 });
-            }
+            });
 
             // Configure Abp and Dependency Injection
             return services.AddAbp<TemplateWebHostModule>(
                 // Configure Log4Net logging
-                options =>
-                {
-                    options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                        f => f.UseAbpLog4Net().WithConfig("log4net.config")
-                    );
-
-                    options.PlugInSources.AddFolder(Path.Combine(_hostingEnvironment.WebRootPath, "Plugins"), SearchOption.AllDirectories);
-                });
+                options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
+                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
+                )
+            );
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
@@ -114,39 +110,28 @@ namespace Snow.Template.Web.Host.Startup
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
             app.UseAuthentication();
 
             app.UseAbpRequestLocalization();
 
-            app.UseSignalR(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapHub<AbpCommonHub>("/signalr");
+                endpoints.MapHub<AbpCommonHub>("/signalr");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseMvc(routes =>
+            // Enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger();
+            // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
+            app.UseSwaggerUI(options =>
             {
-                routes.MapRoute(
-                    name: "defaultWithArea",
-                    template: "{area}/{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-            if (WebConsts.SwaggerUiEnabled)
-            {
-                // Enable middleware to serve generated Swagger as a JSON endpoint
-                app.UseSwagger();
-                // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
-                app.UseSwaggerUI(options =>
-                {
-                    options.SwaggerEndpoint(
-                        _appConfiguration["App:SwaggerEndPoint"], "Template API V1");
-                    options.IndexStream = () => Assembly.GetExecutingAssembly()
-                        .GetManifestResourceStream("Snow.Template.Web.Host.wwwroot.swagger.ui.index.html");
-                    options.InjectBaseUrl(_appConfiguration["App:ServerRootAddress"]);
-                }); // URL: /swagger
-            }
+                options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "AbpProjectName API V1");
+                options.IndexStream = () => Assembly.GetExecutingAssembly()
+                    .GetManifestResourceStream("AbpCompanyName.AbpProjectName.Web.Host.wwwroot.swagger.ui.index.html");
+            }); // URL: /swagger
         }
     }
 }

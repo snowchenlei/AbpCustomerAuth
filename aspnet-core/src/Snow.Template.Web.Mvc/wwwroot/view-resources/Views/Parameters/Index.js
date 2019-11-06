@@ -16,7 +16,7 @@
         'click .remove': function (e, value, row, index) {
             bootbox.confirm({
                 size: 'small',
-                title: app.localize('Delete', row.value),
+                title: app.localize('Delete'),
                 message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.value),
                 callback: function (result) {
                     if (result) {

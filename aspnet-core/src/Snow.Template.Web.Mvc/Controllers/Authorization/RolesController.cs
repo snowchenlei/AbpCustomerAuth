@@ -31,14 +31,14 @@ namespace Snow.Template.Web.Controllers.Authorization
 
         public async Task<JsonResult> Load(GetRolesInput input)
         {
-            var roles = await _roleAppService.GetRoles(input);
+            var roles = await _roleAppService.GetPagedAsync(input);
             return Json(roles);
         }
 
         [AbpMvcAuthorize(PermissionNames.Pages_Administration_Roles_Create, PermissionNames.Pages_Administration_Roles_Edit)]
         public async Task<ActionResult> CreateOrEditModal(int? id)
         {
-            GetRoleForEditOutput output = await _roleAppService.GetRoleForEdit(new NullableIdDto { Id = id });
+            GetRoleForEditOutput output = await _roleAppService.GetForEditAsync(new NullableIdDto { Id = id });
             var viewModel = _mapper.Map<CreateOrEditRoleModalViewModel>(output);
 
             return PartialView("_CreateOrEditModal", viewModel);

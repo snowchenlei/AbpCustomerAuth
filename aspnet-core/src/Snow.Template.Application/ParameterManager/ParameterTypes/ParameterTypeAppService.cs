@@ -28,18 +28,17 @@ namespace Snow.Template.ParameterManager.ParameterTypes
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes)]
-        public async Task<PagedResultDto<ParameterTypeListDto>> GetPaged(GetParameterTypesInput input)
+        public async Task<PagedResultDto<ParameterTypeListDto>> GetPagedAsync(GetParameterTypesInput input)
         {
             var query = _parameterTypeRepository.GetAll();
 
             var userCount = await query.CountAsync();
 
-            var users = await query
+            var parameterTypes = await query
                 .OrderBy(input.Sorting)
                 .PageBy(input)
                 .ToListAsync();
-
-            var parameterListDtos = _mapper.Map<List<ParameterTypeListDto>>(users);
+            var parameterListDtos = _mapper.Map<List<ParameterTypeListDto>>(parameterTypes);
 
             return new PagedResultDto<ParameterTypeListDto>(
                 userCount,
@@ -49,7 +48,7 @@ namespace Snow.Template.ParameterManager.ParameterTypes
 
         [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes_Create,
             PermissionNames.Pages_Administration_ParameterTypes_Edit)]
-        public async Task<GetParameterTypeForEditOutput> GetForEdit(NullableIdDto<Guid> input)
+        public async Task<GetParameterTypeForEditOutput> GetForEditAsync(NullableIdDto<Guid> input)
         {
             GetParameterTypeForEditOutput parameterOutput = new GetParameterTypeForEditOutput();
             if (input.Id.HasValue)
@@ -67,7 +66,7 @@ namespace Snow.Template.ParameterManager.ParameterTypes
 
         [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes_Create,
             PermissionNames.Pages_Administration_Parameters_Edit)]
-        public async Task CreateOrEdit(CreateOrUpdateParameterTypeInput input)
+        public async Task CreateOrEditAsync(CreateOrUpdateParameterTypeInput input)
         {
             if (input.ParameterType.Id.HasValue)
             {
@@ -96,7 +95,7 @@ namespace Snow.Template.ParameterManager.ParameterTypes
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_ParameterTypes_Delete)]
-        public async Task Delete(EntityDto<Guid> input)
+        public async Task DeleteAsync(EntityDto<Guid> input)
         {
             await _parameterTypeRepository.DeleteAsync(input.Id);
         }

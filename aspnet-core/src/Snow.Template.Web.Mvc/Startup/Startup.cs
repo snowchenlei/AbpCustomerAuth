@@ -20,6 +20,10 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Localization;
 using Snow.Template.Web.Validation;
+using Abp.AspNetCore.Mvc.Antiforgery;
+using Newtonsoft.Json.Serialization;
+using Abp.Dependency;
+using Microsoft.Extensions.Hosting;
 
 namespace Snow.Template.Web.Startup
 {
@@ -27,7 +31,7 @@ namespace Snow.Template.Web.Startup
     {
         private readonly IConfigurationRoot _appConfiguration;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IWebHostEnvironment env)
         {
             _appConfiguration = env.GetAppConfiguration();
         }
@@ -35,17 +39,25 @@ namespace Snow.Template.Web.Startup
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // MVC
-            services.AddMvc(
+            services.AddControllersWithViews(
                 options =>
                 {
                     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                })
-                .AddJsonOptions(options => options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss")
-                .AddFluentValidation(fv =>
+                    options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
+                }
+            ).AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new AbpMvcContractResolver(IocManager.Instance)
                 {
-                    //禁用其它的认证
-                    fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                });
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                };
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            })
+            .AddFluentValidation(fv =>
+            {
+                //禁用其它的认证
+                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            });
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
@@ -63,7 +75,7 @@ namespace Snow.Template.Web.Startup
             );
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseAbp(); // Initializes ABP framework.
             if (env.IsDevelopment())
@@ -77,24 +89,19 @@ namespace Snow.Template.Web.Startup
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
             app.UseAuthentication();
 
             app.UseJwtTokenMiddleware();
 
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<AbpCommonHub>("/signalr");
-            });
+            app.UseAuthorization();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "defaultWithArea",
-                    template: "{area}/{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<AbpCommonHub>("/signalr");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

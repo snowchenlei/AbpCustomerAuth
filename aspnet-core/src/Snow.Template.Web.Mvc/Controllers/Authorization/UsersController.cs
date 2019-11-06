@@ -20,6 +20,7 @@ namespace Snow.Template.Web.Controllers.Authorization
         public UsersController(IUserAppService userAppService
             , IMapper mapper)
         {
+            _mapper = mapper;
             _userAppService = userAppService;
         }
 
@@ -36,7 +37,7 @@ namespace Snow.Template.Web.Controllers.Authorization
 
         public async Task<ActionResult> CreateOrEditModal(long? id)
         {
-            var output = await _userAppService.GetUserForEdit(new NullableIdDto<long> { Id = id });
+            var output = await _userAppService.GetForEditAsync(new NullableIdDto<long> { Id = id });
             var viewModel = _mapper.Map<CreateOrEditUserModalViewModel>(output);
             {
                 //PasswordComplexitySetting = await _passwordComplexitySettingStore.GetSettingsAsync()

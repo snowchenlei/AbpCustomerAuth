@@ -10,27 +10,27 @@ namespace Snow.Template.Authorization.Users
 {
     public interface IUserAppService : IApplicationService
     {
-        Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input);
+        Task<PagedResultDto<UserListDto>> GetPagedAsync(GetUsersInput input);
 
-        Task<FileDto> GetUsersToExcel(GetUsersToExcelInput input);
+        Task<FileDto> GetToExcelAsync(GetUsersToExcelInput input);
 
-        Task<GetUserForEditOutput> GetUserForEdit(NullableIdDto<long> input);
+        Task<GetUserForEditOutput> GetForEditAsync(NullableIdDto<long> input);
 
         /// <summary>
         /// 添加或修改
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task CreateOrUpdateUser(CreateOrUpdateUserInput input);
+        Task CreateOrUpdateAsync(CreateOrUpdateUserInput input);
 
-        Task DeleteUser(EntityDto<long> input);
+        Task DeleteAsync(EntityDto<long> input);
 
-        Task<ListResultDto<RoleDto>> GetRoles();
+        Task<ListResultDto<RoleDto>> GetRolesAsync();
 
-        Task ChangeLanguage(ChangeUserLanguageDto input);
+        Task ChangeLanguageAsync(ChangeUserLanguageDto input);
 
-        Task<bool> ChangePassword(ChangePasswordDto input);
+        Task<bool> ChangePasswordAsync(ChangePasswordDto input);
 
-        Task<bool> ResetPassword(ResetPasswordDto input);
+        Task<bool> ResetPasswordAsync(ResetPasswordDto input);
     }
 }

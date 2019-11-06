@@ -119,7 +119,7 @@
     <text name="CreateNewRole">创建新角色</text>
     <text name="RoleDetails">角色详情</text>
     <text name="RolePermission">角色权限</text>
-    <text name="EditRole">编辑角色</text>
+    <text name="EditRole">编辑角色：{0}</text>
     <text name="DeleteRolesConfirm">确认删除该角色？</text>
     <!--角色添加/修改-->
     <text name="RoleInformations">角色信息</text>
@@ -151,6 +151,9 @@
     <text name="SetRandomPassword">设置随机密码</text>
     <text name="ShouldChangePasswordOnNextLogin">下次登录设置密码</text>
     <text name="SendActivationEmail">发送邮箱验证</text>
+    <!--菜单管理-->
+    <text name="CreateNewMenuItem">创建新菜单</text>
+    <text name="EditMenuItem">编辑菜单：{0}</text>
     <!--参数管理-->
     <text name="CreateNewParameterType">创建新参数类型</text>
     <text name="EditParameterType">修改参数类型：{0}</text>

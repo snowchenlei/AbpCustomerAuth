@@ -11,13 +11,13 @@
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             e.preventDefault();
-            createOrEdit(app.localize('Edit', row.name), row.id);
+            createOrEdit(app.localize('EditRole', row.displayName), row.id);
         },
         'click .remove': function (e, value, row, index) {
             bootbox.confirm({
                 size: 'small',
-                title: app.localize('Delete', row.name),
-                message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.name),
+                title: app.localize('Delete'),
+                message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.displayName),
                 callback: function (result) {
                     if (result) {
                         _roleService.delete({
@@ -72,14 +72,14 @@
             return false;
         }
         var role = $e.serializeFormToObject();
-        _roleService.createOrUpdateRole({
+        _roleService.createOrUpdate({
             role,
-            Permissions: getSelectedPermissionNames()
-        }).done(function(result) {
+            GrantedPermissions: getSelectedPermissionNames()
+        }).done(function (result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
             dialog.modal('hide');
             refreshTable();
-        }).always(function() {
+        }).always(function () {
             abp.ui.clearBusy(dialog);
         });
     }
@@ -118,7 +118,7 @@
             }
         });
         dialog.init(function () {
-            $.get(abp.appPath + 'Roles/CreateOrEditModal', { userId: id }, function (data) {
+            $.get(abp.appPath + 'Roles/CreateOrEditModal', { Id: id }, function (data) {
                 dialog.find('.bootbox-body').html(data);
                 dialog.find('input:not([type=hidden]):first').focus();
             });
@@ -126,7 +126,7 @@
     }
     $(function () {
         //1、初始化表格
-        table.init('api/services/app/Role/GetRoles',columns);
+        table.init('api/services/app/role/getPaged', columns);
 
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewRole'));

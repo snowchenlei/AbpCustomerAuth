@@ -24,7 +24,7 @@ namespace Snow.Template.Tests.MenuItems
         public async Task GetMenuItems_Test()
         {
             // Act
-            var output = await _menuItemAppService.GetMenuItems(new GetMenuItemsInput() { MaxResultCount = 20, SkipCount = 0 });
+            var output = await _menuItemAppService.GetPagedAsync(new GetMenuItemsInput() { MaxResultCount = 20, SkipCount = 0 });
 
             // Assert
             output.Items.Count.ShouldBeGreaterThan(0);
@@ -36,7 +36,7 @@ namespace Snow.Template.Tests.MenuItems
             // Arrange
             var menuItem = await UsingDbContextAsync(async context => await context.MenuItem.FirstOrDefaultAsync());
             // Act
-            var output = await _menuItemAppService.GetMenuItemForEdit(new NullableIdDto(menuItem.Id));
+            var output = await _menuItemAppService.GetForEditAsync(new NullableIdDto(menuItem.Id));
             // Assert
             output.MenuItem.Name.ShouldBeSameAs(menuItem.Name);
         }
@@ -45,7 +45,7 @@ namespace Snow.Template.Tests.MenuItems
         public async Task CreateMenuItem_Test()
         {
             // Act
-            await _menuItemAppService.CreateOrEditMenuItem(
+            await _menuItemAppService.CreateOrEditAsync(
                 new CreateOrUpdateMenuItemInput()
                 {
                     MenuItem = new MenuItemEditDto()
@@ -71,7 +71,7 @@ namespace Snow.Template.Tests.MenuItems
             string newName = menuItem.Name + "_new";
 
             // Act
-            await _menuItemAppService.CreateOrEditMenuItem(
+            await _menuItemAppService.CreateOrEditAsync(
                 new CreateOrUpdateMenuItemInput()
                 {
                     MenuItem = new MenuItemEditDto()
@@ -98,7 +98,7 @@ namespace Snow.Template.Tests.MenuItems
             // Arrange
             MenuItem menuItem = await UsingDbContextAsync(async context => await context.MenuItem.FirstOrDefaultAsync());
             // Act
-            await _menuItemAppService.DeleteMenuItem(new EntityDto(menuItem.Id));
+            await _menuItemAppService.DeleteAsync(new EntityDto(menuItem.Id));
             // Assert
             await UsingDbContextAsync(async context =>
             {

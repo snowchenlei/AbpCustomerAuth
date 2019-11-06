@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>Snow.Template.Core</AssemblyName>
     <PackageId>Snow.Template.Core</PackageId>
@@ -12,6 +12,7 @@
     <RootNamespace>Snow.Template</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <!--<EmbeddedResource Include="Localization\SourceFiles\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />-->
     <EmbeddedResource Include="Localization\SourceFiles\Template-es.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\Template-fr.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\Template-it.xml" />
@@ -24,13 +25,8 @@
     <EmbeddedResource Include="Localization\SourceFiles\Template.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.AutoMapper" Version="4.9.0" />
-    <PackageReference Include="Abp.ZeroCore.EntityFrameworkCore" Version="4.9.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
+    <PackageReference Include="Abp.AutoMapper" Version="5.0.0" />
+    <PackageReference Include="Abp.ZeroCore.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.3.1" />
   </ItemGroup>
 </Project>
-
-

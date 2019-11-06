@@ -25,7 +25,7 @@ namespace Snow.Template.Tests.Users
         public async Task GetUsers_Test()
         {
             // Act
-            var output = await _userAppService.GetUsers(new GetUsersInput() { MaxResultCount = 20, SkipCount = 0 });
+            var output = await _userAppService.GetPagedAsync(new GetUsersInput() { MaxResultCount = 20, SkipCount = 0 });
 
             // Assert
             output.Items.Count.ShouldBeGreaterThan(0);
@@ -37,7 +37,7 @@ namespace Snow.Template.Tests.Users
             // Arrange
             var defaultUser = await UsingDbContextAsync(async context => await context.Users.FirstOrDefaultAsync(u => u.TenantId == AbpSession.TenantId));
             // Act
-            var output = await _userAppService.GetUserForEdit(new NullableIdDto<long>(defaultUser.Id));
+            var output = await _userAppService.GetForEditAsync(new NullableIdDto<long>(defaultUser.Id));
             // Assert
             output.User.Name.ShouldBeSameAs(defaultUser.Name);
         }
@@ -46,7 +46,7 @@ namespace Snow.Template.Tests.Users
         public async Task CreateUser_Test()
         {
             // Act
-            await _userAppService.CreateOrUpdateUser(
+            await _userAppService.CreateOrUpdateAsync(
                 new CreateOrUpdateUserInput()
                 {
                     User = new UserEditDto()
@@ -73,7 +73,7 @@ namespace Snow.Template.Tests.Users
         {
             User defaultUser = await InitDateAsync();
             // Act
-            await _userAppService.CreateOrUpdateUser(
+            await _userAppService.CreateOrUpdateAsync(
                 new CreateOrUpdateUserInput()
                 {
                     User = new UserEditDto()
@@ -102,7 +102,7 @@ namespace Snow.Template.Tests.Users
             // Arrange
             User defaultUser = await InitDateAsync();
             // Act
-            await _userAppService.DeleteUser(new EntityDto<long>(defaultUser.Id));
+            await _userAppService.DeleteAsync(new EntityDto<long>(defaultUser.Id));
             // Assert
             await UsingDbContextAsync(async context =>
             {
@@ -118,7 +118,7 @@ namespace Snow.Template.Tests.Users
             User defaultUser = await UsingDbContextAsync(async context =>
                 await context.Users.FirstOrDefaultAsync(u => u.Id == AbpSession.UserId));
             // Act Assert
-            await Assert.ThrowsAsync<UserFriendlyException>(() => _userAppService.DeleteUser(new EntityDto<long>(defaultUser.Id)));
+            await Assert.ThrowsAsync<UserFriendlyException>(() => _userAppService.DeleteAsync(new EntityDto<long>(defaultUser.Id)));
         }
 
         private async Task<User> InitDateAsync()

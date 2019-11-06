@@ -15,11 +15,11 @@
         'click .remove': function (e, value, row, index) {
             bootbox.confirm({
                 size: 'small',
-                title: app.localize('Delete', row.name),
+                title: app.localize('Delete'),
                 message: abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Template'), row.name),
                 callback: function (result) {
                     if (result) {
-                        _menuItemService.deleteMenuItem({
+                        _menuItemService.delete({
                             id: row.id
                         }).done(function () {
                             var $table = $('#tb-body');
@@ -77,7 +77,7 @@
             return false;
         }
         var menuItem = $e.serializeFormToObject();
-        _menuItemService.createOrEditMenuItem({
+        _menuItemService.createOrEdit({
             menuItem
         }).done(function (result) {
             abp.notify.info(app.localize('SavedSuccessfully'));
@@ -120,7 +120,7 @@
     }
     $(function () {
         //1、初始化表格
-        table.init('api/services/app/MenuItem/GetMenuItems', columns);
+        table.init('api/services/app/MenuItem/GetPaged', columns);
 
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewMenuItem'));

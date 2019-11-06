@@ -8,12 +8,12 @@ namespace Snow.Template.ParameterManager.ParameterTypes
 {
     public interface IParameterTypeAppService : IApplicationService
     {
-        Task<PagedResultDto<ParameterTypeListDto>> GetPaged(GetParameterTypesInput input);
+        Task<PagedResultDto<ParameterTypeListDto>> GetPagedAsync(GetParameterTypesInput input);
 
-        Task<GetParameterTypeForEditOutput> GetForEdit(NullableIdDto<Guid> input);
+        Task<GetParameterTypeForEditOutput> GetForEditAsync(NullableIdDto<Guid> input);
 
-        Task CreateOrEdit(CreateOrUpdateParameterTypeInput input);
+        Task CreateOrEditAsync(CreateOrUpdateParameterTypeInput input);
 
-        Task Delete(EntityDto<Guid> input);
+        Task DeleteAsync(EntityDto<Guid> input);
     }
 }

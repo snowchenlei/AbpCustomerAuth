@@ -7,7 +7,7 @@
         <input type="hidden" name="Id" value="@Model.MenuItem.Id" />
         @*<input type="hidden" name="Id" value="@Model.MenuItem.Id" />*@
     }
-    <input asp-for="MenuItem.ParentId" type="hidden"/>
+    <input asp-for="MenuItem.ParentId" type="hidden" />
     <div class="form-group">
         <label asp-for="MenuItem.Name"></label>
         <input asp-for="MenuItem.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.MenuItem.Name)">

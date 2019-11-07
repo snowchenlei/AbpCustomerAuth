@@ -36,7 +36,7 @@ namespace Snow.Template.Tests.MenuItems
             // Arrange
             var menuItem = await UsingDbContextAsync(async context => await context.MenuItem.FirstOrDefaultAsync());
             // Act
-            var output = await _menuItemAppService.GetMenuItemForEdit(new NullableIdDto(menuItem.Id));
+            var output = await _menuItemAppService.GetForEditAsync(new NullableIdDto(menuItem.Id), null);
             // Assert
             output.MenuItem.Name.ShouldBeSameAs(menuItem.Name);
         }

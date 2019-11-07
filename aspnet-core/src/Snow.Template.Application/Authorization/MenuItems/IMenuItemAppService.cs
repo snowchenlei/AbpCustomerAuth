@@ -14,8 +14,9 @@ namespace Snow.Template.Authorization.MenuItems
 
         Task<PagedResultDto<MenuItemListDto>> GetPagedAsync(GetMenuItemsInput input);
 
-        Task<List<MenuItemTreeListDto>> GetMenuItemTree();
-        Task<GetMenuItemForEditOutput> GetMenuItemForEdit(NullableIdDto<int> input);
+        Task<List<MenuItemTreeListDto>> GetMenuItemTreeAsync();
+
+        Task<GetMenuItemForEditOutput> GetForEditAsync(NullableIdDto<int> input, int? parentId);
 
         Task CreateOrEditAsync(CreateOrUpdateMenuItemInput input);
 

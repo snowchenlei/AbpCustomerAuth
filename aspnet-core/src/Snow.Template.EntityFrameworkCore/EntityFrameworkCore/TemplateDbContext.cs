@@ -31,6 +31,7 @@ namespace Snow.Template.EntityFrameworkCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
+            // TODO:记录EfCore日志
             //optionsBuilder.UseLoggerFactory(MyLoggerFactory);
         }
     }

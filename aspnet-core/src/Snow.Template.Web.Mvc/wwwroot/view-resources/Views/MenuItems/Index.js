@@ -176,8 +176,8 @@
     }
     $(function () {
         //1、初始化表格
-        table.init('api/services/app/MenuItem/GetMenuItems', columns);
-
+        table.init('api/services/app/MenuItem/GetPaged', columns);
+        ztreeInit();
         $('#create').click(function () {
             createOrEdit(app.localize('CreateNewMenuItem'));
         });

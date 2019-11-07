@@ -38,9 +38,14 @@
     <environment names="Development">
         <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
+
         <!-- Theme style -->
+        <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
         <link href="~/lib/AdminLTE/dist/css/adminlte.css" rel="stylesheet" asp-append-version="true" />
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 
     <environment names="Staging,Production">
@@ -63,14 +68,8 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="javascript:void(0);" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="javascript:void(0);" class="nav-link">Contact</a>
-                </li>
+                @await Component.InvokeAsync(typeof(TopBarLanguageSwitchViewComponent))
             </ul>
-            @await Component.InvokeAsync(typeof(TopBarLanguageSwitchViewComponent))
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -291,7 +290,9 @@
         <script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
         <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
+        <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
 
+        <script src="~/js/admin.js" asp-append-version="true"></script>
         <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
         <!-- abp -->
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
@@ -305,8 +306,7 @@
         <script src="~/lib/AdminLTE/dist/js/demo.js"></script>
         <script src="~/js/bootstrap-tab.js" asp-append-version="true"></script>
         <script src="~/view-resources/Views/Home/Demo.js" asp-append-version="true"></script>
-        @*<script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>*@
-
+        <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
         @if (CultureInfo.CurrentUICulture.Name != "en")
         {
             <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>

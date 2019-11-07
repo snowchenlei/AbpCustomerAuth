@@ -27,7 +27,6 @@
 <div class="card" id="﻿LoginArea">
     <div class="card-body login-card-body">
         <p class="login-box-msg">@L("LogIn")</p>
-
         <form id="LoginForm" asp-action="Login" method="post">
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
             <input type="hidden" name="returnUrlHash" />
@@ -55,64 +54,59 @@
                         </label>
                     </div>
                 </div>
-                <!-- /.col -->
                 <div class="col-4">
                     <button id="LoginButton" type="submit" class="btn btn-primary btn-block btn-flat">@L("LogIn")</button>
                 </div>
-                <!-- /.col -->
             </div>
         </form>
         @if (Model.IsSelfRegistrationAllowed)
         {
-        <p class="mb-0">
-            <a asp-action="Register" class="text-center">@L("Register")</a>
-        </p>
+            <p class="mb-0">
+                <a asp-action="Register" class="text-center">@L("Register")</a>
+            </p>
         }
     </div>
     <!-- /.login-card-body -->
 </div>
 @*<div class="card" id="﻿LoginArea">
-    <div class="body">
-        <form id="LoginForm" asp-action="Login" method="post">
-            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
-            <input type="hidden" name="returnUrlHash" />
-            <h4 class="text-center">@L("LogIn")</h4>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">person</i>
-                </span>
-                <div class="form-line">
-                    <input type="text" class="form-control" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
-                </div>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">lock</i>
-                </span>
-                <div class="form-line">
-                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-8 p-t-5">
-                    <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
-                    <label for="rememberme">@L("RememberMe")</label>
-                </div>
-                <div class="col-xs-4">
-                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
-                </div>
-            </div>
-            @if (Model.IsSelfRegistrationAllowed)
-            {
-                <div class="row m-t-15 m-b--20">
-                    <div class="col-xs-12">
-                        <a asp-action="Register">@L("Register")</a>
+        <div class="body">
+            <form id="LoginForm" asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                <input type="hidden" name="returnUrlHash" />
+                <h4 class="text-center">@L("LogIn")</h4>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="material-icons">person</i>
+                    </span>
+                    <div class="form-line">
+                        <input type="text" class="form-control" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
                     </div>
                 </div>
-            }
-        </form>
-    </div>
-</div>*@
-
-
-
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="material-icons">lock</i>
+                    </span>
+                    <div class="form-line">
+                        <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 p-t-5">
+                        <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
+                        <label for="rememberme">@L("RememberMe")</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
+                    </div>
+                </div>
+                @if (Model.IsSelfRegistrationAllowed)
+                {
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-12">
+                            <a asp-action="Register">@L("Register")</a>
+                        </div>
+                    </div>
+                }
+            </form>
+        </div>
+    </div>*@

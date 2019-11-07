@@ -71,7 +71,7 @@ namespace Snow.Template.Authorization.MenuItems
             );
         }
 
-        public async Task<List<MenuItemTreeListDto>> GetMenuItemTree()
+        public async Task<List<MenuItemTreeListDto>> GetMenuItemTreeAsync()
         {
             List<MenuItem> menuItems =
                 await _menuItemRepository.GetAllIncluding(a => a.Parent).AsNoTracking().ToListAsync();
@@ -85,7 +85,7 @@ namespace Snow.Template.Authorization.MenuItems
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
             PermissionNames.Pages_Administration_MenuItems_Edit)]
-        public async Task<GetMenuItemForEditOutput> GetForEditAsync(NullableIdDto<int> input)
+        public async Task<GetMenuItemForEditOutput> GetForEditAsync(NullableIdDto<int> input, int? parentId)
         {
             GetMenuItemForEditOutput output = new GetMenuItemForEditOutput();
             List<MenuItem> menuItems = await _menuItemManager.GetMenuItemsAsync();
@@ -159,6 +159,23 @@ namespace Snow.Template.Authorization.MenuItems
         public async Task DeleteAsync(EntityDto input)
         {
             await _menuItemRepository.DeleteAsync(input.Id);
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_BatchDelete)]
+        public async Task BatchDeleteAsync(List<int> ids)
+        {
+            await _menuItemRepository.DeleteAsync(m => ids.Contains(m.Id));
+        }
+
+        /// <summary>
+        /// 获取菜单过滤查询
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private IQueryable<MenuItem> GetMenuItemsFilteredQuery(IGetMenuItemsInput input)
+        {
+            return _menuItemRepository.GetAll()
+                .WhereIf(input.ParentId.HasValue, m => m.Parent.Id == input.ParentId.Value);
         }
     }
 }

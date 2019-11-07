@@ -2,7 +2,7 @@
 @using Snow.Template.Web.Startup
 @{
     ViewData["Title"] = PageNames.MenuItems;
-    Layout = "_LayoutPageTable";
+    Layout = "_LayoutPageTreeTable";
     ViewBag.AbsoluteUrl = "/MenuItems";
     ViewBag.CurrentPageName = PageNames.MenuItems; // The menu item will be active for this page.
 }
@@ -28,3 +28,4 @@
         }
     </div>
 </div>
+<input type="hidden" id="parent_menu_id"/>

@@ -3,7 +3,7 @@
 @using Abp.MultiTenancy
 @model Snow.Template.Web.Models.Account.LoginFormViewModel
 @section Styles
-{
+    {
     <environment names="Development">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
     </environment>
@@ -14,7 +14,7 @@
 
 }
 @section Scripts
-{
+    {
     <environment names="Development">
         <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
     </environment>
@@ -23,7 +23,55 @@
         <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
     </environment>
 }
+<!-- /.login-logo -->
 <div class="card" id="﻿LoginArea">
+    <div class="card-body login-card-body">
+        <p class="login-box-msg">@L("LogIn")</p>
+
+        <form id="LoginForm" asp-action="Login" method="post">
+            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+            <input type="hidden" name="returnUrlHash" />
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="text" id="usernameOrEmailAddress" name="usernameOrEmailAddress" class="form-control" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+                    <div class="input-group-append">
+                        <span class="fa fa-envelope input-group-text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="password" name="Password" class="form-control" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                    <div class="input-group-append">
+                        <span class="fa fa-lock input-group-text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox" name="RememberMe" id="rememberme" value="true"> @L("RememberMe")
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-4">
+                    <button id="LoginButton" type="submit" class="btn btn-primary btn-block btn-flat">@L("LogIn")</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+        @if (Model.IsSelfRegistrationAllowed)
+        {
+        <p class="mb-0">
+            <a asp-action="Register" class="text-center">@L("Register")</a>
+        </p>
+        }
+    </div>
+    <!-- /.login-card-body -->
+</div>
+@*<div class="card" id="﻿LoginArea">
     <div class="body">
         <form id="LoginForm" asp-action="Login" method="post">
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
@@ -64,7 +112,7 @@
             }
         </form>
     </div>
-</div>
+</div>*@
 
 
 

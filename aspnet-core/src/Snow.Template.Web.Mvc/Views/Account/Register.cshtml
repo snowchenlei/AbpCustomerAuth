@@ -4,10 +4,19 @@
     ViewBag.DisableTopBar = true;
 }
 @section Styles
-{
-    <environment names="Development">
-        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
-    </environment>
+    {
+<environment names="Development">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link href="~/lib/icheck-bootstrap/icheck-bootstrap.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="~/lib/AdminLTE/dist/css/adminlte.css" rel="stylesheet" />
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</environment>
 
     <environment names="Staging,Production">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
@@ -23,9 +32,10 @@
     </environment>
 }
 <div class="card">
-    <div class="body">
-        <form id="RegisterForm" asp-action="Register" method="post">
-            <h4 class="text-center">@L("Register")</h4>
+    <div class="card-body register-card-body">
+        <p class="login-box-msg">@L("Register")</p>
+
+        <form action="../../index.html" method="post">
 
             @if (@ViewBag.ErrorMessage != null)
             {
@@ -33,54 +43,61 @@
                     <i class="fa fa-warning"></i> @ViewBag.ErrorMessage
                 </div>
             }
-
             <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
             <input type="hidden" name="ExternalLoginAuthSchema" value="@Model.ExternalLoginAuthSchema" />
 
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="text" class="form-control" name="Name" value="@Model.Name" required maxlength="@AbpUserBase.MaxNameLength">
-                    <label class="form-label">@L("Name")</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="@L("Name")" name="Name" value="@Model.Name" required maxlength="@AbpUserBase.MaxNameLength">
+                <div class="input-group-append input-group-text">
+                    <span class="fas fa-user"></span>
                 </div>
             </div>
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="@L("Surname")" name="Surname" value="@Model.Surname" required maxlength="@AbpUserBase.MaxSurnameLength">
+                <div class="input-group-append input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="@L("EmailAddress")" name="EmailAddress" value="@Model.EmailAddress" required maxlength="@AbpUserBase.MaxEmailAddressLength">
+                <div class="input-group-append input-group-text">
+                    <span class="fas fa-envelope"></span>
 
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="text" class="form-control" name="Surname" value="@Model.Surname" required maxlength="@AbpUserBase.MaxSurnameLength">
-                    <label class="form-label">@L("Surname")</label>
                 </div>
             </div>
-
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="email" class="form-control" name="EmailAddress" value="@Model.EmailAddress" required maxlength="@AbpUserBase.MaxEmailAddressLength">
-                    <label class="form-label">@L("EmailAddress")</label>
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="@L("UserName")" name="UserName" value="@Model.UserName" required maxlength="@AbpUserBase.MaxUserNameLength">
+                <div class="input-group-append input-group-text">
+                    <span class="fas fa-user"></span>
                 </div>
             </div>
-
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="text" class="form-control" name="UserName" value="@Model.UserName" required maxlength="@AbpUserBase.MaxUserNameLength">
-                    <label class="form-label">@L("UserName")</label>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="@L("Password")" name="Password" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                <div class="input-group-append input-group-text">
+                    <span class="fas fa-lock"></span>
                 </div>
             </div>
-
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="password" class="form-control" name="Password" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-                    <label class="form-label">@L("Password")</label>
-                </div>
-            </div>
-            
             <div class="row">
-                <div class="col-xs-12">
-                    <a asp-action="Login" class="btn btn-default waves-effect" >@L("Back")</a>
-                    <button id="RegisterButton" class="btn bg-pink waves-effect" type="submit">@L("Register")</button>
+                <div class="col-8">
+                    <div class="icheck-primary">
+                        <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                        <label for="agreeTerms">
+                            I agree to the <a href="#">terms</a>
+                        </label>
+                    </div>
                 </div>
+                <!-- /.col -->
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div>
+                <!-- /.col -->
             </div>
         </form>
+
+        <a asp-action="Login" class="text-center">@L("Back")</a>
     </div>
-</div>
+    <!-- /.form-box -->
+</div><!-- /.card -->
 
 
 

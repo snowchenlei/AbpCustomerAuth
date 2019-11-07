@@ -5,13 +5,13 @@
 
     $loginForm.validate({
         highlight: function (input) {
-            $(input).parents('.form-line').addClass('error');
+            $(input).addClass('is-invalid');
         },
         unhighlight: function (input) {
-            $(input).parents('.form-line').removeClass('error');
+            $(input).removeClass('is-invalid');
         },
         errorPlacement: function (error, element) {
-            $(element).parents('.input-group').append(error);
+            $(element).parents('.input-group').parent().append(error);
         }
     });
 

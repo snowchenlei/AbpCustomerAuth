@@ -32,11 +32,14 @@
     "Font-Awesome": "5.8.1",
     "ztree_v3": "v3.5.40",
     "select2": "4.0.3",
-    "daterangepicker": "bootstrap-daterangepicker#v3.0.5"
+    "daterangepicker": "bootstrap-daterangepicker#v3.0.5",
+    "iCheck": "1.0.2",
+    "icheck-bootstrap": "3.0.1"
   },
   "resolutions": {
     "jquery": ">=1.6.3",
     "bootstrap": "v4.3.1",
-    "jquery-validation-unobtrusive": "v3.2.11"
+    "jquery-validation-unobtrusive": "v3.2.11",
+    "icheck-bootstrap": "3.0.1"
   }
 }

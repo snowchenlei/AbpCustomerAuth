@@ -54,7 +54,7 @@ namespace Snow.Template.Authorization.MenuItems
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
         public async Task<PagedResultDto<MenuItemListDto>> GetPagedAsync(GetMenuItemsInput input)
         {
-            var query = _menuItemRepository.GetAll();
+            var query = GetMenuItemsFilteredQuery(input);
             int menuItemCount = await query.CountAsync();
             List<MenuItem> menuItems = await query
                 .Include(m => m.Parent)
@@ -69,6 +69,18 @@ namespace Snow.Template.Authorization.MenuItems
                 menuItemCount,
                 menuItemListDtos
             );
+        }
+
+        public async Task<List<MenuItemTreeListDto>> GetMenuItemTree()
+        {
+            List<MenuItem> menuItems =
+                await _menuItemRepository.GetAllIncluding(a => a.Parent).AsNoTracking().ToListAsync();
+            return menuItems.Select(m => new MenuItemTreeListDto
+            {
+                Id = m.Id,
+                ParentId = m.Parent == null ? 0 : m.Parent.Id,
+                Name = m.Name
+            }).ToList();
         }
 
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_Create,
@@ -95,6 +107,10 @@ namespace Snow.Template.Authorization.MenuItems
             else
             {
                 output.MenuItem = new MenuItemEditDto();
+                if (parentId.HasValue)
+                {
+                    output.MenuItem.ParentId = parentId;
+                }
             }
 
             return output;
@@ -143,12 +159,6 @@ namespace Snow.Template.Authorization.MenuItems
         public async Task DeleteAsync(EntityDto input)
         {
             await _menuItemRepository.DeleteAsync(input.Id);
-        }
-
-        [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems_BatchDelete)]
-        public async Task BatchDeleteAsync(List<int> ids)
-        {
-            await _menuItemRepository.DeleteAsync(m => ids.Contains(m.Id));
         }
     }
 }

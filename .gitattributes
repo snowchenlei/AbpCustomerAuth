@@ -1,2 +1,8 @@
+*.* linguist-language=c#
+*.js linguist-language=c#
+*.ts linguist-language=c#
+*.css linguist-language=c#
+*.scss linguist-language=c#
+*.html linguist-language=c#
 **/wwwroot/lib/** linguist-vendored
 **/wwwroot/css/** linguist-vendored

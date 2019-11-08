@@ -63,7 +63,7 @@ namespace Snow.Template.Authorization.MenuItems
                 .PageBy(input)
                 .ToListAsync();
 
-            List<MenuItemListDto> menuItemListDtos = ObjectMapper.Map<List<MenuItemListDto>>(menuItems);
+            List<MenuItemListDto> menuItemListDtos = _mapper.Map<List<MenuItemListDto>>(menuItems);
 
             return new PagedResultDto<MenuItemListDto>(
                 menuItemCount,

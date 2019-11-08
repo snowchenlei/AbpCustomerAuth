@@ -33,7 +33,7 @@
 
     <link rel="shortcut icon" href="~/favicon.ico">
 
-    <title>Template</title>
+    <title>XXX管理系统</title>
 
     <environment names="Development">
         <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" asp-append-version="true" />
@@ -200,35 +200,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    @*@await Component.InvokeAsync(typeof(SideBarUserAreaViewComponent))*@
                     @await Component.InvokeAsync(typeof(SideBarNavViewComponent), new { activeMenu = ViewBag.CurrentPageName })
-                    @*<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <!-- Add icons to the links using the .nav-icon class
-                            with font-awesome or any other icon font library -->
-                            <li class="nav-item has-treeview menu-open">
-                                    <a href="#" class="nav-link active">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>
-                                            系统管理
-                                            <i class="right fas fa-chevron-down"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" data-href="/Users/Index" class="nav-link deepNav" data-name="用户管理" data-id="2" target="tab_2">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>用户管理</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" data-href="/Roles/Index" class="nav-link deepNav" data-name="角色管理" data-id="3" target="tab_3">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>角色管理</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                        </ul>*@
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -243,7 +215,7 @@
                     <ul class="nav nav-tabs" id="tabHeader">
                         <li class="nav-item">
                             <a class="nav-link active" id="tab_tab_0" data-id="tab_0" data-toggle="tab" href="#tab_0" role="tab" aria-controls="tab_0" aria-selected="true">
-                                首页
+                                @L("HomePage")
                             </a>
                         </li>
                     </ul>

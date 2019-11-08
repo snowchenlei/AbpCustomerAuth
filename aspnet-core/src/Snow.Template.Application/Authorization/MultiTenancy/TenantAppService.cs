@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -15,12 +16,17 @@ using Snow.Template.Authorization.Users;
 using Snow.Template.Editions;
 using Microsoft.AspNetCore.Identity;
 using Snow.Template.Authorization.MultiTenancy.Dto;
+using System;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using AutoMapper;
 
 namespace Snow.Template.Authorization.MultiTenancy
 {
     [AbpAuthorize(PermissionNames.Pages_Administration_Tenants)]
     public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
     {
+        private readonly IMapper _mapper;
         private readonly TenantManager _tenantManager;
         private readonly EditionManager _editionManager;
         private readonly UserManager _userManager;
@@ -28,6 +34,7 @@ namespace Snow.Template.Authorization.MultiTenancy
         private readonly IAbpZeroDbMigrator _abpZeroDbMigrator;
 
         public TenantAppService(
+            IMapper mapper,
             IRepository<Tenant, int> repository,
             TenantManager tenantManager,
             EditionManager editionManager,
@@ -36,6 +43,7 @@ namespace Snow.Template.Authorization.MultiTenancy
             IAbpZeroDbMigrator abpZeroDbMigrator)
             : base(repository)
         {
+            _mapper = mapper;
             _tenantManager = tenantManager;
             _editionManager = editionManager;
             _userManager = userManager;
@@ -117,6 +125,44 @@ namespace Snow.Template.Authorization.MultiTenancy
         private void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
+        }
+
+        public async Task<PagedResultDto<TenantListDto>> GetPagedAsync(GetTenantsInput input)
+        {
+            var query = GetTenantsFilteredQuery(input);
+            int tenantCount = await query.CountAsync();
+            List<Tenant> tenants = await query
+                .AsNoTracking()
+                .OrderBy(input.Sorting)
+                .PageBy(input)
+                .ToListAsync();
+
+            List<TenantListDto> tenantListDtos = _mapper.Map<List<TenantListDto>>(tenants);
+
+            return new PagedResultDto<TenantListDto>(
+                tenantCount,
+                tenantListDtos
+            );
+        }
+
+        private IQueryable<Tenant> GetTenantsFilteredQuery(GetTenantsInput input)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<GetTenantForEditOutput> GetForEditAsync(NullableIdDto<int> input)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task CreateOrEditAsync(CreateOrUpdateTenantInput input)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task DeleteAsync(EntityDto input)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

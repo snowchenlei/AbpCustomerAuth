@@ -20,19 +20,35 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using AutoMapper;
+using Abp.UI;
+using System.Diagnostics;
 
 namespace Snow.Template.Authorization.MultiTenancy
 {
+    /// <summary>
+    /// 租户管理
+    /// </summary>
     [AbpAuthorize(PermissionNames.Pages_Administration_Tenants)]
-    public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
+    public class TenantAppService : TemplateAppServiceBase, ITenantAppService
     {
         private readonly IMapper _mapper;
+        private readonly IRepository<Tenant, int> _tenantRepository;
         private readonly TenantManager _tenantManager;
         private readonly EditionManager _editionManager;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IAbpZeroDbMigrator _abpZeroDbMigrator;
 
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="mapper"></param>
+        /// <param name="repository"></param>
+        /// <param name="tenantManager"></param>
+        /// <param name="editionManager"></param>
+        /// <param name="userManager"></param>
+        /// <param name="roleManager"></param>
+        /// <param name="abpZeroDbMigrator"></param>
         public TenantAppService(
             IMapper mapper,
             IRepository<Tenant, int> repository,
@@ -41,9 +57,9 @@ namespace Snow.Template.Authorization.MultiTenancy
             UserManager userManager,
             RoleManager roleManager,
             IAbpZeroDbMigrator abpZeroDbMigrator)
-            : base(repository)
         {
             _mapper = mapper;
+            _tenantRepository = repository;
             _tenantManager = tenantManager;
             _editionManager = editionManager;
             _userManager = userManager;
@@ -51,10 +67,51 @@ namespace Snow.Template.Authorization.MultiTenancy
             _abpZeroDbMigrator = abpZeroDbMigrator;
         }
 
-        public override async Task<TenantDto> CreateAsync(CreateTenantDto input)
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="input">查询条件</param>
+        /// <returns></returns>
+        [AbpAuthorize(PermissionNames.Pages_Administration_Tenants)]
+        public async Task<PagedResultDto<TenantListDto>> GetPagedAsync(GetTenantsInput input)
         {
-            CheckCreatePermission();
+            var query = GetTenantsFilteredQuery(input);
+            int tenantCount = await query.CountAsync();
+            List<Tenant> tenants = await query
+                .AsNoTracking()
+                .OrderBy(input.Sorting)
+                .PageBy(input)
+                .ToListAsync();
 
+            List<TenantListDto> tenantListDtos = _mapper.Map<List<TenantListDto>>(tenants);
+
+            return new PagedResultDto<TenantListDto>(
+                tenantCount,
+                tenantListDtos
+            );
+        }
+
+        /// <summary>
+        /// 获取详情
+        /// </summary>
+        /// <param name="input">Id</param>
+        /// <returns></returns>
+        [AbpAuthorize(PermissionNames.Pages_Administration_Tenants_Create,
+            PermissionNames.Pages_Administration_Tenants_Edit)]
+        public async Task<TenantEditDto> GetForEditAsync(NullableIdDto<int> input)
+        {
+            Tenant tenant = await _tenantRepository.FirstOrDefaultAsync(input.Id.Value);
+            return _mapper.Map<TenantEditDto>(tenant);
+        }
+
+        /// <summary>
+        /// 创建
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [AbpAuthorize(PermissionNames.Pages_Administration_Tenants_Create)]
+        public async Task CreateAsync(CreateTenantInput input)
+        {
             // Create tenant
             var tenant = ObjectMapper.Map<Tenant>(input);
             tenant.ConnectionString = input.ConnectionString.IsNullOrEmpty()
@@ -95,74 +152,45 @@ namespace Snow.Template.Authorization.MultiTenancy
                 CheckErrors(await _userManager.AddToRoleAsync(adminUser, adminRole.Name));
                 await CurrentUnitOfWork.SaveChangesAsync();
             }
-
-            return MapToEntityDto(tenant);
         }
 
-        protected override IQueryable<Tenant> CreateFilteredQuery(PagedTenantResultRequestDto input)
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [AbpAuthorize(PermissionNames.Pages_Administration_Tenants_Edit)]
+        public async Task UpdateAsync(TenantEditDto input)
         {
-            return Repository.GetAll()
-                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.TenancyName.Contains(input.Keyword) || x.Name.Contains(input.Keyword))
-                .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
+            Debug.Assert(input.Id != null, "input.Id != null");
+            Tenant tenant = await _tenantRepository.GetAsync(input.Id.Value)
+                ?? throw new UserFriendlyException("租户不存在");
+            _mapper.Map(input, tenant);
+            await _tenantRepository.UpdateAsync(tenant);
         }
 
-        protected override void MapToEntity(TenantDto updateInput, Tenant entity)
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="input">Id</param>
+        /// <returns></returns>
+        [AbpAuthorize(PermissionNames.Pages_Administration_Tenants_Delete)]
+        public async Task DeleteAsync(EntityDto input)
         {
-            // Manually mapped since TenantDto contains non-editable properties too.
-            entity.Name = updateInput.Name;
-            entity.TenancyName = updateInput.TenancyName;
-            entity.IsActive = updateInput.IsActive;
-        }
-
-        public override async Task DeleteAsync(EntityDto<int> input)
-        {
-            CheckDeletePermission();
-
             var tenant = await _tenantManager.GetByIdAsync(input.Id);
             await _tenantManager.DeleteAsync(tenant);
         }
 
-        private void CheckErrors(IdentityResult identityResult)
-        {
-            identityResult.CheckErrors(LocalizationManager);
-        }
-
-        public async Task<PagedResultDto<TenantListDto>> GetPagedAsync(GetTenantsInput input)
-        {
-            var query = GetTenantsFilteredQuery(input);
-            int tenantCount = await query.CountAsync();
-            List<Tenant> tenants = await query
-                .AsNoTracking()
-                .OrderBy(input.Sorting)
-                .PageBy(input)
-                .ToListAsync();
-
-            List<TenantListDto> tenantListDtos = _mapper.Map<List<TenantListDto>>(tenants);
-
-            return new PagedResultDto<TenantListDto>(
-                tenantCount,
-                tenantListDtos
-            );
-        }
-
+        /// <summary>
+        /// 过滤条件
+        /// </summary>
+        /// <param name="input">查询条件</param>
+        /// <returns></returns>
         private IQueryable<Tenant> GetTenantsFilteredQuery(GetTenantsInput input)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<GetTenantForEditOutput> GetForEditAsync(NullableIdDto<int> input)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task CreateOrEditAsync(CreateOrUpdateTenantInput input)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task DeleteAsync(EntityDto input)
-        {
-            throw new System.NotImplementedException();
+            return _tenantRepository.GetAll()
+                .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive)
+            ;
         }
     }
 }

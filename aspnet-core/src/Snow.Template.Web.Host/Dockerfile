@@ -5,5 +5,3 @@ COPY . .
 
 ENTRYPOINT ["dotnet", "Snow.Template.Web.Host.dll"]
 
-
-

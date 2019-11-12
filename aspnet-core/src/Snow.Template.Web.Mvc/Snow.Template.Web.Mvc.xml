@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Snow.Template.Web.Mvc</name>
+    </assembly>
+    <members>
+        <member name="M:Snow.Template.Web.Controllers.Authorization.AccountController.TestNotification(System.String)">
+            <summary>
+            This is a demo code to demonstrate sending notification to default tenant admin and host admin uers.
+            Don't use this code in production !!!
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Snow.Template.Web.Controllers.Authorization.TenantsController">
+            <summary>
+            租户管理
+            </summary>
+        </member>
+        <member name="M:Snow.Template.Web.Controllers.Authorization.TenantsController.#ctor(AutoMapper.IMapper,Snow.Template.Authorization.MultiTenancy.ITenantAppService)">
+            <summary>
+            构造
+            </summary>
+            <param name="mapper"></param>
+            <param name="tenantAppService"></param>
+        </member>
+        <member name="M:Snow.Template.Web.Controllers.Authorization.TenantsController.Index">
+            <summary>
+            主页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Web.Controllers.Authorization.TenantsController.CreateModal">
+            <summary>
+            创建
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Web.Controllers.Authorization.TenantsController.EditModal(System.Nullable{System.Int32})">
+            <summary>
+            修改
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Snow.Template.Web.Models.Tenants.EditTenantViewModel">
+            <summary>
+            修改租户ViewModel
+            </summary>
+        </member>
+        <member name="P:Snow.Template.Web.Models.Tenants.EditTenantViewModel.Tenant">
+            <summary>
+            修改租户模型
+            </summary>
+        </member>
+        <member name="M:Snow.Template.Web.Models.Tenants.EditTenantViewModel.#ctor(Snow.Template.Authorization.MultiTenancy.Dto.TenantEditDto)">
+            <summary>
+            构造
+            </summary>
+            <param name="tenant"></param>
+        </member>
+        <member name="T:Snow.Template.Web.Startup.TemplateNavigationProvider">
+            <summary>
+            This class defines menus for the application.
+            </summary>
+        </member>
+    </members>
+</doc>

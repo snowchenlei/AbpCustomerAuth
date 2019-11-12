@@ -50,5 +50,3 @@ namespace Snow.Template.Web.Host.Controllers
     }
 }
 
-
-

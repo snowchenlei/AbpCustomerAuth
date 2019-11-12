@@ -17,5 +17,3 @@ namespace Snow.Template.Authentication.JwtBearer
     }
 }
 
-
-

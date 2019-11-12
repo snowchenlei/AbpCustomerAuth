@@ -18,5 +18,3 @@ namespace Snow.Template.Controllers
     }
 }
 
-
-

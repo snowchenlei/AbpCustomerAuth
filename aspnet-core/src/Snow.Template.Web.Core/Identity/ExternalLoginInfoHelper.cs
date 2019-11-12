@@ -51,5 +51,3 @@ namespace Snow.Template.Identity
     }
 }
 
-
-

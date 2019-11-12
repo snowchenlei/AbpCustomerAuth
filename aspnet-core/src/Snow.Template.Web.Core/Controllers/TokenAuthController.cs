@@ -63,7 +63,7 @@ namespace Snow.Template.Controllers
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,
-                EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+                EncryptedAccessToken = GetEncryptedAccessToken(accessToken),
                 ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
                 UserId = loginResult.User.Id
             };
@@ -90,7 +90,7 @@ namespace Snow.Template.Controllers
                         return new ExternalAuthenticateResultModel
                         {
                             AccessToken = accessToken,
-                            EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+                            EncryptedAccessToken = GetEncryptedAccessToken(accessToken),
                             ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds
                         };
                     }
@@ -188,6 +188,7 @@ namespace Snow.Template.Controllers
             {
                 case AbpLoginResultType.Success:
                     return loginResult;
+
                 default:
                     throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
             }
@@ -214,7 +215,8 @@ namespace Snow.Template.Controllers
             var claims = identity.Claims.ToList();
             var nameIdClaim = claims.First(c => c.Type == ClaimTypes.NameIdentifier);
 
-            // Specifically add the jti (random nonce), iat (issued timestamp), and sub (subject/user) claims.
+            // Specifically add the jti (random nonce), iat (issued timestamp), and sub
+            // (subject/user) claims.
             claims.AddRange(new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, nameIdClaim.Value),
@@ -225,12 +227,9 @@ namespace Snow.Template.Controllers
             return claims;
         }
 
-        private string GetEncrpyedAccessToken(string accessToken)
+        private string GetEncryptedAccessToken(string accessToken)
         {
             return SimpleStringCipher.Instance.Encrypt(accessToken, AppConsts.DefaultPassPhrase);
         }
     }
 }
-
-
-

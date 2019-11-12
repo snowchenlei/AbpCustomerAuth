@@ -8,12 +8,12 @@ namespace Snow.Template.Web.Host.Startup
 {
     [DependsOn(
        typeof(TemplateWebCoreModule))]
-    public class TemplateWebHostModule : AbpModule
+    public class TemplateWebHostModule: AbpModule
     {
-        private readonly IWebHostEnvironment _env;
+        private readonly IHostingEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
 
-        public TemplateWebHostModule(IWebHostEnvironment env)
+        public TemplateWebHostModule(IHostingEnvironment env)
         {
             _env = env;
             _appConfiguration = env.GetAppConfiguration();
@@ -25,3 +25,4 @@ namespace Snow.Template.Web.Host.Startup
         }
     }
 }
+

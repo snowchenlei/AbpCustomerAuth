@@ -1,0 +1,31 @@
+﻿@using Snow.Template.Web.Models.Tenants;
+@model EditTenantViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<form id="modelForm" name="TenantInformationsForm" role="form" novalidate>
+    <input asp-for="Tenant.Id" type="hidden" />
+    <div class="form-group">
+        <label asp-for="Tenant.TenancyName"></label>
+        <input asp-for="Tenant.TenancyName" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Tenant.TenancyName)">
+        <span asp-validation-for="Tenant.TenancyName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tenant.Name"></label>
+        <input asp-for="Tenant.Name" type="text" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Tenant.Name)">
+        <span asp-validation-for="Tenant.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tenant.IsActive"></label>
+        <input asp-for="Tenant.IsActive" type="checkbox" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Tenant.IsActive)">
+        <span asp-validation-for="Tenant.IsActive" class="text-danger"></span>
+    </div>
+</form>
+<script type="text/javascript">
+    $.validator.unobtrusive.parse('form');
+    $('#modelForm input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    })
+</script>

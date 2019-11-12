@@ -2,7 +2,7 @@
     $('.tenant-change-component a')
         .click(function (e) {
             e.preventDefault();
-            app.ajax({
+            $.ajax({
                 url: abp.appPath + 'Account/TenantChangeModal',
                 type: 'POST',
                 contentType: 'application/html',

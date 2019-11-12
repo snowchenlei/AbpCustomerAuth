@@ -19,14 +19,14 @@ namespace Snow.Template
          typeof(TemplateApplicationModule),
          typeof(TemplateEntityFrameworkModule),
          typeof(AbpAspNetCoreModule)
-        , typeof(AbpAspNetCoreSignalRModule)
+        ,typeof(AbpAspNetCoreSignalRModule)
      )]
     public class TemplateWebCoreModule : AbpModule
     {
-        private readonly IWebHostEnvironment _env;
+        private readonly IHostingEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
 
-        public TemplateWebCoreModule(IWebHostEnvironment env)
+        public TemplateWebCoreModule(IHostingEnvironment env)
         {
             _env = env;
             _appConfiguration = env.GetAppConfiguration();
@@ -67,3 +67,4 @@ namespace Snow.Template
         }
     }
 }
+

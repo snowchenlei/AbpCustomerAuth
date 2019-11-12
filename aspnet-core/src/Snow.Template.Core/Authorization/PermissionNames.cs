@@ -6,6 +6,10 @@
         public const string Pages_Administration = "Pages.Administration";
 
         public const string Pages_Administration_Tenants = "Pages.Administration.Tenants";
+        public const string Pages_Administration_Tenants_Create = "Pages.Administration.Tenants.Create";
+        public const string Pages_Administration_Tenants_Edit = "Pages.Administration.Tenants.Edit";
+        public const string Pages_Administration_Tenants_Delete = "Pages.Administration.Tenants.Delete";
+        public const string Pages_Administration_Tenants_BatchDelete = "Pages.Administration.Tenants.BatchDelete";
         public const string Pages_Administration_AuditLogs = "Pages.Administration.AuditLogs";
 
         public const string Pages_Administration_Roles = "Pages.Administration.Roles";

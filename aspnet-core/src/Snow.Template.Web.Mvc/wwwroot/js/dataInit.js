@@ -44,6 +44,14 @@
             detailView: existsChildTable,             //是否显示父子表
             responseHandler: function (res) {
                 return res.result;
+            },
+            onLoadSuccess: function (data) {
+                // 激活 iCheck
+                //$('.ichk').iCheck({
+                //    checkboxClass: 'icheckbox_square-blue',
+                //    radioClass: 'iradio_square-blue',
+                //    increaseArea: '20%' // optional
+                //});
             }
         });
     },

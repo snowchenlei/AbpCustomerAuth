@@ -6,19 +6,19 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using Newtonsoft.Json.Serialization;
 using Castle.Facilities.Logging;
 using Abp.AspNetCore;
 using Abp.AspNetCore.Mvc.Antiforgery;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
+using Snow.Template.Configuration;
+using Snow.Template.Identity;
 using Abp.AspNetCore.SignalR.Hubs;
 using Abp.Dependency;
 using Abp.Json;
-using Snow.Template.Configuration;
-using Snow.Template.Identity;
-using Snow.Template.Common;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
+using System.IO;
 
 namespace Snow.Template.Web.Host.Startup
 {
@@ -26,12 +26,12 @@ namespace Snow.Template.Web.Host.Startup
     {
         private const string _defaultCorsPolicyName = "localhost";
 
+        private readonly IHostingEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
-        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public Startup(IWebHostEnvironment env)
+        public Startup(IHostingEnvironment env)
         {
-            _hostingEnvironment = env;
+            _env = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
@@ -69,7 +69,6 @@ namespace Snow.Template.Web.Host.Startup
                                 .Select(o => o.RemovePostFix("/"))
                                 .ToArray()
                         )
-                        .SetIsOriginAllowedToAllowWildcardSubdomains()//设置策略的 IsOriginAllowed 属性，使可以匹配一个配置的带通配符的域名
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials()
@@ -77,20 +76,26 @@ namespace Snow.Template.Web.Host.Startup
             );
 
             // Swagger - Enable this line and the related lines in Configure method to enable
+            // swagger UI
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Template API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo() { Title = "Template API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
 
                 // Define the BearerAuth scheme that's in use
                 options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme()
                 {
-                    Description =
-                        "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 });
+                var baseName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var applicationName = $"Snow.Template.Application.xml";
+                var xmlPath = Path.Combine(_env.ContentRootPath, baseName);
+                var applicationPath = Path.Combine(_env.ContentRootPath, applicationName);
+                options.IncludeXmlComments(xmlPath, true);
+                options.IncludeXmlComments(applicationPath, true);
             });
 
             // Configure Abp and Dependency Injection
@@ -128,9 +133,9 @@ namespace Snow.Template.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "AbpProjectName API V1");
+                options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "Template API V1");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
-                    .GetManifestResourceStream("AbpCompanyName.AbpProjectName.Web.Host.wwwroot.swagger.ui.index.html");
+                    .GetManifestResourceStream("Snow.Template.Web.Host.wwwroot.swagger.ui.index.html");
             }); // URL: /swagger
         }
     }

@@ -8,5 +8,3 @@ namespace Snow.Template.Authentication.External
     }
 }
 
-
-

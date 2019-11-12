@@ -23,7 +23,6 @@ using Snow.Template.Web.Validation;
 using Abp.AspNetCore.Mvc.Antiforgery;
 using Newtonsoft.Json.Serialization;
 using Abp.Dependency;
-using Microsoft.Extensions.Hosting;
 
 namespace Snow.Template.Web.Startup
 {
@@ -31,7 +30,7 @@ namespace Snow.Template.Web.Startup
     {
         private readonly IConfigurationRoot _appConfiguration;
 
-        public Startup(IWebHostEnvironment env)
+        public Startup(IHostingEnvironment env)
         {
             _appConfiguration = env.GetAppConfiguration();
         }
@@ -75,7 +74,7 @@ namespace Snow.Template.Web.Startup
             );
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseAbp(); // Initializes ABP framework.
             if (env.IsDevelopment())

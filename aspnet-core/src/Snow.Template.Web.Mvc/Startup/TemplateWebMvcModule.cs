@@ -11,10 +11,10 @@ namespace Snow.Template.Web.Startup
     [DependsOn(typeof(TemplateWebCoreModule))]
     public class TemplateWebMvcModule : AbpModule
     {
-        private readonly IWebHostEnvironment _env;
+        private readonly IHostingEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
 
-        public TemplateWebMvcModule(IWebHostEnvironment env)
+        public TemplateWebMvcModule(IHostingEnvironment env)
         {
             _env = env;
             _appConfiguration = env.GetAppConfiguration();

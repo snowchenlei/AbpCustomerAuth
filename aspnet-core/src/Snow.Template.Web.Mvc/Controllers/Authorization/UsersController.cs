@@ -35,7 +35,7 @@ namespace Snow.Template.Web.Controllers.Authorization
         //    return Json(users);
         //}
 
-        public async Task<ActionResult> CreateOrEditModal(long? id)
+        public async Task<PartialViewResult> CreateOrEditModal(long? id)
         {
             var output = await _userAppService.GetForEditAsync(new NullableIdDto<long> { Id = id });
             var viewModel = _mapper.Map<CreateOrEditUserModalViewModel>(output);

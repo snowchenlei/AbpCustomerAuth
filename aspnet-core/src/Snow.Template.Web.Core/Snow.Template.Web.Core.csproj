@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>Snow.Template.Web.Core</AssemblyName>
     <PackageId>Snow.Template.Web.Core</PackageId>
@@ -17,19 +18,21 @@
     <RootNamespace>Snow.Template</RootNamespace>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Swagger\**" />
-    <EmbeddedResource Remove="Swagger\**" />
-    <None Remove="Swagger\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.0|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+    <OutputPath></OutputPath>
+  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Snow.Template.Application\Snow.Template.Application.csproj" />
     <ProjectReference Include="..\Snow.Template.EntityFrameworkCore\Snow.Template.EntityFrameworkCore.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
@@ -37,4 +40,6 @@
     <PackageReference Include="Abp.ZeroCore" Version="5.0.0" />
     <PackageReference Include="Abp.AspNetCore.SignalR" Version="5.0.0" />
   </ItemGroup>
+
 </Project>
+

@@ -77,5 +77,3 @@ namespace Snow.Template.Web.Host.Startup
     }
 }
 
-
-

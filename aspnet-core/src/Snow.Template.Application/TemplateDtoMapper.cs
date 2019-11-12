@@ -9,6 +9,8 @@ using AutoMapper;
 using Snow.Template.Auditing.Dto;
 using Snow.Template.Authorization.MenuItems;
 using Snow.Template.Authorization.MenuItems.Dto;
+using Snow.Template.Authorization.MultiTenancy;
+using Snow.Template.Authorization.MultiTenancy.Dto;
 using Snow.Template.Authorization.Roles;
 using Snow.Template.Authorization.Roles.Dto;
 using Snow.Template.Authorization.Users;
@@ -52,6 +54,12 @@ namespace Snow.Template
             //configuration.CreateMap<MenuItem, MenuItemEditDto>()
             //    .ForMember(entity => entity.ParentId,
             //        opt => opt.MapFrom(src => (src.Parent != null ? src.Parent.Id : 0)));
+            //Tenant
+            configuration.CreateMap<Tenant, TenantListDto>();
+            configuration.CreateMap<TenantEditDto, Tenant>();
+            configuration.CreateMap<Tenant, TenantEditDto>();
+            configuration.CreateMap<CreateTenantInput, Tenant>();
+
             //AuditLog
             configuration.CreateMap<AuditLog, AuditLogListDto>();
             //configuration.CreateMap<EntityChange, EntityChangeListDto>();

@@ -10,6 +10,10 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <RootNamespace>Snow.Template</RootNamespace>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\per\git\AbpCustomerAuth\aspnet-core\src\Snow.Template.Web.Host\Snow.Template.Application.xml</DocumentationFile>
+    <OutputPath></OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Authorization\Users\Caches\**" />
     <EmbeddedResource Remove="Authorization\Users\Caches\**" />

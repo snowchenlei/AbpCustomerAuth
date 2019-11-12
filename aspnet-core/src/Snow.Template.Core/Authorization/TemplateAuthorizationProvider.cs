@@ -52,6 +52,12 @@ namespace Snow.Template.Authorization
             parameters.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_Delete, L("DeletingParameter"));
             parameters.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_BatchDelete, L("BatchDeletingParameter"));
 
+            var tenants = administration.CreateChildPermission(PermissionNames.Pages_Administration_Tenants, L("Tenants"));
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Create, L("CreatingNewTenant"));
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Edit, L("EditingTenant"));
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Delete, L("DeletingTenant"));
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_BatchDelete, L("BatchDeletingTenant"));
+
             administration.CreateChildPermission(PermissionNames.Pages_Administration_AuditLogs, L("AuditLogs"));
         }
 

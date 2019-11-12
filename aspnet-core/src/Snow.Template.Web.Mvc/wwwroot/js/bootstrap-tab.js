@@ -6,7 +6,7 @@ var addTabs = function (options) {
     options.url = url + options.url;
     var id = "tab_" + options.id;
 
-    $(".active").removeClass("active");
+    //$(".active").removeClass("active");
     //如果TAB不存在，创建一个新的TAB
     var htmlArr = new Array();
     if (!$("#" + id)[0]) {

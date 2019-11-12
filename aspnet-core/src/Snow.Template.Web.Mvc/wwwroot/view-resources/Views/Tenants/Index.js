@@ -10,7 +10,6 @@
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             e.preventDefault();
-            debugger
             edit(app.localize('EditTenant', row.name), row.id);
         },
         'click .remove': function (e, value, row, index) {

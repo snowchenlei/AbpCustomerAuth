@@ -11,8 +11,10 @@ function ChangeIFrame() {
 //创建导航
 function changeNav() {
     $('.mt-2 .deepNav').click(function () {
-        $(this).parent('li').addClass('active');
-        $(this).parents('.open').addClass('active');
+        $('.nav-link').removeClass('active');
+        $(this).parents('.nav-treeview').prev().addClass('active');
+        $('.deepNav').removeClass('active');
+        $(this).addClass('active');
         var para = {
             "id": $(this).data('id'),
             "title": $(this).data('name'),

@@ -16,6 +16,7 @@ using Abp.MultiTenancy;
 using Abp.Runtime.Caching;
 using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
+using Snow.Template.Authorization.Users;
 
 namespace Snow.Template.Authorization.MenuItems
 {
@@ -25,11 +26,15 @@ namespace Snow.Template.Authorization.MenuItems
         private readonly IIocResolver _iocResolver;
         private readonly ICacheManager _cacheManager;
         private readonly IRepository<MenuItem> _menuItemRepository;
+        private readonly UserManager _userManager;
         private readonly ILocalizationContext _localizationContext;
 
-        public MenuItemManager(IRepository<MenuItem> menuItemRepository, ILocalizationContext localizationContext, IIocResolver iocResolver, ICacheManager cacheManager)
+        public MenuItemManager(IRepository<MenuItem> menuItemRepository
+            , UserManager userManager
+            , ILocalizationContext localizationContext, IIocResolver iocResolver, ICacheManager cacheManager)
         {
             _menuItemRepository = menuItemRepository;
+            this._userManager = userManager;
             _localizationContext = localizationContext;
             _iocResolver = iocResolver;
             _cacheManager = cacheManager;
@@ -65,7 +70,10 @@ namespace Snow.Template.Authorization.MenuItems
                 Items = new List<UserMenuItem>()
             };
             //List<MenuItem> menus = await GetMenuItemsAsync();
+            User currentUser = _userManager.GetUserById(AbpSession.UserId.Value);
+            var grantedPermissions = await _userManager.GetGrantedPermissionsAsync(currentUser);
             List<MenuItem> menus = await _menuItemRepository.GetAllListAsync();
+            menus = menus.Where(m => grantedPermissions.Any(a => a.Name == m.PermissionName) || m.PermissionName == null).ToList();
             foreach (MenuItem menuItem in menus.Where(m => m.Parent == null).OrderBy(m => m.Sort))
             {
                 UserMenuItem currentUserMenuIte = new UserMenuItem(new MenuItemDefinition(

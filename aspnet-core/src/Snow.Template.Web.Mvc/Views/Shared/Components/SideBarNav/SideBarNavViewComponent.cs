@@ -28,7 +28,7 @@ namespace Snow.Template.Web.Views.Shared.Components.SideBarNav
         {
             var model = new SideBarNavViewModel
             {
-                MainMenu = await _cacheManager.GetCache("ComponentCache").GetAsync("MainMenu",
+                MainMenu = await _cacheManager.GetCache("ComponentCache").GetAsync($"MainMenu_UserId={_abpSession.UserId}_TenantId={_abpSession.TenantId}",
                     async () =>
                         await _menuItemManager.GetMenuItemTree(_abpSession
                             .ToUserIdentifier())), //await _userNavigationManager.GetMenuAsync("MainMenu", _abpSession.ToUserIdentifier()),

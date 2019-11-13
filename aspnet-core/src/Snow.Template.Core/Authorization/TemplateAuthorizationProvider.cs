@@ -24,15 +24,12 @@ namespace Snow.Template.Authorization
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Delete, L("DeletingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_BatchDelete, L("BatchDeletingUser"));
 
-            //administration.CreateChildPermission(PermissionNames.Pages_Administration_Tenants, L("Tenants"),
-            //    multiTenancySides: MultiTenancySides.Host);
-
             var mentItems =
-                administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"));
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"));
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"));
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"));
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"));
+                administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"), multiTenancySides: MultiTenancySides.Host);
+            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
 
             var languages = administration.CreateChildPermission(PermissionNames.Pages_Administration_Languages, L("Languages"));
             languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_Create, L("CreatingNewLanguage"));
@@ -52,11 +49,11 @@ namespace Snow.Template.Authorization
             parameters.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_Delete, L("DeletingParameter"));
             parameters.CreateChildPermission(PermissionNames.Pages_Administration_Parameters_BatchDelete, L("BatchDeletingParameter"));
 
-            var tenants = administration.CreateChildPermission(PermissionNames.Pages_Administration_Tenants, L("Tenants"));
-            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Create, L("CreatingNewTenant"));
-            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Edit, L("EditingTenant"));
-            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Delete, L("DeletingTenant"));
-            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_BatchDelete, L("BatchDeletingTenant"));
+            var tenants = administration.CreateChildPermission(PermissionNames.Pages_Administration_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Create, L("CreatingNewTenant"), multiTenancySides: MultiTenancySides.Host);
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Edit, L("EditingTenant"), multiTenancySides: MultiTenancySides.Host);
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_Delete, L("DeletingTenant"), multiTenancySides: MultiTenancySides.Host);
+            tenants.CreateChildPermission(PermissionNames.Pages_Administration_Tenants_BatchDelete, L("BatchDeletingTenant"), multiTenancySides: MultiTenancySides.Host);
 
             administration.CreateChildPermission(PermissionNames.Pages_Administration_AuditLogs, L("AuditLogs"));
         }

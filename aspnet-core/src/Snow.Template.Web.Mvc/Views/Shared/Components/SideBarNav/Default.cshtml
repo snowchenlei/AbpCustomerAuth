@@ -4,6 +4,7 @@
 @model SideBarNavViewModel
 @{
     int i = 1;
+    string className;
     var calculateMenuUrl = new Func<string, string>((url) =>
     {
         if (string.IsNullOrEmpty(url))
@@ -37,8 +38,13 @@
         }
         else
         {
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+            className = "nav-item has-treeview";
+            if (i == 1)
+            {
+                className += " menu-open";
+            }
+            <li class="@className">
+                <a href="#" class="nav-link">
                     <i class="nav-icon @menuItem.Icon"></i>
                     <p>
                         @menuItem.Name
@@ -61,6 +67,7 @@
         }
     }
 </ul>
++
 @*<div class="menu">
         <ul class="list">
             @foreach (var menuItem in Model.MainMenu.Items)

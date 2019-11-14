@@ -22,6 +22,22 @@
             {
                 <input type="hidden" name="Id" value="@Model.User.Id" />
             }
+            @*<div class="form-group">
+                    <div class="custom-file">
+                        <input asp-for="User.HeadImage" type="file" class="custom-file-input" name="files[]" data-url="server/php/">
+                        <label asp-for="User.HeadImage" class="custom-file-label" data-browse="@L("Choose")"></label>
+                    </div>
+                </div>*@
+            <div class="form-group" style="position: relative">
+                <button class="btn btn-default">上传图片</button>
+                <input id="fileUpload" type="file" name="pic1">
+                <!--安置一个隐藏的input标签 用来存储图片上传成功后的图片路径   以便提交表单时 一并提交  以后就能根据路径找到这个文件了-->
+                <input type="hidden" name="brandLogo">
+            </div>
+            <!-- 此盒子与插件功能无关 显示上传图片的预览 未上传时时默认图 一般为灰色底图  -->
+            <div class="img_box">
+                <img src="images/default.png" alt="" width="100" height="100">
+            </div>
             <div class="form-group">
                 <label asp-for="User.UserName"></label>
                 @{
@@ -134,4 +150,24 @@
 </div>
 <script type="text/javascript">
     $.validator.unobtrusive.parse('form');
+    $(function () {
+        //bsCustomFileInput.init()
+        $('#fileUpload').fileupload({
+            url: '/profile/updateCurrentUserProfile',
+            dataType: 'json',
+            done: function (e, data) {
+                $('.img_box img').attr('src', data.result.picAddr);//动态修改预览图的src
+                $('[name="brandLogo"]').val(data.result.picAddr);//图片上传成功后 后台返回来的图片路径  前后台要约定好
+                $('#addCategoryForm').data('bootstrapValidator').updateStatus('brandLogo', 'VALID', null)
+            }
+        });
+        //$('#User_HeadImage').fileupload({
+        //    dataType: 'json',
+        //    done: function (e, data) {
+        //        $.each(data.result.files, function (index, file) {
+        //            $('<p />').text(file.name).appendTo(document.body);
+        //        });
+        //    }
+        //});
+    });
 </script>

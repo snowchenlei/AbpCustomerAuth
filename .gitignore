@@ -3,3 +3,5 @@
 ################################################################################
 
 /aspnet-core/src/Zhn.Template.Web.Mvc/App_Data/Logs
+/aspnet-core/src/Snow.Template.Web.Mvc/App_Data/Logs
+/aspnet-core/src/Snow.Template.Web.Mvc/Snow.Template.Web.Mvc.xml

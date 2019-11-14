@@ -17,6 +17,9 @@ namespace Snow.Template.Authorization.Users.Dto
         /// </summary>
         public long? Id { get; set; }
 
+        [TemplateDisplayName("HeadImage")]
+        public string HeadImage { get; set; }
+
         [TemplateDisplayName("Name")]
         public string Name { get; set; }
 
@@ -32,7 +35,6 @@ namespace Snow.Template.Authorization.Users.Dto
         [TemplateDisplayName("PhoneNumber")]
         public string PhoneNumber { get; set; }
 
-        
         [TemplateDisplayName("Password")]
         [DisableAuditing]
         public string Password { get; set; }

@@ -9,6 +9,7 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Caching;
+using Abp.Runtime.Session;
 using Abp.UI;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ using Snow.Template.Authorization;
 using Snow.Template.Authorization.MenuItems;
 using Snow.Template.Authorization.MenuItems.Caches;
 using Snow.Template.Authorization.MenuItems.Dto;
+using Snow.Template.Authorization.Users;
 
 namespace Snow.Template.Authorization.MenuItems
 {
@@ -25,13 +27,25 @@ namespace Snow.Template.Authorization.MenuItems
         private readonly IMapper _mapper;
         private readonly ICacheManager _cacheManager;
         private readonly IMenuItemCache _menuItemCache;
+
+        private readonly IAbpSession _abpSession;
+        private readonly UserManager _userManager;
+
         private readonly IMenuItemManager _menuItemManager;
         private readonly IRepository<MenuItem> _menuItemRepository;
 
-        public MenuItemAppService(IRepository<MenuItem> menuItemRepository, IMapper mapper, ICacheManager cacheManager, IMenuItemCache menuItemCache, IMenuItemManager menuItemManager)
+        public MenuItemAppService(IRepository<MenuItem> menuItemRepository,
+                                  IMapper mapper,
+                                  IAbpSession abpSession,
+                                  UserManager userManager,
+                                  ICacheManager cacheManager,
+                                  IMenuItemCache menuItemCache,
+                                  IMenuItemManager menuItemManager)
         {
             _menuItemRepository = menuItemRepository;
             _mapper = mapper;
+            _abpSession = abpSession;
+            _userManager = userManager;
             _cacheManager = cacheManager;
             _menuItemCache = menuItemCache;
             _menuItemManager = menuItemManager;
@@ -54,6 +68,7 @@ namespace Snow.Template.Authorization.MenuItems
         [AbpAuthorize(PermissionNames.Pages_Administration_MenuItems)]
         public async Task<PagedResultDto<MenuItemListDto>> GetPagedAsync(GetMenuItemsInput input)
         {
+            // TODO:过滤不需要的菜单，如未开启多租户属于Host的菜单
             var query = GetMenuItemsFilteredQuery(input);
             int menuItemCount = await query.CountAsync();
             List<MenuItem> menuItems = await query

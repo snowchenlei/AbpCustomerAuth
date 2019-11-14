@@ -24,16 +24,17 @@ namespace Snow.Template.Authorization
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Edit, L("EditingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Delete, L("DeletingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_BatchDelete, L("BatchDeletingUser"));
-            //if (MultiTenancy.IsEnabled)
-            //{
-            //    var mentItems =
-            //        administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"), multiTenancySides: MultiTenancySides.Host);
-            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"), multiTenancySides: MultiTenancySides.Host);
-            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"), multiTenancySides: MultiTenancySides.Host);
-            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
-            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
-            //}
-            //else
+            // 偷懒了,应该注入多租户配置
+            if (TemplateConsts.MultiTenancyEnabled)
+            {
+                var mentItems =
+                    administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"), multiTenancySides: MultiTenancySides.Host);
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"), multiTenancySides: MultiTenancySides.Host);
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            }
+            else
             {
                 var mentItems =
                     administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"));

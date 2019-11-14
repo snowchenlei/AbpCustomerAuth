@@ -9,6 +9,7 @@ using Snow.Template.Authorization.Roles;
 using Snow.Template.Authorization.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Abp.Configuration.Startup;
 
 namespace Snow.Template.EntityFrameworkCore.Seed.Host
 {
@@ -96,6 +97,3 @@ namespace Snow.Template.EntityFrameworkCore.Seed.Host
         }
     }
 }
-
-
-

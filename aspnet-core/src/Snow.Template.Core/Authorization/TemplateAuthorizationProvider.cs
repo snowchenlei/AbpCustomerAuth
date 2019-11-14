@@ -1,4 +1,5 @@
 ﻿using Abp.Authorization;
+using Abp.Configuration.Startup;
 using Abp.Localization;
 using Abp.MultiTenancy;
 
@@ -23,14 +24,24 @@ namespace Snow.Template.Authorization
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Edit, L("EditingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_Delete, L("DeletingUser"));
             users.CreateChildPermission(PermissionNames.Pages_Administration_Users_BatchDelete, L("BatchDeletingUser"));
-
-            var mentItems =
-                administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"), multiTenancySides: MultiTenancySides.Host);
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"), multiTenancySides: MultiTenancySides.Host);
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"), multiTenancySides: MultiTenancySides.Host);
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
-            mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
-
+            //if (MultiTenancy.IsEnabled)
+            //{
+            //    var mentItems =
+            //        administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"), multiTenancySides: MultiTenancySides.Host);
+            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            //    mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"), multiTenancySides: MultiTenancySides.Host);
+            //}
+            //else
+            {
+                var mentItems =
+                    administration.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems, L("MenuItems"));
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Create, L("CreatingNewMenuItem"));
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Edit, L("EditingMenuItem"));
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_Delete, L("DeletingMenuItem"));
+                mentItems.CreateChildPermission(PermissionNames.Pages_Administration_MenuItems_BatchDelete, L("BatchDeletingMenuItem"));
+            }
             var languages = administration.CreateChildPermission(PermissionNames.Pages_Administration_Languages, L("Languages"));
             languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_Create, L("CreatingNewLanguage"));
             languages.CreateChildPermission(PermissionNames.Pages_Administration_Languages_Edit, L("EditingLanguage"));

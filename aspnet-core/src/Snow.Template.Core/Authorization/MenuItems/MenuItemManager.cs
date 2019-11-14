@@ -16,6 +16,7 @@ using Abp.MultiTenancy;
 using Abp.Runtime.Caching;
 using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
+using Snow.Template.Authorization.Roles;
 using Snow.Template.Authorization.Users;
 
 namespace Snow.Template.Authorization.MenuItems
@@ -27,14 +28,17 @@ namespace Snow.Template.Authorization.MenuItems
         private readonly ICacheManager _cacheManager;
         private readonly IRepository<MenuItem> _menuItemRepository;
         private readonly UserManager _userManager;
+        private readonly RoleManager roleManager;
         private readonly ILocalizationContext _localizationContext;
 
         public MenuItemManager(IRepository<MenuItem> menuItemRepository
             , UserManager userManager
+            , RoleManager roleManager
             , ILocalizationContext localizationContext, IIocResolver iocResolver, ICacheManager cacheManager)
         {
             _menuItemRepository = menuItemRepository;
             this._userManager = userManager;
+            this.roleManager = roleManager;
             _localizationContext = localizationContext;
             _iocResolver = iocResolver;
             _cacheManager = cacheManager;
@@ -69,7 +73,6 @@ namespace Snow.Template.Authorization.MenuItems
             {
                 Items = new List<UserMenuItem>()
             };
-            //List<MenuItem> menus = await GetMenuItemsAsync();
             User currentUser = _userManager.GetUserById(AbpSession.UserId.Value);
             var grantedPermissions = await _userManager.GetGrantedPermissionsAsync(currentUser);
             List<MenuItem> menus = await _menuItemRepository.GetAllListAsync();

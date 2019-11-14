@@ -101,7 +101,8 @@ namespace Snow.Template.Web.Controllers.Authorization
             }
 
             var loginResult = await GetLoginResultAsync(loginModel.UsernameOrEmailAddress, loginModel.Password, GetTenancyNameOrNull());
-
+            loginResult.Identity.AddClaim(new Claim(ClaimTypes.Name, loginResult.User.Name));
+            loginResult.Identity.AddClaim(new Claim(ClaimTypes.Actor, loginResult.User.Name));
             await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
             await UnitOfWorkManager.Current.SaveChangesAsync();
 
@@ -122,12 +123,13 @@ namespace Snow.Template.Web.Controllers.Authorization
             {
                 case AbpLoginResultType.Success:
                     return loginResult;
+
                 default:
                     throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
             }
         }
 
-        #endregion
+        #endregion Login / Logout
 
         #region Register
 
@@ -258,7 +260,7 @@ namespace Snow.Template.Web.Controllers.Authorization
             }
         }
 
-        #endregion
+        #endregion Register
 
         #region External Login
 
@@ -275,12 +277,8 @@ namespace Snow.Template.Web.Controllers.Authorization
                 });
 
             return Challenge(
-                // TODO: ...?
-                // new Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties
-                // {
-                //     Items = { { "LoginProvider", provider } },
-                //     RedirectUri = redirectUrl
-                // },
+                // TODO: ...? new Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties
+                // { Items = { { "LoginProvider", provider } }, RedirectUri = redirectUrl },
                 provider
             );
         }
@@ -314,8 +312,10 @@ namespace Snow.Template.Web.Controllers.Authorization
                 case AbpLoginResultType.Success:
                     await _signInManager.SignInAsync(loginResult.Identity, false);
                     return Redirect(returnUrl);
+
                 case AbpLoginResultType.UnknownExternalLogin:
                     return await RegisterForExternalLogin(externalLoginInfo);
+
                 default:
                     throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(
                         loginResult.Result,
@@ -364,7 +364,7 @@ namespace Snow.Template.Web.Controllers.Authorization
                 .ToList();
         }
 
-        #endregion
+        #endregion External Login
 
         #region Helpers
 
@@ -378,7 +378,7 @@ namespace Snow.Template.Web.Controllers.Authorization
             return Url.Action("Index", "Home");
         }
 
-        #endregion
+        #endregion Helpers
 
         #region Change Tenant
 
@@ -391,7 +391,7 @@ namespace Snow.Template.Web.Controllers.Authorization
             });
         }
 
-        #endregion
+        #endregion Change Tenant
 
         #region Common
 
@@ -425,13 +425,13 @@ namespace Snow.Template.Web.Controllers.Authorization
             return defaultValueBuilder();
         }
 
-        #endregion
+        #endregion Common
 
         #region Etc
 
         /// <summary>
-        /// This is a demo code to demonstrate sending notification to default tenant admin and host admin uers.
-        /// Don't use this code in production !!!
+        /// This is a demo code to demonstrate sending notification to default tenant admin and host
+        /// admin uers. Don't use this code in production !!!
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
@@ -456,9 +456,6 @@ namespace Snow.Template.Web.Controllers.Authorization
             return Content("Sent notification: " + message);
         }
 
-        #endregion
+        #endregion Etc
     }
 }
-
-
-

@@ -93,15 +93,20 @@
         @if (CultureInfo.CurrentUICulture.Name != "en")
         {
             string languageName = CultureInfo.CurrentUICulture.Name;
-            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(languageName.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+            string validationLanguageName = languageName, bootboxLanguageName = languageName;
             if (languageName == "zh-Hans")
             {
-                languageName = "zh-CN";
+                validationLanguageName = "zh";
+                bootboxLanguageName = "zh_CN";
             }
+            validationLanguageName = validationLanguageName.Replace("-", "_");
+            bootboxLanguageName = bootboxLanguageName.Replace("-", "_");
+
+            <script src="~/lib/jquery-validation/dist/localization/messages_@Html.Raw(validationLanguageName + ".js")" asp-append-version="true"></script>
             <script type="text/javascript">
-                bootbox.setLocale('@languageName.Replace("-", "_")');
+                bootbox.setLocale('@bootboxLanguageName');
             </script>
-            <script src="~/lib/bootbox.js/src/locales/@Html.Raw(languageName.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+            @*<script src="~/lib/bootbox.js/src/locales/@Html.Raw(bootboxLanguageName + ".js")" asp-append-version="true"></script>*@
         }
     </environment>
 

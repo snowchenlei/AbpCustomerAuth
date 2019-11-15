@@ -3,6 +3,16 @@
 });
 $(function () {
     changeNav();
+    $('#showDetail').click(function () {
+        var para = {
+            "id": 'user_01',
+            "title": '用户详细',
+            "close": true,
+            "url": $(this).data('href'),
+            "height": getHeight()
+        };
+        addTabs(para);
+    });
 });
 function ChangeIFrame() {
     var height = getHeight();

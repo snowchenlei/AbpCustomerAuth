@@ -6,13 +6,11 @@
     ViewBag.AbsoluteUrl = "/Users";
     ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
 }
+
 @section scripts
     {
     <environment names="Development">
-
-        <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
-        <script src="~/lib/jquery-file-upload/js/jquery.fileupload.js"></script>
+        <link href="~/lib/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
         <script src="~/view-resources/Views/Users/Index.js" asp-append-version="true"></script>
     </environment>
 

@@ -6,7 +6,7 @@ using Snow.Template.Authorization.Users.Profile.Dto;
 
 namespace Snow.Template.Authorization.Users.Profile
 {
-    internal class ProfileAppService : TemplateAppServiceBase, IProfileAppService
+    public class ProfileAppService : TemplateAppServiceBase, IProfileAppService
     {
         public Task UpdateCurrentUserProfile(CurrentUserProfileEditDto input)
         {

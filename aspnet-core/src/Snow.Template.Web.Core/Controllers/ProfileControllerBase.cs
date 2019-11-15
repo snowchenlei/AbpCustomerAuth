@@ -54,7 +54,6 @@ namespace Snow.Template.Controllers
                 {
                     throw new Exception(L("IncorrectImageFormat"));
                 }
-
                 _tempFileCacheManager.SetFile(input.FileToken, fileBytes);
 
                 using (var bmpImage = new Bitmap(new MemoryStream(fileBytes)))

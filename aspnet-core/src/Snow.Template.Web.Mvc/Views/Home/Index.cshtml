@@ -193,7 +193,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="@Model.HeadImage" class="img-circle elevation-2" alt="User Image">
+                        <a id="showDetail" href="javascript:void(0);" data-href="/users/detail"><img src="@Model.HeadImage" class="img-circle elevation-2" alt="User Image"></a>
                     </div>
                     <div class="info">
                         <a href="/Account/Logout" class="d-block">@Model.Name</a>
@@ -255,8 +255,6 @@
     <environment names="Development">
         <!-- jQuery -->
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <!-- jQuery.Validate -->
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
         <!-- Bootstrap 4 -->
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
@@ -281,10 +279,6 @@
         <script src="~/js/bootstrap-tab.js" asp-append-version="true"></script>
         <script src="~/view-resources/Views/Home/Demo.js" asp-append-version="true"></script>
         <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
-        @if (CultureInfo.CurrentUICulture.Name != "en")
-        {
-            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
-        }
     </environment>
 
     <environment names="Staging,Production">

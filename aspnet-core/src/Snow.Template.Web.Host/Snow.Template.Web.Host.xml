@@ -12,5 +12,16 @@
             <param name="message"></param>
             <returns></returns>
         </member>
+        <member name="T:Snow.Template.Web.Host.Controllers.ProfileController">
+            <summary>
+            文件上传
+            </summary>
+        </member>
+        <member name="M:Snow.Template.Web.Host.Controllers.ProfileController.#ctor(Snow.Template.Storage.ITempFileCacheManager)">
+            <summary>
+            构造
+            </summary>
+            <param name="tempFileCacheManager"></param>
+        </member>
     </members>
 </doc>

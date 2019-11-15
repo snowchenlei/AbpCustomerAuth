@@ -29,6 +29,11 @@ namespace Snow.Template.Web.Controllers.Authorization
             return View();
         }
 
+        public ActionResult Detail()
+        {
+            return View();
+        }
+
         //public async Task<JsonResult> Load(GetUsersInput input)
         //{
         //    var users = await _userAppService.GetUsers(input);

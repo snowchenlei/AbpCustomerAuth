@@ -9,7 +9,7 @@ using Snow.Template.Storage;
 namespace Snow.Template.Web.Host.Controllers
 {
     /// <summary>
-    /// 材料上传
+    /// 文件上传
     /// </summary>
     [AbpMvcAuthorize]
     public class ProfileController : ProfileControllerBase

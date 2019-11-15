@@ -62,7 +62,6 @@ namespace Snow.Template.Web.Startup
             AuthConfigurer.Configure(services, _appConfiguration);
 
             services.AddScoped<IWebResourceManager, WebResourceManager>();
-
             services.AddSignalR();
 
             // Configure Abp and Dependency Injection

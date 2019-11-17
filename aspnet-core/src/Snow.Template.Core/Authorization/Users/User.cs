@@ -12,6 +12,8 @@ namespace Snow.Template.Authorization.Users
     }
     public class User : AbpUser<User>
     {
+        public virtual Guid? ProfilePictureId { get; set; }
+
 
 
         public const string DefaultPassword = "123qwe";

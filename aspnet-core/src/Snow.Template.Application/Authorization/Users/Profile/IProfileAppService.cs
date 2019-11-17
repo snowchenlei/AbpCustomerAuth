@@ -10,5 +10,12 @@ namespace Snow.Template.Authorization.Users.Profile
     public interface IProfileAppService : IApplicationService
     {
         Task UpdateCurrentUserProfile(CurrentUserProfileEditDto input);
+
+        /// <summary>
+        /// 修改用户头像
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task UpdateProfilePicture(UpdateProfilePictureInput input);
     }
 }

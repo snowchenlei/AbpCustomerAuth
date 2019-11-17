@@ -8,16 +8,19 @@ using Snow.Template.Authorization.Users;
 using Snow.Template.Authorization.MultiTenancy;
 using Microsoft.Extensions.Logging.Debug;
 using Snow.Template.Parameters;
+using Snow.Template.Storage;
 
 namespace Snow.Template.EntityFrameworkCore
 {
     public class TemplateDbContext : AbpZeroDbContext<Tenant, Role, User, TemplateDbContext>
     {
         /* Define a DbSet for each entity of the application */
-        public DbSet<MenuItem> MenuItem { get; set; }
+        public virtual DbSet<MenuItem> MenuItem { get; set; }
 
-        public DbSet<ParameterType> ParameterType { get; set; }
-        public DbSet<Parameter> Parameter { get; set; }
+        public virtual DbSet<ParameterType> ParameterType { get; set; }
+        public virtual DbSet<Parameter> Parameter { get; set; }
+        public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
+
 
         //输出到debug输出
         public static readonly ILoggerFactory MyLoggerFactory
@@ -26,6 +29,16 @@ namespace Snow.Template.EntityFrameworkCore
         public TemplateDbContext(DbContextOptions<TemplateDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<BinaryObject>(b =>
+            {
+                b.HasIndex(e => new { e.TenantId });
+            });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

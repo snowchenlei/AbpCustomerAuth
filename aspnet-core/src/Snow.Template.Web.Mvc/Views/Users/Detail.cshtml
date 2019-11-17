@@ -1,4 +1,5 @@
 ﻿@using Snow.Template.Web.Startup
+@using System.Globalization
 @using  Snow.Template.Web.Models.Users
 @model UserDetailModalViewModel
 @{
@@ -7,24 +8,38 @@
     ViewBag.AbsoluteUrl = "/Users";
     ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
 }
-@section styles{ 
-<link href="~/lib/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
-<link href="~/lib/bootstrap-fileinput/themes/explorer-fa/theme.css" rel="stylesheet" />
+@section styles{
+    <link href="~/lib/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap-fileinput/themes/explorer-fa/theme.css" rel="stylesheet" asp-append-version="true" />
 }
 @section scripts
     {
     <environment names="Development">
-        <script src="~/lib/bootstrap-fileinput/js/fileinput.js"></script>
-        <script src="~/lib/bootstrap-fileinput/themes/fa/theme.js"></script>
-        <script src="~/lib/bootstrap-fileinput/themes/explorer-fa/theme.js"></script>
-        <script type="text/javascript">
+        <script src="~/lib/bootstrap-fileinput/js/fileinput.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap-fileinput/themes/fa/theme.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap-fileinput/themes/explorer-fa/theme.js" asp-append-version="true"></script>
+        @if (CultureInfo.CurrentUICulture.Name != "en")
+        {
+            string languageName = CultureInfo.CurrentUICulture.Name;
+            if (languageName == "zh-Hans")
+            {
+                languageName = "zh";
+            }
+            <script src="~/lib/bootstrap-fileinput/js/locales/@Html.Raw(languageName+".js")" asp-append-version="true"></script>
+            <script type="text/javascript">
             $(function () {
                 $('#HeadImage').fileinput({
                     theme: "fa",
+                    language: '@languageName',
                     uploadUrl: "/profile/UploadProfilePicture"
+                    //        allowedFileExtensions: ['jpg', 'png', 'gif']
+                });
+                $('#changePassward').click(function () {
+                    // 弹出Modal修改密码
                 });
             });
         </script>
+        }
     </environment>
 
     <environment names="Staging,Production">
@@ -32,15 +47,9 @@
     </environment>
 }
 <div style="max-width:500px;margin:20px;padding:20px;">
-    <form id="modelForm" name="UserInformationsForm" role="form" novalidate>
         <div class="form-group">
             <label asp-for="HeadImage"></label>
-                <input asp-for="HeadImage" type="file">
+            <input asp-for="HeadImage" type="file">
         </div>
-        <div class="form-group">
-            <label asp-for="Password"></label>
-            <input asp-for="Password" type="email" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Password)">
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </form>
+       <button id="changePassward" type="button" class="btn btn-primary">@L("ChangePassward")</button>
 </div>

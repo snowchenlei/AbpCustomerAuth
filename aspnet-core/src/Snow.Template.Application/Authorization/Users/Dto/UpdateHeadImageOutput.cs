@@ -1,6 +1,6 @@
 ﻿using Abp.Web.Models;
 
-namespace Snow.Template.Authorization.Users.Profile.Dto
+namespace Snow.Template.Authorization.Users.Dto
 {
     public class UpdateHeadImageOutput : ErrorInfo
     {

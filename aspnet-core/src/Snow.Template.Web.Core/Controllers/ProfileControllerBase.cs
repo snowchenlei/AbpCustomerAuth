@@ -9,6 +9,7 @@ using Abp.Extensions;
 using Abp.IO.Extensions;
 using Abp.UI;
 using Abp.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 using Snow.Template.Authorization.Users.Profile.Dto;
 using Snow.Template.Dto;
 using Snow.Template.Helpers;
@@ -27,7 +28,7 @@ namespace Snow.Template.Controllers
             _tempFileCacheManager = tempFileCacheManager;
         }
 
-        public UploadProfilePictureOutput UploadProfilePicture(FileDto input)
+        public UpdateHeadImageOutput UploadProfilePicture(FileDto input)
         {
             try
             {
@@ -38,7 +39,6 @@ namespace Snow.Template.Controllers
                 {
                     throw new UserFriendlyException(L("ProfilePicture_Change_Error"));
                 }
-
                 if (profilePictureFile.Length > MaxProfilePictureSize)
                 {
                     throw new UserFriendlyException(L("ProfilePicture_Warn_SizeLimit", AppConsts.MaxProfilPictureBytesUserFriendlyValue));
@@ -58,7 +58,7 @@ namespace Snow.Template.Controllers
 
                 using (var bmpImage = new Bitmap(new MemoryStream(fileBytes)))
                 {
-                    return new UploadProfilePictureOutput
+                    return new UpdateHeadImageOutput
                     {
                         FileToken = input.FileToken,
                         FileName = input.FileName,
@@ -70,7 +70,8 @@ namespace Snow.Template.Controllers
             }
             catch (UserFriendlyException ex)
             {
-                return new UploadProfilePictureOutput(new ErrorInfo(ex.Message));
+                throw ex;
+                //return new UploadProfilePictureOutput(new ErrorInfo(ex.Message));
             }
         }
     }

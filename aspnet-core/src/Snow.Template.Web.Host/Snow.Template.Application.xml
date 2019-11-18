@@ -267,9 +267,91 @@
             头像
             </summary>
         </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.GetPagedAsync(Snow.Template.Authorization.Users.Dto.GetUsersInput)">
+            <summary>
+            分页
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.GetToExcelAsync(Snow.Template.Authorization.Users.Dto.GetUsersToExcelInput)">
+            <summary>
+            导出
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.GetForEditAsync(Abp.Application.Services.Dto.NullableIdDto{System.Int64})">
+            <summary>
+            获取详细
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:Snow.Template.Authorization.Users.IUserAppService.CreateOrUpdateAsync(Snow.Template.Authorization.Users.Dto.CreateOrUpdateUserInput)">
             <summary>
             添加或修改
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.DeleteAsync(Abp.Application.Services.Dto.EntityDto{System.Int64})">
+            <summary>
+            删除
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.GetRolesAsync">
+            <summary>
+            获取角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.ChangeLanguageAsync(Snow.Template.Authorization.Users.Dto.ChangeUserLanguageDto)">
+            <summary>
+            修改语言
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.ChangePasswordAsync(Snow.Template.Authorization.Users.Dto.ChangePasswordDto)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.ResetPasswordAsync(Snow.Template.Authorization.Users.Dto.ResetPasswordDto)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.GetHeadImageAsync">
+            <summary>
+            获取用户头像
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.IUserAppService.UpdateHeadImage(Snow.Template.Authorization.Users.Dto.UpdateHeadImageInput)">
+            <summary>
+            修改用户头像
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.Profile.IProfileAppService.UpdateProfilePicture(Snow.Template.Authorization.Users.Profile.Dto.UpdateHeadImageInputInput)">
+            <summary>
+            修改用户头像
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.Profile.ProfileAppService.UpdateProfilePicture(Snow.Template.Authorization.Users.Profile.Dto.UpdateHeadImageInputInput)">
+            <summary>
+            修改用户头像
             </summary>
             <param name="input"></param>
             <returns></returns>
@@ -300,6 +382,19 @@
             添加角色信息
             </summary>
             <param name="userListDtos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.UserAppService.UpdateHeadImage(Snow.Template.Authorization.Users.Dto.UpdateHeadImageInput)">
+            <summary>
+            修改用户头像
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Snow.Template.Authorization.Users.UserAppService.GetHeadImageAsync">
+            <summary>
+            获取用户头像
+            </summary>
             <returns></returns>
         </member>
         <member name="P:Snow.Template.Localization.Dto.ApplicationLanguageEditDto.IsEnabled">

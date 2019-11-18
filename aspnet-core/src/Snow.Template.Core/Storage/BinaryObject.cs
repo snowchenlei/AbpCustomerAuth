@@ -14,18 +14,19 @@ namespace Snow.Template.Storage
         public virtual int? TenantId { get; set; }
 
         [Required]
-        public virtual byte[] Bytes { get; set; }
+        [MaxLength(TemplateConsts.MaxUrlLength)]
+        public virtual string FilePath { get; set; }
 
         public BinaryObject()
         {
             Id = SequentialGuidGenerator.Instance.Create();
         }
 
-        public BinaryObject(int? tenantId, byte[] bytes)
+        public BinaryObject(int? tenantId, string filePath)
             : this()
         {
             TenantId = tenantId;
-            Bytes = bytes;
+            FilePath = filePath;
         }
     }
 }

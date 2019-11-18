@@ -29,15 +29,23 @@ using Snow.Template.Authorization.Users.Dto;
 using Snow.Template.Authorization.Users.Exporting;
 using Snow.Template.Dto;
 using Abp.Domain.Uow;
+using Snow.Template.Storage;
+using System.Drawing;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Snow.Template.Authorization.Users
 {
     [AbpAuthorize(PermissionNames.Pages_Administration_Users)]
     public class UserAppService : TemplateAppServiceBase, IUserAppService
     {
+        private const int MaxProfilPictureBytes = 5242880; //5MB
+        private readonly IBinaryObjectManager _binaryObjectManager;
+        private readonly ITempFileCacheManager _tempFileCacheManager;
         private readonly IMapper _mapper;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
+        private readonly IWebHostEnvironment _environment;
         private readonly IRepository<Role> _roleRepository;
         private readonly IRepository<User, long> _userRepository;
         private readonly IUserListExcelExporter _userListExcelExporter;
@@ -47,15 +55,24 @@ namespace Snow.Template.Authorization.Users
         private readonly LogInManager _logInManager;
 
         public UserAppService(
+            IAbpSession abpSession,
             UserManager userManager,
             RoleManager roleManager,
+            IWebHostEnvironment environment,
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
-            IAbpSession abpSession,
-            LogInManager logInManager, IRepository<User, long> userRepository, IMapper mapper, IRepository<UserRole, long> userRoleRepository, IUserListExcelExporter userListExcelExporter)
+             IBinaryObjectManager binaryObjectManager,
+            ITempFileCacheManager tempFileCacheManager,
+            LogInManager logInManager, IRepository<User, long> userRepository
+            , IMapper mapper
+            , IRepository<UserRole, long> userRoleRepository
+            , IUserListExcelExporter userListExcelExporter)
         {
+            _binaryObjectManager = binaryObjectManager;
+            _tempFileCacheManager = tempFileCacheManager;
             _userManager = userManager;
             _roleManager = roleManager;
+            _environment = environment;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
@@ -347,6 +364,95 @@ namespace Snow.Template.Authorization.Users
 
                 userListDto.Roles = userListDto.Roles.Where(r => r.RoleName != null).OrderBy(r => r.RoleName).ToList();
             }
+        }
+
+        /// <summary>
+        /// 修改用户头像
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task UpdateHeadImage(UpdateHeadImageInput input)
+        {
+            string fixedFilePath = String.Empty, absoluteFilePath = String.Empty;
+            string absolutePath = "/AppData/FileUpload/Image/HeadImage/";
+            string fixedPath = _environment.ContentRootPath + absolutePath;
+            var imageBytes = _tempFileCacheManager.GetFile(input.FileToken);
+
+            if (imageBytes == null)
+            {
+                throw new UserFriendlyException("There is no such image file with the token: " + input.FileToken);
+            }
+            if (imageBytes.Length > MaxProfilPictureBytes)
+            {
+                throw new UserFriendlyException(L("ResizedProfilePicture_Warn_SizeLimit", AppConsts.ResizedMaxProfilPictureBytesUserFriendlyValue));
+            }
+            using (var bmpImage = new Bitmap(new MemoryStream(imageBytes)))
+            {
+                var width = (input.Width == 0 || input.Width > bmpImage.Width) ? bmpImage.Width : input.Width;
+                var height = (input.Height == 0 || input.Height > bmpImage.Height) ? bmpImage.Height : input.Height;
+                var bmCrop = bmpImage.Clone(new Rectangle(input.X, input.Y, width, height), bmpImage.PixelFormat);
+                if (!Directory.Exists(fixedPath))
+                {
+                    Directory.CreateDirectory(fixedPath);
+                }
+                absoluteFilePath = absolutePath + input.FileToken + ".jpg";
+                fixedFilePath = fixedPath + input.FileToken + ".jpg";
+                bmCrop.Save(fixedFilePath, bmpImage.RawFormat);
+            }
+
+            User user = await UserManager.GetUserByIdAsync(AbpSession.GetUserId());
+
+            if (user.ProfilePictureId.HasValue)
+            {
+                await _binaryObjectManager.DeleteAsync(user.ProfilePictureId.Value);
+            }
+
+            var storedFile = new BinaryObject(AbpSession.TenantId, absoluteFilePath);
+            await _binaryObjectManager.SaveAsync(storedFile);
+
+            user.ProfilePictureId = storedFile.Id;
+        }
+
+        /// <summary>
+        /// 获取用户头像
+        /// </summary>
+        /// <returns></returns>
+        public async Task<GetHeadImageOutput> GetHeadImageAsync()
+        {
+            var user = await UserManager.GetUserByIdAsync(AbpSession.GetUserId());
+            if (user.ProfilePictureId == null)
+            {
+                return new GetHeadImageOutput(string.Empty);
+            }
+
+            return await GetHeadImageById(user.ProfilePictureId.Value);
+        }
+
+        public async Task<GetHeadImageOutput> GetHeadImageById(Guid profilePictureId)
+        {
+            return await GetHeadImageByIdInternal(profilePictureId);
+        }
+
+        private async Task<GetHeadImageOutput> GetHeadImageByIdInternal(Guid profilePictureId)
+        {
+            string path = await GetHeadImageByIdOrNull(profilePictureId);
+            if (path == null)
+            {
+                return new GetHeadImageOutput(string.Empty);
+            }
+
+            return new GetHeadImageOutput(path);
+        }
+
+        private async Task<string> GetHeadImageByIdOrNull(Guid profilePictureId)
+        {
+            var file = await _binaryObjectManager.GetOrNullAsync(profilePictureId);
+            if (file == null)
+            {
+                return null;
+            }
+
+            return file.FilePath;
         }
     }
 }

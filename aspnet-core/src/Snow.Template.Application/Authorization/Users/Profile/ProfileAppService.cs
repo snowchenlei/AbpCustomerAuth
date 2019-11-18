@@ -27,16 +27,18 @@ namespace Snow.Template.Authorization.Users.Profile
             _binaryObjectManager = binaryObjectManager;
             _tempFileCacheManager = tempFileCacheManager;
         }
+
         public Task UpdateCurrentUserProfile(CurrentUserProfileEditDto input)
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// 修改用户头像
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task UpdateProfilePicture(UpdateProfilePictureInput input)
+        public async Task UpdateProfilePicture(UpdateHeadImageInputInput input)
         {
             byte[] byteArray;
 
@@ -72,7 +74,7 @@ namespace Snow.Template.Authorization.Users.Profile
                 await _binaryObjectManager.DeleteAsync(user.ProfilePictureId.Value);
             }
 
-            var storedFile = new BinaryObject(AbpSession.TenantId, byteArray);
+            var storedFile = new BinaryObject(AbpSession.TenantId, "");
             await _binaryObjectManager.SaveAsync(storedFile);
 
             user.ProfilePictureId = storedFile.Id;

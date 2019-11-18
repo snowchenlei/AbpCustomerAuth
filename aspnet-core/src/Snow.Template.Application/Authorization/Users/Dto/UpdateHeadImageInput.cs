@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Snow.Template.Authorization.Users.Profile.Dto
+namespace Snow.Template.Authorization.Users.Dto
 {
-    public class UpdateHeadImageInputInput
+    public class UpdateHeadImageInput
     {
         [Required]
         [MaxLength(400)]

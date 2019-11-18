@@ -43,7 +43,7 @@ namespace Snow.Template.Gdpr
             }
 
             var file = new FileDto("ProfilePicture.png", MimeTypeNames.ImagePng);
-            _tempFileCacheManager.SetFile(file.FileToken, profilePicture.Bytes);
+            //_tempFileCacheManager.SetFile(file.FileToken, profilePicture.FilePath);
 
             return new List<FileDto> { file };
         }

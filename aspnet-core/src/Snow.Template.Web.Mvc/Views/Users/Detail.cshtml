@@ -27,18 +27,58 @@
             }
             <script src="~/lib/bootstrap-fileinput/js/locales/@Html.Raw(languageName+".js")" asp-append-version="true"></script>
             <script type="text/javascript">
-            $(function () {
-                $('#HeadImage').fileinput({
-                    theme: "fa",
-                    language: '@languageName',
-                    uploadUrl: "/profile/UploadProfilePicture"
-                    //        allowedFileExtensions: ['jpg', 'png', 'gif']
+                var _userService = abp.services.app.user;
+                var url = '@Html.Raw(Model.HeadImage)'
+                var arr = [];
+                if (url !== '') {
+                    arr.push("<img src='"+url+"' class='file-preview-image' alt='Desert' title='Desert'>");
+                }
+                $(function () {
+                    var uploadToken;
+
+                    $('#HeadImage').fileinput({
+                        theme: "fa",
+                        language: '@languageName',
+                        uploadUrl: "/profile/UploadProfilePicture",
+                        showUpload: false,
+                        initialPreview:arr,
+                        uploadExtraData: function (previewId, index) {
+                            var data = {
+                                FileName: 'ProfilePicture',
+                                FileToken: app.guid(),
+                            };
+                            if (index != undefined) {
+                                data.FileType = $('#HeadImage').fileinput('getFileList')[index].type
+                            }
+                            return data;
+                        }
+                        //        allowedFileExtensions: ['jpg', 'png', 'gif']
+                    }).on('fileuploaded', function (event, previewId, index, fileId) {
+                        uploadToken = previewId.response.result.fileToken;
+                        if (previewId.response.success) {
+                            previewId.response = {success:true}
+                        } else {
+                            previewId.response = { error: true };
+                        }
+                    });
+                    $('#setHeadImage').click(function () {
+                        _userService.updateHeadImage({
+                            FileToken: uploadToken,
+                            X: 0,
+                            Y: 0,
+                            Width: 0,
+                            Height: 0
+                        }).done(function (result) {
+                            abp.notify.info(app.localize('SavedSuccessfully'));
+                        }).always(function () {
+                            abp.ui.clearBusy(dialog);
+                        });
                 });
                 $('#changePassward').click(function () {
                     // 弹出Modal修改密码
                 });
             });
-        </script>
+            </script>
         }
     </environment>
 
@@ -47,9 +87,10 @@
     </environment>
 }
 <div style="max-width:500px;margin:20px;padding:20px;">
-        <div class="form-group">
-            <label asp-for="HeadImage"></label>
-            <input asp-for="HeadImage" type="file">
-        </div>
-       <button id="changePassward" type="button" class="btn btn-primary">@L("ChangePassward")</button>
+    <div class="form-group">
+        <label asp-for="HeadImage"></label>
+        <input asp-for="HeadImage" type="file">
+    </div>
+    <button id="setHeadImage" type="button" class="btn btn-primary">@L("SetHeadImage")</button>
+    <button id="changePassward" type="button" class="btn btn-primary">@L("ChangePassward")</button>
 </div>

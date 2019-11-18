@@ -29,9 +29,13 @@ namespace Snow.Template.Web.Controllers.Authorization
             return View();
         }
 
-        public ActionResult Detail()
+        public async Task<ActionResult> Detail()
         {
-            return View();
+            GetHeadImageOutput headImageOutput = await _userAppService.GetHeadImageAsync();
+            return View(new UserDetailModalViewModel
+            {
+                HeadImage = headImageOutput.HeadImagePath
+            });
         }
 
         //public async Task<JsonResult> Load(GetUsersInput input)

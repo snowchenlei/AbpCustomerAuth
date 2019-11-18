@@ -12,6 +12,7 @@
         public const int MaxNameLength = 50;
         public const int MaxValueLength = 50;
         public const int MaxCodeLength = 50;
+        public const int MaxUrlLength = 200;
         public const int MaxDescriptionLength = 500;
     }
 }

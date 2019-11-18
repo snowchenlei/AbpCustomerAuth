@@ -16,12 +16,14 @@ namespace Snow.Template.Authorization.Users
         /// <param name="input"></param>
         /// <returns></returns>
         Task<PagedResultDto<UserListDto>> GetPagedAsync(GetUsersInput input);
+
         /// <summary>
         /// 导出
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         Task<FileDto> GetToExcelAsync(GetUsersToExcelInput input);
+
         /// <summary>
         /// 获取详细
         /// </summary>
@@ -35,12 +37,14 @@ namespace Snow.Template.Authorization.Users
         /// <param name="input"></param>
         /// <returns></returns>
         Task CreateOrUpdateAsync(CreateOrUpdateUserInput input);
+
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         Task DeleteAsync(EntityDto<long> input);
+
         /// <summary>
         /// 获取角色
         /// </summary>
@@ -53,17 +57,32 @@ namespace Snow.Template.Authorization.Users
         /// <param name="input"></param>
         /// <returns></returns>
         Task ChangeLanguageAsync(ChangeUserLanguageDto input);
+
         /// <summary>
         /// 修改密码
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         Task<bool> ChangePasswordAsync(ChangePasswordDto input);
+
         /// <summary>
         /// 重置密码
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         Task<bool> ResetPasswordAsync(ResetPasswordDto input);
+
+        /// <summary>
+        /// 获取用户头像
+        /// </summary>
+        /// <returns></returns>
+        Task<GetHeadImageOutput> GetHeadImageAsync();
+
+        /// <summary>
+        /// 修改用户头像
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task UpdateHeadImage(UpdateHeadImageInput input);
     }
 }

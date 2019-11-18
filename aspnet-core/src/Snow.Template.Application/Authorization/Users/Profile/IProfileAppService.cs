@@ -16,6 +16,6 @@ namespace Snow.Template.Authorization.Users.Profile
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task UpdateProfilePicture(UpdateProfilePictureInput input);
+        Task UpdateProfilePicture(UpdateHeadImageInputInput input);
     }
 }

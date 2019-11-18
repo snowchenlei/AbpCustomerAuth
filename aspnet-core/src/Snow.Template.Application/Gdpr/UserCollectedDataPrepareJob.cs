@@ -35,6 +35,7 @@ namespace Snow.Template.Gdpr
             _appNotifier = appNotifier;
             _settingManager = settingManager;
         }
+
         public override void Execute(UserIdentifier args)
         {
             using (UnitOfWorkManager.Current.SetTenantId(args.TenantId))
@@ -62,7 +63,7 @@ namespace Snow.Template.Gdpr
                     var zipFile = new BinaryObject
                     {
                         TenantId = args.TenantId,
-                        Bytes = CompressFiles(files)
+                        //Bytes = CompressFiles(files)
                     };
 
                     // Save zip file to object manager.
@@ -73,6 +74,7 @@ namespace Snow.Template.Gdpr
                 }
             }
         }
+
         private byte[] CompressFiles(List<FileDto> files)
         {
             using (var outputZipFileStream = new MemoryStream())
@@ -95,6 +97,5 @@ namespace Snow.Template.Gdpr
                 return outputZipFileStream.ToArray();
             }
         }
-
     }
 }

@@ -23,6 +23,8 @@ using Snow.Template.Web.Validation;
 using Abp.AspNetCore.Mvc.Antiforgery;
 using Newtonsoft.Json.Serialization;
 using Abp.Dependency;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Snow.Template.Web.Startup
 {
@@ -85,7 +87,11 @@ namespace Snow.Template.Web.Startup
                 app.UseExceptionHandler("/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "AppData")),
+                RequestPath = "/AppData"
+            });
 
             app.UseRouting();
 

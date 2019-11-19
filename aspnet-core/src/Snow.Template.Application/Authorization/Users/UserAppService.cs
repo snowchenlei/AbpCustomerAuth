@@ -382,15 +382,12 @@ namespace Snow.Template.Authorization.Users
             {
                 throw new UserFriendlyException("There is no such image file with the token: " + input.FileToken);
             }
-            if (imageBytes.Length > MaxProfilPictureBytes)
-            {
-                throw new UserFriendlyException(L("ResizedProfilePicture_Warn_SizeLimit", AppConsts.ResizedMaxProfilPictureBytesUserFriendlyValue));
-            }
             using (var bmpImage = new Bitmap(new MemoryStream(imageBytes)))
             {
                 var width = (input.Width == 0 || input.Width > bmpImage.Width) ? bmpImage.Width : input.Width;
                 var height = (input.Height == 0 || input.Height > bmpImage.Height) ? bmpImage.Height : input.Height;
                 var bmCrop = bmpImage.Clone(new Rectangle(input.X, input.Y, width, height), bmpImage.PixelFormat);
+                // TODO:限制裁剪后图片大小 1、先将图片保存成流 2、判断大小 3、大了结束。小了再将流保存成图片
                 if (!Directory.Exists(fixedPath))
                 {
                     Directory.CreateDirectory(fixedPath);
@@ -425,10 +422,10 @@ namespace Snow.Template.Authorization.Users
                 return new GetHeadImageOutput(string.Empty);
             }
 
-            return await GetHeadImageById(user.ProfilePictureId.Value);
+            return await GetHeadImageByIdAsync(user.ProfilePictureId.Value);
         }
 
-        public async Task<GetHeadImageOutput> GetHeadImageById(Guid profilePictureId)
+        public async Task<GetHeadImageOutput> GetHeadImageByIdAsync(Guid profilePictureId)
         {
             return await GetHeadImageByIdInternal(profilePictureId);
         }

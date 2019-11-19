@@ -9,12 +9,14 @@
     ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
 }
 @section styles{
+    <link href="~/lib/Jcrop/css/jquery.Jcrop.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap-fileinput/themes/explorer-fa/theme.css" rel="stylesheet" asp-append-version="true" />
 }
 @section scripts
     {
     <environment names="Development">
+        <script src="~/lib/Jcrop/js/jquery.Jcrop.js"></script>
         <script src="~/lib/bootstrap-fileinput/js/fileinput.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap-fileinput/themes/fa/theme.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap-fileinput/themes/explorer-fa/theme.js" asp-append-version="true"></script>
@@ -29,19 +31,43 @@
             <script type="text/javascript">
                 var _userService = abp.services.app.user;
                 var url = '@Html.Raw(Model.HeadImage)'
-                var arr = [];
-                if (url !== '') {
-                    arr.push("<img src='"+url+"' class='file-preview-image' alt='Desert' title='Desert'>");
-                }
-                $(function () {
-                    var uploadToken;
+                var arr = new Array();
+                var $jcropApi = null;
+                    var $profilePictureResize = $('#ProfilePictureResize');
+                // 开启截图
+                var boundx, boundy,
+                    // Grab some information about the preview pane
+                    $preview = $('#preview-pane'),
+                    $pcnt = $('#preview-pane .preview-container'),
+                    $pimg = $('#preview-pane .preview-container img'),
 
+                    xsize = $pcnt.width(),
+                    ysize = $pcnt.height();
+                function startJcrop() {
+                    $pimg.attr('src', $profilePictureResize.attr('src'));
+                        $profilePictureResize.Jcrop({
+                            aspectRatio: 4 / 3
+                        }, function () {
+                                $jcropApi = this;
+                        });
+                }
+
+                $(function () {
+                    if (url) {
+                        arr.push(url);
+                        $profilePictureResize.attr('src', url);
+                        $profilePictureResize.show();
+                    }
+                    var uploadedFileToken;
                     $('#HeadImage').fileinput({
                         theme: "fa",
                         language: '@languageName',
                         uploadUrl: "/profile/UploadProfilePicture",
-                        showUpload: false,
-                        initialPreview:arr,
+                        showPreview: false,// 隐藏预览
+                        showRemove: false,// 隐藏删除
+                        dropZoneEnabled: false,// 是否显示拖拽区域
+                        initialPreview: arr,
+                        allowedFileExtensions: ['jpg', 'png'],
                         uploadExtraData: function (previewId, index) {
                             var data = {
                                 FileName: 'ProfilePicture',
@@ -51,33 +77,50 @@
                                 data.FileType = $('#HeadImage').fileinput('getFileList')[index].type
                             }
                             return data;
-                        }
-                        //        allowedFileExtensions: ['jpg', 'png', 'gif']
+                        },
+                    }).on('change', function (event) {
+                        $profilePictureResize.hide();
+                        $profilePictureResize.attr('src', '');
+                            $profilePictureResize.attr('originalWidth', 0);
+                            $profilePictureResize.attr('originalHeight', 0);
                     }).on('fileuploaded', function (event, previewId, index, fileId) {
-                        uploadToken = previewId.response.result.fileToken;
-                        if (previewId.response.success) {
-                            previewId.response = {success:true}
+                        uploadedFileToken = previewId.response.result.fileToken;
+                        var response = previewId.response;
+                        if (response.success) {
+                            var profileFilePath = abp.appPath + 'File/DownloadTempFile?fileToken=' + response.result.fileToken + '&fileName=' + response.result.fileName + '&fileType=' + response.result.fileType + '&v=' + new Date().valueOf();
+                            $profilePictureResize.show();
+                            $profilePictureResize.attr('src', profileFilePath);
+                            $profilePictureResize.attr('originalWidth', response.result.width);
+                            $profilePictureResize.attr('originalHeight', response.result.height);
+                            startJcrop();
+                            response = { success: true };
                         } else {
-                            previewId.response = { error: true };
+                            response = { error: true };
                         }
                     });
                     $('#setHeadImage').click(function () {
+                        if (!uploadedFileToken) {
+                            return;
+                        }
+                        var resizeParams = {};
+                        if ($jcropApi) {
+                            resizeParams = $jcropApi.tellSelect();
+                        }
                         _userService.updateHeadImage({
-                            FileToken: uploadToken,
-                            X: 0,
-                            Y: 0,
-                            Width: 0,
-                            Height: 0
+                            FileToken: uploadedFileToken,
+                            X: parseInt(resizeParams.x),
+                            Y: parseInt(resizeParams.y),
+                            Width: parseInt(resizeParams.w),
+                            Height: parseInt(resizeParams.h)
                         }).done(function (result) {
-                            abp.notify.info(app.localize('SavedSuccessfully'));
-                        }).always(function () {
-                            abp.ui.clearBusy(dialog);
+                            $jcropApi.destroy();
+                            $jcropApi = null;
                         });
+                    });
+                    $('#changePassward').click(function () {
+                        // 弹出Modal修改密码
+                    });
                 });
-                $('#changePassward').click(function () {
-                    // 弹出Modal修改密码
-                });
-            });
             </script>
         }
     </environment>
@@ -87,8 +130,10 @@
     </environment>
 }
 <div style="max-width:500px;margin:20px;padding:20px;">
+    <!-- Wrap the image or canvas element with a block element (container) -->
     <div class="form-group">
         <label asp-for="HeadImage"></label>
+        <img id="ProfilePictureResize" src="" style="display: none;" alt="预览图">
         <input asp-for="HeadImage" type="file">
     </div>
     <button id="setHeadImage" type="button" class="btn btn-primary">@L("SetHeadImage")</button>

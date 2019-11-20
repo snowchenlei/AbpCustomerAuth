@@ -156,6 +156,10 @@
     <Folder Include="Views\Common\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json" CopyToPublishDirectory="Never" Condition="'$(Configuration)' == 'Release'" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties />

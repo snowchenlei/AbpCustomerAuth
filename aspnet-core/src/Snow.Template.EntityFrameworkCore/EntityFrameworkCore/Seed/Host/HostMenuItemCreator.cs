@@ -24,19 +24,19 @@ namespace Snow.Template.EntityFrameworkCore.Seed.Host
 
         private void CreateHostMenuItems()
         {
-            var t =  _context.MenuItem.IgnoreQueryFilters().FirstOrDefault(c => c.Name == "系统管理");
+            var t = _context.MenuItem.IgnoreQueryFilters().FirstOrDefault(c => c.Name == "系统管理");
             if (t != null)
             {
                 return;
             }
-            MenuItem parent = new MenuItem()
+            MenuItem systemManager = new MenuItem()
             {
                 Name = "系统管理",
                 CreationTime = DateTime.Now,
                 Icon = "fas fa-cog",
                 Parent = null
             };
-            _context.MenuItem.Add(parent);
+            _context.MenuItem.Add(systemManager);
             _context.MenuItem.Add(new MenuItem()
             {
                 Name = "用户管理",
@@ -44,7 +44,7 @@ namespace Snow.Template.EntityFrameworkCore.Seed.Host
                 Icon = "far fa-circle nav-icon",
                 Route = "/Users",
                 PermissionName = "Pages.Administration.Users",
-                Parent = parent
+                Parent = systemManager
             });
             _context.MenuItem.Add(new MenuItem()
             {
@@ -53,7 +53,7 @@ namespace Snow.Template.EntityFrameworkCore.Seed.Host
                 Icon = "far fa-circle nav-icon",
                 Route = "/Roles",
                 PermissionName = "Pages.Administration.Roles",
-                Parent = parent
+                Parent = systemManager
             });
             _context.MenuItem.Add(new MenuItem()
             {
@@ -62,7 +62,7 @@ namespace Snow.Template.EntityFrameworkCore.Seed.Host
                 Icon = "far fa-circle nav-icon",
                 Route = "/MenuItems",
                 PermissionName = "Pages.Administration.MenuItems",
-                Parent = parent
+                Parent = systemManager
             });
             _context.MenuItem.Add(new MenuItem()
             {
@@ -71,7 +71,7 @@ namespace Snow.Template.EntityFrameworkCore.Seed.Host
                 Icon = "far fa-circle nav-icon",
                 Route = "/Tenants",
                 PermissionName = "Pages.Administration.Tenants",
-                Parent = parent
+                Parent = systemManager
             });
             _context.MenuItem.Add(new MenuItem()
             {
@@ -80,9 +80,34 @@ namespace Snow.Template.EntityFrameworkCore.Seed.Host
                 Icon = "far fa-circle nav-icon",
                 Route = "/AuditLogs",
                 PermissionName = "Pages.Administration.AuditLogs",
-                Parent = parent
+                Parent = systemManager
+            });
+            MenuItem dataManager = new MenuItem()
+            {
+                Name = "数据管理",
+                CreationTime = DateTime.Now,
+                Icon = "fas fa-cog",
+                Parent = null
+            };
+            _context.MenuItem.Add(dataManager);
+            _context.MenuItem.Add(new MenuItem()
+            {
+                Name = "参数类型管理",
+                CreationTime = DateTime.Now,
+                Icon = "far fa-circle nav-icon",
+                Route = "/ParameterTypes",
+                PermissionName = "Pages.Administration.ParameterTypes",
+                Parent = dataManager
+            });
+            _context.MenuItem.Add(new MenuItem()
+            {
+                Name = "参数管理",
+                CreationTime = DateTime.Now,
+                Icon = "far fa-circle nav-icon",
+                Route = "/Parameters",
+                PermissionName = "Pages.Administration.Parameters",
+                Parent = dataManager
             });
         }
     }
 }
-

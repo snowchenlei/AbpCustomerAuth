@@ -13,6 +13,9 @@ using Snow.Template.Web.Models.Parameters;
 
 namespace Snow.Template.Web.Mvc.Controllers
 {
+    /// <summary>
+    /// 参数
+    /// </summary>
     [AbpMvcAuthorize(PermissionNames.Pages_Administration_Parameters)]
     public class ParametersController : TemplateControllerBase
     {
@@ -20,6 +23,11 @@ namespace Snow.Template.Web.Mvc.Controllers
 
         private readonly IParameterAppService _parameterAppService;
 
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="parameterAppService"></param>
+        /// <param name="mapper"></param>
         public ParametersController(IParameterAppService parameterAppService
             , IMapper mapper)
         {

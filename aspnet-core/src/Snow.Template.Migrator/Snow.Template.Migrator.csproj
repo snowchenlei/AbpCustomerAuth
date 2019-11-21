@@ -13,7 +13,10 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="appsettings.json;log4net.config">
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory  Condition="'$(Configuration)' == 'Debug'">PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

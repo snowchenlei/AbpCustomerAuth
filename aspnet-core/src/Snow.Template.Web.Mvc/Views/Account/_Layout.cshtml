@@ -26,9 +26,8 @@
 
     <environment names="Development">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" asp-append-version="true">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" asp-append-version="true">
+        <link href="~/lib/Font-Awesome/css/all.css" rel="stylesheet" rel="stylesheet" asp-append-version="true" />
+        @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" asp-append-version="true">*@
         <!-- Theme style -->
         <link href="~/lib/AdminLTE/dist/css/adminlte.css" rel="stylesheet" asp-append-version="true" />
         <!-- iCheck -->
@@ -37,23 +36,13 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" asp-append-version="true">
         <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/view-resources/Views/Account/_Layout.css" rel="stylesheet" asp-append-version="true" />
-        <style type="text/css">
-            .error {
-                font-size: 12px;
-                display: block;
-                margin-top: 5px;
-                font-weight: normal;
-                color: #F44336;
-            }
-
-            .language-switch-area {
-                text-align: center;
-                padding: 10px;
-            }
-        </style>
     </environment>
 
     <environment names="Staging,Production">
+        <!-- Font Awesome -->
+        <link href="~/lib/Font-Awesome/css/all.css" rel="stylesheet" rel="stylesheet" asp-append-version="true" />
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" asp-append-version="true">
         <link rel="stylesheet" href="~/view-resources/Views/_Bundles/account-layout.min.css" asp-append-version="true" />
     </environment>
 
@@ -85,6 +74,7 @@
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
         <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
+        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
         <script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
         <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
         <script src="~/lib/bootbox.js/dist/bootbox.all.min.js" asp-append-version="true"></script>
@@ -100,6 +90,7 @@
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/utils/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Account/_Layout.js" asp-append-version="true"></script>
         <script src="~/js/admin.js" asp-append-version="true"></script>
         <script src="~/js/main.js" asp-append-version="true"></script>
         @if (CultureInfo.CurrentUICulture.Name != "en")
@@ -108,18 +99,38 @@
         }
     </environment>
     <environment names="Staging,Production">
-        <script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+        <script src="~/lib/moment/min/moment-with-locales.min.js" asp-append-version="true"></script>
+        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/toastr/toastr.min.js" asp-append-version="true"></script>
+        <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootbox.js/dist/bootbox.all.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootbox.js/dist/bootbox.locales.min.js" asp-append-version="true"></script>
+        <script src="~/lib/spin.js/spin.min.js" asp-append-version="true"></script>
+        <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/Waves/dist/waves.min.js" asp-append-version="true"></script>
+        <script src="~/lib/iCheck/icheck.min.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/utils/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Account/_Layout.js" asp-append-version="true"></script>
+        <script src="~/js/admin.js" asp-append-version="true"></script>
+        <script src="~/js/main.js" asp-append-version="true"></script>
+        @if (CultureInfo.CurrentUICulture.Name != "en")
+        {
+            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".min.js")" asp-append-version="true"></script>
+        }
+        @*<script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>*@
     </environment>
-    <script>
+    <script type="text/javascript">
     // Localizing momentjs
     moment.locale('@CultureInfo.CurrentUICulture.Name');
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        })
-    })
     </script>
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
     <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>

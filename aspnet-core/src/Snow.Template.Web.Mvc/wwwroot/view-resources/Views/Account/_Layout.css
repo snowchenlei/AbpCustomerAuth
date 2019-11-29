@@ -1,7 +1,16 @@
 ﻿.language-switch-area {
-  text-align: center;
-  padding: 10px;
+    text-align: center;
+    padding: 10px;
 }
+
 .famfamfam-flags {
-  display: inline-block;
+    display: inline-block;
+}
+
+.error {
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    font-weight: normal;
+    color: #F44336;
 }

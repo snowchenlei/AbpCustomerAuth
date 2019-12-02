@@ -14,6 +14,8 @@
       "wwwroot/lib/jquery/dist/jquery.min.js",
       "wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
       "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "wwwroot/lib/moment/min/moment-with-locales.min.js",
+      "wwwroot/lib/blockUI/jquery.blockUI.js",
       "wwwroot/lib/toastr/toastr.min.js",
       "wwwroot/lib/sweetalert/dist/sweetalert.min.js",
       "wwwroot/lib/bootbox.js/dist/bootbox.all.min.js",
@@ -42,6 +44,7 @@
       "wwwroot/lib/Waves/dist/waves.min.css",
       "wwwroot/css/style.css",
       "wwwroot/view-resources/Views/Shared/_Layout.css",
+      "wwwroot/lib/overlayScrollbars/css/OverlayScrollbars.min.css"
     ]
   },
   {
@@ -49,26 +52,22 @@
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.js",
       "wwwroot/lib/json2/json2.js",
-      "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
-      "wwwroot/lib/moment/min/moment-with-locales.js",
-      "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
-      "wwwroot/lib/blockUI/jquery.blockUI.js",
-      "wwwroot/lib/toastr/toastr.js",
-      "wwwroot/lib/sweetalert/dist/sweetalert.min.js",
-      "wwwroot/lib/spin.js/spin.js",
-      "wwwroot/lib/spin.js/jquery.spin.js",
-      "wwwroot/lib/bootstrap-select/dist/js/bootstrap-select.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "wwwroot/lib/AdminLTE/dist/js/adminlte.min.js",
       "wwwroot/lib/jquery-slimscroll/jquery.slimscroll.js",
-      "wwwroot/lib/Waves/dist/waves.js",
-      "wwwroot/lib/push.js/push.js",
+      "wwwroot/lib/toastr/toastr.min.js",
+      "wwwroot/lib/sweetalert/dist/sweetalert.min.js",
+      "wwwroot/lib/spin.js/spin.min.js",
+      "wwwroot/lib/moment/min/moment-with-locales.min.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/abp.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js",
-      "wwwroot/js/admin.js",
-      "wwwroot/js/main.js",
+      "wwwroot/lib/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+      "wwwroot/js/bootstrap-tab.js",
+      "wwwroot/view-resources/Views/Home/Demo.js",
       "wwwroot/view-resources/Views/Shared/_Layout.js"
     ]
   },
@@ -92,6 +91,12 @@
     "outputFileName": "wwwroot/view-resources/Views/Account/Login.min.css",
     "inputFiles": [
       "wwwroot/view-resources/Views/Account/Login.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Account/_Layout.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Account/_Layout.js"
     ]
   },
   {

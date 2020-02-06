@@ -21,12 +21,16 @@
   <ItemGroup>
     <Compile Remove="wwwroot\lib\bootstrap-table\.github\**" />
     <Compile Remove="wwwroot\lib\bootstrap-table\.git\**" />
+    <Compile Remove="wwwroot\lib\ionicons\**" />
     <Content Remove="wwwroot\lib\bootstrap-table\.github\**" />
     <Content Remove="wwwroot\lib\bootstrap-table\.git\**" />
+    <Content Remove="wwwroot\lib\ionicons\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap-table\.github\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap-table\.git\**" />
+    <EmbeddedResource Remove="wwwroot\lib\ionicons\**" />
     <None Remove="wwwroot\lib\bootstrap-table\.github\**" />
     <None Remove="wwwroot\lib\bootstrap-table\.git\**" />
+    <None Remove="wwwroot\lib\ionicons\**" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Common\_PermissionTree.cshtml" />
